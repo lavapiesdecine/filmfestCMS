@@ -1,0 +1,10 @@
+<? 
+	foreach($ediciones as $edicion){ ?>	
+	 <div class='img_muestra'>
+		<a href='<?= URL_ADMIN . ($edicion->id == DEFAULT_ANYO ? '' : "/" . $edicion->id)?>' id='<?= $edicion->id?>'>
+			<img src='<?= URL_SKINS.$edicion->id . "/" . IMG . "/". $edicion->cartel ?>' width="200px" />
+			<br>
+		</a>
+		<?=$edicion->titulo?>
+	 </div>
+<?	} ?>

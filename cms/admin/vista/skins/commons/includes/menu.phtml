@@ -1,0 +1,15 @@
+<?if (!empty($menu) && count($menu)>1){ ?>
+	<nav>
+		<ul class='menu'>
+			<? foreach ($menu as $controller) { ?>
+				<li id="id-<?=$controller["modulo"].($this->_controller==$controller["modulo"] ? '-activa' : '')?>"><a href='<?=$this->_baseUrl?><?=$controller["modulo"]?>' title='<?=_($controller["modulo"].".description")?>'><strong><?=_($controller["modulo"].".title")?></strong></a>
+					<ul class='submenu'>
+						<? foreach ($controller["submenu"] as $subController) { ?>
+							<li><a href='<?=$this->_baseUrl?><?=$subController->modulo?>' title='<?=_($subController->modulo.".description")?>'><?= _($subController->modulo.".title") ?></a></li>
+						<? }?>
+					</ul>
+				</li>
+			<? }?>
+		</ul>
+	</nav>
+<? }?>

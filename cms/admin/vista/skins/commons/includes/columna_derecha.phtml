@@ -1,0 +1,26 @@
+<?php if (isset($listado) && count($listado)>0 ){ ?>	
+	<h2><?=_("list")." ".$this->_title ?><span class="small">(<?= count($listado) ?>)</span></h2>
+	<ul class="<?=$this->_controller?>">
+		<? 
+		foreach($listado as $item){
+			$visible = $item->alta =='S'? "visible" :"no-visible";
+			$itemSelected = (!empty($this->_id) && ($this->_id == $item->id)) ? 'selected' : '';
+			$itemId = $item->id;
+		?>
+			<li class='<?=$itemSelected?>'>
+				<span class="titulo" id='item-<?=$itemId?>' title='<?=$item->titulo?>'><?= \core\util\Util::substring($item->titulo,35) ?></span>
+				<div class="botonera-listado">
+					<? if(isset($this->urlWebModulo)){?>
+						<a href="<?=$this->urlWebModulo.$itemId?>"  target="_blank"><img src="<?=URL_IMG_ADMIN?>ver_off.png" title="<?= _("form.accion.ver")?>"></a>   
+					<? } ?>
+					<a href="#" class="edit" id='edit-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>edit_off.png" title="<?= _("form.accion.editar")?>"></a>
+					<a href="#" class='<?=$visible?>' id='view-<?=$itemId?>' ><img src="<?=URL_IMG_ADMIN.$visible?>_off.png" title='<?= _("form.accion.visible")?>'></a>
+					<a href="#" class="delete" id='delete-<?=$itemId?>' ><img src='<?=URL_IMG_ADMIN?>delete_off.png' title='<?= _("form.accion.eliminar")?>'></a>
+					<? if($this->imprimir){?>
+						<a href="#" class="print" id='print-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>print_off.png" title='<?= _("form.accion.imprimir")?>'></a>
+					<? }?>
+				</div>
+			</li>
+		<?}?>
+	</ul>
+<?}?>

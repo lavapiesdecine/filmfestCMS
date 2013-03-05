@@ -1,0 +1,12 @@
+<form id='form_galeria' name='form_galeria' method='post' >
+	<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+	
+	<label><?= _("form.galeria.img")?></label>
+	<input name='id_nombre' id='id_nombre' value="<?= $nombre ?>" required />
+	
+	<label><?=_("form.descripcion")?> <span class="small"><?= _("form.noobligatorio")?></span></label>
+	<textarea name='id_descripcion' id='id_descripcion'><?= $descripcion ?></textarea>
+	
+	<a href="#" id='b_galeria' class="boton"><?=_("form.aceptar")?></a>
+</form>
+	

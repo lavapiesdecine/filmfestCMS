@@ -1,0 +1,11 @@
+<div class="login">
+	<? if (!empty($error)){?>
+		<div class="error"><strong><?= $error ?></strong></div>
+	<? } ?>
+		
+	<form id='form_login' name='form_login' method='post' action="<?=URL_ADMIN?>">
+		<input id="nombreusuario" class="usuario" type="text" name="nombreusuario" required placeholder="<?=_("form.login.nombre")?>" /> 
+		<input id="psw" type="password" class="password" name="psw" required placeholder="<?=_("form.login.password")?>"  />
+		<a href="#" id='b_login' class="boton"><?=_("form.aceptar")?></a>
+	</form>
+</div>		

@@ -1,0 +1,51 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/usuario/upload" scrolling="no"></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a href="#" id="delete-img">
+			<img width="100px" height="100px" src="<?= $img?>" id="imagen_uploaded" />
+			<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+		</a>	
+	<?} else { ?>
+		<p><?=_("form.upload.img")?><br><?=_("form.upload.type")?></p>	
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/usuario/upload" target="frame_imagen">
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
+				<input name="id_usuario" id="id_usuario" type="hidden" value="<?=$this->_id?>" >
+				<input type="file" name="imagen" id="imagen"  />
+		</form>
+	<? } ?>	
+</div>
+
+<div id="div-img-info">
+	<form id='form_usuario' name='form_usuario' method='post'>
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+		<input type="hidden" id="perfilesSelected" value="" name="perfilesSelected" />
+			
+		<label><?=_("form.usuario.nombre")?></label> <input value='<?= $nombre ?>' name='nombre' id='nombre' required />
+		
+		<span class="<?= $classPassword ?>"><label><?=_("form.usuario.password")?></label> <input type="password" name='id_password' id='id_password' <?if(empty($classPassword)){?>required<?}?> /></span>
+	
+		<p class="select"><label><?=_("form.usuario.nivel")?></label>
+		<select name='perfilesDisponibles' id='perfilesDisponibles' class="availables"  size=5>
+			<?= \core\util\UtilPagina::getOptions($perfilesPosibles, 0, false) ?>
+		</select>
+		</p>
+		<p class="arrow">
+			<img src="<?=URL_IMG_ADMIN?>right_off.png" id="right" />
+			<img src="<?=URL_IMG_ADMIN?>left_off.png" id="left" />
+		</p>
+		<p class="select"><label><?=_("form.usuario.nivel")?></label>
+			<select name='perfiles' id='perfiles' multiple="multiple" class="selecteds" size=5>
+				<?= \core\util\UtilPagina::getOptions($perfiles, 0, false) ?>
+			</select>
+		</p>
+		 
+		<label><?=_("form.email")?></label>
+		<input value='<?= $email?>' name='id_email' id='id_email' type="email" required/>
+		
+		<a href="#" id='b_usuario' class="boton"><?=_("form.aceptar")?></a>
+			
+	</form>
+</div>	

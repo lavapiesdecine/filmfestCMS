@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+	<html lang="<?= $this->_lang?>" >
+	<head>
+		<? include($pathCommons."includes/head.phtml");?>
+		<link href="<?=$urlSkin?>css/estilos.css" rel="stylesheet" type="text/css" />
+		<link href="<?=$urlSkin?>css/layout.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<article>
+		    <header>
+			</header>
+			<nav id="menu">
+				<? include_once($pathSkin."includes/menu.phtml"); ?>
+			</nav>			
+			<section>
+	            <div id="main">
+		            <div id="title"><h1><?=$this->_title?></h1></div>
+					<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+	            </div>
+	       </section>
+	       <footer>
+	       		<? include_once($pathSkin."includes/pie.phtml"); ?>
+	       </footer> 
+	    </article>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+
+<? if(OSM){ ?>
+	<script type="text/javascript" src="<?=URL_LIBJS?>openlayer/OpenLayers.js"> </script>
+<? } else {?> 
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<? } ?>
+
+
+<script type="text/javascript">	
+
+$(document).ready(function() {
+	//carga de mapas y puntos geograficos
+	if(osm){
+
+		map = new OpenLayers.Map("map");
+		map.addLayer(new OpenLayers.Layer.OSM());
+		var zoom = 16;
+		 
+		var lonLat = new OpenLayers.LonLat(parseFloat(<?=LONGITUD?>), parseFloat(<?=LATITUD?>) )
+		          .transform(
+		            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+		            map.getProjectionObject() // to Spherical Mercator Projection
+		          );
+
+		map.setCenter (lonLat, zoom);
+		
+		var markers = new OpenLayers.Layer.Markers("Markers");
+		map.addLayer(markers);
+		
+		AutoSizeAnchored = OpenLayers.Class(OpenLayers.Popup.Anchored, {
+	            'autoSize': true,
+	            'minSize': new OpenLayers.Size(350,120)
+	    });
+		
+		<? foreach ($espacios as $espacio) { ?>	
+
+			var lonLat<?=$espacio->id?> = new OpenLayers.LonLat(parseFloat(<?=$espacio->longitud?>), parseFloat(<?=$espacio->latitud?>) )
+			.transform(
+		            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+		            map.getProjectionObject() // to Spherical Mercator Projection
+		          );
+		
+			var feature<?=$espacio->id?> = new OpenLayers.Feature(markers, lonLat<?=$espacio->id?>); 
+	        feature<?=$espacio->id?>.closeBox = true;
+	        feature<?=$espacio->id?>.popupClass = AutoSizeAnchored;
+	        feature<?=$espacio->id?>.data.overflow = "auto";
+
+	        <?  $divEspacio = "";
+				if (!empty($espacio->logo)){
+					$divEspacio .= "<div id='logo-espacio'><img src='".URL_LOGO."espacios/".$espacio->logo."' /></div>";
+				}
+				$divEspacio .= "<div id='txt-espacio'>";
+				if (!empty($espacio->url)){
+					$divEspacio .= "<p><a href='".$espacio->url."' ><strong>" . $espacio->espacio . "</strong></a>";
+				} else {
+					$divEspacio .= "<strong>$espacio->espacio</strong>";
+				}
+				$divEspacio .= "<br> $espacio->direccion";
+				$divEspacio .= "</p>";
+				$divEspacio .= "<p> $espacio->descripcion </p>";
+				$divEspacio .= "</div>";
+			?>
+
+			feature<?=$espacio->id?>.data.popupContentHTML = "<?=$divEspacio?>";
+	                
+	        var marker<?=$espacio->id?> = feature<?=$espacio->id?>.createMarker();
+	        
+	        var markerClick<?=$espacio->id?> = function (evt) {
+	            if (this.popup == null) {
+	                this.popup = this.createPopup(this.closeBox);
+	                map.addPopup(this.popup);
+	                this.popup.show();
+	            } else {
+	                this.popup.toggle();
+	            }
+	            currentPopup = this.popup;
+	            OpenLayers.Event.stop(evt);
+	        };
+	        marker<?=$espacio->id?>.events.register("mousedown", feature<?=$espacio->id?>, markerClick<?=$espacio->id?>);
+			
+	        markers.addMarker(marker<?=$espacio->id?>);
+		<? } ?>
+		
+	} else {
+		
+		var latlng = new google.maps.LatLng(parseFloat(<?=LATITUD?>), parseFloat(<?=LONGITUD?>));
+		
+		var myOptions = {
+				  zoom: 16,
+				  center: latlng,
+				  disableDefaultUI: true,
+				  mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map"), myOptions);
+	
+		<? foreach ($espacios as $espacio) { ?>
+			var marker<?=$espacio->id?> = new google.maps.Marker({
+		        position: latlng
+		    });
+		    marker<?=$espacio->id?>.setMap(map);
+
+			//info del espacio
+		<?  	$divEspacio = "";
+				if (!empty($espacio->logo)){
+					$divEspacio .= "<div id='logo-espacio'><img src='".URL_LOGO."espacios/".$espacio->logo."' /></div>";
+				}
+				$divEspacio .= "<div id='txt-espacio'>";
+				if (!empty($espacio->url)){
+					$divEspacio .= "<p><a href='".$espacio->url."' ><strong>" . $espacio->espacio . "</strong></a>";
+				} else {
+					$divEspacio .= "<strong>$espacio->espacio</strong>";
+				}
+				$divEspacio .= "<br> $espacio->direccion";
+				$divEspacio .= "</p>";
+				$divEspacio .= "<p> $espacio->descripcion </p>";
+				$divEspacio .= "</div>";
+		?>
+
+			var infowindow<?=$espacio->id?> = new google.maps.InfoWindow({
+		        content: "<?= $divEspacio ?>"
+		    });
+
+		    google.maps.event.addListener(marker<?=$espacio->id?>, 'click', function() {
+		        infowindow<?=$espacio->id?>.open(map, this);
+		    });
+		
+		<?  } ?>
+	
+	
+		/*	
+		$('div#lista li').mouseover(function(){
+			var item = this.id.split('-');
+			//infowindow2.open(map, this);
+			console.log(item[1]);
+		});
+		$('div#lista li').mouseout(function(){
+			var item = this.id.split('-');
+			//infowindow2.close();
+			console.log(item[1]);
+		});
+	 	*/		
+	}	
+});
+
+
+</script>
+
+<div id='lista'>
+	<ul>						 
+		<? foreach ($espacios as $espacio) {
+			$url = $espacio->url;
+			$nombre = !empty($url) ? "<a href='$url' target='_blank'>".$espacio->espacio."</a>" : $espacio->espacio;
+		?>
+			<li id="espacio-<?=$espacio->id?>"><strong><?=$nombre?></strong><br>
+			<?= $espacio->direccion ?></li>
+		<? } ?>
+	</ul>
+</div>
+<div id='map'></div>

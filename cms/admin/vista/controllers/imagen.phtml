@@ -1,0 +1,49 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/imagen/upload" scrolling="no"  ></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a class="fancybox" rel="<?=$galeria?>"  href="<?=$url?>">
+			<img width="100px" height="100px" src="<?=$img?>" />
+			<span id="<?=$iconImg?>"></span>
+		</a>
+		<p><?=$sizeFile?> <br> <?=$dimensiones?></p>
+	<?} else { ?>
+		<p><?= _("form.upload.img")?><br><?= _("form.upload.type")?></p>
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/imagen/upload" target="frame_imagen">
+				<input name='galeria' id='galeria' value='<?=$galeria?>' type='hidden' required />
+				<input name='id_galeria_img' id='id_galeria_img' value='<?=$idGaleria?>' type='hidden'/>
+				<input type="file" name="imagen" id="imagen" required  />
+		</form>
+	<? } ?>	
+</div>
+
+
+<div id="div-img-info">
+	<form id='form_img' name='form_img' method='post' >
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' required />
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		<label><?= _("form.galerias")?></label>
+		<?if(empty($img)){?>
+			<select name="id_galeria" id="id_galeria" required >
+				<?= \core\util\UtilPagina::getOptions($galerias, $idGaleria) ?>
+			</select> 
+		<? } else {?>
+			<span class="input"><?= $galeria ?></span>
+			<input name='id_galeria' id='id_galeria' type='hidden' value="<?=$idGaleria?>" required />
+		<? }?>
+		<label><?=_("form.descripcion")?></label>
+		<textarea name='descripcion' id='descripcion' ><?=$descripcion?></textarea>
+		
+		<? if($video) { ?>
+			<label><?= _("form.video.url")?> <span class="small"><?= _("form.video.url.1")?></span></label>
+			<input value='<?=$url?>' name='id_video' id='id_video' placeholder="http://"  type="url" />
+		<? } else { ?>
+			<label><?= _("form.img.url")?></label>
+			<span class="input"><a href="<?=$url?>" target="_blank"><?=$url?></a></span>
+		<? } ?>
+		
+		<a href="#" id='b_imagen' class="boton"><?=_("form.aceptar")?></a>
+		
+	</form>
+</div>

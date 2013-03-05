@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<html lang="<?= $this->_lang?>" >
+	<head>
+		<? include($pathCommons."includes/head.phtml");?>
+	</head>
+	<body>
+		<article>
+		    <header>
+			   	<? include($pathCommons."includes/botonera.phtml");?>	
+			</header>
+			
+			<? include($pathCommons."includes/menu.phtml");?>
+			
+			<section>
+	           	<? if(!empty($menu)){?>
+					<h1><?= $this->_title ?><span class="small"><?=$this->_description?></span></h1>
+				<? } ?>
+				 <div id="msg" class="oculto" ></div>
+	        	<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+		  	</section>
+		    
+		    <footer><p><?= _("powered") . " " . APP . " " . APP_VERSION?></p></footer>
+	    </article>
+	</body>
+</html>

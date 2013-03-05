@@ -1,0 +1,470 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-03-03 01:17+0100\n"
+"PO-Revision-Date: 2013-03-03 01:18+0100\n"
+"Last-Translator: arturo <muestra@lavapiesdecine.net>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\ff\\\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-SearchPath-0: cms/www\n"
+
+#: cms/www/controllers/contactaController.php:12
+msgid "contacta.title"
+msgstr "Contacta con nostr@s"
+
+#: cms/www/controllers/contactaController.php:13
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "contacta.description"
+msgstr "Escribenos si quieres decirnos lo que sea"
+
+#: cms/www/controllers/contactaController.php:29
+msgid "contacta.confirm"
+msgstr "Gracias por escribirnos. Tu mensaje ha sido enviado!!"
+
+#: cms/www/controllers/convocatoriasController.php:11
+msgid "convocatorias.title"
+msgstr "Convocatoria de autoproducciones"
+
+#: cms/www/controllers/convocatoriasController.php:12
+msgid "convocatorias.description"
+msgstr "Convocatoria de autoproducciones"
+
+#: cms/www/controllers/docController.php:11
+msgid "doc.title"
+msgstr "Documentos"
+
+#: cms/www/controllers/docController.php:12
+msgid "doc.description"
+msgstr "Zona de descarga de documentos"
+
+#: cms/www/controllers/edicionesController.php:11
+msgid "ediciones.title"
+msgstr "Muestras anteriores"
+
+#: cms/www/controllers/edicionesController.php:12
+msgid "ediciones.description"
+msgstr "Muestras anteriores"
+
+#: cms/www/controllers/errorController.php:12
+msgid "error.title"
+msgstr "Error"
+
+#: cms/www/controllers/errorController.php:13
+msgid "error.description"
+msgstr "Página de error"
+
+#: cms/www/controllers/escaparateController.php:12
+msgid "escaparate.title"
+msgstr "Asómate a La Muestra"
+
+#: cms/www/controllers/escaparateController.php:13
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "escaparate.description"
+msgstr "Asómate a La Muestra"
+
+#: cms/www/controllers/espaciosController.php:13
+msgid "espacios.title"
+msgstr "Espacios de proyección"
+
+#: cms/www/controllers/espaciosController.php:14
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "espacios.description"
+msgstr "Espacios de proyección"
+
+#: cms/www/controllers/inscripcionController.php:13
+msgid "inscripcion.title"
+msgstr "Formulario de inscripción"
+
+#: cms/www/controllers/inscripcionController.php:14
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "inscripcion.description"
+msgstr "Formulario de inscripción"
+
+#: cms/www/controllers/inscripcionController.php:41
+#: cms/www/vista/controllers/inscripcion.phtml:7
+msgid "inscripcion.datos.contacto"
+msgstr "Datos de contacto"
+
+#: cms/www/controllers/inscripcionController.php:41
+#: cms/www/vista/controllers/inscripcion.phtml:9
+msgid "inscripcion.nombre"
+msgstr "Nombre"
+
+#: cms/www/controllers/inscripcionController.php:41
+#: cms/www/vista/controllers/contacta.phtml:3
+#: cms/www/vista/controllers/inscripcion.phtml:10
+msgid "inscripcion.email"
+msgstr "Email"
+
+#: cms/www/controllers/inscripcionController.php:41
+#: cms/www/vista/controllers/inscripcion.phtml:11
+msgid "inscripcion.telefono"
+msgstr "Teléfono"
+
+#: cms/www/controllers/inscripcionController.php:42
+#: cms/www/controllers/inscripcionController.php:72
+#: cms/www/controllers/inscripcionController.php:86
+#: cms/www/controllers/inscripcionController.php:96
+msgid "inscripcion.modificar"
+msgstr "Modificar datos"
+
+#: cms/www/controllers/inscripcionController.php:45
+#: cms/www/controllers/inscripcionController.php:77
+#: cms/www/controllers/inscripcionController.php:88
+#: cms/www/controllers/inscripcionController.php:89
+#: cms/www/controllers/inscripcionController.php:98
+#: cms/www/controllers/inscripcionController.php:99
+#: cms/www/controllers/inscripcionController.php:137
+msgid "inscripcion.error"
+msgstr "Ha habido un error en la inserción en la base de datos"
+
+#: cms/www/controllers/inscripcionController.php:72
+#: cms/www/vista/controllers/inscripcion.phtml:18
+#: cms/www/vista/controllers/inscripcion.phtml:23
+msgid "inscripcion.datos.obra"
+msgstr "Datos de la obra"
+
+#: cms/www/controllers/inscripcionController.php:85
+#: cms/www/vista/controllers/inscripcion.phtml:34
+#: cms/www/vista/controllers/inscripcion.phtml:39
+msgid "inscripcion.datos.adicional"
+msgstr "Información adicional"
+
+#: cms/www/controllers/inscripcionController.php:95
+#: cms/www/vista/controllers/inscripcion.phtml:44
+#: cms/www/vista/controllers/inscripcion.phtml:49
+msgid "incripcion.licencia"
+msgstr "Licencia"
+
+#: cms/www/controllers/inscripcionController.php:121
+msgid "inscripcion.error.img"
+msgstr "problemas al subir la imagen"
+
+#: cms/www/controllers/inscripcionController.php:133
+msgid "inscripcion.confirm"
+msgstr "¡¡¡Muchas gracias!!!"
+
+#: cms/www/controllers/inscripcionController.php:133
+msgid "inscripcion.confirm.1"
+msgstr ""
+"Nos pondremos en contacto contigo tanto si has sido seleccionado, como si no."
+
+#: cms/www/controllers/programacionController.php:54
+msgid "programacion.title"
+msgstr "Programa de proyecciones"
+
+#: cms/www/controllers/programacionController.php:55
+msgid "programacion.description"
+msgstr "Programa de proyecciones"
+
+#: cms/www/controllers/proyeccionesController.php:50
+msgid "proyecciones.title"
+msgstr "Proyecciones"
+
+#: cms/www/controllers/proyeccionesController.php:51
+msgid "proyecciones.description"
+msgstr "Proyecciones"
+
+#: cms/www/controllers/recepcionController.php:21
+msgid "recepcion.title"
+msgstr "Obras recibidas"
+
+#: cms/www/controllers/recepcionController.php:22
+msgid "recepcion.description"
+msgstr "Obras recibidas"
+
+#: cms/www/controllers/seleccionController.php:13
+msgid "seleccion.title"
+msgstr "Obras seleccionadas de la convocatoria de cine libre"
+
+#: cms/www/controllers/seleccionController.php:14
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "seleccion.description"
+msgstr "Obras seleccionadas de la convocatoria de cine libre"
+
+#: cms/www/vista/controllers/contacta.phtml:4
+msgid "contacta.asunto"
+msgstr "Asunto"
+
+#: cms/www/vista/controllers/contacta.phtml:5
+msgid "contacta.mensaje"
+msgstr "Mensaje"
+
+#: cms/www/vista/controllers/contacta.phtml:6
+msgid "contacta.enviar"
+msgstr "Enviar"
+
+#: cms/www/vista/controllers/doc.phtml:17
+msgid "download"
+msgstr "Descarga"
+
+#: cms/www/vista/controllers/inscripcion.phtml:8
+msgid "inscripcion.datos.contacto.1"
+msgstr ""
+"Estos datos es sólo para ponernos en contacto. Se almacenan en nuestra base "
+"de datos y en ningún caso se cederá esta información a terceros ni se harán "
+"públicos en la web."
+
+#: cms/www/vista/controllers/inscripcion.phtml:9
+#: cms/www/vista/controllers/inscripcion.phtml:10
+#: cms/www/vista/controllers/inscripcion.phtml:25
+#: cms/www/vista/controllers/inscripcion.phtml:26
+#: cms/www/vista/controllers/inscripcion.phtml:27
+#: cms/www/vista/controllers/inscripcion.phtml:28
+#: cms/www/vista/controllers/inscripcion.phtml:31
+#: cms/www/vista/controllers/inscripcion.phtml:32
+#: cms/www/vista/controllers/inscripcion.phtml:103
+msgid "inscripcion.obligatorio"
+msgstr "obligatorio"
+
+#: cms/www/vista/controllers/inscripcion.phtml:12
+msgid "inscripcion.tipocontacto"
+msgstr "eres..."
+
+#: cms/www/vista/controllers/inscripcion.phtml:14
+msgid "inscripcion.tipocontacto01"
+msgstr "Realizador/a"
+
+#: cms/www/vista/controllers/inscripcion.phtml:15
+msgid "inscripcion.tipocontacto02"
+msgstr "Empresa productora"
+
+#: cms/www/vista/controllers/inscripcion.phtml:16
+msgid "inscripcion.tipocontacto03"
+msgstr "Empresa distribuidora"
+
+#: cms/www/vista/controllers/inscripcion.phtml:24
+msgid "inscripcion.datos.obra.1"
+msgstr ""
+"Los datos de la obra se colgarán en nuestra página web, para hacer en una "
+"ficha."
+
+#: cms/www/vista/controllers/inscripcion.phtml:25
+msgid "inscripcion.datos.titulo"
+msgstr "Título"
+
+#: cms/www/vista/controllers/inscripcion.phtml:26
+msgid "inscripcion.datos.autor"
+msgstr "Autor/es"
+
+#: cms/www/vista/controllers/inscripcion.phtml:27
+msgid "inscripcion.datos.duracion"
+msgstr "Duración"
+
+#: cms/www/vista/controllers/inscripcion.phtml:27
+msgid "inscripcion.datos.minutos"
+msgstr "minutos"
+
+#: cms/www/vista/controllers/inscripcion.phtml:27
+msgid "inscripcion.datos.segundos"
+msgstr "segundos"
+
+#: cms/www/vista/controllers/inscripcion.phtml:28
+msgid "inscripcion.datos.anyo"
+msgstr "Año de producción"
+
+#: cms/www/vista/controllers/inscripcion.phtml:29
+msgid "inscripcion.datos.genero"
+msgstr "Género"
+
+#: cms/www/vista/controllers/inscripcion.phtml:30
+msgid "inscripcion.datos.pais"
+msgstr "País"
+
+#: cms/www/vista/controllers/inscripcion.phtml:31
+msgid "inscripcion.datos.sinopsis"
+msgstr "Sinopsis"
+
+#: cms/www/vista/controllers/inscripcion.phtml:32
+msgid "inscripcion.datos.tecnica"
+msgstr "Ficha técnica y artística"
+
+#: cms/www/vista/controllers/inscripcion.phtml:33
+msgid "inscripcion.datos.web"
+msgstr "Página web"
+
+#: cms/www/vista/controllers/inscripcion.phtml:40
+msgid "inscripcion.datos.adicional.1"
+msgstr ""
+"Estos campos no se ponen en la ficha de la obra; no es obligatorio "
+"informarlos pero siempre nos viene bien para valorar la obra en su justa "
+"medida."
+
+#: cms/www/vista/controllers/inscripcion.phtml:41
+msgid "inscripcion.datos.coste"
+msgstr "Coste de producción"
+
+#: cms/www/vista/controllers/inscripcion.phtml:42
+msgid "inscripcion.datos.recursos"
+msgstr "Cómo y con qué recursos técnicos y humanos se realizó"
+
+#: cms/www/vista/controllers/inscripcion.phtml:43
+msgid "inscripcion.datos.comentarios"
+msgstr "Comentarios"
+
+#: cms/www/vista/controllers/inscripcion.phtml:50
+msgid "incripcion.licencia.1"
+msgstr "La licencia elegida se verá en la ficha de la obra."
+
+#: cms/www/vista/controllers/inscripcion.phtml:86
+msgid "incripcion.licencia.dominiopublico"
+msgstr "Dominio Público"
+
+#: cms/www/vista/controllers/inscripcion.phtml:89
+#: cms/www/vista/controllers/inscripcion.phtml:94
+msgid "inscripcion.datos.multimedia"
+msgstr "Cartel, vídeo"
+
+#: cms/www/vista/controllers/inscripcion.phtml:95
+msgid "inscripcion.datos.multimedia.1"
+msgstr ""
+"Puedes incluir el cartel (o un fotograma) y un enlace al video en streaming "
+"(archive.org, youtuve, vimeo.... )"
+
+#: cms/www/vista/controllers/inscripcion.phtml:97
+msgid "inscripcion.datos.multimedia.upload"
+msgstr "Subir cartel"
+
+#: cms/www/vista/controllers/inscripcion.phtml:99
+msgid "inscripcion.datos.multimedia.img"
+msgstr "La imagen debe ser JPG/JEPG y el tamaño máximo"
+
+#: cms/www/vista/controllers/inscripcion.phtml:103
+msgid "inscripcion.datos.multimedia.urlstreaming"
+msgstr "Enlace al vídeo en streaming"
+
+#: cms/www/vista/controllers/inscripcion.phtml:104
+msgid "inscripcion.datos.multimedia.urldownload"
+msgstr "Enlace de descarga del vídeo"
+
+#: cms/www/vista/controllers/pelicula.phtml:29
+msgid "pelicula.cedida"
+msgstr "Agradecimientos a"
+
+#: cms/www/vista/controllers/recepcion.phtml:1
+msgid "recepcion.presentacion.1"
+msgstr "Hemos recibido"
+
+#: cms/www/vista/controllers/recepcion.phtml:1
+msgid "recepcion.presentacion.2"
+msgstr "obras hasta el momento. muchas gracias!!!"
+
+#: cms/www/vista/controllers/recepcion.phtml:5
+msgid "recepcion.titulo"
+msgstr "Título"
+
+#: cms/www/vista/controllers/recepcion.phtml:5
+msgid "recepcion.ficha"
+msgstr "Ficha"
+
+#: cms/www/vista/controllers/recepcion.phtml:18
+msgid "recepcion.vervideo"
+msgstr "ver vídeo"
+
+#: cms/www/vista/skins/2013/includes/pie.phtml:1
+#: cms/www/vista/skins/atp2013/includes/pie.phtml:2
+msgid "Ediciones anteriores :"
+msgstr ""
+
+#: cms/www/vista/skins/commons/includes/head.phtml:25
+msgid "form.confirm.format.email"
+msgstr "> El formato del email no es correcto"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:26
+msgid "form.error"
+msgstr "Revisa los siguientes errores"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:27
+msgid "form.campo.obligatorio"
+msgstr "obligatorio"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "contacta.menu"
+msgstr "Contacto"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "home.menu"
+msgstr "Inicio"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "programa.menu"
+msgstr "Programa"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "espacios.menu"
+msgstr "Espacios"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "muestras.menu"
+msgstr "Muestras"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "escaparate.menu"
+msgstr "Fotos y vídeos"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "faq.menu"
+msgstr "FAQ"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "licencias-libres.menu"
+msgstr "Licencias libres"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "convocatoria-abierta.menu"
+msgstr "Convocatoria"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "inscripcion.menu"
+msgstr "Inscripción"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "bases-convocatoria.menu"
+msgstr "Bases"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "seleccion.menu"
+msgstr "Selección"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "obras-recibidas.menu"
+msgstr "Obras recibidas"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "home.description"
+msgstr "Inicio"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "programa.description"
+msgstr "Programa de proyecciones"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "muestras.description"
+msgstr "Anteriores ediciones"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "faq.description"
+msgstr "Preguntas y respuestas"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "licencias-libres.description"
+msgstr "Licencias libres para obras audiovisuales"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "convocatoria-abierta.description"
+msgstr "Convocatoria de cine libre"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "bases-convocatoria.description"
+msgstr "Bases de la Convocatoria de cine libre"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "obras-recibidas.description"
+msgstr "Obras recibidas en la Convocatoria de cine libre"

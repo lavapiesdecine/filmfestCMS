@@ -1,0 +1,24 @@
+<title><?=$this->_title?></title>
+<meta name="description" content="<?=$this->_description?>" />
+<meta name="robots" content="noindex,nofollow" />
+<meta charset="utf-8" />
+<link href="vista/css/core.css" rel="stylesheet"/>
+<link href="vista/css/site.css" rel="stylesheet" />	
+<script src="<?=URL_LIBJS?>jquery.js" type="text/javascript" language="javascript" ></script>
+<script src="vista/js/install.js" type="text/javascript" language="javascript" ></script>
+<script type="text/javascript" src="<?=URL_LIBJS?>comun.js" ></script>
+
+<script type="text/javascript" language="javascript">
+<!--
+	var urlApp = '<?= URL_INSTALL ?>/';
+	var controller = '<?= $this->_controller ?>';
+	var osm = <?= json_encode(OSM) ?>;
+	var gcMsg_email = '<?= _("form.confirm.format.email")?>';
+	var gcMsg_revisa = '<?= _("form.error")?>';
+	var gcMsg_required = '<?= _("form.campo.obligatorio")?>';
+	var gcMsg_ok = '<?= _("feedback.bbdd.ok")?>';
+	var gcMsg_ko = '<?= _("feedback.bbdd.ko")?>';
+	var gcMsg_loading = '<?= _("feedback.loading")?>';
+	var gcMsg_ubicacion = '<?= _("form.ubicacion")?>';
+	//-->
+</script>		

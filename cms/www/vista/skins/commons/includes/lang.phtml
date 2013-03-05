@@ -1,0 +1,20 @@
+<nav id="idiomas">
+	<form name="formLang" id="formLang" action="<?=BASE_URL?>/bases" method="post">
+		<input type="hidden" name="lang" id="lang" value="<?=$lang?>"/>
+		<?  
+			$count = 0;
+			foreach ($langs as $language) { 
+				if($lang==$language->lang){ ?>
+					 <?=$language->nombre ?>
+				<?} else { 
+					$url = BASE_URL."/".(DEFAULT_LANG==$language->lang?"":$language->lang);
+				?>
+					<a href="<?=$url?>"><?=$language->nombre?></a>
+				<?}
+				if ($count < count($langs)-1){
+					echo "  |  ";
+				}
+				$count++;
+		}?>
+	</form>
+</nav>	

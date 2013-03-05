@@ -1,0 +1,12 @@
+<form id='form_moduloweb' name='form_moduloweb' method='post'>
+	<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+	
+	<label><?=_("form.modulo.web")?></label>
+	<? if(empty($this->_id)){?>
+		 <input value='<?= $webModulo ?>' name='modulo' id='modulo' required />
+		 <p><a href="#" id='b_moduloweb' class="boton"><?=_("form.aceptar")?></a></p>	
+	<?} else {?>
+		 <span class="input"><?= $webModulo ?></span>
+	<?}?>
+	
+</form>

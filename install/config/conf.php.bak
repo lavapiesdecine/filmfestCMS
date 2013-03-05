@@ -1,0 +1,19 @@
+<?php
+	
+	define('BASE_URL', '__BASE_URL__');
+	
+	define('ADMIN_LANG', '__ADMIN_LANG__');
+	define('ADMIN_EMAIL', '__ADMIN_EMAIL__');
+	define('ADMIN_SKIN', 'lvc');
+	define('ADMIN_LAYOUT', '2columnas.phtml');
+	define('OSM', 'false');
+	
+	define('EMAIL_WEB', '__CONTACT_MAIL__');
+	define('MAIL_ERROR', false);
+	define('SEND_MAIL', false);
+	
+	define('DEFAULT_ANYO', date('Y'));
+	define('DEFAULT_LAYOUT', '1columna.phtml');	
+	define('DEFAULT_METODO', 'index');
+	define('DEFAULT_LANG', 'es');
+	define('DEFAULT_ADMINMODULE', 'inicio');

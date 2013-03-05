@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-ES" lang="es-ES">
+	<head>
+		<?	include_once($pathCommons."includes" .DS . "head.phtml"); ?>
+		<script src="<?= $urlSkin?>js/comun.js" type="text/javascript" language="javascript"></script>
+		<link href="<?=$urlSkin?>css/core.css" rel="stylesheet" type="text/css" />
+		<link href="<?=$urlSkin?>css/site.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="allcontent">
+	    	<div id="topcontent">
+				<div id="header"><div id="header-design"></div></div>
+	        	<div class="break"></div>
+	    	</div>
+	    	
+			<div id="topmenu">
+				<?	include_once($pathCommons."includes" .DS . "menu.phtml"); ?>
+		    </div>
+		    <?	include_once($pathCommons."includes/lang.phtml"); ?>
+	    	<div id="columns">
+	    		<h1><?= $title ?></h1>
+            	<div id="maincontent" >
+            			<div class="inicio-columnaizquierda">
+							<a href="../../img/galerias/carteles/10-muestra-de-cine-de-lavapis.jpg" rel="lightbox">
+							<img width="180px" alt="Convocatoria libre de cine" title="Convocatoria libre de cine" src="../../img/galerias/carteles/10-muestra-de-cine-de-lavapis.jpg">
+							</a>
+							autor cartel: <a href="http://iagoberro.wordpress.com" target="_blank">Iago Alvarez</a>
+						</div>
+						<div class="inicio-columnaderecha">
+							<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+						</div>	
+		        	<div class="break"></div>
+				</div>
+		    </div>
+		    
+		    <div class="break"></div>    
+    		
+    		<div id="footer">
+    			<?	include_once($pathSkin."includes/pie.phtml"); ?>
+			</div>
+			
+	    </div>
+	    <div class="break"></div>
+	</body>
+</html>

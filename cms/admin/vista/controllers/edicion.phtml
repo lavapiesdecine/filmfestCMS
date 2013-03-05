@@ -1,0 +1,53 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/edicion/upload" ></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a href="#" id="delete-img">
+			<img width="100px" height="100px" src="<?= $img?>" id="imagen_uploaded" />
+			<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+		</a>	
+	<?} else { ?>
+		<p><?= _("form.upload.img")?><br><?= _("form.upload.type")?></p>
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/edicion/upload" target="frame_imagen">
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
+				<input name='id_edicion' id='id_edicion' value='<?=$this->_id?>' type='hidden'/>
+				<input type="file" name="imagen"  id="imagen"  /><br>
+		</form>
+	<? } ?>	
+</div>
+
+<div id="div-img-info">
+	<form id='form_edicion' name='form_edicion' method='post'>
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		<input name='langsSelected' id='langsSelected' value='' type='hidden'/>
+			
+		<label><?=_("form.nombre")?></label><input  value='<?=$nombre?>' name='nombre' id='nombre' required />		
+	
+		<p class="input50"><label><?= _("form.edicion.dia.inauguracion")?></label> 
+		<input readonly="readonly" value="<?=$dateInicio ?>" class="date" id="id_dia_inicio" name="id_dia_inicio" required /></p>
+		<p class="input50"><label><?= _("form.edicion.dia.clausura")?></label>
+		<input class="date" readonly="readonly" value="<?=$dateFin ?>" id="id_dia_fin" name="id_dia_fin" required /></p>
+		
+		<label><?= _("form.descripcion.breve")?></label> 
+		<textarea name='descripcion' id='descripcion' required><?=$descripcion?></textarea>
+		
+		<p class="select"><label><?=_("form.langs.select")?> </label>
+			<select name='langsPosibles' id='langsPosibles' class="availables"  size=5>
+				<?= \core\util\UtilPagina::getOptions($langsDisponibles, 'xx', false) ?>
+			</select>
+		</p>
+		<p class="arrow">
+			<img src="<?=URL_IMG_ADMIN?>right_off.png" id="right" />
+			<img src="<?=URL_IMG_ADMIN?>left_off.png" id="left" />
+		</p>
+		<p class="select"><label><?=_("form.langs")?></label>
+			<select name='langs' id='langs' multiple="multiple" class="selecteds" size=5>
+			<?= \core\util\UtilPagina::getOptions($langs, 'xx', false) ?>
+			</select>
+		</p>
+		
+		<a href="#" id='b_edicion' class="boton"><?=_("form.aceptar")?></a>		
+	</form>
+</div>

@@ -1,0 +1,1 @@
+<h1>Install Error. PHP 5.3+ is required</h1>

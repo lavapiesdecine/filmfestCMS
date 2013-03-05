@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+	<html lang="es" >
+	<head>
+		<? include("vista/includes/head.phtml");?>
+	</head>
+	<body>
+		<article>
+		    <header>
+			</header>
+			<? include("vista/includes/steps.phtml");?>	
+			<section>
+	        	<h1><span style="padding-left:20px;"><?=$this->_title?></span><span class="small"><?=$this->_description?></span></h1>
+				<div id="msg" class="oculto" ></div>
+				<div style="margin:20px; width: 500px;">
+	        		<?	include_once("vista/controllers/". $this->_controller .".phtml"); ?>
+		  		</div>
+		  	</section>
+		    
+		    <footer><p></p></footer>
+	    </article>
+	</body>
+</html>

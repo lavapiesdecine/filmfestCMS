@@ -1,0 +1,41 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/modulos/upload" scrolling="no" ></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a href="#" id="delete-img">
+			<img width="100px" height="100px" src="<?= $img?>" id="imagen_uploaded" />
+			<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+		</a>	
+	<?} else { ?>
+		<p><?=_("form.upload.img")?><br><?= _("form.upload.type")?></p>	
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/modulos/upload" target="frame_imagen">
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
+				<input name="id_modulo" id="id_modulo" type="hidden" value="<?=$this->_id?>" >
+				<input type="file" name="imagen" id="imagen"  />
+		</form>
+	<? } ?>	
+</div>
+<div id="div-img-info">
+	<form id='form_modulo' name='form_modulo' method='post'>
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+				
+		<label><?=_("form.modulo")?></label>
+		<? if(empty($this->_id)){?>
+			 <input value='<?= $moduloAdmin ?>' name='modulo' id='modulo' />
+		<?} else {?>
+			 <span class="input"><?= $moduloAdmin ?></span>
+			<input value='<?= $moduloAdmin ?>' name='modulo' id='modulo' type="hidden" />
+			<label><?=_("form.description")?></label>
+			<span class="input"><?= _("$moduloAdmin.description") ?></span>
+		<?}?>
+				
+		<label><?=_("form.modulo.admin.padre")?></label>
+		<select id="id_modulopadre" name="id_modulopadre">
+			<?= \core\util\UtilPagina::getOptions($modulosPadre, $idModuloPadre) ?>
+		</select>
+		
+		<a href="#" id='b_modulo' class="boton"><?=_("form.aceptar")?></a>	
+	</form>
+</div>	

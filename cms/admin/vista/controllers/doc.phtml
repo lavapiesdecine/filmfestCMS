@@ -1,0 +1,57 @@
+<div style="float: left;width: 100px;margin-right: 20px; ">
+	<? if(empty($file)) {?>
+		<div id="div-doc">
+			<img src="<?= URL_IMG_ADMIN?>upload.png" /><span><?=_("form.upload.doc")?></span> 
+			<form enctype="multipart/form-data" method='post' id="form_uploaddoc" name="form_uploaddoc" action="<?=URL_ADMIN?>/doc/upload" target="frame_doc">
+				<input name='id_nombreDoc' id='id_nombreDoc' value='<?=$nombre?>' type='hidden' />
+				<input type="file" name="doc" id="doc" required />
+			</form>
+		</div>
+		<div id="feedback-doc" class="oculto">
+			<iframe height='200px' width='100px' id='frame_doc' name='frame_doc' class='framedoc' src="<?=URL_ADMIN?>/doc/upload" scrolling="yes"></iframe>
+		</div>
+	<? } ?>
+	
+	
+	<? if(empty($nombreImg)){?>
+		<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/doc/uploadImg" scrolling="no"></iframe>
+	<? }?>
+	<div id="div-img" class="<?= $classUploadImg ?>">
+		<?if(!empty($fileNameImg)){?>
+			<a href="<?=$urlFile?>" target="_blank">
+				<img width="100px" height="100px" src="<?= $fileNameImg?>" id="imagen_uploaded" />
+			</a>	
+		<?} else { ?>
+			<p><?=_("form.upload.img")?><br><?= _("form.upload.type")?></p>	
+			<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/doc/uploadImg" target="frame_imagen">
+					<input name='id_nombre' id='id_nombre' value='<?=$nombreImg?>' type='hidden' />
+					<input type="file" name="imagen" id="imagen"  />
+			</form>
+		<? } ?>
+	</div>
+	<? if(!empty($file)) {?>
+		<div id="feedback-doc" class="<?=$extension?>">
+			<a href="<?=$urlFile?>" target="_blank"><?= substr($fileName, 0, 12)?></a><br>
+			<span><?=$sizeFile?></span>
+		</div>
+	<? }?>
+	
+</div>
+<div id="div-img-info">
+	
+	<form id='form_doc' name='form_doc' method='post'>
+		<input name='id_edicion' id='id_edicion' value='<?=$this->_anyo?>' type='hidden'/>
+		<input value='<?=$fileName?>' name='file_doc' id='file_doc' type='hidden' required />
+		<input value='<?=$fileNameImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		
+		<label><?= _("form.nombre")?></label> 
+		<input value='<?=$nombre?>' name='nombre' id='nombre' required />
+		
+		<label><?=_("form.descripcion")?></label> 
+		<textarea name='descripcion' id='descripcion' ><?=$descripcion?></textarea>
+		
+		<a href="#" id='b_doc' class="boton"><?=_("form.aceptar")?></a>
+		
+	</form>
+</div>	

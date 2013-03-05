@@ -1,0 +1,50 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/espacio/upload" scrolling="no"  ></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a href="#" id="delete-img">
+			<img width="100px" height="100px" src="<?= $img?>" id="imagen_uploaded" />
+			<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+		</a>	
+	<?} else { ?>
+		<p>
+		<?= _("form.upload.img")?><br><?= _("form.upload.type")?></p>	
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/espacio/upload" target="frame_imagen">
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
+				<input name='id_espacio' id='id_espacio' value='<?= $this->_id ?>' type='hidden'/>
+				<input type="file" name="imagen" id="imagen"  /><br>
+		</form>
+	<? } ?>	
+</div>
+
+<div id="div-img-info">
+	<form id='form_espacio' name='form_espacio' method='post'>
+		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+		<input id="id_longitud" name="id_longitud" type="hidden" value="<?=$longitud?>" />
+	    <input id="id_latitud" name="id_latitud" type="hidden" value="<?=$latitud?>" />
+	
+		<label><?=_("form.nombre")?></label> <input  value='<?=$nombre?>' name='nombre' id='nombre' required />
+		<label><?=_("form.espacio.direccion")?></label> <input value='<?=$direccion?>' name='direccion' id='direccion' required />
+		<strong><?= _("form.ubicacion")?>:</strong> <span id='id_ciudad' ><?= $direccion." ".UBICACION ?></span>
+		
+		<? if(OSM){ ?>
+			<script type="text/javascript" src="<?=URL_LIBJS?>openlayer/OpenLayers.js"> </script>
+		<? } else {?> 
+			<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+		<? } ?>
+		
+		<div id="map"></div>
+		<label><?=_("form.descripcion")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 
+		<textarea name='descripcion' id='descripcion' ><?=$descripcion?></textarea>
+		<label><?=_("form.web")?> <span class="small"><?=_("form.noobligatorio")?></span></label>
+		<input value='<?=$url?>' name='web' id='web' placeholder="http://"  type="url" />
+		<label><?=_("form.telefono")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 
+		<input value='<?=$telefono?>' name='telefono' id='telefono' type="tel" />
+		<label><?=_("form.email")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 
+		<input  value='<?=$email?>' name='email' id='email' type="email" />
+		<a href="#" id='b_checkgeo' class="boton"><?=_("form.check.geo")?></a>
+		<a href="#" id='b_espacio' class="boton"><?=_("form.aceptar")?></a>	
+	</form>	
+</div>

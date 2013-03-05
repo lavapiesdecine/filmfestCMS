@@ -1,0 +1,28 @@
+<? 
+	$steps = unserialize(STEPS); 
+?>
+
+<nav>
+	<ul class='menu'>
+		<? 	$i = 1;
+			foreach ($steps as $step) { 
+				$classStep = "done";
+				if($i == $this->_step){
+					$classStep = "current";
+				}
+				if ($i+1 == $this->_step){
+					$classStep = "lastdone";
+				} 
+				if ($i > $this->_step){
+					$classStep = "step";
+				}
+				if(file_exists(CONF_PATH . $step[0] . ".php") || $i==1){ ?>
+					<li class="<?=$classStep?>"><a href='<?= $step[0] ?>'><?="$i.- ".$step[1]?></a><span class="description"><?=$step[2]?></span></li>
+		<? 		} else { ?>
+					<li class="<?=$classStep?>"><span class="title"><?="$i.- ".$step[1]?></span><span class="description"><?=$step[2]?></span></li>
+		<? 		} 
+				$i++;
+			} 
+		?>
+	</ul>
+</nav>

@@ -1,0 +1,35 @@
+body{margin: 0; font-family:arial}
+a{color:red; text-decoration: none;}
+
+a:hover {
+	color: white;
+	background-color: red;
+}
+
+a.pdf{
+	background-image: url('../img/pdf.png');
+	background-position: 0px 50%;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+}
+a.doc{
+	background-image: url('../img/doc.png');
+	background-position: 0px 50%;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+}
+a.rtf{
+	background-image: url('../img/rtf.png');
+	background-position: 0px 50%;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+}
+a.jpg{
+	background-image: url('../img/rtf.jpg');
+	background-position: 0px 50%;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+}
+span{
+	font-size:10px;
+}

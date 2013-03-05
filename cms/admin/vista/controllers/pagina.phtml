@@ -1,0 +1,70 @@
+<form id='form_pagina' name='form_pagina' method='post'>
+	<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+	<input name='id_edicion' id='id_edicion' value='<?= $this->_anyo ?>' type='hidden'/>
+	<input type="hidden" id="lyt_selected" value="<?=$layoutPagina?>"/>
+	<input type="hidden" id="textosSelected" value="" name="textosSelected" />
+	
+	<p class="input50">
+		<label><?=_("form.url")?></label>
+		<input value='<?= $urlPagina ?>' name='id_url' id='id_url' required />
+	</p>
+	<p class="input50">
+		<label><?=_("form.pagina.modulo")?></label>
+		<select name="id_modulo" id="id_modulo" required>
+			<?= \core\util\UtilPagina::getOptions($webmodulos, $idWebModulo) ?>
+		</select>
+	</p>
+	
+	
+	<div class="oculto break" id="div_texto" >
+		<p class="select"><label><?=_("form.pagina.txts")?> </label>
+		<select name='textosDisponibles' id='textosDisponibles' class="availables" size=5>
+		<?= \core\util\UtilPagina::getOptions($textosPosibles, 0, false) ?>
+		</select>
+		<p class="arrow">
+			<img src="<?=URL_IMG_ADMIN?>right_off.png" id="right" />
+			<img src="<?=URL_IMG_ADMIN?>left_off.png" id="left" />
+		</p>
+		<p class="select"><label><?=_("form.texts")?> </label>
+		<select name='textos' id='textos' multiple="multiple" size=5>
+		<?= \core\util\UtilPagina::getOptions($textos, 0, false) ?>
+		</select>
+		</p>
+	</div>
+		
+	<p class="input50">
+		<label><?=_("form.pagina.apariencia")?> </label>
+		<select name="id_skin" id="id_skin" required>
+			<option value="0"><?=_("form.select")?>...</option>
+			<? foreach ($skins as $skin){?>
+				<option  <? if($skin == $skinPagina){ ?> selected <? } ?> value="<?=$skin?>"><?=$skin?></option>
+			<? } ?>
+		</select>
+	</p>
+	<p class="input50">
+		<label><?=_("form.pagina.layout")?> </label>
+		<select name="id_layout" id="id_layout" required>
+			<option  value="0"><?=_("form.select")?>...</option>
+			<? foreach ($layouts as $layout){?>
+				<option  <? if($layout == $layoutPagina){ ?> selected <? } ?> value="<?=$layout?>"><?=$layout?></option>
+			<? } ?>
+		</select>
+	</p>
+	
+	<p class="input10">
+		<label><?=_("form.pagina.orden")?></label>
+		<input value='<?= $orden ?>' name='id_orden' id='id_orden' type="number" />
+	</p>
+	<p class="input30"><label><?=_("form.pagina.submenu")?></label>
+		<select id="id_paginapadre" name="id_paginapadre">
+			<?= \core\util\UtilPagina::getOptions($paginasPadre, $idPaginaPadre) ?>
+		</select>
+	</p>
+	<p class="input10">
+		<label><?=_("form.pagina.portada")?></label>
+		<input type="checkbox" <?php if($portada){?>checked <?}?> name='id_portada' id='id_portada' value='S' />
+	</p>
+	
+	<p><a href="#" id='b_pagina' class="boton"><?=_("form.aceptar")?></a></p>
+
+</form>

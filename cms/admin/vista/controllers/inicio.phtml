@@ -1,0 +1,8 @@
+<?	$titleProfiles = array( _("profile.system.name"), _("profile.web.name"), _("profile.cine.name") );
+	$descriptionProfiles = array( _("profile.system.description"), _("profile.web.description"), _("profile.cine.description") );
+?>
+
+<?  if(is_dir(ROOT . DS . 'install' . DS)) { ?>  
+		<div id="msg"> <h3 class='alert'> <?=_("install.msg.1")?> <span class="small"><?=_("install.msg.2")?>: <?= ROOT . DS . 'install' . DS ?></span></h3></div>
+<?	}
+	echo $html;

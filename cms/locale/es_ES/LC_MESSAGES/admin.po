@@ -1,0 +1,797 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-03-05 14:10+0100\n"
+"PO-Revision-Date: 2013-03-05 14:11+0100\n"
+"Last-Translator: arturo <muestra@lavapiesdecine.net>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\ff\\cms\\\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-SearchPath-0: admin\n"
+
+#: admin/controllers/agradecimientoController.php:12
+msgid "agradecimiento.title"
+msgstr "Agradecimientos"
+
+#: admin/controllers/agradecimientoController.php:13
+msgid "agradecimiento.description"
+msgstr "para añadir nota de agradecimiento a quien a cedido la peli"
+
+#: admin/controllers/cacheController.php:8
+msgid "cache.title"
+msgstr "Caché"
+
+#: admin/controllers/cacheController.php:9
+msgid "cache.description"
+msgstr ""
+"Sistema de caché: Alternative PHP Cache. ver http://www.php.net/manual/en/"
+"book.apc.php"
+
+#: admin/controllers/configController.php:7
+msgid "config.title"
+msgstr "Configuración"
+
+#: admin/controllers/configController.php:8
+msgid "config.description"
+msgstr "Valores de configuración del CMS"
+
+#: admin/controllers/convocatoriaController.php:9
+msgid "convocatoria.title"
+msgstr "Convocatoria"
+
+#: admin/controllers/convocatoriaController.php:10
+msgid "convocatoria.description"
+msgstr "Convocatoria de cine libre"
+
+#: admin/controllers/convocatoriasController.php:9
+msgid "convocatorias.title"
+msgstr "Convocatorias"
+
+#: admin/controllers/convocatoriasController.php:10
+msgid "convocatorias.description"
+msgstr "Convocatorias"
+
+#: admin/controllers/docController.php:10
+msgid "doc.title"
+msgstr "Documentos"
+
+#: admin/controllers/docController.php:11
+msgid "doc.description"
+msgstr "para descargar"
+
+#: admin/controllers/edicionController.php:10
+msgid "edicion.title"
+msgstr "Ediciones"
+
+#: admin/controllers/edicionController.php:11
+msgid "edicion.description"
+msgstr "Información básica de cada edición"
+
+#: admin/controllers/espacioController.php:12
+msgid "espacio.title"
+msgstr "Espacios"
+
+#: admin/controllers/espacioController.php:13
+msgid "espacio.description"
+msgstr "para saber dónde se proyecta"
+
+#: admin/controllers/galeriaController.php:10
+msgid "galeria.title"
+msgstr "Galerías"
+
+#: admin/controllers/galeriaController.php:11
+msgid "galeria.description"
+msgstr "de fotos y vídeos"
+
+#: admin/controllers/imagenController.php:9
+msgid "imagen.title"
+msgstr "Multimedia"
+
+#: admin/controllers/imagenController.php:10
+msgid "imagen.description"
+msgstr "Imágenes y vídeos"
+
+#: admin/controllers/inicioController.php:18
+msgid "profile."
+msgstr ""
+
+#: admin/controllers/inicioController.php:21
+#: admin/controllers/inicioController.php:25
+#: admin/vista/skins/commons/includes/menu.phtml:5
+#: admin/vista/skins/commons/includes/menu.phtml:8
+#, fuzzy
+msgid ".description"
+msgstr "para descargar"
+
+#: admin/controllers/inicioController.php:21
+#: admin/controllers/inicioController.php:25
+#: admin/vista/skins/commons/includes/menu.phtml:5
+#: admin/vista/skins/commons/includes/menu.phtml:8
+#, fuzzy
+msgid ".title"
+msgstr "Documentos"
+
+#: admin/controllers/langsController.php:7
+msgid "langs.title"
+msgstr "Idiomas"
+
+#: admin/controllers/langsController.php:8
+msgid "langs.description"
+msgstr "Idiomas del site"
+
+#: admin/controllers/licenciaController.php:9
+msgid "licencia.title"
+msgstr "Licencias"
+
+#: admin/controllers/licenciaController.php:10
+msgid "licencia.description"
+msgstr "Licencias de distribución para obras audiovisuales"
+
+#: admin/controllers/modulosController.php:11
+msgid "modulos.title"
+msgstr "Módulos"
+
+#: admin/controllers/modulosController.php:12
+msgid "modulos.description"
+msgstr "funcionalidades de la zona de edición"
+
+#: admin/controllers/modulowebController.php:9
+msgid "moduloweb.title"
+msgstr "Módulos web"
+
+#: admin/controllers/modulowebController.php:10
+msgid "moduloweb.description"
+msgstr "Funcionalidades de la página web"
+
+#: admin/controllers/paginaController.php:9
+msgid "pagina.title"
+msgstr "Páginas web"
+
+#: admin/controllers/paginaController.php:10
+msgid "pagina.description"
+msgstr "para enlazar desde la web"
+
+#: admin/controllers/paginaController.php:109
+#: admin/controllers/paginaController.php:121
+#: admin/vista/controllers/pagina.phtml:38
+#: admin/vista/controllers/pagina.phtml:47
+msgid "form.select"
+msgstr "selecciona"
+
+#: admin/controllers/peliculaController.php:14
+msgid "pelicula.title"
+msgstr "Películas"
+
+#: admin/controllers/peliculaController.php:15
+msgid "pelicula.description"
+msgstr "películas que se van a proyectar"
+
+#: admin/controllers/perfilController.php:11
+msgid "perfil.title"
+msgstr "Perfil"
+
+#: admin/controllers/perfilController.php:12
+msgid "perfil.description"
+msgstr "Define qué modulos puede gestionar el usuario"
+
+#: admin/controllers/phpinfoController.php:7
+msgid "phpinfo.title"
+msgstr "PHPInfo"
+
+#: admin/controllers/phpinfoController.php:8
+msgid "phpinfo.description"
+msgstr "Información de la configuración de PHP"
+
+#: admin/controllers/proyeccionController.php:12
+msgid "proyeccion.title"
+msgstr "Proyecciones"
+
+#: admin/controllers/proyeccionController.php:13
+msgid "proyeccion.description"
+msgstr "para definir  lugar y hora de la proyección"
+
+#: admin/controllers/textoController.php:9
+msgid "texto.title"
+msgstr "Textos"
+
+#: admin/controllers/textoController.php:10
+msgid "texto.description"
+msgstr "textos para enlazar desde la web"
+
+#: admin/controllers/usuarioController.php:12
+msgid "usuario.title"
+msgstr "Usuarios"
+
+#: admin/controllers/usuarioController.php:13
+msgid "usuario.description"
+msgstr "para acceder a la zona de edición"
+
+#: admin/vista/controllers/agradecimiento.phtml:8
+#: admin/vista/controllers/convocatoria.phtml:30
+#: admin/vista/controllers/convocatorias.phtml:11
+#: admin/vista/controllers/doc.phtml:25
+#: admin/vista/controllers/edicion.phtml:11
+#: admin/vista/controllers/espacio.phtml:12
+#: admin/vista/controllers/imagen.phtml:12
+#: admin/vista/controllers/modulos.phtml:11
+#: admin/vista/controllers/pelicula.phtml:31
+#: admin/vista/controllers/perfil.phtml:11
+#: admin/vista/controllers/usuario.phtml:11
+#: admin/vista/controllers/viewusuario.phtml:11
+msgid "form.upload.img"
+msgstr "Subir imágen"
+
+#: admin/vista/controllers/agradecimiento.phtml:8
+#: admin/vista/controllers/convocatoria.phtml:30
+#: admin/vista/controllers/convocatorias.phtml:11
+#: admin/vista/controllers/doc.phtml:25
+#: admin/vista/controllers/edicion.phtml:11
+#: admin/vista/controllers/espacio.phtml:12
+#: admin/vista/controllers/imagen.phtml:12
+#: admin/vista/controllers/modulos.phtml:11
+#: admin/vista/controllers/pelicula.phtml:31
+#: admin/vista/controllers/perfil.phtml:11
+#: admin/vista/controllers/usuario.phtml:11
+#: admin/vista/controllers/viewusuario.phtml:11
+msgid "form.upload.type"
+msgstr "(jpg, gif, png)"
+
+#: admin/vista/controllers/agradecimiento.phtml:22
+#: admin/vista/controllers/doc.phtml:48
+#: admin/vista/controllers/edicion.phtml:26
+#: admin/vista/controllers/espacio.phtml:28
+#: admin/vista/controllers/langs.phtml:4
+#: admin/vista/controllers/licencia.phtml:5
+msgid "form.nombre"
+msgstr "Nombre"
+
+#: admin/vista/controllers/agradecimiento.phtml:25
+#: admin/vista/controllers/espacio.phtml:41
+msgid "form.web"
+msgstr "Página web"
+
+#: admin/vista/controllers/agradecimiento.phtml:25
+#: admin/vista/controllers/espacio.phtml:39
+#: admin/vista/controllers/espacio.phtml:41
+#: admin/vista/controllers/espacio.phtml:43
+#: admin/vista/controllers/espacio.phtml:45
+#: admin/vista/controllers/galeria.phtml:7
+#: admin/vista/controllers/proyeccion.phtml:20
+#: admin/vista/controllers/proyeccion.phtml:22
+msgid "form.noobligatorio"
+msgstr "no obligatorio"
+
+#: admin/vista/controllers/agradecimiento.phtml:28
+#: admin/vista/controllers/convocatoria.phtml:90
+#: admin/vista/controllers/convocatorias.phtml:34
+#: admin/vista/controllers/doc.phtml:54
+#: admin/vista/controllers/edicion.phtml:51
+#: admin/vista/controllers/espacio.phtml:48
+#: admin/vista/controllers/galeria.phtml:10
+#: admin/vista/controllers/imagen.phtml:46
+#: admin/vista/controllers/langs.phtml:13
+#: admin/vista/controllers/login.phtml:9
+#: admin/vista/controllers/modulos.phtml:39
+#: admin/vista/controllers/moduloweb.phtml:12
+#: admin/vista/controllers/pagina.phtml:68
+#: admin/vista/controllers/pelicula.phtml:77
+#: admin/vista/controllers/perfil.phtml:46
+#: admin/vista/controllers/proyeccion.phtml:25
+#: admin/vista/controllers/texto.phtml:38
+#: admin/vista/controllers/usuario.phtml:48
+msgid "form.aceptar"
+msgstr "aceptar"
+
+#: admin/vista/controllers/cache.phtml:5
+msgid "cache.cleaned"
+msgstr "Caché vaciada"
+
+#: admin/vista/controllers/cache.phtml:7
+msgid "cache.clean"
+msgstr "Lipiar caché"
+
+#: admin/vista/controllers/cache.phtml:16
+msgid "cache.notenabled"
+msgstr "Alternative PHP Cache no habilitado"
+
+#: admin/vista/controllers/config.phtml:2
+msgid "admin.conf"
+msgstr "La configuración está en: "
+
+#: admin/vista/controllers/config.phtml:3
+msgid "form.skin"
+msgstr "Estilo(Skin)"
+
+#: admin/vista/controllers/config.phtml:10
+#: admin/vista/controllers/texto.phtml:28
+msgid "form.lang"
+msgstr "Idioma"
+
+#: admin/vista/controllers/config.phtml:12
+msgid "form.email.admin"
+msgstr "Email del administrador"
+
+#: admin/vista/controllers/config.phtml:14
+msgid "form.email.contact"
+msgstr "Email de contacto del site"
+
+#: admin/vista/controllers/config.phtml:19
+msgid "geo.conf"
+msgstr "Configuración geográfica"
+
+#: admin/vista/controllers/config.phtml:21
+msgid "geo.software"
+msgstr "Sitema de mapas"
+
+#: admin/vista/controllers/config.phtml:24
+msgid "geo.lat"
+msgstr "Latitud"
+
+#: admin/vista/controllers/config.phtml:27
+msgid "geo.long"
+msgstr "Longitud"
+
+#: admin/vista/controllers/config.phtml:34
+msgid "bbdd.conf"
+msgstr "La configuración de la base de datos"
+
+#: admin/vista/controllers/config.phtml:36
+msgid "bbdd.host"
+msgstr "Servidor de base de datos"
+
+#: admin/vista/controllers/config.phtml:39
+msgid "bbdd.user"
+msgstr "Usuario de base de datos"
+
+#: admin/vista/controllers/config.phtml:42
+msgid "bbdd.database"
+msgstr "Base de datos"
+
+#: admin/vista/controllers/convocatoria.phtml:48
+msgid "convocatoria.inscripcion"
+msgstr "Inscripción"
+
+#: admin/vista/controllers/convocatoria.phtml:49
+msgid "convocatoria.contacto"
+msgstr "Contacto"
+
+#: admin/vista/controllers/convocatoria.phtml:54
+msgid "convocatoria.datosadicionales"
+msgstr "Datos adicionales"
+
+#: admin/vista/controllers/convocatoria.phtml:55
+#: admin/vista/controllers/convocatoria.phtml:75
+msgid "convocatoria.licencia"
+msgstr "Licencia de distribución"
+
+#: admin/vista/controllers/convocatoria.phtml:55
+msgid "film.cost"
+msgstr "Coste"
+
+#: admin/vista/controllers/convocatoria.phtml:56
+msgid "convocatoria.recurso"
+msgstr "Recursos"
+
+#: admin/vista/controllers/convocatoria.phtml:57
+msgid "convocatoria.comentarios"
+msgstr "Comentarios"
+
+#: admin/vista/controllers/convocatoria.phtml:60
+#: admin/vista/controllers/pelicula.phtml:48
+msgid "form.pelicula.titulo"
+msgstr "Título de la película"
+
+#: admin/vista/controllers/convocatoria.phtml:64
+msgid "convocatoria.proyeccion"
+msgstr "Proyección"
+
+#: admin/vista/controllers/convocatoria.phtml:64
+msgid "convocatoria.selected"
+msgstr "Si resulta seleccionada"
+
+#: admin/vista/controllers/convocatoria.phtml:69
+msgid "convocatoria.urlvideo"
+msgstr "Vídeo streaming"
+
+#: admin/vista/controllers/convocatoria.phtml:72
+msgid "convocatoria.urldescarga"
+msgstr "Url descarga vídeo"
+
+#: admin/vista/controllers/convocatoria.phtml:80
+#: admin/vista/controllers/pelicula.phtml:67
+msgid "form.pelicula.presentacion"
+msgstr "Presentación"
+
+#: admin/vista/controllers/convocatoria.phtml:80
+#: admin/vista/controllers/pelicula.phtml:67
+msgid "form.pelicula.presentacion.1"
+msgstr "pequeño texto de presentación"
+
+#: admin/vista/controllers/convocatoria.phtml:84
+msgid "convocatoria.ficha"
+msgstr "Ficha técnica y artística"
+
+#: admin/vista/controllers/convocatoria.phtml:87
+#: admin/vista/controllers/pelicula.phtml:74
+msgid "form.pelicula.sinopsis"
+msgstr "Sinopsis"
+
+#: admin/vista/controllers/convocatorias.phtml:26
+msgid "form.link"
+msgstr "Enlace"
+
+#: admin/vista/controllers/convocatorias.phtml:31
+#: admin/vista/controllers/modulos.phtml:30
+msgid "form.description"
+msgstr "Descripción"
+
+#: admin/vista/controllers/doc.phtml:4
+msgid "form.upload.doc"
+msgstr "upload"
+
+#: admin/vista/controllers/doc.phtml:51
+#: admin/vista/controllers/espacio.phtml:39
+#: admin/vista/controllers/galeria.phtml:7
+#: admin/vista/controllers/imagen.phtml:35
+msgid "form.descripcion"
+msgstr "Descripción"
+
+#: admin/vista/controllers/edicion.phtml:28
+msgid "form.edicion.dia.inauguracion"
+msgstr "Dia inauguración"
+
+#: admin/vista/controllers/edicion.phtml:30
+msgid "form.edicion.dia.clausura"
+msgstr "Dia de clausura"
+
+#: admin/vista/controllers/edicion.phtml:33
+#: admin/vista/controllers/perfil.phtml:43
+#: admin/vista/controllers/proyeccion.phtml:22
+msgid "form.descripcion.breve"
+msgstr "Breve descripción"
+
+#: admin/vista/controllers/edicion.phtml:36
+msgid "form.langs.select"
+msgstr "Idiomas disponibles"
+
+#: admin/vista/controllers/edicion.phtml:45
+msgid "form.langs"
+msgstr "Idiomas"
+
+#: admin/vista/controllers/espacio.phtml:29
+msgid "form.espacio.direccion"
+msgstr "Dirección"
+
+#: admin/vista/controllers/espacio.phtml:30
+#: admin/vista/skins/commons/includes/literales.phtml:13
+msgid "form.ubicacion"
+msgstr "Ubicación"
+
+#: admin/vista/controllers/espacio.phtml:43
+msgid "form.telefono"
+msgstr "Teléfono"
+
+#: admin/vista/controllers/espacio.phtml:45
+#: admin/vista/controllers/usuario.phtml:45
+#: admin/vista/controllers/viewusuario.phtml:30
+msgid "form.email"
+msgstr "Email"
+
+#: admin/vista/controllers/espacio.phtml:47
+msgid "form.check.geo"
+msgstr "Comprobar dirección"
+
+#: admin/vista/controllers/galeria.phtml:4
+msgid "form.galeria.img"
+msgstr "Galería de imágenes"
+
+#: admin/vista/controllers/imagen.phtml:26
+msgid "form.galerias"
+msgstr "Galerías de imágenes"
+
+#: admin/vista/controllers/imagen.phtml:39
+msgid "form.video.url"
+msgstr "Url streaming"
+
+#: admin/vista/controllers/imagen.phtml:39
+msgid "form.video.url.1"
+msgstr "sólo en caso de vídeos"
+
+#: admin/vista/controllers/imagen.phtml:42
+msgid "form.img.url"
+msgstr "Url Imagen"
+
+#: admin/vista/controllers/inicio.phtml:1
+msgid "profile.system.name"
+msgstr "Administración"
+
+#: admin/vista/controllers/inicio.phtml:1
+msgid "profile.web.name"
+msgstr "Web"
+
+#: admin/vista/controllers/inicio.phtml:1
+msgid "profile.cine.name"
+msgstr "Cine"
+
+#: admin/vista/controllers/inicio.phtml:2
+msgid "profile.system.description"
+msgstr "Gestión de la zona de administración"
+
+#: admin/vista/controllers/inicio.phtml:2
+msgid "profile.web.description"
+msgstr "Gestión y edición de contenidos del site"
+
+#: admin/vista/controllers/inicio.phtml:2
+msgid "profile.cine.description"
+msgstr "Edición de contenidos de las proyecciones"
+
+#: admin/vista/controllers/inicio.phtml:6
+msgid "install.msg.1"
+msgstr "Fallo de seguridad"
+
+#: admin/vista/controllers/inicio.phtml:6
+msgid "install.msg.2"
+msgstr "No se ha eliminado el archivo de instalación:"
+
+#: admin/vista/controllers/langs.phtml:7
+msgid "form.lang.id"
+msgstr "Código"
+
+#: admin/vista/controllers/langs.phtml:10
+msgid "form.lang.codificacion"
+msgstr "Codificación"
+
+#: admin/vista/controllers/licencia.phtml:7
+#: admin/vista/controllers/pagina.phtml:8
+msgid "form.url"
+msgstr "Url"
+
+#: admin/vista/controllers/login.phtml:7
+msgid "form.login.nombre"
+msgstr "Usuario"
+
+#: admin/vista/controllers/login.phtml:8
+msgid "form.login.password"
+msgstr "Contraseña"
+
+#: admin/vista/controllers/modulos.phtml:24
+msgid "form.modulo"
+msgstr "Módulo"
+
+#: admin/vista/controllers/modulos.phtml:34
+msgid "form.modulo.admin.padre"
+msgstr "Depende de otro módulo"
+
+#: admin/vista/controllers/moduloweb.phtml:4
+msgid "form.modulo.web"
+msgstr "Módulo web"
+
+#: admin/vista/controllers/pagina.phtml:12
+msgid "form.pagina.modulo"
+msgstr "Módulo"
+
+#: admin/vista/controllers/pagina.phtml:20
+msgid "form.pagina.txts"
+msgstr "Textos posibles"
+
+#: admin/vista/controllers/pagina.phtml:28
+msgid "form.texts"
+msgstr "Textos"
+
+#: admin/vista/controllers/pagina.phtml:36
+msgid "form.pagina.apariencia"
+msgstr "Apariencia"
+
+#: admin/vista/controllers/pagina.phtml:45
+msgid "form.pagina.layout"
+msgstr "Plantilla"
+
+#: admin/vista/controllers/pagina.phtml:55
+msgid "form.pagina.orden"
+msgstr "Orden"
+
+#: admin/vista/controllers/pagina.phtml:58
+msgid "form.pagina.submenu"
+msgstr "Submenu"
+
+#: admin/vista/controllers/pagina.phtml:64
+msgid "form.pagina.portada"
+msgstr "Portada"
+
+#: admin/vista/controllers/pelicula.phtml:49
+msgid "form.pelicula.proyeccion"
+msgstr "Proyección"
+
+#: admin/vista/controllers/pelicula.phtml:49
+msgid "form.pelicula.proyeccion.1"
+msgstr "si no la encuentras"
+
+#: admin/vista/controllers/pelicula.phtml:49
+msgid "form.pelicula.proyeccion.2"
+msgstr "alta de proyecciones"
+
+#: admin/vista/controllers/pelicula.phtml:53
+msgid "form.pelicula.agradecimientos"
+msgstr "Agradecimientos"
+
+#: admin/vista/controllers/pelicula.phtml:53
+msgid "form.pelicula.agradecimientos.1"
+msgstr "si no la encuentras"
+
+#: admin/vista/controllers/pelicula.phtml:53
+msgid "form.pelicula.agradecimientos.2"
+msgstr "alta de agradecimientos"
+
+#: admin/vista/controllers/pelicula.phtml:59
+msgid "form.pelicula.trailer"
+msgstr "Trailer streaming"
+
+#: admin/vista/controllers/pelicula.phtml:59
+msgid "form.pelicula.trailer.ejemplo"
+msgstr "(youtube, blip.tv, dailymotion ...)"
+
+#: admin/vista/controllers/pelicula.phtml:62
+msgid "form.pelicula.licencia"
+msgstr "Licencia"
+
+#: admin/vista/controllers/pelicula.phtml:71
+msgid "form.pelicula.ficha"
+msgstr "Ficha técnica"
+
+#: admin/vista/controllers/perfil.phtml:25
+msgid "form.perfil"
+msgstr "Perfil de acceso"
+
+#: admin/vista/controllers/perfil.phtml:28
+msgid "form.modulos"
+msgstr "Módulos posibles"
+
+#: admin/vista/controllers/perfil.phtml:37
+msgid "form.modulos.selected"
+msgstr "Módulos"
+
+#: admin/vista/controllers/proyeccion.phtml:6
+msgid "form.espacio"
+msgstr "Espacio de proyección"
+
+#: admin/vista/controllers/proyeccion.phtml:12
+msgid "form.proyeccion.dia"
+msgstr "Día de proyección"
+
+#: admin/vista/controllers/proyeccion.phtml:16
+msgid "form.proyeccion.time"
+msgstr "Hora"
+
+#: admin/vista/controllers/proyeccion.phtml:20
+#: admin/vista/controllers/texto.phtml:22
+msgid "form.titulo"
+msgstr "Título"
+
+#: admin/vista/controllers/texto.phtml:25
+msgid "form.txt"
+msgstr "Texto"
+
+#: admin/vista/controllers/texto.phtml:33
+msgid "form.txt.galeria"
+msgstr "Añadir galería de imágenes/vídeos"
+
+#: admin/vista/controllers/usuario.phtml:26
+#: admin/vista/controllers/viewusuario.phtml:22
+msgid "form.usuario.nombre"
+msgstr "Usuario"
+
+#: admin/vista/controllers/usuario.phtml:28
+msgid "form.usuario.password"
+msgstr "Contraseña"
+
+#: admin/vista/controllers/usuario.phtml:30
+#: admin/vista/controllers/usuario.phtml:39
+#: admin/vista/controllers/viewusuario.phtml:24
+msgid "form.usuario.nivel"
+msgstr "Nivel de acceso"
+
+#: admin/vista/skins/commons/includes/botonera.phtml:4
+msgid "home"
+msgstr "Home"
+
+#: admin/vista/skins/commons/includes/botonera.phtml:7
+msgid "logout"
+msgstr "Desconectar"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:2
+msgid "list"
+msgstr "Listado de"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:14
+msgid "form.accion.ver"
+msgstr "ver"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:16
+msgid "form.accion.editar"
+msgstr "editar"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:17
+msgid "form.accion.visible"
+msgstr "visible en la web"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:18
+msgid "form.accion.eliminar"
+msgstr "eliminar"
+
+#: admin/vista/skins/commons/includes/columna_derecha.phtml:20
+msgid "form.accion.imprimir"
+msgstr "imprimir"
+
+#: admin/vista/skins/commons/includes/literales.phtml:3
+msgid "feedback.bbdd.ok"
+msgstr "si! todo ha ido bien"
+
+#: admin/vista/skins/commons/includes/literales.phtml:4
+msgid "feedback.bbdd.ko"
+msgstr "Ooops algo no ha ido bien!"
+
+#: admin/vista/skins/commons/includes/literales.phtml:5
+msgid "feedback.loading"
+msgstr "Cargando"
+
+#: admin/vista/skins/commons/includes/literales.phtml:6
+msgid "form.confirm.delete"
+msgstr "Estas segur@ de eliminar"
+
+#: admin/vista/skins/commons/includes/literales.phtml:7
+msgid "form.confirm.delete.img"
+msgstr "Estas segur@ de eliminar la imagen"
+
+#: admin/vista/skins/commons/includes/literales.phtml:8
+msgid "form.confirm.format.url"
+msgstr "> El formato de la url no es correcto"
+
+#: admin/vista/skins/commons/includes/literales.phtml:9
+msgid "form.confirm.format.email"
+msgstr "> El formato del email no es correcto"
+
+#: admin/vista/skins/commons/includes/literales.phtml:10
+msgid "form.error"
+msgstr "Revisa los siguientes errores"
+
+#: admin/vista/skins/commons/includes/literales.phtml:11
+msgid "form.campo.obligatorio"
+msgstr "es obligatorio"
+
+#: admin/vista/skins/commons/includes/literales.phtml:12
+msgid "form.selected"
+msgstr "No has seleccionado ninguna opción"
+
+#: admin/vista/skins/commons/includes/literales.phtml:14
+msgid "geo.error"
+msgstr "No encuentra esa dirección, prueba otra vez"
+
+#: admin/vista/skins/commons/includes/literales.phtml:15
+msgid "form.error.docname"
+msgstr "Informa primero el nombre del documento"
+
+#: admin/vista/skins/lvc/layouts/1columna.phtml:22
+#: admin/vista/skins/lvc/layouts/2columnas.phtml:29
+msgid "powered"
+msgstr "powered by"
+
+#~ msgid "form.pagina.menu"
+#~ msgstr "Nombre en el menu"
+
+#~ msgid "form.modulo.admin.nombre"
+#~ msgstr "Nombre en el menu"
+
+#~ msgid "form.modulo.admin.nivel"
+#~ msgstr "Nivel de acceso"
+
+#~ msgid "selecciona"
+#~ msgstr "Selecciona..."
+
+#~ msgid "form.perfil.modulo.defecto"
+#~ msgstr "Módulo por defecto"

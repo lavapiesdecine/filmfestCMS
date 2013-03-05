@@ -1,0 +1,32 @@
+<? if(empty($img)){?>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/viewusuario/upload" scrolling="no"></iframe>
+<? }?>
+<div id="div-img" class="<?= $classUpload ?>">
+	<?if(!empty($img)){?>
+		<a href="#" id="delete-img">
+			<img width="100px" height="100px" src="<?= $img?>" id="imagen_uploaded" />
+			<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+		</a>	
+	<?} else { ?>
+		<p><?=_("form.upload.img")?><br><?=_("form.upload.type")?></p>	
+		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/viewusuario/upload" target="frame_imagen">
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
+				<input name="id_usuario" id="id_usuario" type="hidden" value="<?=$this->_id?>" >
+				<input type="file" name="imagen" id="imagen"  />
+		</form>
+	<? } ?>	
+</div>
+
+<div id="div-img-info">
+			
+	<p><label><?=_("form.usuario.nombre")?></label> <?= $nombre ?></p>
+
+	<p class="select"><label><?=_("form.usuario.nivel")?></label>
+		<select name='perfiles' id='perfiles' multiple="multiple" class="selecteds" size=5>
+			<?= \core\util\UtilPagina::getOptions($perfiles, 0, false) ?>
+		</select>
+	</p>
+	 
+	<p><label><?=_("form.email")?></label><?= $email?></p>
+			
+</div>	

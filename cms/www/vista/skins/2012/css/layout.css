@@ -1,0 +1,81 @@
+/**
+ * estilos solo para el layout
+ **/
+body {
+	padding: 0;
+	margin: 0;
+}
+body {
+	height: 100%;
+	text-align: center;
+}
+html {
+	height:100%;
+}
+article {
+    width:1280px;
+    margin:0px auto;
+    min-height: 100%;
+    text-align: left;
+    background-image: url("../img/blanco.jpg");
+}
+* html article {
+	height: 100%;
+}
+
+header{
+	height:150px;
+}
+nav#menu {
+	height:35px;
+	float:left;
+}
+div#title{
+	margin:0;	
+}
+#columna-izq {
+    width: 35%;
+    float:left;
+    height: 100%;
+}
+#columna-izq a img{
+    width:90%;
+}
+#columna-izq fieldset{
+    width:80%;
+    margin-top:15px;
+}
+aside {
+    width:20%;
+    float:left;
+    min-height: 100%;
+}
+#columnas{
+	width:100%;
+}
+#main {
+	float:left;
+	width: 1168px;
+}
+#main-2 {
+	float:left;
+	width:65%;
+	margin-bottom: 40px;
+	min-height: 580px;
+}
+#main-3 {
+	float:left;
+	width:52%;
+	margin-bottom: 40px;
+}
+footer{
+	width: 100%;
+	clear: both;
+	background-color: black;
+	height: 40px;
+	font-size: 30px;
+	color:white;
+	text-align: center;
+	position: relative;
+	margin-top: -40px;
+}

@@ -1,0 +1,29 @@
+<p> <?= _("conf.txt") ?> </p>
+
+<form id='form_conf' name='form_conf' method='post'>
+	
+	<label><?=_("form.usuario.admin")?></label>
+	<input name='nickname' id='nickname' value="<?=$nickname ?>" required/>
+	
+	<label><?=_("form.usuario.password.admin")?></label> 
+	<input type="password" name='password' id='password' value="<?=$password ?>" required />
+	
+	<label><?=_("form.email.admin")?></label> 
+	<input type="email" name='email' id='email' value="<?=$email ?>" required />
+	
+	<label><?=_("form.email.contact")?></label> 
+	<input type="email" name='emailcontact' id='emailcontact' value="<?=$emailcontact ?>" required />
+	
+	<label><?=_("form.idiomas")?></label>
+	<select name='lang' id='lang'>
+		<? foreach ($langs as $lang) { ?>
+			<option value="<?=$lang[0]?>"><?=$lang[1] ?></option>
+		<? } ?>
+	</select>
+	
+	<p>
+		<a href="#" id='b_conf' class="boton"><?=_("form.aceptar")?></a>
+		<a href="<?=URL_INSTALL."/".$this->_next[0]?>" id='b_conf_next' class="boton oculto"><?=$this->_next[1]?> &raquo;</a>
+	</p>		
+</form>
+

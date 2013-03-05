@@ -1,0 +1,38 @@
+<div style="height:100px;">
+	<h3><?= _("admin.conf")?> <span class="small"><?=ROOT?>conf.php</span></h3>
+	
+	<p class="input10"><label><?= _("form.lang")?></label>
+	<span class="input"><?= ADMIN_LANG ?></span></p>
+	<p class="input10"><label><?=_("form.skin")?> </label>
+	<span class="input"><?=ADMIN_SKIN?></span></p>
+	<p class="input30"><label><?= _("form.email.admin")?></label>
+	<span class="input"><?= ADMIN_EMAIL ?></span></p>
+	<p class="input30"><label><?= _("form.email.contact")?></label>
+	<span class="input"><?= EMAIL_WEB ?></span></p>
+</div>
+
+<div style="height:100px;">
+	<h3><?= _("geo.conf")?> <span class="small"><?=ROOT?>geo.php</span></h3>
+	
+	<p class="input30"><label><?= _("geo.software")?></label>
+	<span class="input"><?= OSM ? "Open Street Map" : "Goole maps" ?></span></p>
+	
+	<p class="input30"><label><?= _("geo.lat")?></label>
+	<span class="input"><?= LATITUD ?></span></p>
+	
+	<p class="input20"><label><?= _("geo.long")?></label>
+	<span class="input"><?=  LONGITUD ?></span></p>
+</div>
+
+<div style="height:100px;">
+	<h3><?= _("bbdd.conf")?> <span class="small"><?=ROOT?>bbdd.php</span></h3>
+	
+	<p class="input30"><label><?= _("bbdd.host")?></label>
+	<span class="input"><?= DB_HOST ?></span></p>
+	
+	<p class="input30"><label><?= _("bbdd.user")?></label>
+	<span class="input"><?= DB_USER ?></span></p>
+	
+	<p class="input20"><label><?= _("bbdd.database")?></label>
+	<span class="input"><?= DB_NAME ?></span></p>
+</div>

@@ -1,0 +1,32 @@
+<html lang="<?= $this->_lang?>" >
+	<head>
+		<? include($pathCommons."includes/head.phtml");?>
+		<script src="<?= $urlSkin?>js/comun.js" type="text/javascript" language="javascript"></script>
+		<link href="<?=$urlSkin?>css/core.css" rel="stylesheet" type="text/css" />
+		<link href="<?=$urlSkin?>css/site.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<article>
+		    <header></header>
+			
+			<?	include_once($pathCommons."includes" .DS . "menu.phtml"); ?>
+			
+			<section>
+				<div id="title"><h1><?=$this->_title?></h1></div>
+				<aside>
+					<a href="../../img/galerias/carteles/10-muestra-de-cine-de-lavapis.jpg" rel="lightbox">
+						<img width="180px" alt="Convocatoria libre de cine" title="Convocatoria libre de cine" src="<?= URL_SKINS ?>2013/img/10-muestra-de-cine-de-lavapis.jpg">
+					</a>
+					autor cartel: <a href="http://iagoberro.wordpress.com" target="_blank">Iago Alvarez</a>
+				</aside>
+	            <div class="doscolumnas">
+	            	<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+	            </div>
+	       </section>
+	       
+	       <footer>
+	       		<? include_once($pathSkin."includes/pie.phtml"); ?>
+	       </footer> 
+	    </article>
+	</body>
+</html>

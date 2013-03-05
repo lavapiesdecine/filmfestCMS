@@ -1,0 +1,21 @@
+<p> <?= _("bbdd.txt") ?> </p>
+
+<form id='form_bbdd' name='form_bbdd' method='post'>
+		
+	<label><?=_("form.hostname")?></label> 
+	<input  name='hostname' id='hostname' value="<?=$server ?>" required />
+	
+	<label><?=_("form.usuario.bbdd")?></label>
+	<input name='usuario' id='usuario' value="<?=$username ?>" required/>
+	
+	<label><?=_("form.password.bbdd")?></label> 
+	<input type="password" name='password' id='password' value="<?=$password ?>" required />
+	
+	<label><?=_("form.database")?></label> 
+	<input type="database" name='database' id='database' value="<?=$database ?>" required />
+	
+	<p>
+		<a href="#" id='b_bbdd' class="boton"><?=_("form.aceptar")?></a>
+		<a href="<?=URL_INSTALL."/".$this->_next[0]?>" id='b_bbdd_next' class="boton oculto"><?=$this->_next[1]?> &raquo;</a>
+	</p>	
+</form>

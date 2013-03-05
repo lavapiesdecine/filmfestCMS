@@ -1,0 +1,84 @@
+*{
+	margin: 0;
+    padding: 0;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif; /* Base font family for most elements */
+    font-size: 15px; /* Base size for all elements; other size definitions relates to this */
+    background-color: #ffffff;
+    background: url(../img/bg_cuadricula.png) 0 0 repeat;
+    margin: 0;
+    padding: 0;
+}
+header{
+	background: url(../img/cabecera.jpg);
+	margin: 0;
+    height: 35px;
+    cursor: pointer;
+}
+article{
+    width: 750px;
+    margin: 0 auto 0 auto;
+    background-color: #ffffff;
+}
+aside{
+	float: left;
+    width: 400px;
+    margin-top:18px;
+    margin-left:20px;
+    margin-bottom:20px;
+}
+
+
+section {
+	float: left;
+	padding: 2px;
+	clear: both;
+	margin-top:10px;
+	width: 100%;
+}
+section.doscolumnas{
+	width: 550px;
+}
+
+fieldset{
+	border: none;
+	padding: 20px;
+}
+
+footer{ 
+    clear: both;
+	text-align: right;
+	width:100%;
+	color:#bbb
+}
+
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+    padding: 0;
+    margin: 0px;
+}
+h1{
+    font-size: 25px;
+    border-bottom: 1px solid #000;
+}
+
+ul{
+	margin: 0px;
+	padding:0px;
+}
+/* LINKS */
+a{
+    text-decoration:none;
+}
+
+label{
+	display: block;
+	font-weight: bold;
+	clear: both;
+}
+
+p{
+	margin:10px 0px;
+}

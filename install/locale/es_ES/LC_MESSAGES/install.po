@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-02-25 21:04+0100\n"
+"PO-Revision-Date: 2013-02-25 21:06+0100\n"
+"Last-Translator: arturo <muestra@lavapiesdecine.net>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: C:\\xampp\\htdocs\\ff\\\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-SearchPath-0: install\n"
+
+#: install/index.php:19 install/controllers/introController.php:6
+msgid "intro.tittle"
+msgstr "Bienvenid@"
+
+#: install/index.php:19 install/controllers/introController.php:7
+msgid "intro.description"
+msgstr " "
+
+#: install/index.php:20 install/controllers/confController.php:6
+msgid "conf.tittle"
+msgstr "Administrador"
+
+#: install/index.php:20 install/controllers/confController.php:7
+msgid "conf.description"
+msgstr "Acceso a la zona de administración"
+
+#: install/index.php:21 install/controllers/bbddController.php:6
+msgid "bbdd.tittle"
+msgstr "Base de Datos"
+
+#: install/index.php:21 install/controllers/bbddController.php:7
+msgid "bbdd.description"
+msgstr "Acceso a la base de datos"
+
+#: install/index.php:22 install/controllers/geoController.php:6
+msgid "geo.tittle"
+msgstr "Ubicación"
+
+#: install/index.php:22 install/controllers/geoController.php:7
+msgid "geo.description"
+msgstr "Dónde se celebrará el festival"
+
+#: install/index.php:23 install/controllers/endController.php:6
+msgid "end.tittle"
+msgstr "Terminamos"
+
+#: install/index.php:23 install/controllers/endController.php:7
+msgid "end.description"
+msgstr " "
+
+#: install/index.php:25
+msgid "lang.es"
+msgstr "Español"
+
+#: install/vista/controllers/bbdd.phtml:1
+msgid "bbdd.txt"
+msgstr ""
+"Antes de rellenar el formulario, asegúrate que la base de datos que informas "
+"existe."
+
+#: install/vista/controllers/bbdd.phtml:5
+msgid "form.hostname"
+msgstr "Servidor"
+
+#: install/vista/controllers/bbdd.phtml:8
+msgid "form.usuario.bbdd"
+msgstr "Usuario"
+
+#: install/vista/controllers/bbdd.phtml:11
+msgid "form.password.bbdd"
+msgstr "Password"
+
+#: install/vista/controllers/bbdd.phtml:14
+msgid "form.database"
+msgstr "Base de datos"
+
+#: install/vista/controllers/bbdd.phtml:18
+#: install/vista/controllers/conf.phtml:25
+#: install/vista/controllers/geo.phtml:22
+msgid "form.aceptar"
+msgstr "Aceptar"
+
+#: install/vista/controllers/conf.phtml:1
+msgid "conf.txt"
+msgstr ""
+"Lo primero de todo son los datos del usuario, con estos datos podrás acceder "
+"a la zona de administración"
+
+#: install/vista/controllers/conf.phtml:5
+msgid "form.usuario.admin"
+msgstr "Usuario"
+
+#: install/vista/controllers/conf.phtml:8
+msgid "form.usuario.password.admin"
+msgstr "Password"
+
+#: install/vista/controllers/conf.phtml:11
+msgid "form.email.admin"
+msgstr "Email"
+
+#: install/vista/controllers/conf.phtml:14
+msgid "form.email.contact"
+msgstr "Email contacto web"
+
+#: install/vista/controllers/conf.phtml:17
+msgid "form.idiomas"
+msgstr "Idiomas"
+
+#: install/vista/controllers/end.phtml:2
+msgid "end.txt"
+msgstr "Felicidades, ya se ha terminado la instalación."
+
+#: install/vista/controllers/end.phtml:15
+msgid "admin.zone"
+msgstr "Zona de administración"
+
+#: install/vista/controllers/geo.phtml:1
+msgid "geo.txt"
+msgstr "Informa de en qué barrio o municipio se va a celebrar el festival"
+
+#: install/vista/controllers/geo.phtml:7
+msgid "form.espacio.direccion"
+msgstr "Ubicación"
+
+#: install/vista/controllers/geo.phtml:10 install/vista/includes/head.phtml:22
+msgid "form.ubicacion"
+msgstr "Ubicación"
+
+#: install/vista/controllers/geo.phtml:21
+msgid "form.check.geo"
+msgstr "Comprobar dirección"
+
+#: install/vista/controllers/intro.phtml:1
+msgid "intro.txt"
+msgstr "La instalación es muy sencilla, ya te vamos contando"
+
+#: install/vista/includes/head.phtml:16
+msgid "form.confirm.format.email"
+msgstr "El formato del email no es correcto"
+
+#: install/vista/includes/head.phtml:17
+msgid "form.error"
+msgstr "Error"
+
+#: install/vista/includes/head.phtml:18
+msgid "form.campo.obligatorio"
+msgstr "es obligatorio"
+
+#: install/vista/includes/head.phtml:19
+msgid "feedback.bbdd.ok"
+msgstr "Si! todo ha ido bien"
+
+#: install/vista/includes/head.phtml:20
+msgid "feedback.bbdd.ko"
+msgstr "Ooops algo no ha ido bien!"
+
+#: install/vista/includes/head.phtml:21
+msgid "feedback.loading"
+msgstr "Cargando"

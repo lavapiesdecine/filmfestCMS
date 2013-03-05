@@ -1,0 +1,27 @@
+<form id='formProyeccion' name='formProyeccion' method='post'>
+	<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
+	<input name='id_edicion' id='id_edicion' value='<?= $this->_anyo ?>' type='hidden'/>
+	
+	<p class="select">
+		<label><?=_("form.espacio")?></label>
+		<select id="id_espacio" name="id_espacio" required>
+			<?= \core\util\UtilPagina::getOptions($espacios, $idEspacio, true) ?>
+		</select>
+	</p>
+	<p class="input30">
+		<label><?=_("form.proyeccion.dia")?></label>
+		<input class="calendario" readonly="readonly" value='<?=$diaProyeccion ?>' id="id_dia" name="id_dia" required  placeholder="<?=date("d/m/Y",$fechaInicio) ?>" /></p>
+	</p>
+	<p class="input10">
+		<label><?=_("form.proyeccion.time")?></label>
+		<input value='<?= $hora?>' name='id_hora' id='id_hora' required placeholder="00:00"/>
+	</p>
+	
+	<label><?=_("form.titulo")?> <span class="small"><?=_("form.noobligatorio")?></span></label>
+	<input value='<?= $titulo?>' name='id_titulo' id='id_titulo' />
+	<label><?=_("form.descripcion.breve")?> <span class="small"><?=_("form.noobligatorio")?></span></label>
+	<textarea name='id_descripcion' id='id_descripcion' ><?= $descripcion ?></textarea>
+	
+	<a href="#" id='b_proyeccion' class="boton"><?=_("form.aceptar")?></a>
+	
+</form>

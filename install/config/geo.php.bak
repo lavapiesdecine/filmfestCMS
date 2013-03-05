@@ -1,0 +1,8 @@
+<?php
+	
+	//config ubicacion
+	define('UBICACION', '__UBICACION__');
+	define('LATITUD', '__LATITUD__');
+	define('LONGITUD', '__LONGITUD__');
+	define('GOOGLEMAP_KEY', '__GOOGLEMAP_KEY__');
+   	

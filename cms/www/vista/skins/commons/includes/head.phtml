@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<meta http-equiv="Cache-control" content="public">
+<title><?= $this->_title ?> &mdash; <?= $edicion->nombre ?></title>
+<meta content="Lavapiés de Cine" name="Generator" />
+<meta content="Muestra, Cine, Lavapiés, Cultura, Madrid, Autoproducciones, Proyección, Solar" name="keywords" />
+<meta content="Lavapiés de cine" name="Origen" />
+<meta content="<?=$this->_description?>" name="Description" />
+<meta content="Lavapiés de cine" name="Author" />
+<meta content="Lavapiés, Madrid" name="Locality" />
+<link rel="icon" href="<?=URL_IMG?>logo_lavapies_firma.JPG"/>
+<script src="<?=URL_LIBJS?>jquery.js" type="text/javascript" language="javascript" ></script>
+<script src="<?=URL_LIBJS?>comun.js" type="text/javascript" language="javascript" ></script>
+<script src="<?=URL_LIBJS?>fancybox/jquery.fancybox.pack.js" type="text/javascript" language="javascript" ></script>
+<script src="<?=URL_LIBJS?>fancybox/helpers/jquery.fancybox-media.js" type="text/javascript" language="javascript" ></script>
+<script src="<?=$urlCommons?>js/common.js" type="text/javascript" language="javascript"></script>
+<link rel="stylesheet" href="<?=URL_LIBJS?>fancybox/jquery.fancybox.css" type="text/css" >
+<script type="text/javascript" language="javascript">
+	var urlApp = '<?= BASE_URL ?>/';
+	var modulo = '<?= $this->_controller ?>';
+	var osm = <?= json_encode(OSM) ?>;
+</script>
+<?	include_once($pathCommons. "google-analytics.html"); ?>
+<script language="javascript">
+<!--
+	var gcMsg_email= '<?= _("form.confirm.format.email")?>';
+	var gcMsg_revisa= '<?= _("form.error")?>';
+	var gcMsg_required= '<?= _("form.campo.obligatorio")?>';
+//-->
+</script>

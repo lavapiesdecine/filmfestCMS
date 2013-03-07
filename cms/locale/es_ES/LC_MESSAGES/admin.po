@@ -1,20 +1,3 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2013-03-05 14:10+0100\n"
-"PO-Revision-Date: 2013-03-05 14:11+0100\n"
-"Last-Translator: arturo <muestra@lavapiesdecine.net>\n"
-"Language-Team: \n"
-"Language: es_ES\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
-"X-Poedit-Basepath: C:\\xampp\\htdocs\\ff\\cms\\\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-SearchPath-0: admin\n"
-
 #: admin/controllers/agradecimientoController.php:12
 msgid "agradecimiento.title"
 msgstr "Agradecimientos"
@@ -96,26 +79,6 @@ msgstr "Multimedia"
 #: admin/controllers/imagenController.php:10
 msgid "imagen.description"
 msgstr "Imágenes y vídeos"
-
-#: admin/controllers/inicioController.php:18
-msgid "profile."
-msgstr ""
-
-#: admin/controllers/inicioController.php:21
-#: admin/controllers/inicioController.php:25
-#: admin/vista/skins/commons/includes/menu.phtml:5
-#: admin/vista/skins/commons/includes/menu.phtml:8
-#, fuzzy
-msgid ".description"
-msgstr "para descargar"
-
-#: admin/controllers/inicioController.php:21
-#: admin/controllers/inicioController.php:25
-#: admin/vista/skins/commons/includes/menu.phtml:5
-#: admin/vista/skins/commons/includes/menu.phtml:8
-#, fuzzy
-msgid ".title"
-msgstr "Documentos"
 
 #: admin/controllers/langsController.php:7
 msgid "langs.title"
@@ -780,18 +743,3 @@ msgstr "Informa primero el nombre del documento"
 #: admin/vista/skins/lvc/layouts/2columnas.phtml:29
 msgid "powered"
 msgstr "powered by"
-
-#~ msgid "form.pagina.menu"
-#~ msgstr "Nombre en el menu"
-
-#~ msgid "form.modulo.admin.nombre"
-#~ msgstr "Nombre en el menu"
-
-#~ msgid "form.modulo.admin.nivel"
-#~ msgstr "Nivel de acceso"
-
-#~ msgid "selecciona"
-#~ msgstr "Selecciona..."
-
-#~ msgid "form.perfil.modulo.defecto"
-#~ msgstr "Módulo por defecto"

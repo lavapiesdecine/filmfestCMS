@@ -1,69 +1,50 @@
-msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2013-02-25 21:04+0100\n"
-"PO-Revision-Date: 2013-02-25 21:06+0100\n"
-"Last-Translator: arturo <muestra@lavapiesdecine.net>\n"
-"Language-Team: \n"
-"Language: es_ES\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
-"X-Poedit-Basepath: C:\\xampp\\htdocs\\ff\\\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-SearchPath-0: install\n"
-
-#: install/index.php:19 install/controllers/introController.php:6
+#: install/index.php:35 install/controllers/introController.php:6
 msgid "intro.tittle"
 msgstr "Bienvenid@"
 
-#: install/index.php:19 install/controllers/introController.php:7
+#: install/index.php:35 install/controllers/introController.php:7
 msgid "intro.description"
 msgstr " "
 
-#: install/index.php:20 install/controllers/confController.php:6
+#: install/index.php:36 install/controllers/confController.php:6
 msgid "conf.tittle"
 msgstr "Administrador"
 
-#: install/index.php:20 install/controllers/confController.php:7
+#: install/index.php:36 install/controllers/confController.php:7
 msgid "conf.description"
 msgstr "Acceso a la zona de administración"
 
-#: install/index.php:21 install/controllers/bbddController.php:6
+#: install/index.php:37 install/controllers/bbddController.php:6
 msgid "bbdd.tittle"
 msgstr "Base de Datos"
 
-#: install/index.php:21 install/controllers/bbddController.php:7
+#: install/index.php:37 install/controllers/bbddController.php:7
 msgid "bbdd.description"
 msgstr "Acceso a la base de datos"
 
-#: install/index.php:22 install/controllers/geoController.php:6
+#: install/index.php:38 install/controllers/geoController.php:6
 msgid "geo.tittle"
 msgstr "Ubicación"
 
-#: install/index.php:22 install/controllers/geoController.php:7
+#: install/index.php:38 install/controllers/geoController.php:7
 msgid "geo.description"
 msgstr "Dónde se celebrará el festival"
 
-#: install/index.php:23 install/controllers/endController.php:6
+#: install/index.php:39 install/controllers/endController.php:6
 msgid "end.tittle"
 msgstr "Terminamos"
 
-#: install/index.php:23 install/controllers/endController.php:7
+#: install/index.php:39 install/controllers/endController.php:7
 msgid "end.description"
 msgstr " "
 
-#: install/index.php:25
+#: install/index.php:41
 msgid "lang.es"
 msgstr "Español"
 
 #: install/vista/controllers/bbdd.phtml:1
 msgid "bbdd.txt"
-msgstr ""
-"Antes de rellenar el formulario, asegúrate que la base de datos que informas "
-"existe."
+msgstr "Antes de rellenar el formulario, asegúrate que la base de datos que informas existe."
 
 #: install/vista/controllers/bbdd.phtml:5
 msgid "form.hostname"
@@ -81,7 +62,11 @@ msgstr "Password"
 msgid "form.database"
 msgstr "Base de datos"
 
-#: install/vista/controllers/bbdd.phtml:18
+#: install/vista/controllers/bbdd.phtml:17
+msgid "form.table.prefix"
+msgstr "Prefijo para el nombre de la tabla"
+
+#: install/vista/controllers/bbdd.phtml:21
 #: install/vista/controllers/conf.phtml:25
 #: install/vista/controllers/geo.phtml:22
 msgid "form.aceptar"
@@ -89,9 +74,7 @@ msgstr "Aceptar"
 
 #: install/vista/controllers/conf.phtml:1
 msgid "conf.txt"
-msgstr ""
-"Lo primero de todo son los datos del usuario, con estos datos podrás acceder "
-"a la zona de administración"
+msgstr "Lo primero de todo son los datos del usuario, con estos datos podrás acceder a la zona de administración"
 
 #: install/vista/controllers/conf.phtml:5
 msgid "form.usuario.admin"
@@ -137,7 +120,7 @@ msgstr "Ubicación"
 msgid "form.check.geo"
 msgstr "Comprobar dirección"
 
-#: install/vista/controllers/intro.phtml:1
+#: install/vista/controllers/intro.phtml:7
 msgid "intro.txt"
 msgstr "La instalación es muy sencilla, ya te vamos contando"
 

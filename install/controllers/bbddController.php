@@ -10,7 +10,7 @@
 	    
 	    public function index(){
 	    
-	    	$server = ""; $username = ""; $password = ""; $database = "";
+	    	$server = ""; $username = ""; $password = ""; $database = "";$prefix = "";
 	    
 	    	if(isset($_SESSION["bbdd"])){
 	    		$bbdd = $_SESSION["bbdd"];
@@ -18,10 +18,11 @@
 	    		$username = $bbdd["username"];
 	    		$password = $bbdd["password"];
 	    		$database = $bbdd["database"];
+	    		$prefix = $bbdd["prefix"];
 	    	}
 	    
 	    	$this->_data = array("server" => $server, "username" => $username,
-	    						 "password" => $password, "database" => $database);
+	    						 "password" => $password, "database" => $database, "prefix" => $prefix);
 	    	$this->loadView();
 	    }
 	    
@@ -35,14 +36,15 @@
 	    	$_SESSION['bbdd'] = array("server" => $_POST['hostname'],
 					    				"username" => $_POST['usuario'],
 					    				"password" => $_POST['password'],
-					    				"database" => $_POST['database']);
+					    				"database" => $_POST['database'],
+	    								"prefix" => $_POST['prefix']);
     		
     		$mySQLi = @new mysqli($_POST['hostname'], $_POST['usuario'], $_POST['password'], $_POST['database']);
     		
     		if ($mySQLi->connect_errno){
     			$result = array("ok" =>false, "msg"=> $mySQLi->connect_error);
     		} else {
-    			if($this->config($_SESSION['bbdd'])){
+    			if($this->config()){
     				$this->load($mySQLi, $_POST['database']);
     				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "bbdd.php </strong>");
     			} else {
@@ -57,12 +59,14 @@
 	    * @param $bbdd
 	    * @return boolean
 	    */
-	   private function config($bbdd) {
+	   private function config() {
 	   		try{
 	   			
 	   			copy(PATH_INSTALL . 'config' . DS . $this->_controller . '.php.bak', CONF_PATH . $this->_controller . '.php');
 	   			
 		   		$template = file_get_contents(CONF_PATH . $this->_controller . '.php');
+		   		
+		   		$bbdd = $_SESSION['bbdd'];
 		   		
 		   		$replace = array(
 		   				'__HOSTNAME__' 	=> $bbdd["server"],
@@ -90,15 +94,17 @@
 	    * @param $database
 	    * @return boolean
 	    */
-	   private function load($mySQLi, $database){
+	   private function load($mySQLi){
 			
 	   		$usuario = $_SESSION['usuarioAdmin'];
+	   		$bbdd = $_SESSION['bbdd'];
 	   		
 	   		$schema = file_get_contents(PATH_INSTALL . 'sql' . DS . 'default.sql');
-			$schema = str_replace('{DATABASE}', $database, $schema);
+			$schema = str_replace('{DATABASE}', $bbdd["database"], $schema);
 			$schema = str_replace('{NICKNAME}', "'".$usuario["nickname"]."'", $schema);
 			$schema = str_replace('{PASSWORD}', "'".md5($usuario["password"])."'", $schema);
 			$schema = str_replace('{EMAIL}', "'".$usuario["email"]."'", $schema);
+			$schema = str_replace('{PREFIX}', $bbdd["prefix"]."_", $schema);
 			
 	   		$queries = explode('-- command split --', $schema);
 	   

@@ -2,7 +2,7 @@ SET GLOBAL sql_mode='NO_AUTO_VALUE_ON_ZERO';
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.usuarios (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuarios (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `usuario` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
@@ -16,12 +16,12 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.usuarios (
 
 -- command split --
 
-INSERT INTO {DATABASE}.usuarios (`usuario`, `pass`,`email`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}usuarios (`usuario`, `pass`,`email`) VALUES
 ({NICKNAME}, {PASSWORD}, {EMAIL});
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.ediciones (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}ediciones (
   `id` varchar(4) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `descripcion` text ,
@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.ediciones (
 
 -- command split --
 
-INSERT INTO {DATABASE}.ediciones (`id`, `nombre`, `descripcion`, `cartel`, `fecha_inicio`, `fecha_fin`, alta) VALUES
+INSERT INTO {DATABASE}.{PREFIX}ediciones (`id`, `nombre`, `descripcion`, `cartel`, `fecha_inicio`, `fecha_fin`, alta) VALUES
 ('2012', '9ª Muestra de Cine de Lavapiés', 'esto es una descripción', '9-muestra-de-cine-de-lavapies.jpg', '2012-06-22', '2012-07-01', 'S'),
 ('2013', '10ª Muestra de Cine de Lavapiés', 'esto es una descripción', '10-muestra-de-cine-de-lavapies.jpg', '2013-06-22', '2013-07-01', 'S');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.convocatorias (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}convocatorias (
   `id` varchar(4) NOT NULL,
   `url` varchar(50) NOT NULL DEFAULT 'autoproduccion',
   `cartel` varchar(50) NOT NULL,
@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.convocatorias (
 
 -- command split --
 
-INSERT INTO {DATABASE}.convocatorias (`id`, `url`, `cartel`, `descripcion`, alta) VALUES
+INSERT INTO {DATABASE}.{PREFIX}convocatorias (`id`, `url`, `cartel`, `descripcion`, alta) VALUES
 ('2012', 'material-recibido', 'atp_9.jpg', 'Convocatoria de obras audiovisuales con licencias libres', 'S'),
 ('2013', 'material-recibido', 'atp_10.jpg', 'Convocatoria de cine libre', 'S');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.langs (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}langs (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `lang` varchar(2) NOT NULL,
   `nombre` varchar(20) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.langs (
 
 -- command split --
 
-INSERT INTO {DATABASE}.langs (`lang`, `nombre`, `codigo`, `codificacion`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}langs (`lang`, `nombre`, `codigo`, `codificacion`, `alta`) VALUES
 ('es', 'Español', 'es_ES', 'UTF-8', 'S'),
 ('fr', 'Français', 'fr_FR', 'UTF-8', 'S'),
 ('en', 'English', 'en_US', 'UTF-8', 'S'),
@@ -84,7 +84,7 @@ INSERT INTO {DATABASE}.langs (`lang`, `nombre`, `codigo`, `codificacion`, `alta`
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.lang_edicion (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}lang_edicion (
   `id_edicion` varchar(4) NOT NULL,
   `lang` varchar(2) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.lang_edicion (
 
 -- command split --
 
-INSERT INTO {DATABASE}.lang_edicion (`id_edicion`, `lang`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}lang_edicion (`id_edicion`, `lang`) VALUES
 ('2012', 'fr'),
 ('2012', 'es'),
 ('2012', 'ca'),
@@ -106,7 +106,7 @@ INSERT INTO {DATABASE}.lang_edicion (`id_edicion`, `lang`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.web_modulos (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}web_modulos (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `modulo` varchar(50) NOT NULL,
   `alta` varchar(1) NOT NULL DEFAULT 'S',
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.web_modulos (
 
 -- command split --
 
-INSERT INTO {DATABASE}.web_modulos (`modulo`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}web_modulos (`modulo`, `alta`) VALUES
 ('escaparate', 'S'),
 ('contacta', 'S'),
 ('ediciones', 'S'),
@@ -135,7 +135,7 @@ INSERT INTO {DATABASE}.web_modulos (`modulo`, `alta`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.perfiles (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}perfiles (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `profile` varchar(45) NOT NULL,
   `logo` varchar(50) DEFAULT NULL,
@@ -146,14 +146,14 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.perfiles (
 
 -- command split --
 
-INSERT INTO {DATABASE}.perfiles (`profile`, `logo`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}perfiles (`profile`, `logo`) VALUES
 ('system', 'admin.png'),
 ('web', 'web.png'),
 ('cine', 'cine.png');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.usuario_perfil (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuario_perfil (
   `id_usuario` varchar(2) NOT NULL,
   `id_perfil` varchar(2) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -162,14 +162,14 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.usuario_perfil (
 
 -- command split --
 
-INSERT INTO {DATABASE}.usuario_perfil (`id_usuario`, `id_perfil`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}usuario_perfil (`id_usuario`, `id_perfil`) VALUES
 (1, 1),
 (1, 2),
 (1, 3);
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.modulos (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}modulos (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `modulo` varchar(20) NOT NULL,
   `logo` varchar(50) DEFAULT NULL,
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.modulos (
 
 -- command split --
 
-INSERT INTO {DATABASE}.modulos (`modulo`, `logo`, `modulo_padre`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}modulos (`modulo`, `logo`, `modulo_padre`) VALUES
 ('usuario', 'usuario.png', 0),
 ('pagina', 'pagina.png', 0),
 ('espacio', NULL, 6),
@@ -207,7 +207,7 @@ INSERT INTO {DATABASE}.modulos (`modulo`, `logo`, `modulo_padre`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.modulo_perfil (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}modulo_perfil (
   `id_modulo` varchar(2) NOT NULL,
   `id_perfil` varchar(2) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.modulo_perfil (
 
 -- command split --
 
-INSERT INTO {DATABASE}.modulo_perfil (`id_modulo`, `id_perfil`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}modulo_perfil (`id_modulo`, `id_perfil`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -241,7 +241,7 @@ INSERT INTO {DATABASE}.modulo_perfil (`id_modulo`, `id_perfil`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.pagina (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}pagina (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(200) NOT NULL,
   `id_webmodulo` int(11) NOT NULL DEFAULT '0',
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.pagina (
 
 -- command split --
 
-INSERT INTO {DATABASE}.pagina (`url`, `id_webmodulo`, `layout`, `muestra`, `skin`, `alta`, `id_paginapadre`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}pagina (`url`, `id_webmodulo`, `layout`, `muestra`, `skin`, `alta`, `id_paginapadre`) VALUES
 ('home', 7, '2columnas.phtml', '2012', '2012', 'S', 0),
 ('espacios', 4, '1columna.phtml', '2012', '2012', 'S', 0),
 ('convocatorias', 9, '2columnas.phtml', '2012', '2012', 'S', 3),
@@ -288,7 +288,7 @@ INSERT INTO {DATABASE}.pagina (`url`, `id_webmodulo`, `layout`, `muestra`, `skin
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.textos (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}textos (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100) NOT NULL,
   `texto` text NOT NULL,
@@ -304,7 +304,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.textos (
 
 -- command split --
 
-INSERT INTO {DATABASE}.textos (`titulo`, `texto`, `autor`, `lang`, `muestra`,`id_galeria`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}textos (`titulo`, `texto`, `autor`, `lang`, `muestra`,`id_galeria`) VALUES
 ('9ª Muestra de Cine de Lavapiés. 22 de junio - 1 de julio', '<div id="cartel-home"><img src="img/galerias/carteles/9-muestra-de-cine-de-lavapies.jpg" alt="" />Cartel realizado por <a href="http://iagoberro.wordpress.com/" target="_blank">Iago Alvarez</a></div>\n<div id="txt-home">La Muestra de cine de Lavapi&eacute;s entra en su novena edici&oacute;n (si fu&eacute;ramos una sinfon&iacute;a estar&iacute;amos gafados) en un a&ntilde;o en el que hemos visto desaparecer un mont&oacute;n de festivales y chiringuitos por falta de subvenciones p&uacute;blicas. Pero nosotros somos una muestra autogestionada y esta independencia hace que en &eacute;pocas como la que vivimos (&eacute;pocas de estafa, que no de crisis) sigamos hacia adelante con los contratiempos de costumbre, ni m&aacute;s ni menos.<br /><br />Ha sido un a&ntilde;o en el que la actuaci&oacute;n de la policia (en Lavapi&eacute;s, en Madrid y en el estado espa&ntilde;ol) ha incrementado su nivel de violencia como nunca, haciendo redadas constantes e indiscriminadas. Han ladrado mucho, claro, porque hemos cabalgado mucho... Theo Angelopoulos, un cineasta al que admiramos y que muri&oacute; este a&ntilde;o atropellado por un policia en el Pireo a los 76 a&ntilde;os, dec&iacute;a en su pel&iacute;cula El paso suspendido de la cig&uuml;e&ntilde;a : &ldquo;Si doy un paso estoy en otra parte... o muero&rdquo;. Terrible met&aacute;fora de su destino y del de todxs los griegxs. &Eacute;ste ha sido el a&ntilde;o de dar pasos adelante, zancadas a topetazos en el barrio de Lavapi&eacute;s, producto de la incre&iacute;ble bocanada de aire fresco que ha supuesto el 15m, que ha recogido y amplificado v&iacute;as y sue&ntilde;os que buscaban trenzar nuestras redes de apoyo: paralizaciones de desahucios, movimientos contra las redadas,<br />ocupaciones, grupos y coordinadoras de consumo responsable, mercados de trueque, bancos de tiempo, espacios de pedagog&iacute;a libre, plataformas de activismo cibern&eacute;tico o proyectos solidarios y de emprendimiento como el Mercado de San Fernando que est&aacute; reconfigur&aacute;ndose y viviendo un proceso de restructuraci&oacute;n muy interesante. Pasos hacia adelante en las ant&iacute;podas de la gentrificaci&oacute;n, del stress de lo cotidiano y del desencuentro entre el vecindario.<br /><br />En lo que a nosotrxs nos compete ( desarrollar una Muestra de cine ) la repercusi&oacute;n que ha tenido estas nuevas maneras de estar en la vida y en la calle se ha traducido en un gran salto cuantitativo pero sobretodo cualitativo en produciones liberadas al que hemos respondido dando el salto adelante y abriendo la convocatoria de autoproducciones exclusivamente a obras con licencias libres. Ha aumentado el nivel en las autoproducciones y sobre todo la calidad argumentativa. Estas obras liberadas nos cuentan lo que est&aacute; pasando y c&oacute;mo est&aacute; pasando. Y nos han hecho reflexionar, entre otras cosas, sobre la presencia generalizada de la acampada como forma de lucha contempor&aacute;nea (Sol, Plaza Catalunya y el resto de ciudades de nuestro estado, pero tambi&eacute;n Nueva York, Londres, Tahrir, S&aacute;hara Occidental, T&uacute;nez...), sobre el valor de los campamentos como lugares in extremis donde florecen los acontecimientos.<br /><br />Frente a los grandes proyectos urban&iacute;sticos vac&iacute;os y los grandes terremotos de una tierra que aulla, hemos decidido plantar nuestras jaimas en la ciudad como ese espacio absolutamente privilegiado de la lucha, del perderse, del encuentro. En esa topograf&iacute;a, en ese callejero es donde hemos trazado los caminos que van forjando alianzas inesperadas, que se van configurando como el recept&aacute;culo de las huellas de la<br />cultura, comport&aacute;ndonos como si acabasemos de despertar de un violento terremoto, reactivando los procesos como si de un plan de emergencia se tratase. Decia Walter Benjamin en 1926: &ldquo;Los pueblos de Europa Central viven como los habitantes de una ciudad sitiada que est&aacute; agotando ya la p&oacute;lvora y los v&iacute;veres y que es muy dif&iacute;cil que se salve. Un caso en el que habr&iacute;a que pensar seriamente en rendirse. Pero la fuerza muda e invisible frente a la que se encuentra hoy Europa Central no negocia. De manera que el &uacute;nico remedio, en espera de que llegue el asalto final es volver la mirada a lo extraordinario, lo &uacute;nico que todav&iacute;a nos puede salvar&rdquo;.<br /><br />En nuestras estructuras precarias tratamos de saber quienes somos, cu&aacute;ntos estamos, vincularnos a la necesidad de estar con los nuestros, de reconocernos bajo esas jaimas, a tientas, de trabajar silenciosamente en&nbsp; nuestro mundo paralelo de redes y mercados sociales, asomando la cabeza escandalosamente cuando hace falta parar un desahucio o simplemente para aullar de rabia en un cotidiano en el que desayunamos con suicidios,<br />primas de riesgo y algo llamado rescate, que en realidad es una piedra al cuello. Las pel&iacute;culas que nos gusta mostrar no son necesariamente sociales o pol&iacute;ticas, pero s&iacute; lo es nuestra actitud de c&oacute;mo entendemos la cultura, como eje transformador de la sociedad. Es por ello que queremos mostrar nuestro apoyo, solidaridad y cari&ntilde;o a Willy Toledo, Javier Krahe, La Casika y su festival de cortos, a las personas represaliadas y detenidas en la Huelga del 29m, las multadas, detenidas, apaleadas y acogotadas en las movilizaciones del 15m, las luchas estudiantiles y a toda la ciudadan&iacute;a que lucha por mejorar este mundo que otros tratan de destruir y de dividir en aras de la cantidad de ceros que tengan las cuentas corrientes.<br /><br />&iexcl;Nos vemos en las jaimas, bajo la luz del proyector!</div>', NULL, 'es', '2012', 0),
 ('FAQ - Questions Fréquentes', '<div id="calling" class="inicio-columnaizquierda">\n<p><a href="img/galerias/carteles/9-muestra-de-cine-de-lavapies.jpg"> <img src="img/galerias/carteles/9-muestra-de-cine-de-lavapies.jpg" alt="9-muestra-de-cine-de-lavapies" width="180" height="254" /> </a></p>\n</div>\n<div class="inicio-columnaderecha">\n<p><strong>1.- Qu&rsquo;est-ce que <em>La Muestra de cine de Lavapi&eacute;s</em>?</strong><br /> La<em> Muestra de cine de Lavapi&eacute;s</em> est une manifestation culturelle qui se d&eacute;roule depuis 9 ans dans le quartier de Lavapi&eacute;s, &agrave; Madrid, qui a pour but d&rsquo;offrir aux voisins un point de rencontre qui leur permette d&rsquo;acc&eacute;der &agrave; des films, documentaires et courts m&eacute;trages que nous s&eacute;lectionnons pendant l&rsquo;ann&eacute;e.<br /> <br /> <strong>2.- Quelles sont les dates de <em>La Muestra de cine de Lavapi&eacute;s</em>?</strong><br /> D&rsquo;habitude, elle se d&eacute;roule fin juin, d&eacute;but juillet.<br /> <strong><br /> 3.- O&ugrave; a lieu <em>La Muestra de cine de Lavapi&eacute;s</em>?</strong><br /> La Muestra de cine de Lavapi&eacute;s se d&eacute;roule dans des locaux, associations, bars et d&rsquo;autres lieux o&ugrave; ont lieu des activit&eacute;s culturelles et qui collaborent avec la Muestra, ainsi que dans la rue.<br /> <strong><br /> </strong><span style="font-weight: bold;">4</span><strong>.- Comment peut-on collaborer avec la <em>Muestra</em>?</strong><br /> <a href="contactez-nous">Contactez-nous</a>, et, si vous le d&eacute;sirez, vous pouvez assister &agrave; une des r&eacute;unions de la Muestra et voir vous voulez faire partie de l&rsquo;organisation.<br /> <strong><br /> 5.- Combien &ccedil;a coute ?</strong><br /> Toutes les projections sont gratuites.<br /> <strong><br /> </strong></p>\n<p><strong> 6.- Quel est le moyen de financement de la <em>Muestra </em>?</strong><br /> Nous ne recevons ni aides publiques ni parrainages priv&eacute;s. Nous n&rsquo;avons pas vraiment beaucoup de frais. On organise une f&ecirc;te chaque ann&eacute;e avec laquelle on paye les programmes, l&rsquo;affiche, le maintien du mat&eacute;riel et les frais des invit&eacute;s qui habitent en dehors de Madrid.<br /> <strong><br /> 7.- Comment vous procurez-vous les films qui passent &agrave; la <em>Muestra </em>?</strong><br /> De deux fa&ccedil;ons : d&rsquo;une part on contacte les distributeurs, les producteurs et les r&eacute;alisateurs pour qu&rsquo;ils nous c&egrave;dent gratuitement les droits pour la semaine pendant laquelle se d&eacute;roule la <em>Muestra</em>. D&rsquo;autre part, on lance un avis de convocation pour que tous ceux qui sont int&eacute;ress&eacute;s nous envoient leurs travaux.</p>\n<p>&nbsp;</p>\n</div>\n<div class="inicio-columnaizquierda"><a title="Convocatoria de obras audiovisuales con licencia libre" href="img/galerias/carteles/atp_9.jpg" class="fancybox"> <img style="width: 180px;" src="img/galerias/carteles/atp_9.jpg" alt="Convocatoria de obras audiovisuales con licencia libre" /> </a> <a href="http://www.lacuadrillaestudio.com" target="_blank">La Cuadrilla</a> (cc by-nc-nd)</div>\n<div class="inicio-columnaderecha">\n<p><strong>Appel &agrave; productions audiovisuelles sous licence libre</strong></p>\n<p><strong>1.- Quel est le d&eacute;lai pour s&rsquo;inscrire dans la cat&eacute;gorie autoproduction ?</strong><br /> L&rsquo;inscription commence le 15 d&eacute;cembre 2011 et termine le 15 mars 2013.</p>\n<p><strong>2.- Est-ce qu&rsquo;il y a des prix en esp&egrave;ces &agrave; la Muestra ?</strong><br /> Non, il s&rsquo;agit d&rsquo;une muestra, et pas d&rsquo;un festival. Les &oelig;uvres s&eacute;lectionn&eacute;es passent &agrave; la <em>Muestra</em>.<br /> <br /> <strong>3.- Pourquoi cette ann&eacute;e vous n&rsquo;avez pas accept&eacute; de DVD ?</strong><br /> De nos jours il est moins cher, plus commode et plus rapide de se servir d&rsquo;Internet et de nous envoyer un lien.</p>\n<p><strong>4.- Est-ce que vous nous conseillez un site web pour envoyer les vid&eacute;os qu&rsquo;on veut pr&eacute;senter ?</strong><br /> Vous pouvez envoyer vos vid&eacute;os via une plate-forme de streaming telle que vimeo.com ou archive.org. Vous pouvez &eacute;galement nous envoyer un lien pour t&eacute;l&eacute;charger la vid&eacute;o.</p>\n<p><strong>5.- Allez-vous vraiment mettre tous les films sur Internet ?</strong><br /> <em>La Muestra de cine de Lavapi&eacute;s</em> est tr&egrave;s fi&egrave;re de tous les films qu&rsquo;on re&ccedil;oit, et &ccedil;a nous fait mal au c&oelig;ur de ne pas pouvoir tous les projeter. C&rsquo;est pour &ccedil;a que nous voulons qu&rsquo;ils soient tous disponibles sur Internet pour permettre &agrave; un maximum de gens de les regarder. Mais on comprend qu&rsquo;il y existe des raisons pour ne pas le faire (crit&egrave;res d&rsquo;exclusivit&eacute; avec d&rsquo;autres festivals, possibilit&eacute;s de distribution commerciale, etc.). Si c&rsquo;est le cas, nous pouvons retarder la date de publication jusqu&rsquo;au jour de l&rsquo;inauguration de la Muestra.</p>\n<p><strong>6.- Pourquoi vous n&rsquo;acceptiez que de licences libres ?</strong><br /> Parce que la <em>Muestra</em> a pour objectif de rendre la culture libre. Il nous semble logique que l&rsquo;appel ouvert serve &agrave; rendre visible et &agrave; diffuser au maximum les &oelig;uvres de tous ceux qui font de la culture libre.</p>\n<p><strong>7.- Comment et quand peut-on savoir si on a &eacute;t&eacute; s&eacute;lectionn&eacute; ?</strong><br /> Une fois la s&eacute;lection finie, nous vous contacterons par mail. Nous envisageons comme date limite le 15 mai 2013.</p>\n<p><strong>8.- Le mat&eacute;riel qu&rsquo;on vous envoie va &ecirc;tre utilis&eacute; dans l&rsquo;avenir ?</strong><br /> Tout le mat&eacute;riel qu&rsquo;on re&ccedil;oit passe &agrave; nos archives et il n&rsquo;est jamais utilis&eacute; sans l&rsquo;autorisation de l&rsquo;auteur.</p>\n<p><strong>9.- Pourquoi tant de FAQ?</strong><br /> Il vaut mieux en avoir trop que pas assez.</p>\n</div>', NULL, 'fr', '2012', 0),
 ('FAQs', '<div class="inicio-columnaizquierda"><a title="Convocatoria de obras audiovisuales con licencia libre" href="img/galerias/carteles/atp_9.jpg" class="fancybox"> <img style="width: 180px;" src="img/galerias/carteles/atp_9.jpg" alt="Convocatoria de obras audiovisuales con licencia libre" /> </a> <a href="http://www.lacuadrillaestudio.com">La Cuadrilla</a> (cc by-nc-nd)</div>\n<div class="inicio-columnaderecha">\n<p><strong>1.- Was ist die<em> Muestra de cine de Lavapi&eacute;s</em>?</strong><br /> Die <em>Muestra de cine de Lavapi&eacute;s</em> ist eine Filmschau, die seit neun Jahren in Lavapi&eacute;s, einem Stadtviertel von Madrid, stattfindet und deren Ziel es ist, durch den gemeinsamen Genuss einer Auswahl von Kurz-, Spiel- und Dokumentarfilmen (die wir das Jahr &uuml;ber ausw&auml;hlen und zu erhalten versuchen) Orte der nachbarschaftlichen Begegnung zu schaffen und zu f&ouml;rdern.<br /> <br /> <strong>2.- Wann findet die <em>Muestra</em> statt? </strong><br /> F&uuml;r gew&ouml;hnlich findet die Muestra Ende Juni und Anfang Juli statt.<br /> <br /> <strong>3.- Wo findet die <em>Muestra</em> statt?</strong><br /> Die <em>Muestra de Cine de Lavapi&eacute;s</em> wird in Lokalen, Vereinigungen, Kneipen und anderen Orten im Viertel durchgef&uuml;hrt, in denen kulturelle Veranstaltungen stattfinden und die mit der Muestra zusammenarbeiten. Au&szlig;erdem auf Stra&szlig;en und Pl&auml;tzen.</p>\n<p><strong>4.- Wie kann ich bei der <em>Muestra</em> mitmachen?</strong><br /> Bitte nimm <a href="kontakt">Kontakt</a> mit uns auf, beteilige dich an unseren Treffen, dann kannst du dir &uuml;berlegen, ob du bei der Organisation dabeisein willst.&nbsp;</p>\n</div>\n<p><strong>5.- Wieviel kostet der Eintritt?</strong><br /> Nichts, alle unsere Vorf&uuml;hrungen sind gratis.</p>\n<p><strong>6.- Wie finanziert ihr euch?</strong><br /> Wir erhalten keinerlei &ouml;ffentliche F&ouml;rderung und haben auch keine privaten Sponsoren. Wir haben allerdings auch keine allzu hohen Kosten und machen einmal im Jahr ein Fest, mit dem wir Programmhefte, Plakate, die technischen Ausstattung und die Spesen der von uns eingeladenen G&auml;ste finanzieren.</p>\n<p><strong>7.- Wie kommt ihr zu den Filmen, die ihr zeigt?</strong><br /> Auf zwei Wegen: Einerseits verfolgen wir Verleihe, Produzenten und Filmemacher, damit sie uns kostenlos die Auff&uuml;hrungsrechte f&uuml;r die Filmschauwoche &uuml;berlassen. Andererseits f&uuml;hren wir eine offene Ausschreibung durch, bei der uns wer will seine Werke schicken kann. <br /> <br /> <strong>Ausschreibung f&uuml;r Audiovisuelle Werke mit freier Lizenz</strong><br /> <br /> <strong>1.- Wann ist Einsendeschlu&szlig;?</strong><br /> Die Anmeldefrist beginnt am 15. Dezember 2011 und endet am 15. M&auml;rz 2013.<br /> <br /> <strong>2.- Werden Preise verliehen?</strong><br /> Nein, es handelt sich um eine Filmschau, nicht um ein Festival. Die ausgew&auml;hlten Werke werden im Verlauf der <em>Muestra</em> vorgef&uuml;hrt.<br /> <br /> <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:RelyOnVML /> <o:AllowPNG /> </o:OfficeDocumentSettings> </xml><![endif]--><!--[if gte mso 9]><xml> <w:WordDocument> <w:View>Normal</w:View> <w:Zoom>0</w:Zoom> <w:TrackMoves /> <w:TrackFormatting /> <w:HyphenationZone>21</w:HyphenationZone> <w:PunctuationKerning /> <w:ValidateAgainstSchemas /> <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid> <w:IgnoreMixedContent>false</w:IgnoreMixedContent> <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText> <w:DoNotPromoteQF /> <w:LidThemeOther>ES</w:LidThemeOther> <w:LidThemeAsian>X-NONE</w:LidThemeAsian> <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript> <w:Compatibility> <w:BreakWrappedTables /> <w:SnapToGridInCell /> <w:WrapTextWithPunct /> <w:UseAsianBreakRules /> <w:DontGrowAutofit /> <w:SplitPgBreakAndParaMark /> <w:EnableOpenTypeKerning /> <w:DontFlipMirrorIndents /> <w:OverrideTableStyleHps /> </w:Compatibility> <m:mathPr> <m:mathFont m:val="Cambria Math" /> <m:brkBin m:val="before" /> <m:brkBinSub m:val=" " /> <m:smallFrac m:val="off" /> <m:dispDef /> <m:lMargin m:val="0" /> <m:rMargin m:val="0" /> <m:defJc m:val="centerGroup" /> <m:wrapIndent m:val="1440" /> <m:intLim m:val="subSup" /> <m:naryLim m:val="undOvr" /> </m:mathPr></w:WordDocument> </xml><![endif]--><!--[if gte mso 9]><xml> <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true" DefSemiHidden="true" DefQFormat="false" DefPriority="99" LatentStyleCount="267"> <w:LsdException Locked="false" Priority="0" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Normal" /> <w:LsdException Locked="false" Priority="9" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="heading 1" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9" /> <w:LsdException Locked="false" Priority="39" Name="toc 1" /> <w:LsdException Locked="false" Priority="39" Name="toc 2" /> <w:LsdException Locked="false" Priority="39" Name="toc 3" /> <w:LsdException Locked="false" Priority="39" Name="toc 4" /> <w:LsdException Locked="false" Priority="39" Name="toc 5" /> <w:LsdException Locked="false" Priority="39" Name="toc 6" /> <w:LsdException Locked="false" Priority="39" Name="toc 7" /> <w:LsdException Locked="false" Priority="39" Name="toc 8" /> <w:LsdException Locked="false" Priority="39" Name="toc 9" /> <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption" /> <w:LsdException Locked="false" Priority="10" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Title" /> <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font" /> <w:LsdException Locked="false" Priority="11" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Subtitle" /> <w:LsdException Locked="false" Priority="22" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Strong" /> <w:LsdException Locked="false" Priority="20" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Emphasis" /> <w:LsdException Locked="false" Priority="59" SemiHidden="false" UnhideWhenUsed="false" Name="Table Grid" /> <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text" /> <w:LsdException Locked="false" Priority="1" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="No Spacing" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 1" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 1" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 1" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 1" /> <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision" /> <w:LsdException Locked="false" Priority="34" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="List Paragraph" /> <w:LsdException Locked="false" Priority="29" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Quote" /> <w:LsdException Locked="false" Priority="30" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Intense Quote" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 1" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 1" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 1" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 1" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 1" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 2" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 2" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 2" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 2" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 2" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 2" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 2" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 2" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 2" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 3" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 3" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 3" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 3" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 3" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 3" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 3" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 3" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 3" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 4" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 4" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 4" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 4" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 4" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 4" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 4" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 4" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 4" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 5" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 5" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 5" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 5" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 5" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 5" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 5" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 5" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 5" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false" UnhideWhenUsed="false" Name="Light Shading Accent 6" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false" UnhideWhenUsed="false" Name="Light List Accent 6" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false" UnhideWhenUsed="false" Name="Light Grid Accent 6" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 1 Accent 6" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false" UnhideWhenUsed="false" Name="Medium List 2 Accent 6" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false" UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false" UnhideWhenUsed="false" Name="Dark List Accent 6" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Shading Accent 6" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful List Accent 6" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false" UnhideWhenUsed="false" Name="Colorful Grid Accent 6" /> <w:LsdException Locked="false" Priority="19" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis" /> <w:LsdException Locked="false" Priority="21" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis" /> <w:LsdException Locked="false" Priority="31" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference" /> <w:LsdException Locked="false" Priority="32" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Intense Reference" /> <w:LsdException Locked="false" Priority="33" SemiHidden="false" UnhideWhenUsed="false" QFormat="true" Name="Book Title" /> <w:LsdException Locked="false" Priority="37" Name="Bibliography" /> <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading" /> </w:LatentStyles> </xml><![endif]--><!--[if gte mso 10]> <mce:style><!  /* Style Definitions */ table.MsoNormalTable {mso-style-name:"Tabla normal"; mso-tstyle-rowband-size:0; mso-tstyle-colband-size:0; mso-style-noshow:yes; mso-style-priority:99; mso-style-parent:""; mso-padding-alt:0cm 5.4pt 0cm 5.4pt; mso-para-margin-top:0cm; mso-para-margin-right:0cm; mso-para-margin-bottom:10.0pt; mso-para-margin-left:0cm; line-height:115%; mso-pagination:widow-orphan; font-size:11.0pt; font-family:"Calibri","sans-serif"; mso-ascii-font-family:Calibri; mso-ascii-theme-font:minor-latin; mso-hansi-font-family:Calibri; mso-hansi-theme-font:minor-latin; mso-bidi-font-family:"Times New Roman"; mso-bidi-theme-font:minor-bidi; mso-fareast-language:EN-US;} --> <!--[endif] --><strong><span style="font-size: 10pt; line-height: 115%;" lang="EN-US">4.- Gibt es was Neues dieses Jahr?</span></strong><span style="font-size: 10pt; line-height: 115%;" lang="EN-US"><br /> </span><span style="font-size: 10pt; line-height: 115%;">Ja, dieses Jahr gibt es zwei grundlegende Ver&auml;nderungen. </span><span style="font-size: 10pt; line-height: 115%;" lang="EN-US">Erstens werden Eigenproduktionen f&uuml;r die Auswahl nur angenommen, wenn sie mit einer freien Lizenzen angemeldet werden. Zweitens ist es dieses Jahr nicht mehr notwendig, einen Datentr&auml;ger zu schicken. Es reicht, wenn ihr das Video auf eine der zahlreichen Videoportale hochladet und uns den Link dazu schickt. Falls die Arbeit ausgew&auml;hlt wird, werdet ihr benachrichtigt, um uns eine Kopie in Vorf&uuml;hrqualit&auml;t zukommen zu lassen.</span><br /> <br /> <strong>5.- Warum akzeptiert ihr dieses Jahr keine DVDs?</strong><br /> Weil es heutzutage billiger, praktischer und schneller ist, die Arbeit ins Internet hochzuladen und uns den Link zu schicken.<br /> <br /> <strong>4.- Auf welcher Plattform empfehlt ihr uns die Videos hochzuladen?</strong><br /> Ihr k&ouml;nnt sie auf eine Streaming-Plattform wie z.B. vimeo.com oder archive.org hochladen oder auch einen Link zum direkten Download angeben.<br /> <br /> <strong>5.- Werdet ihr wirklich alle Filme auf eurer Webseite zeigen?</strong><br /> Wir von der Muestra sind sehr solz auf alle Filme, die uns erreichen und wir bedauern sehr, da&szlig; wir nur einige von ihnen zeigen k&ouml;nnen. Deshalb wollen wir alle Videos, sobald sie uns erreichen, auf unserer Seite verlinken, um m&ouml;glichst vielen Leuten die M&ouml;glichkeit zu geben, sie zu sehen. Wir verstehen allerdings, da&szlig; ihr Gr&uuml;nde haben k&ouml;nntet, die dem widersprechen (Exklusivit&auml;t anderer Festivals, M&ouml;glichkeiten zum kommerziellen Vertrieb usw.). Wenn ihr uns darauf hinweist, verschieben wir die Ver&ouml;ffentlichung auf den Tag der Er&ouml;ffnung der <em>Muestra</em>.<br /> <br /> <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:RelyOnVML /> <o:AllowPNG /> </o:OfficeDocumentSettings> </xml><![endif]--><strong><span style="font-size: 10pt;" lang="EN-US">6.- Und wenn alle auf der Webseite zu sehen sind, warum dann noch auf der <em>Muestra</em>?<br /> </span></strong><span style="font-size: 10pt;" lang="EN-US">Weil obwohl die Digitalisierung den Austausch von Kopien im Netz erlaubt und erleichtert, schl&auml;gt sich das &ndash; anders als man uns glauben machen will &ndash; nicht nieder in &ouml;ffentlichen Vorf&uuml;hrungen, die f&uuml;r alle zug&auml;nglich sind. Die Vorf&uuml;hrs&auml;le sind mit teuersten Technik ausgestattet und die Kosten daf&uuml;r tr&auml;gt der Kinobesucher. Die Filme werden daher nicht oder erst nach Jahren verliehen. Die <em>Muestra</em> besteht auf dem Aspekt der Technikbefreiung: Wir machen Vorf&uuml;hrungen mit der h&ouml;chsten Qualit&auml;t (und die ist hoch), die uns die g&uuml;nstigen Ger&auml;te heutzutage erlauben. Auf diese Weise sozialisieren wir die technischen Hilfsmittel, sozialisieren die Filme, sozialisieren und Punkt.</span></p>\n<p><span style="font-weight: bold;">7</span><strong>.- Warum akzeptiert ihr diese Jahr nur freie Lizenzen?</strong><br /> Weil die Muestra de cine sich zum Ziel gesetzt hat, freie Kultur zu machen, und daher ist es logisch, da&szlig; die Teilnahmeaufforderung (Ausschreibung) dazu dient, die Werke freier Kultur zu zeigen und zu verbreiten.<br /> <br /> <strong>8.- Was bedeutet &ldquo;ordnungsgem&auml;ss lizenziert&rdquo;?</strong><br /> Im Verlauf von neun Jahren Auswahl der Eigenproduktionen haben wir festgestellt, da&szlig; viele Bewerber beim Ausf&uuml;llen des Anmeldeformulars sich entscheiden f&uuml;r &ldquo;Raubkopie&rdquo; oder &ldquo;das ist f&uuml;r alle&rdquo; oder irgendeine andere Art von Absichtserkl&auml;rung, die lediglich das ist: eine Absichtserkl&auml;rung. Wenn du nicht genau angibst, welche Lizenz die Arbeit aufweist, wird ihr automatisch das copyright &uuml;bertragen, und du wirst trotz allerbester Absichten nicht die Rechte an deinem Werk haben, die du haben willst.<br /> <br /> <strong>9.- Wie bzw. wann werde ich verst&auml;ndigt ob ich ausgew&auml;hlt wurde?</strong><br /> Sobald wir die Auswahl getroffen haben, werden wir uns mit dir per e-mail in Verbindung setzen. Als sp&auml;tm&ouml;glichsten Termin haben wir uns auf den 15. Mai 2013 festgelegt.<br /> <br /> <strong>10.- Wird das von mir geschickte Material irgendwie verwendet?</strong><br /> Das uns von euch &uuml;berlassene Material wird in unser Archiv &uuml;bernommen, das in keinem Fall ohne Einwilligung der Autoren verwendet wird.<br /> <br /> <strong>11.-Warum gibt es so viele FAQ?</strong><br /> Weil zu viel besser ist als zu wenig.</p>', NULL, 'de', '2012', 0),
@@ -336,7 +336,7 @@ INSERT INTO {DATABASE}.textos (`titulo`, `texto`, `autor`, `lang`, `muestra`,`id
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.pagina_texto (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}pagina_texto (
   `id_pagina` int(11) NOT NULL,
   `id_texto` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -346,7 +346,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.pagina_texto (
 
 -- command split --
 
-INSERT INTO {DATABASE}.pagina_texto (`id_pagina`, `id_texto`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}pagina_texto (`id_pagina`, `id_texto`) VALUES
 (1, 1),
 (4, 2),
 (4, 3),
@@ -378,7 +378,7 @@ INSERT INTO {DATABASE}.pagina_texto (`id_pagina`, `id_texto`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.menu (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}menu (
   `id_pagina` int(11) NOT NULL,
   `orden` int(11) NOT NULL,
   `portada` varchar(1) NOT NULL DEFAULT 'N',
@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.menu (
 
 -- command split --
 
-INSERT INTO {DATABASE}.menu (`id_pagina`, `orden`, `portada`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}menu (`id_pagina`, `orden`, `portada`) VALUES
 (1, 1, 'S'),
 (2, 3, 'N'),
 (5, 4, 'N'),
@@ -409,7 +409,7 @@ INSERT INTO {DATABASE}.menu (`id_pagina`, `orden`, `portada`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.docs (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}docs (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(500) NOT NULL,
@@ -425,7 +425,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.docs (
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.galerias (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}galerias (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(500) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
@@ -438,14 +438,14 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.galerias (
 
 -- command split --
 
-INSERT INTO {DATABASE}.galerias (`id`, `titulo`, `galeria`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}galerias (`id`, `titulo`, `galeria`, `alta`) VALUES
 (0, '', '', 'N'),
 (1, 'Carteles', 'carteles', 'S'),
 (2, 'filmfestCMS', 'filmfestcms', 'N');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.imagenes (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}imagenes (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `imagen` varchar(100) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
@@ -459,7 +459,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.imagenes (
 
 -- command split --
 
-INSERT INTO {DATABASE}.imagenes (`imagen`, `descripcion`, `id_galeria`, `url_video`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}imagenes (`imagen`, `descripcion`, `id_galeria`, `url_video`) VALUES
 ('9-muestra-de-cine-de-lavapies.jpg', '9ª Muestra de Cine de Lavapiés', 1, ''),
 ('atp_9.jpg', 'Convocatoria de obras audiovisuales con licencias libres', 1, ''),
 ('10-muestra-de-cine-de-lavapies.jpg', '10ª Muestra de Cine de Lavapiés', 1, ''),
@@ -472,7 +472,7 @@ INSERT INTO {DATABASE}.imagenes (`imagen`, `descripcion`, `id_galeria`, `url_vid
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.donantes (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}donantes (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `donante` varchar(200) NOT NULL,
   `web` varchar(200) DEFAULT NULL,
@@ -484,13 +484,13 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.donantes (
 
 -- command split --
 
-INSERT INTO {DATABASE}.donantes (`id`, `donante`, `web`, `logo`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}donantes (`id`, `donante`, `web`, `logo`, `alta`) VALUES
 (0, '', NULL, NULL, 'N'),
 (1,'Fundación quepo', 'http://www.quepo.org', 'fundacin-quepo.jpg', 'S');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.espacios (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}espacios (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `espacio` varchar(100)   NOT NULL DEFAULT '',
   `direccion` varchar(200)   NOT NULL DEFAULT '',
@@ -507,14 +507,14 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.espacios (
 ) ENGINE=InnoDB COMMENT='tabla que almacena los espacios de proyeccion';
 
 -- command split --
-INSERT INTO {DATABASE}.espacios (`id`, `espacio`, `direccion`, `url`, `descripcion`, `latitud`, `longitud`, `logo`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}espacios (`id`, `espacio`, `direccion`, `url`, `descripcion`, `latitud`, `longitud`, `logo`, `alta`) VALUES
 (0, '', '', '', '', 0.0, 0.0, '', 'N'),
 (1, 'Plaza de Lavapiés', 'Plaza de Lavapiés', '', '', 40.4087411, -3.7012135, 'plaza-de-lavapies.jpg', 'S'),
 (2, 'Plaza Xosé Tarrio', 'Ministriles 6', 'http://plazaxosetarrio.wordpress.com/', 'Xosé Tarrio pasó más de 16 años en prisión y murió a causa de ella, a causa de años de tortura, enfermedad, aislamiento. El día 3 de enero del año 2009, familiares, compañerxs y amigxs de Xosé se reunieron en Madrid para llevar a cabo un particular homenaje, la inauguración de la plaza Xosé Tarrio.', 40.4106338, -3.7022709, 'plaza-xos-tarrio.jpg', 'S');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.licencias (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}licencias (
   `id` varchar(2) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `url` varchar(200) DEFAULT NULL,
@@ -524,7 +524,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.licencias (
 
 -- command split --
 
-INSERT INTO {DATABASE}.licencias (`id`, `nombre`, `url`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}licencias (`id`, `nombre`, `url`) VALUES
 ('01', 'Copyright', NULL),
 ('02', 'Creative commons', NULL),
 ('03', 'Public domain', 'http://creativecommons.org/publicdomain/mark/1.0/deed.es'),
@@ -550,7 +550,7 @@ INSERT INTO {DATABASE}.licencias (`id`, `nombre`, `url`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.peliculas (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}peliculas (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(100)   NOT NULL DEFAULT '',
   `autor` varchar(100)   NOT NULL,
@@ -574,7 +574,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.peliculas (
 ) ENGINE=InnoDB COMMENT='Tabla con las películas y autoproducciones';
 
 -- command split --
-INSERT INTO {DATABASE}.peliculas (`titulo`, `autor`, `ficha_tecnica`, `sinopsis`, `material_propio`, `id_donante`, `enlace`, `licencia`, `muestra`, `utf8`,`id_proyeccion`, `video_descarga`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}peliculas (`titulo`, `autor`, `ficha_tecnica`, `sinopsis`, `material_propio`, `id_donante`, `enlace`, `licencia`, `muestra`, `utf8`,`id_proyeccion`, `video_descarga`) VALUES
 ('Cortinilla 2ª Muestra de Cine de Lavapiés', '', '<p><strong>Calipso Films</strong><br>2'' 25'''' / 2005 / Spot / Lavapiés<p>Dirección: Calipso Films<br />\r\nGuión: Calipso Films<br />\r\nProducción: Calipso Films</p>', 'Cortinilla 2ª Muestra de Cine de Lavapiés', NULL, 0, 'http://blip.tv/play/AbSSWYu8BQ', '08', '2012', 'S',  1, ''),
 ('Interferencies', '', '<p><strong>Pablo Zareceansky&nbsp;</strong><br />74'' / 2011 / Drama / Espa&ntilde;a<br /><a href="http://www.interferencies.cc">http://www.interferencies.cc</a></p>\n<p>Esta pel&iacute;cula y todo el proyecto educativo y de denuncia que le rodea es posible gracias a la colaboraci&oacute;n y el trabajo desinteresado de un gran equipo de personas, organizaciones e instituciones, sin las cuales Interfer&egrave;ncies s&oacute;lo existir&iacute;a en nuestros sue&ntilde;os m&aacute;s ut&oacute;picos. En orden cronol&oacute;gico de sue&ntilde;os, aparecemos ODG, Quepo y todas las personas, que cada una de nosotras hemos ido incorporando a este proyecto. Un equipo formado por un total de 150 personas, entidades sociales, empresas audiovisuales y administraciones p&uacute;blicas que se han implicado a fondo con este proyecto.&nbsp;&nbsp;<br /><br />Algunas de nosotros somos:<br /><br />Una producci&oacute;n de<br />para<br /><br />Con<br />Maria: Maria Ribera<br />Anna: Anna Casas<br />Cecilia: Cecilia Ligorio<br />Rodrigo: Rodrigo Garcia Olza<br />Profesora de lenguaje de signos: Ana D&iacute;ez<br /><br />Producci&oacute;n ejecutiva: Juli&aacute;n Altuna<br />Raquel Bonell<br />Sonia Ros<br />Pablo A. Zareceansky<br /><br />Direcci&oacute;n: Pablo A. Zareceansky<br /><br />Gui&oacute;n: Albert Tola<br />Pablo A. Zareceansky<br /><br />A partir de textos propios, ajenos y de las improvisaciones del actor y las actrices.<br /><br />Direcci&oacute;n de fotograf&iacute;a: Albert Pascual<br /><br />Dise&ntilde;o de sonido: Agost Alustiza<br /><br />M&uacute;sica: Lucas Ariel Vallejos<br /><br />Montaje: Regino Hern&aacute;ndez<br />Mayte Hern&aacute;ndez<br />Octavio Rodr&iacute;guez<br />Jordi Puig<br /><br />Vestuario: Ana G&uuml;ell<br />Susana Blanco<br /><br />Maquillaje y peluquer&iacute;a: Karol Tornar&iacute;a<br /><br />Supervisi&oacute;n de contenidos:<br />Jes&uacute;s Carri&oacute;n<br />Iolanda Fresnillo<br />Dani G&oacute;mez-Oliv&eacute;<br />Gemma Tarafa<br />M&oacute;nica Vargas<br /><br />Ayudante de direcci&oacute;n: Daniela Forn<br />Ayudante de direcci&oacute;n de pre producci&oacute;n: Aina Carb&oacute;<br />2a Ayudante de direcci&oacute;n: Natalia Gonz&aacute;lez<br />Script: Joana Mart&iacute;<br />Casting: Irene Roqu&eacute;<br />Ayudantes de gui&oacute;n: Raquel Bonell&nbsp;y&nbsp;Sonia Ros<br /><br />Director de producci&oacute;n: Juli&aacute;n Altuna<br />Jefe de producci&oacute;n: Jorge Nallar<br />Ayudantes de producci&oacute;n: Marc Maldonado<br />V&iacute;ctor Nacher<br />Elisabet Puertas Fern&aacute;ndez<br />Mar&iacute;a Jos&eacute; Garc&iacute;a<br />Encarni Escalante<br /><br />Operadores de c&aacute;mara: Jordi Floren&ccedil;a<br />Oriol Busquets<br /><br />Ayudantes de c&aacute;mara: Alex Gonz&aacute;lez<br />David Urbiola<br /><br />Asistentes de v&iacute;deo: Pablo Montesinos<br />Tom&aacute;s Abell&aacute;n<br /><br />Maquinistas: Sergi Castellarnau<br />Alex Bordeg&oacute;<br /><br />Making Off: Pau Ortiz<br /><br />Foto fija: Sandra Gonz&aacute;lez<br />Pau Ortiz<br /><br />Gaffer pre iluminaci&oacute;n: Edu Bonilla<br />Jefe de el&eacute;ctricos rodaje: Pablo L&oacute;pez<br />2o Jefe de el&eacute;ctricos rodaje: John Harratt<br />El&eacute;ctricos pre iluminaci&oacute;n: Xavi M&eacute;ndez %u201CWoody%u201D<br />Debo Witte<br />El&eacute;ctricos: Jordi Corrales<br />Marta Vives<br />Marc Jard&iacute;<br />Alberto Peralta<br />Esteban Heredia<br />Adri&aacute;n Cores<br />Pedro Iv&aacute;n Garc&iacute;a<br /><br />Direcci&oacute;n Art&iacute;stica: D&iacute;dac Bono<br />Rafel Vives<br />Estel Ferrer<br />Xavier Aguilar<br /><br />Ilustraci&oacute;n decorado: Ana Yael Zareceansky<br />Fotograf&iacute;a ilustraci&oacute;n: Omar Havana<br /><br />Ayudante de vestuario: Coro Mateo<br />Ayudantes de maquillaje y peluquer&iacute;a: Susi Le&oacute;n<br />Ely Andr&eacute;s<br /><br />Sonido directo: Albert Gay<br />Agost Alustiza<br /><br />Microfonistas: Xavier Carrera<br />Idoia I&ntilde;&aacute;rritu<br />Jaume Vidader<br />Marta Cunill<br /><br />Localizaciones:<br />Iv&aacute;n Gomez<br />Manel Manteca<br />Juan Reguera<br /><br />Ayudante de montaje: David Serrano<br /><br />Coordinaci&oacute;n de postproducci&oacute;n: Raquel Bonell<br />Sonia Ros<br />Sandra Picher<br /><br />Colorista: Cristina P&eacute;rez<br />Coordinaci&oacute;n t&eacute;cnica Mixtic: Henriette Mart&iacute;nez<br />T&eacute;cnico Mixtic: Antonio Urrutia<br />Dise&ntilde;o gr&aacute;fico: Chus Portela<br /><br />Digital compositing: Eloi Garcia<br />Mezclas sonido: Sisco Peret<br /><br />Transcripciones: Olga Celada<br />Esther Garcia<br /><br />Traducciones: Julia Cameron<br />Barbara Bender<br />Encarni Escalante<br /><br />Im&aacute;genes archivo cedidas por:<br />Comisi&oacute;n Audiovisual de la Acampada de Barcelona<br />Comisi&oacute;n Audivisual de la AcampadaSol<br />Adriana Mateos<br />Alex Campos (Nomad Eyes)<br />Ana Delgado<br />Antonio Grunfeld<br />Juan Ram&oacute;n Robles<br />Mar&iacute;a Otero<br /><br />Sonido archivo cedido por:<br />El sue&ntilde;o de Tesla<br /><br />Administraci&oacute;n: Silvia Var&oacute;n<br /><br />Catering: Fundaci&oacute; Futur<br /><br />Seguros: Cinevent<br /><br />Salas de ensayo: Centre C&iacute;vic La Sedeta<br /><br />Casa de la Solidaritat<br /><br />Materiales educativos:<br /><br />Han colaborado con nosotros:</p>\n<p>Nos han apoyado:<br /><br />Con la web:</p>\n<p>Programaci&oacute;n y desarrollo:<br />Daniel Canet<br />Fabi&aacute;n Ruiz<br /><br />Dise&ntilde;o Web:<br />Ruth Dom&iacute;nguez<br /><br />&nbsp;<br />Los textos incluidos en el gui&oacute;n est&aacute;n extra&iacute;dos de:<br /><br />Bernard-Marie Kolt&egrave;s "Combate de negro y de perros"<br />Thomas Sankara "Discurso en la Cumbre de la Organizaci&oacute;n para la Uni&oacute;n Africana"<br />Pier Paolo Pasolini "Cartas Luteranas y entrevista en la playa de Ostia"<br />Arcadi Oliveres "Origen de las migraciones"<br />Roberto Bola&ntilde;o "Palabra de Am&eacute;rica"<br />Severn Cullis-Suzuki "Discurso en la ONU"<br />Juan Mart&iacute;nez "Mundo S.A. Voces contra la globalizaci&oacute;n"<br /><br />Un agradecimiento especial a:<br /><br />Ramiro Blas, Sergi Ovide, Mariola Cort&eacute;s, El Plat&oacute; de Cinema, Claudia Alemany, Eva Biescas, Carlos Calvo, Martina Fuster, Evelina Podiapolskaia, Jordi Corrales, Lloren&ccedil; Mas Leas, V&iacute;ctor Nacher, Gonzalo Cruz<br /><br />Agradecimientos:<br />El Terrat, Esther Garc&iacute;a i Esther Alonso<br />Pizzeria La Briciola, Mobles Ram, Tanit Singular<br />Colegio Lexia, Hern&aacute;n Zin, Kike P&eacute;rez<br />Catou Vardier, Doc.es; Jaume Mart&iacute;, Danel Anser, Hector Gir&oacute;, Guille de la Cal, Sergi Duran, Carles Royo, Andrea &Aacute;lvarez<br />Companyia Cervessera del Montseny, Adriano Mor&aacute;n, Kamen Nedev<br /><br />Rodado en el Teatro de los sentidos, Barcelona, del 16 al 27 de mayo de 2011<br /><br />Creative Commons 3.0 By-Nc-Sa&nbsp;<br />N&ordm; Dep&oacute;sito Legal: B-33906-2011<br />N&ordm; expediente ICIC: 01144/11<br />Apta para todos los p&uacute;blicos</p>', '<p>Cecilia, Ana, Mar&iacute;a y Rodrigo forman una joven compa&ntilde;&iacute;a teatral, de reciente &eacute;xito por su descarada y transgresora puesta en escena, y por el compromiso social y pol&iacute;tico de los contenidos que muestran. Preparan su pr&oacute;ximo estreno, una obra de denuncia sobre c&oacute;mo la sociedad de consumo acepta lo inaceptable. Una sociedad que no cuestiona un sistema pol&iacute;tico y econ&oacute;mico que impone deudas y empobrecimiento sobre los m&aacute;s d&eacute;biles. En este viaje, empiezan por tratar de manipular dramat&uacute;rgicamente la obra del autor franc&eacute;s Bernard-Marie Kolt&eacute;s, pero al descubrir que no funciona, los actores se abandonan a formas mucho m&aacute;s directas, provistas de humor y sarcasmo. La creatividad golpea de lleno con el respeto profundo que sienten hacia las tem&aacute;ticas que quieren tratar. De la deuda externa al comercio internacional, del papel de las instituciones financieras al abuso de las transnacionales, del modelo de consumo al cambio clim&aacute;tico, una serie de injusticias que agudizan la angustia que viviendo durante el proceso de documentaci&oacute;n y aprendizaje. Van tomando conciencia de la dificultad de abarcar la compleja y sangrienta realidad que quieren mostrar, entrando poco a poco en una crisis de identidad moral y art&iacute;stica que les enfrenta entre s&iacute;. Las manifestaciones del 15M en todo el pa&iacute;s invadir&aacute;n el proceso creativo de la compa&ntilde;&iacute;a, suponiendo un punto de inflexi&oacute;n sin retorno.</p>', 'Primera película de ficción creative commons del Estado Español', 1, 'http://vimeo.com/34066375', '01', '2012', 'N', 2, ''),
 ('Cortinilla de la 8ª Muestra de Cine de Lavapiés', '', '<p><strong>Calipso Films</strong><br />1''17'''' / 2011 / Spot / Espa&ntilde;a<br /><a href="\\''http:/calipso-films.net\\''">http://calipso-films.net</a></p>\n<p>Direcci&oacute;n: Calipso Films<br /> Gui&oacute;n: Calipso Films<br /> Producci&oacute;n: Calipso Films</p>', '<p>Tod@s a la alfombra roja</p>', 'Presentación a cargo de Calipso Films', 0, 'http://vimeo.com/44669764', '04', '2012', 'S', 3, ''),
@@ -583,7 +583,7 @@ INSERT INTO {DATABASE}.peliculas (`titulo`, `autor`, `ficha_tecnica`, `sinopsis`
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.convocatoria (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}convocatoria (
   `id` int(11) NOT NULL,
   `id_pelicula` int(11) NOT NULL,
   `autor` varchar(100) NOT NULL,
@@ -603,13 +603,13 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.convocatoria (
 
 -- command split --
 
-INSERT INTO {DATABASE}.convocatoria (`id`, `id_pelicula`, `autor`, `duracion`, `anyo`, `genero`, `pais`, `web`, `coste`, `recursos`, `comentarios`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}convocatoria (`id`, `id_pelicula`, `autor`, `duracion`, `anyo`, `genero`, `pais`, `web`, `coste`, `recursos`, `comentarios`) VALUES
 (1, 1, 'Calipso Films', '1''17''''', 2011, 'Spot', 'España', 'http://calipso-films.net', '', '', ''),
 (3, 3, 'Calipso Films', '1''17''''', 2011, 'Spot', 'España', 'http://calipso-films.net', '', '', '');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.autores (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}autores (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `autor` varchar(100) NOT NULL,
   `id_pelicula` int(11) NOT NULL,
@@ -624,13 +624,13 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.autores (
 
 -- command split --
 
-INSERT INTO {DATABASE}.autores (`autor`, `id_pelicula`, `email`, `tipo`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}autores (`autor`, `id_pelicula`, `email`, `tipo`) VALUES
 ('Muestra de Cine de Lavapiés', 1, 'muestra@lavapiesdecine.net', '01'),
 ('Muestra de Cine de Lavapiés', 3, 'muestra@lavapiesdecine.net', '01');
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.imagenes_pelicula (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}imagenes_pelicula (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `imagen` varchar(100) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
@@ -643,7 +643,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.imagenes_pelicula (
 
 -- command split --
 
-INSERT INTO {DATABASE}.imagenes_pelicula (`imagen`, `id_pelicula`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}imagenes_pelicula (`imagen`, `id_pelicula`) VALUES
 ('2-cortinilla.jpg', 1),
 ('interferencies.jpg', 2),
 ('9-cortinilla.jpg', 3,
@@ -651,7 +651,7 @@ INSERT INTO {DATABASE}.imagenes_pelicula (`imagen`, `id_pelicula`) VALUES
 
 -- command split --
 
-CREATE TABLE IF NOT EXISTS {DATABASE}.proyecciones (
+CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}proyecciones (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `id_espacio` int(3) NOT NULL DEFAULT '0',
   `dia` date NOT NULL DEFAULT '0000-00-00',
@@ -668,7 +668,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.proyecciones (
 
 -- command split --
 
-INSERT INTO {DATABASE}.proyecciones (`id`, `id_espacio`, `dia`, `hora`, `anyo`, `alta`) VALUES
+INSERT INTO {DATABASE}.{PREFIX}proyecciones (`id`, `id_espacio`, `dia`, `hora`, `anyo`, `alta`) VALUES
 (0, 0, '0000-00-00', '00:00:00', '2012', 'N'),
 (1, 1, '2012-06-22', '20:00:00', '2012', 'S'),
 (2, 2, '2012-06-23', '23:00:00', '2012', 'S'),
@@ -678,60 +678,60 @@ INSERT INTO {DATABASE}.proyecciones (`id`, `id_espacio`, `dia`, `hora`, `anyo`, 
 
 -- command split --
 
-ALTER TABLE {DATABASE}.autores
+ALTER TABLE {DATABASE}.{PREFIX}autores
   ADD CONSTRAINT `autores_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `convocatoria` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.convocatoria
+ALTER TABLE {DATABASE}.{PREFIX}convocatoria
   ADD CONSTRAINT `convocatoria_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.convocatorias
+ALTER TABLE {DATABASE}.{PREFIX}convocatorias
   ADD CONSTRAINT `convocatorias_ibfk_1` FOREIGN KEY (`id`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.docs
+ALTER TABLE {DATABASE}.{PREFIX}docs
   ADD CONSTRAINT `docs_ibfk_1` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.imagenes
+ALTER TABLE {DATABASE}.{PREFIX}imagenes
   ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_galeria`) REFERENCES `galerias` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.imagenes_pelicula
+ALTER TABLE {DATABASE}.{PREFIX}imagenes_pelicula
   ADD CONSTRAINT `imagenes_pelicula_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
 
 -- command split --
   
-ALTER TABLE {DATABASE}.lang_edicion
+ALTER TABLE {DATABASE}.{PREFIX}lang_edicion
   ADD CONSTRAINT `lang_edicion_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `lang_edicion_ibfk_2` FOREIGN KEY (`lang`) REFERENCES `langs` (`lang`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.menu
+ALTER TABLE {DATABASE}.{PREFIX}menu
   ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.pagina
+ALTER TABLE {DATABASE}.{PREFIX}pagina
   ADD CONSTRAINT `pagina_ibfk_7` FOREIGN KEY (`id_webmodulo`) REFERENCES `web_modulos` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `pagina_ibfk_8` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.pagina_texto
+ALTER TABLE {DATABASE}.{PREFIX}pagina_texto
   ADD CONSTRAINT `pagina_texto_ibfk_1` FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `pagina_texto_ibfk_2` FOREIGN KEY (`id_texto`) REFERENCES `textos` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.peliculas
+ALTER TABLE {DATABASE}.{PREFIX}peliculas
   ADD CONSTRAINT `peliculas_ibfk_3` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `peliculas_ibfk_7` FOREIGN KEY (`id_donante`) REFERENCES `donantes` (`id`) ON DELETE NO ACTION,
   ADD CONSTRAINT `peliculas_ibfk_8` FOREIGN KEY (`licencia`) REFERENCES `licencias` (`id`) ON DELETE NO ACTION,
@@ -739,12 +739,12 @@ ALTER TABLE {DATABASE}.peliculas
 
 -- command split --
   
-ALTER TABLE {DATABASE}.proyecciones
+ALTER TABLE {DATABASE}.{PREFIX}proyecciones
   ADD CONSTRAINT `proyecciones_ibfk_3` FOREIGN KEY (`id_espacio`) REFERENCES `espacios` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `proyecciones_ibfk_4` FOREIGN KEY (`anyo`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
-ALTER TABLE {DATABASE}.textos
+ALTER TABLE {DATABASE}.{PREFIX}textos
   ADD CONSTRAINT `textos_ibfk_1` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 

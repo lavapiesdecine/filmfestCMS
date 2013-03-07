@@ -15,10 +15,20 @@
 		include_once("../constants.php");
 		
 		define('URL_INSTALL', BASE_URL . '/install');
-		define('PATH_INSTALL', ROOT . DS . 'install' . DS);
+		define('PATH_INSTALL', ROOT . 'install' . DS);
+		define('LANG_INSTALL', "es_ES");
+		define('ENCODELANG_INSTALL', "UTF-8");
 		
-		putenv("LC_ALL=es_ES.iso-8859-1");
-		setlocale(LC_ALL, "LC_ALL=es_ES.iso-8859-1");
+		/* generate .mo file */
+		$pathFileLanguage = PATH_INSTALL."locale". DS . LANG_INSTALL . DS . "LC_MESSAGES" . DS;
+		if(!file_exists($pathFileLanguage . "install.mo")){
+			require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
+			phpmo_convert( $pathFileLanguage . 'install.po');
+		}
+		
+		/* load language */
+		putenv("LC_ALL=".LANG_INSTALL.".".ENCODELANG_INSTALL);
+		setlocale(LC_ALL, LANG_INSTALL.".".ENCODELANG_INSTALL);
 		bindtextdomain("install", PATH_INSTALL."locale");
 		textdomain("install");
 		
@@ -28,7 +38,7 @@
 										4 => array("geo", _("geo.tittle"), _("geo.description")), 
 										5 => array("end", _("end.tittle"), _("end.description")))));
 		
-		define('LANGS', serialize(array("es" => array("es", _("lang.es")))));
+		define('LANGS', serialize(array("es" => array("es", _("lang.es"), "es_ES"))));
 		
 		include_once("funciones.php");
 		

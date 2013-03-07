@@ -14,6 +14,9 @@
 	<label><?=_("form.database")?></label> 
 	<input type="database" name='database' id='database' value="<?=$database ?>" required />
 	
+	<label><?=_("form.table.prefix")?></label> 
+	<input type="prefix" name='prefix' id='prefix' value="<?=$prefix ?>"  />
+	
 	<p>
 		<a href="#" id='b_bbdd' class="boton"><?=_("form.aceptar")?></a>
 		<a href="<?=URL_INSTALL."/".$this->_next[0]?>" id='b_bbdd_next' class="boton oculto"><?=$this->_next[1]?> &raquo;</a>

@@ -37,15 +37,36 @@ class confController extends Controller{
 				"nickname" => $_POST['nickname'],
 				"emailcontact" => $_POST['emailcontact'],
 				"lang" => $_POST['lang']);
-
-		if($this->config($_SESSION['usuarioAdmin'])){
-			$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "conf.php </strong>");
-		} else {
-			$result = array("ok"=>false, "msg"=>"Fallo");
+		
+		if($this->loadLanguage($_POST['lang'])){
+			if($this->config($_SESSION['usuarioAdmin'])){
+				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "conf.php </strong>");
+			} else {
+				$result = array("ok"=>false, "msg"=>"Fallo");
+			}
 		}
 		echo json_encode($result);
 	}
-
+	
+	private function loadLanguage($langSelected){
+		
+		$langs = unserialize(LANGS);
+		$lang = $langs[$langSelected];
+		
+		/* generate .mo file */
+		require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
+		$pathFileLanguage = CMS_PATH."locale". DS . $lang[2] . DS . "LC_MESSAGES" . DS;
+		if(!file_exists($pathFileLanguage . "admin.mo")){
+			@phpmo_convert( $pathFileLanguage . 'admin.po');
+		}
+		if(!file_exists($pathFileLanguage . "www.mo")){
+			@phpmo_convert( $pathFileLanguage . 'www.po');
+		}
+		
+		return true;
+	}
+	
+	
 	/**
 	 * Carga del archivo de configuración cms/core/config/conf.php
 	 * @param $usuario

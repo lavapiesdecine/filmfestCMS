@@ -46,7 +46,7 @@
     		} else {
     			if($this->config()){
     				$this->load($mySQLi, $_POST['database']);
-    				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "bbdd.php </strong>");
+    				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "bbdd.php </strong>");
     			} else {
     				$result = array("ok"=>false, "msg"=>"Fallo en el archivo configuración");
     			}
@@ -72,7 +72,8 @@
 		   				'__HOSTNAME__' 	=> $bbdd["server"],
 		   				'__USERNAME__' 	=> $bbdd["username"],
 		   				'__PASSWORD__' 	=> $bbdd["password"],
-		   				'__DATABASE__' 	=> $bbdd["database"]
+		   				'__DATABASE__' 	=> $bbdd["database"],
+		   				'__PREFIX__' 	=> $bbdd["prefix"]
 		   		);
 		   	
 		   		$file = str_replace(array_keys($replace), $replace, $template);

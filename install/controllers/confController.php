@@ -40,7 +40,7 @@ class confController extends Controller{
 		
 		if($this->loadLanguage($_POST['lang'])){
 			if($this->config($_SESSION['usuarioAdmin'])){
-				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "conf.php </strong>");
+				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "conf.php </strong>");
 			} else {
 				$result = array("ok"=>false, "msg"=>"Fallo");
 			}

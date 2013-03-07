@@ -1,8 +1,10 @@
 <?php
-namespace core\dao;
+	namespace core\dao;
+
 	class DataBase {
 		private $_mySQLi;
 		private $_cache;
+		public $_prefix;
 		
 		public function __construct(){
 			$this->_mySQLi = new \mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -11,8 +13,8 @@ namespace core\dao;
 	        }
 	        self::execute("SET NAMES 'utf8'");
 	        $this->_cache = new CacheAPC();
+	        self::setPrefix();
         }
-
         
         private function execute($sql, $returnObject=null){
         	\core\util\Log::add($sql, false);
@@ -48,6 +50,7 @@ namespace core\dao;
         /* select */
         public function select($id, $tabla){
         	try{
+        		$tabla = $this->_prefix.$tabla;
         		return self::loadObject("select * from $tabla where id=$id");
         	} catch (\Exception $e) {
         		\core\util\Error::add("<strong>error en ".__FUNCTION__. "</strong><br>". $e->getMessage());
@@ -98,18 +101,22 @@ namespace core\dao;
         
         /* delete */
         public function delete($id, $tabla){
+        	$tabla = $this->_prefix.$tabla;
         	return self::execute("delete from $tabla where id=$id");
         }
         public function deleteQuery($query){
         	return self::execute($query);
         }
         public function view($id, $tabla, $accion){
+        	$tabla = $this->_prefix.$tabla;
         	return self::execute("update $tabla set alta='$accion' where id=$id");
         }
         public function insertUpdate($id, $campos, $tabla){
+        	$tabla = $this->_prefix.$tabla;
         	return empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
         }
         public function insert($campos, $tabla){
+        	$tabla = $this->_prefix.$tabla;
         	foreach ($campos as $campo => $valor){
         		$keys[] = $campo;
         		$valores[]='\'' . self::sanitize($valor) . '\'';
@@ -119,6 +126,7 @@ namespace core\dao;
         	return self::execute("insert into $tabla ($keys) values ($valores)");
         }
         public function update($id, $campos, $tabla){
+        	$tabla = $this->_prefix.$tabla;
         	foreach ($campos as $campo => $valor){
         		$sets[]= $campo . '=\'' . $this->sanitize($valor) . '\'';
         	}
@@ -128,6 +136,7 @@ namespace core\dao;
         
         public function insertId($campos, $tabla){
         	$id = 0;
+        	$tabla = $this->_prefix.$tabla;
         	try{
         		foreach ($campos as $campo => $valor){
         			$keys[] = $campo;
@@ -150,5 +159,9 @@ namespace core\dao;
 	      //$string = htmlspecialchars($string);
 	      $string = $this->_mySQLi->real_escape_string($string);
 	      return $string;
+	    }
+	    
+	    private function setPrefix(){
+	    	$this->_prefix = DB_PREFIX . "_";
 	    }
 }

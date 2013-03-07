@@ -5,3 +5,4 @@
 	define('DB_USER', '__USERNAME__');
 	define('DB_PASS', '__PASSWORD__');
 	define('DB_NAME', '__DATABASE__');
+	define('DB_PREFIX', '__PREFIX__');

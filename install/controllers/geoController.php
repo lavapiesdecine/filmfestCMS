@@ -26,7 +26,7 @@ class geoController extends Controller{
 	public function alta(){
 		$_SESSION[$this->_controller] = array("longitud" => $_POST['id_longitud'], "latitud" => $_POST['id_latitud'], "direccion" => $_POST['direccion']);
 		if($this->config($_SESSION[$this->_controller])){
-			$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . PATH_INSTALL . "config" . DS . "geo.php </strong>");
+			$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "geo.php </strong>");
 		} else {
 			$result = array("ok"=>false, "msg"=>"Fallo");
 		}

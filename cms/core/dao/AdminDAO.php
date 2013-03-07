@@ -44,7 +44,7 @@ class AdminDAO extends Database{
 	}
 	
 	public function nivelesNavegacionUsuarioDAO($usuario){
-		return parent::selectQuery("select pa.id, pa.profile as titulo from ".$this->_prefix."perfiles pa, usuario_perfil up where pa.id=up.id_perfil and up.id_usuario=$usuario order by pa.id", true);
+		return parent::selectQuery("select pa.id, pa.profile as titulo from ".$this->_prefix."perfiles pa, ".$this->_prefix."usuario_perfil up where pa.id=up.id_perfil and up.id_usuario=$usuario order by pa.id", true);
 	}
 	public function nivelesNavegacionPosiblesDAO($niveles){
 		$sql = "select id, profile as titulo from ".$this->_prefix."perfiles where alta='S' ";
@@ -189,7 +189,7 @@ class AdminDAO extends Database{
 	
 	/* pelicula */
 	public function peliculasDAO($anyo){ 
-		return parent::selectQuery("select id, titulo, alta from ".$this->_prefix."peliculas where muestra ='$anyo' and id not in (select id from convocatoria) order by titulo", true);
+		return parent::selectQuery("select id, titulo, alta from ".$this->_prefix."peliculas where muestra ='$anyo' and id not in (select id from ".$this->_prefix."convocatoria) order by titulo", true);
 	}
 	public function proyeccionesPeliculaDAO($anyo){
 		return parent::selectQuery("select pr.id, concat(DATE_FORMAT(pr.dia, '%d/%c/%Y'),' ',TIME_FORMAT(pr.hora,'%H:%i'),' ', e.espacio) as titulo from ".$this->_prefix."espacios e, ".$this->_prefix."proyecciones pr where e.id=pr.id_espacio and pr.anyo='$anyo' and pr.alta='S' order by pr.dia, pr.hora", true);

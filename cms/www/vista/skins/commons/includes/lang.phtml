@@ -7,7 +7,7 @@
 				if($lang==$language->lang){ ?>
 					 <?=$language->nombre ?>
 				<?} else { 
-					$url = BASE_URL."/".(DEFAULT_LANG==$language->lang?"":$language->lang);
+					$url = BASE_URL . '/' . (DEFAULT_LANG==$language->lang?"":$language->lang . '/') . ( $this->_anyo == DEFAULT_ANYO ? '' : $this->_anyo . '/' ) . $urlPagina;
 				?>
 					<a href="<?=$url?>"><?=$language->nombre?></a>
 				<?}

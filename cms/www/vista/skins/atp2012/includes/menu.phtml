@@ -1,8 +1,5 @@
-<nav id="menu">
-	<?= \core\util\UtilPagina::menu($menu, $urlPagina, $this->_baseUrl, $idControllerMenu) ?>
-</nav>
 <? if(isset($subMenu) && count($subMenu)>0){?>
-	<nav id="submenu">
+	<nav id="menu">
 		<?=	\core\util\UtilPagina::menu($subMenu, $urlPagina, $this->_baseUrl, $idControllerMenu) ?>
 	</nav>	
 <?}?>

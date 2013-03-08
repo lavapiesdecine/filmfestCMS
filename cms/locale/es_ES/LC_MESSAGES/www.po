@@ -275,10 +275,7 @@ msgstr "Página web"
 
 #: cms/www/vista/controllers/inscripcion.phtml:40
 msgid "inscripcion.datos.adicional.1"
-msgstr ""
-"Estos campos no se ponen en la ficha de la obra; no es obligatorio "
-"informarlos pero siempre nos viene bien para valorar la obra en su justa "
-"medida."
+msgstr "Estos campos no se ponen en la ficha de la obra; no es obligatorio informarlos pero siempre nos viene bien para valorar la obra en su justa medida."
 
 #: cms/www/vista/controllers/inscripcion.phtml:41
 msgid "inscripcion.datos.coste"
@@ -307,9 +304,7 @@ msgstr "Cartel, vídeo"
 
 #: cms/www/vista/controllers/inscripcion.phtml:95
 msgid "inscripcion.datos.multimedia.1"
-msgstr ""
-"Puedes incluir el cartel (o un fotograma) y un enlace al video en streaming "
-"(archive.org, youtuve, vimeo.... )"
+msgstr "Puedes incluir el cartel (o un fotograma) y un enlace al video en streaming (archive.org, youtuve, vimeo.... )"
 
 #: cms/www/vista/controllers/inscripcion.phtml:97
 msgid "inscripcion.datos.multimedia.upload"
@@ -350,11 +345,6 @@ msgstr "Ficha"
 #: cms/www/vista/controllers/recepcion.phtml:18
 msgid "recepcion.vervideo"
 msgstr "ver vídeo"
-
-#: cms/www/vista/skins/2013/includes/pie.phtml:1
-#: cms/www/vista/skins/atp2013/includes/pie.phtml:2
-msgid "Ediciones anteriores :"
-msgstr ""
 
 #: cms/www/vista/skins/commons/includes/head.phtml:25
 msgid "form.confirm.format.email"
@@ -420,6 +410,14 @@ msgstr "Selección"
 msgid "obras-recibidas.menu"
 msgstr "Obras recibidas"
 
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "modelos-de-negocio.menu"
+msgstr "Modelos de negocio en la cúltura libre"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "convocatoria.menu"
+msgstr "Convocatoria"
+
 #: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "home.description"
 msgstr "Inicio"
@@ -429,6 +427,8 @@ msgid "programa.description"
 msgstr "Programa de proyecciones"
 
 #: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/2013/includes/pie.phtml:1
+#: cms/www/vista/skins/atp2013/includes/pie.phtml:2
 msgid "muestras.description"
 msgstr "Anteriores ediciones"
 
@@ -451,3 +451,11 @@ msgstr "Bases de la Convocatoria de cine libre"
 #: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "obras-recibidas.description"
 msgstr "Obras recibidas en la Convocatoria de cine libre"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:2
+msgid "modelos-de-negocio.description"
+msgstr "Modelos de negocio en la cúltura libre"
+
+#: cms/www/vista/skins/commons/includes/menu.phtml:1
+msgid "convocatoria.description"
+msgstr "Convocatoria de cine libre"

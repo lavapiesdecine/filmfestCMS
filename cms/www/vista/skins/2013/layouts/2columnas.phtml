@@ -1,15 +1,13 @@
 <html lang="<?= $this->_lang?>" >
 	<head>
 		<? include($pathCommons."includes/head.phtml");?>
-		<script src="<?= $urlSkin?>js/comun.js" type="text/javascript" language="javascript"></script>
-		<link href="<?=$urlSkin?>css/core.css" rel="stylesheet" type="text/css" />
 		<link href="<?=$urlSkin?>css/site.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<article>
 		    <header></header>
-			
 			<?	include_once($pathCommons."includes" .DS . "menu.phtml"); ?>
+			<?	include_once($pathCommons."includes/lang.phtml"); ?>			
 			
 			<section>
 				<div id="title"><h1><?=$this->_title?></h1></div>

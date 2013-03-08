@@ -39,7 +39,7 @@
 								 "idEspacio" => $idEspacio,
 								 "diaProyeccion" => $diaProyeccion));
 			
-			$this->loadView();
+		   $this->loadView();
 	    }   
 	    
 	 	public function alta(){

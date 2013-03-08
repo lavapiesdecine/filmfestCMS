@@ -28,16 +28,12 @@
 	    	$this->_lang = $data->getRequest()->getLang();
 	    	$this->_baseUrl = BASE_URL . '/' . ( $this->_lang == DEFAULT_LANG ? '' : $this->_lang . '/') . ( $this->_anyo == DEFAULT_ANYO ? '' : $this->_anyo . '/');
 	    	$this->_base = BASE_URL_WEB;
-	    	//$data->setEdicion($edicion);
 	    }
 	    
 	    protected function loadView(){
-			//$title = $this->_data->getTitle();
-	    	//$description = $this->_data->getDescription();
-	    	$urlPagina = $this->_data->getRequest()->getControlador();
+			$urlPagina = $this->_data->getRequest()->getControlador();
 	    	$usuario = $this->_data->getUsuario();
-	    	
-	    	//$lang = $this->_data->getLang();
+	    
 	    	$lang = $this->_lang;
 	    	$langs = $this->_data->getLangs();
 	    	
@@ -55,8 +51,6 @@
 			$urlSkin =  $this->_base . "/vista/skins/".$this->_data->getSkin()."/";
 			$urlCommons =  $this->_base . "/vista/skins/commons/";
 			
-	    	util\Log::add($pathSkin . 'layouts' . DS . $this->_data->getLayout(), false);
-	    	
 	    	extract($this->_data->getData());
 	    	
 	    	include_once $pathSkin . 'layouts' . DS . $this->_data->getLayout();

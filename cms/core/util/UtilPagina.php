@@ -28,11 +28,9 @@
 							  
 				if ($pagina->url == $urlActual){
 					$html .="<li class='$class'>"._($pagina->url.".menu")."</li>";
-					//$html .="<li><div class='$class'>".$i18n["menu.".$pagina->url]."</div></li>";
 				}
 				else{
 					$html .="<li class='$class'><a href='$urlMenu' title='"._($pagina->url.".description")."'>"._($pagina->url.".menu")."</a></li>";
-					//$html .="<li><div class='$class'><a href='$urlMenu' title='".$i18n["descripcion.".$pagina->url]."'>".$i18n["menu.".$pagina->url]."</a></div></li>";
 				}
 			}
 			$html .="</ul>";

@@ -400,9 +400,14 @@ class Bootstrap{
     		}
     	}		
     	
+    	$pathFileLanguage = CMS_PATH."locale". DS . $codigo . DS . "LC_MESSAGES" . DS;
+    	if(!file_exists($pathFileLanguage . "$app.mo")){
+    		require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
+    		phpmo_convert( $pathFileLanguage . "$app.po");
+    	}
+    	
     	putenv("LC_ALL=".$codigo.".".$codificacion);
     	setlocale(LC_ALL, $codigo.".".$codificacion);
-    	
     	bindtextdomain($app, CMS_PATH."locale");
     	textdomain($app);
     	

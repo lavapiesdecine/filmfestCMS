@@ -114,7 +114,7 @@ class DAO extends Database{
 	public function seleccionDAO($anyo){
 			$sql = "select p.id, p.titulo, c.autor, p.muestra, 
 							IF(i.imagen is null, '".URL_IMG."gris.jpg', concat('".URL_IMG."peliculas/$anyo/md/', i.imagen)) as cartel 
-							from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, convocatoria c 
+							from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, ".$this->_prefix."convocatoria c 
 							where p.id=c.id_pelicula and p.muestra='$anyo' and p.id_proyeccion > 0";
 			
 			return parent::selectQuery($sql, true, __FUNCTION__.$anyo);
@@ -169,7 +169,7 @@ class DAO extends Database{
 	public function fichaPeliculaDAO($id){
 		return parent::selectQuery("SELECT p.* , i.imagen AS cartel, d.web AS web_donante, d.donante, d.logo AS logo_donante, l.nombre AS nombre_licencia, l.url AS url_licencia
 							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, 
-							peliculas pe LEFT JOIN ".$this->_prefix."donantes d ON pe.id_donante = d.id, ".$this->_prefix."licencias l
+							".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."donantes d ON pe.id_donante = d.id, ".$this->_prefix."licencias l
 							WHERE p.id = pe.id
 							AND p.licencia = l.id and p.id=$id", false, __FUNCTION__.$id);
 	}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+	<html lang="es" >
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<? include($pathCommons."includes/head.phtml");?>
+		<style type="text/css">
+		@media screen {
+			body {
+				padding: 0;
+				margin: 0;
+				font-family: Arial, Helvetica, sans-serif; /* Base font family for most elements */
+				font-size: 20px;
+				background: url("../img/rojo.jpg") repeat;
+				width: 100%;
+				text-align: left;
+			}
+			header {
+				background:url('../img/cabecera.jpg') no-repeat;
+			}
+			article {
+			    margin:0px auto;
+			    background-image: url("../img/blanco.jpg");
+			}
+			section{
+				padding:5%;
+			}
+			img {
+				max-width: 100%;
+			}
+			nav{
+				width:100%;
+				float:left;
+				background-color: black;
+			}
+			nav ul{
+				list-style-type:none;
+				padding: 0;
+			}
+			nav ul li {
+			 	float: left;
+			    margin-right: 30px;
+			    margin-top: 4px;
+			    position: relative;
+			    vertical-align: middle;
+			}
+			nav#submenu ul li {
+				float:right;
+				position:relative;
+				vertical-align:middle;
+				margin-right:25px;
+			}
+			nav ul li a{
+				float:left;
+				padding:0 10px 0 0;
+				color:white;
+				text-decoration: none;
+			}
+			nav ul li a:hover{
+				color:#666;
+			}
+			.activa{
+				color:#666;
+			}
+			.video{
+				width: 100%;
+				height: 350px;
+			}
+			footer{
+				width: 100%;
+				clear: both;
+				background-color: black;
+				height: 40px;
+				font-size: 30px;
+				color:white;
+				text-align: center;
+				position: relative;
+				margin-top: -40px;
+			}
+			
+			div#map {
+				width:100%;
+				height:90%;
+				border: 1px solid #ccc;
+			    box-shadow: 3px 5px 5px #666666;
+			}
+			div#logo-espacio{
+				float:left;
+				width:90px;
+			}
+			div#logo-espacio img{
+				height:80px;
+				width:80px;
+			}
+			div#txt-espacio{
+				float:left;
+			}
+			div#lista {
+				display: none;
+			}
+			
+		}
+		</style>
+		
+	</head>
+	<body>
+		<article>
+		    <header>
+		    	<img src="<?=$urlSkin?>img/cabecera-movil.jpg" />
+			</header>
+			<nav id="menu">
+				<?= \core\util\UtilPagina::menu($menu, $urlPagina,  $this->_baseUrl, $idControllerMenu) ?>
+				<nav id="submenu"><?= \core\util\UtilPagina::menu($subMenu, $urlPagina,  $this->_baseUrl, $idControllerMenu) ?></nav>
+			</nav>
+			
+			<section>
+	            <div id="main">
+		            <div id="title"><h1><?=$this->_title?></h1></div>
+					<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+	            </div>
+	       </section>
+	       <footer>
+	       		<? include_once($pathSkin."includes/pie.phtml"); ?>
+	       </footer> 
+	    </article>
+	</body>
+</html>

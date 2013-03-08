@@ -57,10 +57,10 @@ class confController extends Controller{
 		require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
 		$pathFileLanguage = CMS_PATH."locale". DS . $lang[2] . DS . "LC_MESSAGES" . DS;
 		if(!file_exists($pathFileLanguage . "admin.mo")){
-			@phpmo_convert( $pathFileLanguage . 'admin.po');
+			phpmo_convert( $pathFileLanguage . 'admin.po');
 		}
 		if(!file_exists($pathFileLanguage . "www.mo")){
-			@phpmo_convert( $pathFileLanguage . 'www.po');
+			phpmo_convert( $pathFileLanguage . 'www.po');
 		}
 		
 		return true;

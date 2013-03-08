@@ -67,13 +67,6 @@ class edicionController extends \core\AdminController {
 			$fin = explode("/", $_POST['id_dia_fin']);
 			$fecFin = $fin[2]."-".$fin[1]."-".$fin[0];
 	    	
-			/*
-			$idImagen = $_POST['id_imagen'];
-			if(!empty($idImagen)){
-				$galeria = $this->_dao->galeriaCarpetaDAO($this->_carpetaImg);
-				$idImagen = $this->_dao->insertId(array("imagen" => $_POST['file_imagen'], "id_galeria"=>$galeria->id, "descripcion"=>$_POST['nombre'], "alta"=>'N'), "imagenes");
-			}
-			*/
 			$cartel = \core\util\Util::stripAccents($_POST['nombre']);
 			$campos = array("nombre"=>$_POST['nombre'],"descripcion"=>$_POST['descripcion'], "fecha_inicio"=>$fecInicio, "fecha_fin"=>$fecFin, "cartel"=>$cartel);
 			 

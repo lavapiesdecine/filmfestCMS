@@ -150,10 +150,10 @@ class AdminDAO extends Database{
 	}
 
 	public function textosPosiblesPaginaDAO($anyo){ 
-		return parent::selectQuery("select * from ".$this->_prefix."textos where alta='S' and muestra='$anyo' and id not in (select id_texto from pagina_texto) order by titulo", true);
+		return parent::selectQuery("select * from ".$this->_prefix."textos where alta='S' and muestra='$anyo' and id not in (select id_texto from ".$this->_prefix."pagina_texto) order by titulo", true);
 	}
 	public function textosPaginaDAO($idPagina){ 
-		return parent::selectQuery("select * from ".$this->_prefix."textos t, pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo", true);
+		return parent::selectQuery("select * from ".$this->_prefix."textos t, ".$this->_prefix."pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo", true);
 	}
 	
 	

@@ -57,9 +57,12 @@ class usuarioController extends \core\AdminController{
     
     public function alta(){
     	$id = $_POST['id'];
-    	$campos = array("usuario" => $_POST['nombre'],
-						"email" => $_POST['id_email'],
-						"logo" => $_POST['file_imagen']);
+    	$campos = array("usuario" => $_POST['nombre'], "email" => $_POST['id_email']);
+    			
+    	if (!empty($_POST['file_imagen'])){
+    		$campos = array_merge($campos, array("logo" => $_POST['file_imagen']));
+    	}
+			
 		
  		if(!empty($id)){
 			$ok = $this->_dao->update($id, $campos, $this->_tabla);			

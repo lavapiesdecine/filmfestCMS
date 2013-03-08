@@ -112,7 +112,6 @@
         	return self::execute("update $tabla set alta='$accion' where id=$id");
         }
         public function insertUpdate($id, $campos, $tabla){
-        	$tabla = $this->_prefix.$tabla;
         	return empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
         }
         public function insert($campos, $tabla){

@@ -10,15 +10,24 @@
 		    <header></header>
 			<?	include_once($pathSkin."includes/menu.phtml"); ?>
 			<?	include_once($pathCommons."includes/lang.phtml"); ?>
-			
-	    	<section>
-	    		<h1><?= $this->_title ?></h1>
-            		<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
-		    </section>
 		     
-    		<footer>
+		    <section>
+				<div id="title"><h1><?=$this->_title?></h1></div>
+				<aside>
+					<a title="Convocatoria de obras audiovisuales con licencia libre" rel="lightbox" href="<?= URL_GALERIAS ?>carteles/cartel_atp_9.jpg"> 
+						<img width="180px;" src="<?= URL_GALERIAS ?>carteles/atp_9.jpg" alt="Convocatoria de obras audiovisuales con licencia libre" /> 
+					</a> 
+					<a href="http://www.lacuadrillaestudio.com">La Cuadrilla</a> (cc by-nc-nd)
+				</aside>
+	            <div class="doscolumnas">
+	            	<?	include_once($pathVista.'controllers'. DS . $this->_controller .".phtml"); ?>
+	            </div>
+	       </section> 
+		     
+		   <footer>
 	       		<?	include_once($pathSkin."includes/pie.phtml"); ?>
-			</footer>
+		   </footer>
+		   
 		</article>
 	</body>
 </html>

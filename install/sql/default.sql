@@ -445,9 +445,11 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}galerias (
 
 -- command split --
 
-INSERT INTO {DATABASE}.{PREFIX}galerias (`titulo`, `galeria`, `alta`) VALUES
-('Carteles', 'carteles', 'S'),
-('filmfestCMS', 'filmfestcms', 'N');
+INSERT INTO {DATABASE}.{PREFIX}galerias (`titulo`, `descripcion`, `galeria`, `alta`) VALUES
+('Carteles', '', 'carteles', 'S'),
+('filmfestCMS', '', 'filmfestcms', 'N'),
+('9ª Muestra', 'Fotos de la 9ª Muestra de cine de Lavapies (2012)', '9-muestra', 'S'),
+('Cortinillas', 'Cortinillas de presentación', 'cortinillas', 'S');
 
 -- command split --
 
@@ -474,7 +476,12 @@ INSERT INTO {DATABASE}.{PREFIX}imagenes (`imagen`, `descripcion`, `id_galeria`, 
 ('20130613110641.jpg', 'Administración de películas', 2, ''),
 ('20130613160625.jpg', 'Programa de proyecciones', 2, ''),
 ('20130613160654.jpg', 'Gestor de proyecciones', 2, ''),
-('20130615120651.jpg', 'Gestor de nuevas páginas', 2, '');
+('20130615120651.jpg', 'Gestor de nuevas páginas', 2, ''),
+('20130309120355.jpg', 'Proyección en Bodegas Lo Máximo', 3, ''),
+('20130309120320.jpg', 'Proyección en la Plaza Xosé Tarrio', 3, ''),
+('20130309120335.jpg', 'Proyección en CSA La Tabacalera', 3, ''),
+('20130309120315.jpg', 'Inauguración en la Filmoteca Nacional', 3, ''),
+('20130309120339.jpg', 'Cortinilla 5ª Muestra', 4, 'http://blip.tv/play/Ab3icYu8BQ');
 
 -- command split --
 
@@ -696,7 +703,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}proyeccion_pelicula (
   `id_pelicula` int(11) NOT NULL,
   `id_proyeccion` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_pelicula`, `id_proyeccion`)fichasPeliculaProyeccionDAO
+  PRIMARY KEY (`id_pelicula`, `id_proyeccion`)
 ) ENGINE=InnoDB;
 
 -- command split --

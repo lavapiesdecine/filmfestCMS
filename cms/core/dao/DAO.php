@@ -106,7 +106,7 @@ class DAO extends Database{
 			$sql = "select p.titulo, c.id, c.duracion, c.anyo, c.genero, c.pais, l.id as id_licencia, l.nombre as nombre_licencia, c.autor, p.sinopsis, c.fecha_alta, p.enlace as video,
 						    IF(i.imagen is null, '".URL_IMG."gris.jpg', concat('".URL_IMG."peliculas/$anyo/tn/', i.imagen)) as cartel
 							from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, ".$this->_prefix."convocatoria c, ".$this->_prefix."licencias l 
-						    where p.id=c.id_pelicula and p.licencia = l.id and p.muestra='$anyo' and c.alta='S' order by p.id desc LIMIT $inicio, $total";
+						    where p.id=c.id_pelicula and p.id_licencia = l.id and p.muestra='$anyo' and c.alta='S' order by p.id desc LIMIT $inicio, $total";
 			return parent::selectQuery($sql, true, __FUNCTION__.$anyo.$inicio.$total);
 	}
 	

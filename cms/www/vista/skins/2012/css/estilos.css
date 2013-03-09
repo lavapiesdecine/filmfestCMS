@@ -503,7 +503,9 @@ div#cartel-home img:hover {
 div#txt-home{
 	float: left; width: 590px; margin-left: 20px; font-size: 15px;
 }
-
+div#galeria-texto{
+	float: left; width: 590px; margin-left: 220px; margin-top: 15px;
+}
 div.inicio-columnaizquierda{
 	width:180px;
 	float:left;	

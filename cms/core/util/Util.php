@@ -45,7 +45,7 @@
 	    	}
 	    	return $ficha;
 		}
-		
+		/*
 		public static function getUrlVideo($video){
 			
 			$regexYoutube = "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#";
@@ -57,7 +57,37 @@
 				}
 			}	
 			return $video;
+		}*/
+		
+		public static function getUrlVideo($video){
+			
+			$regex = "/http:\/\/(:?www.)?(\w*)/";
+			preg_match($regex, $video, $match);
+			$stream = $match[2];
+			
+			switch ($stream){
+				case "youtube":
+					$regex = "/http:\/\/(?:www.)?(\w*).com\/.*v=(\w*)/";
+					preg_match($regex, $video, $match);
+					$video = "http://www.youtube.com/v/".$match[2];
+					break;
+					
+				case "vimeo":
+					$regex = "/http:\/\/(?:www.)?(\w*).com\/(\d*)/";
+					preg_match($regex, $video, $match);
+					$video = "http://vimeo/".$match[2];
+					break;
+					
+				case "blip":
+					echo "blip";
+				break;	
+								
+			}
+			return $video;
+			
 		}
+		
+		
 	
 		public static function getColorTemplate($anyo){
 			$color = null;

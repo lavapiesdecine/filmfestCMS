@@ -279,6 +279,15 @@ nav#idiomas a:hover{
 	text-decoration: none;
 	background-color: white;
 }
+#escaparate div a span {
+    background: url("../../commons/img/play.png") no-repeat scroll 0 0 transparent;
+    height: 50px;
+    left: 30px;
+    position: absolute;
+    top: 30px;
+    width: 50px;
+    z-index: 100;
+}
 
 div#correcto{
 	margin-left: 40px;

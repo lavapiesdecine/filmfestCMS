@@ -1,8 +1,8 @@
 
-a {
+section a {
 	color:red;
 }
-a:hover {
+section a:hover {
 	color:white;
 	background-color: red;
 }
@@ -142,6 +142,7 @@ div#inicio nav ul.menu > li{
     cursor: pointer;
     background-color: #ddd;
 }
+
 nav ul.menu > li{
 	display: block;
     float: left;
@@ -194,6 +195,10 @@ nav ul.menu > li > a{
 	margin: 5px 0 0 5px;
 	display: block;
 	font-size: 15px;
+}
+
+div#inicio nav ul.menu > li a:hover{
+	background-color: #ddd;
 }
 
 nav ul.menu > li > span.title{
@@ -312,9 +317,11 @@ div.error{
 
 input.usuario{
 	 background: url("../img/user.png") no-repeat scroll 2px 50% transparent;
+	 padding-left:25px;
 }
 input.password{
 	 background: url("../img/password.png") no-repeat scroll 2px 50% transparent;
+	 padding-left:25px;
 }
 
 /*map */

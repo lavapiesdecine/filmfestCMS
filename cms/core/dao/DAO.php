@@ -114,8 +114,10 @@ class DAO extends Database{
 	public function seleccionDAO($anyo){
 			$sql = "select p.id, p.titulo, c.autor, p.muestra, 
 							IF(i.imagen is null, '".URL_IMG."gris.jpg', concat('".URL_IMG."peliculas/$anyo/md/', i.imagen)) as cartel 
-							from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, ".$this->_prefix."convocatoria c 
-							where p.id=c.id_pelicula and p.muestra='$anyo' and p.id_proyeccion > 0";
+							from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, 
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp ON p1.id = pp.id_pelicula,									
+							".$this->_prefix."convocatoria c 
+							where p.id=c.id_pelicula and p.id = p1.id and p.muestra='$anyo' and pp.id_proyeccion > 0";
 			
 			return parent::selectQuery($sql, true, __FUNCTION__.$anyo);
 	}

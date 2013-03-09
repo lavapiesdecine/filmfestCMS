@@ -105,7 +105,7 @@
 			$schema = str_replace('{NICKNAME}', "'".$usuario["nickname"]."'", $schema);
 			$schema = str_replace('{PASSWORD}', "'".md5($usuario["password"])."'", $schema);
 			$schema = str_replace('{EMAIL}', "'".$usuario["email"]."'", $schema);
-			$schema = str_replace('{PREFIX}', $bbdd["prefix"]."_", $schema);
+			$schema = str_replace('{PREFIX}', !empty($bbdd["prefix"])?$bbdd["prefix"]."_":"", $schema);
 			
 	   		$queries = explode('-- command split --', $schema);
 	   

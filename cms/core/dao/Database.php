@@ -13,8 +13,9 @@
 	        }
 	        self::execute("SET NAMES 'utf8'");
 	        $this->_cache = new CacheAPC();
-	        self::setPrefix();
-        }
+	        $this->_prefix = DB_PREFIX;
+	        $this->_prefix .= !empty($this->_prefix)?"_":"";
+	    }
         
         private function execute($sql, $returnObject=null){
         	\core\util\Log::add($sql, false);
@@ -114,6 +115,14 @@
         public function insertUpdate($id, $campos, $tabla){
         	return empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
         }
+        public function insertUpdateId($id, $campos, $tabla){
+        	if(empty($id)){
+        		$id = self::insertId($campos, $tabla);
+        	} else {
+        		self::update($id, $campos, $tabla);
+        	}
+        	return $id;
+        }
         public function insert($campos, $tabla){
         	$tabla = $this->_prefix.$tabla;
         	foreach ($campos as $campo => $valor){
@@ -160,7 +169,4 @@
 	      return $string;
 	    }
 	    
-	    private function setPrefix(){
-	    	$this->_prefix = DB_PREFIX . "_";
-	    }
 }

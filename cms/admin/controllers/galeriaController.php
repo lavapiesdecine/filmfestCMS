@@ -44,7 +44,7 @@ class galeriaController extends \core\AdminController{
 		else{
 			$ok = $this->_dao->update($id, array("titulo"=>$_POST['id_nombre'], "descripcion"=>$_POST['id_descripcion']), $this->_tabla);
 		}
-	    echo self::feedback($ok);
+	    echo $ok;
     }
     
 	public function delete(){
@@ -56,7 +56,7 @@ class galeriaController extends \core\AdminController{
 			\core\util\Util::recursirveRmdir(GALERIAS_PATH.$galeriaDAO->galeria);
 			$ok = $this->_dao->delete($id, $this->_tabla);
 		}
-		echo self::feedback($ok);
+		echo $ok;
     }
 
 }

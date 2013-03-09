@@ -50,7 +50,7 @@ class convocatoriaController extends peliculaController{
  		if(!empty($id)){
 			$ok = $this->_dao->view($id, "convocatoria", $accion);
 		}
-		echo self::feedback($ok);
+		echo $ok;
     }
     
 }

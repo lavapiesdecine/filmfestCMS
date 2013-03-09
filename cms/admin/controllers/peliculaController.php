@@ -74,19 +74,32 @@ class peliculaController extends \core\AdminController{
 		"muestra" => $_POST['id_muestra'],
   		"enlace" => \core\util\Util::getUrlVideo($_POST['id_enlace']),
   		"video_descarga" => $_POST['id_descarga'],
-  		"licencia" => $_POST['id_licencia'],
-		"id_proyeccion" => $_POST['id_proyeccion'],
-  		"id_donante" => $_POST['id_donante'],
-  		"utf8" => $this->_utf8);
+  		"id_licencia" => $_POST['id_licencia'],
+		"utf8" => $this->_utf8);
   		
-  		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
-    	
+  		$idPelicula = $this->_dao->insertUpdateId($_POST['id'], $campos, $this->_tabla);
+  		
+  		$ok = false;
+  		
+  		if(!empty($idPelicula)){
+  				$ok = true;
+  				$this->_dao->deleteDonantePelicula($idPelicula);
+  				$this->_dao->deleteProyeccionPelicula($idPelicula);
+  				if(!empty($_POST['id_donante'])){		
+	  				$this->_dao->insert(array("id_donante" => $_POST['id_donante'], "id_pelicula" => $idPelicula), "donante_pelicula");
+	  			}
+  				if(!empty($_POST['id_proyeccion'])){
+  					$this->_dao->insert(array("id_proyeccion" => $_POST['id_proyeccion'], "id_pelicula" => $idPelicula), "proyeccion_pelicula");
+  				}
+  			
+  		}
+  		echo $ok;
     }
     
 	public function delete(){
  		$anyo = $this->_data->getRequest()->getAnyo();
     	$id = $_POST['id'];
-    	
+    	$ok = false;
     	if(!empty($id)){
  			$imgPeliculaDAO = $this->_dao->imgPeliculaDAO($id);
  			if(!empty($imgPeliculaDAO->imagen)){
@@ -96,7 +109,7 @@ class peliculaController extends \core\AdminController{
 			}	
 			$ok = $this->_dao->delete($id, $this->_tabla);
 		}
-		echo self::feedback($ok);
+		echo $ok;
     }
     
 	public function upload(){

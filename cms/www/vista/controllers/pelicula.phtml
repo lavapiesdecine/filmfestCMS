@@ -11,12 +11,12 @@
 			</a>
 	
 			<!-- licencia -->
-			<? if ($pelicula->licencia!='01'){ ?>
+			<? if ($pelicula->id_licencia!='01'){ ?>
 			<div id='licencia'>	
 				<? if(!empty($pelicula->url_licencia)){ ?>
 					<a href='<?= $pelicula->url_licencia?>'>
 				<? } ?>
-					<img src='<?= URL_LOGO?>licencias/<?= $pelicula->licencia ?>.png' />
+					<img src='<?= URL_LOGO?>licencias/<?= $pelicula->id_licencia ?>.png' />
 				<? if(!empty($pelicula->url_licencia)){ ?>
 					</a>
 				<? }?>
@@ -27,15 +27,15 @@
 			<? if (!empty($pelicula->id_donante)){ ?>
 			<div id='logo-donante'>
 				<span id='msgDireccion'><? _("pelicula.cedida") ?></span><br>
-				<? if (!empty($pelicula->web_donante)){?>
-					<a target="blank" href="<?=$pelicula->web_donante?>" title='<?= $pelicula->donante ?>'>
+				<? if (!empty($donante->web)){?>
+					<a target="blank" href="<?=$donante->web?>" title='<?= $donante->donante ?>'>
 				<? }
-				   if (!empty($pelicula->logo_donante)){?>
-					<img alt='<?= $pelicula->donante ?>' title='<?= $pelicula->donante ?>' src='<?= URL_LOGO ?>donantes/<?= $pelicula->logo_donante?>' />
+				   if (!empty($donante->logo)){?>
+					<img alt='<?= $donante->donante ?>' title='<?= $donante->donante ?>' src='<?= URL_LOGO ?>donantes/<?= $donante->logo?>' />
 				<? } else { ?>
-					<?= $pelicula->donante ?>
+					<?= $donante->donante ?>
 				<? }
-				   if (!empty($pelicula->web_donante)){?>
+				   if (!empty($donante->web)){?>
 					</a>
 				<? } ?>
 			</div>

@@ -122,7 +122,7 @@ class DAO extends Database{
 	
 	/* texto */
 	public function textoDAO($id){
-		return parent::selectQuery("select * from ".$this->_prefix."textos where id=$id", false, __FUNCTION__.$id);
+		return parent::selectQuery("select t.*, gt.id_galeria from ".$this->_prefix."textos t LEFT JOIN ".$this->_prefix."galeria_texto gt ON t.id=gt.id_texto where t.id=$id", false, __FUNCTION__.$id);
 	}
 	
 	/* espacios */
@@ -156,22 +156,28 @@ class DAO extends Database{
 	}
 	public function peliculasProyeccionesDAO($id){
 		return parent::selectQuery("select p.id, p.titulo, p.ficha_tecnica, p.sinopsis, i.imagen as cartel 
-						    from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i
-							ON p.id = i.id_pelicula 
-						    where p.id_proyeccion=$id order by p.id asc", true,__FUNCTION__.$id); 	
+						   			from ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, 
+									".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula
+									where p.id=p2.id and pp.id_proyeccion=$id 
+									order by p.id asc", true,__FUNCTION__.$id); 	
 	}
 	
 	/* pelicula */
 	public function peliculaDAO($id){
 		return parent::selectQuery("select * from ".$this->_prefix."peliculas where id=$id", false, __FUNCTION__.$id);   
 	}
+	public function agradecimientoDAO($id){
+		return parent::selectQuery("select * from ".$this->_prefix."donantes where id=$id", false, __FUNCTION__.$id);
+	}
 	
 	public function fichaPeliculaDAO($id){
-		return parent::selectQuery("SELECT p.* , i.imagen AS cartel, d.web AS web_donante, d.donante, d.logo AS logo_donante, l.nombre AS nombre_licencia, l.url AS url_licencia
-							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, 
-							".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."donantes d ON pe.id_donante = d.id, ".$this->_prefix."licencias l
-							WHERE p.id = pe.id
-							AND p.licencia = l.id and p.id=$id", false, __FUNCTION__.$id);
+		return parent::selectQuery("SELECT p.* , i.imagen AS cartel, l.nombre AS nombre_licencia, l.url AS url_licencia, dp.id_donante
+									FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula, 
+								    ".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."donante_pelicula dp ON pe.id = dp.id_pelicula,
+									".$this->_prefix."licencias l
+									WHERE p.id = pe.id
+									AND p.id_licencia = l.id and p.id=$id", false, __FUNCTION__.$id);
+		
 	}
 	
 	

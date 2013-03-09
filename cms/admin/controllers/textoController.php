@@ -18,7 +18,7 @@
 			$idGaleria = 0;
 			
 			if(!empty($this->_id)){
-		   		$textoDAO = $this->_dao->select($this->_id, $this->_tabla);
+		   		$textoDAO = $this->_dao->textoDAO($this->_id);
 		   		$texto = $textoDAO->texto;
 		   		$titulo = $textoDAO->titulo;
 		   		$lang = $textoDAO->lang;
@@ -37,11 +37,16 @@
 		public function alta(){
 	 		
 			$campos = array("titulo" => $_POST['id_titulo'], "texto" => $_POST['texto'],
-							"muestra" => $_POST['id_muestra'], "lang" => $_POST['lang'],
-							"id_galeria" => $_POST['id_galeria']);
+							"muestra" => $_POST['id_muestra'], "lang" => $_POST['lang']);
 			
-			echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
+			$ok = false;
+			$idTexto = $this->_dao->insertUpdateId($_POST['id'], $campos, $this->_tabla);
+			if(!empty($idTexto)){
+				$ok = true;
+				$this->_dao->deleteGaleriaTexto($idTexto);
+				$this->_dao->insert(array("id_texto" => $idTexto, "id_galeria" => $_POST['id_galeria']), "galeria_texto");
+			}
+			echo $ok;
 		}
-	    
-	
+
 	}

@@ -148,6 +148,10 @@ class AdminDAO extends Database{
 		$sql .= " order by titulo";
 		return parent::selectQuery($sql, true);
 	}
+	public function textoDAO($id){
+		return parent::selectQuery("select t.*, gt.id_galeria from ".$this->_prefix."textos t LEFT JOIN ".$this->_prefix."galeria_texto gt ON t.id=gt.id_texto where t.id=$id", false, __FUNCTION__.$id);
+	}
+	
 
 	public function textosPosiblesPaginaDAO($anyo){ 
 		return parent::selectQuery("select * from ".$this->_prefix."textos where alta='S' and muestra='$anyo' and id not in (select id_texto from ".$this->_prefix."pagina_texto) order by titulo", true);
@@ -200,35 +204,59 @@ class AdminDAO extends Database{
 	public function agradecimientosPeliculaDAO(){ 
 		return parent::selectQuery("select id, donante as titulo from ".$this->_prefix."donantes where alta='S' and id>0 order by donante", true);
 	}
+	/*
 	public function fichaPeliculaDAO($id){
-		return parent::selectQuery("SELECT p.*, l.id as id_licencia, l.nombre AS nombre_licencia, a.autor as nombre_contacto, a.email, a.telefono,
-							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, p.muestra, p.utf8
+		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia, a.autor as nombre_contacto, a.email, a.telefono,
+							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, pp.id_proyeccion, dp.id_donante
 							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
-							".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."autores a ON pe.id = a.id_pelicula, ".$this->_prefix."licencias l
-							WHERE p.id = pe.id 
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."autores a ON pe.id = a.id_pelicula, 
+							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula,
+							".$this->_prefix."peliculas p3 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p3.id = dp.id_pelicula,
+							".$this->_prefix."licencias l
+							WHERE p.id = p1.id AND p.id=p2.id AND p.id=p3.id
 							AND p.licencia = l.id 
 							AND p.id=$id");
+	}*/
+	
+	public function fichaPeliculaDAO($id){
+		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia,
+							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, 
+							pp.id_proyeccion, dp.id_donante
+							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p1.id = pp.id_pelicula,
+							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p2.id = dp.id_pelicula,
+							".$this->_prefix."licencias l
+				WHERE p.id = p1.id AND p.id=p2.id
+				AND p.id_licencia = l.id
+				AND p.id=$id");
 	}
+	
 	public function fichaPeliculaConvocatoriaDAO($id){
 		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia, a.autor as nombre_contacto, a.email, a.telefono,
 							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload,
 							c.recursos, c.comentarios, c.coste, p.material_propio
 							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
-							".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."autores a ON pe.id = a.id_pelicula, convocatoria c, licencias l
-							WHERE p.id = pe.id 
-							AND p.id= c.id
-							AND p.licencia = l.id 
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."autores a ON p1.id = a.id_pelicula,  
+							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula,
+							".$this->_prefix."convocatoria c,
+							".$this->_prefix."licencias l
+							WHERE p.id = p1.id AND p.id=p2.id  
+							AND p.id= c.id 
+							AND p.id_licencia = l.id 
 							AND p.id=$id");
 	}
 	
 	public function fichasPeliculaProyeccionDAO($idProyeccion){
-		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia, a.autor as nombre_contacto, a.email, a.telefono,
-							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, p.muestra, p.utf8
+		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia,
+							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload,
+							pp.id_proyeccion, dp.id_donante
 							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
-							".$this->_prefix."peliculas pe LEFT JOIN ".$this->_prefix."autores a ON pe.id = a.id_pelicula, ".$this->_prefix."licencias l
-							WHERE p.id = pe.id 
-							AND p.licencia = l.id 
-							AND p.id_proyeccion=$idProyeccion", true);
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula,
+							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p3.id = dp.id_pelicula,
+							".$this->_prefix."licencias l
+				WHERE p.id = p1.id AND p.id=p2.id
+				AND p.id_licencia = l.id
+				AND pp.id_proyeccion=$idProyeccion", true);
 	}
 	public function licenciasDAO(){
 		return parent::selectQuery("select id, nombre as titulo, alta from ".$this->_prefix."licencias where alta='S'", true);
@@ -280,5 +308,15 @@ class AdminDAO extends Database{
 	public function deletePerfilesUsuario($idUsuario){
 		return parent::deleteQuery("delete from ".$this->_prefix."usuario_perfil where id_usuario=$idUsuario");
 	}
+	public function deleteGaleriaTexto($idTexto){
+		return parent::deleteQuery("delete from ".$this->_prefix."galeria_texto where id_texto=$idTexto");
+	}
+	public function deleteDonantePelicula($idPelicula){
+		return parent::deleteQuery("delete from ".$this->_prefix."donante_pelicula where id_pelicula=$idPelicula");
+	}
+	public function deleteProyeccionPelicula($idPelicula){
+		return parent::deleteQuery("delete from ".$this->_prefix."proyeccion_pelicula where id_pelicula=$idPelicula");
+	}
+	
 	
 }

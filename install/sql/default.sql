@@ -155,10 +155,11 @@ INSERT INTO {DATABASE}.{PREFIX}perfiles (`profile`, `logo`) VALUES
 -- command split --
 
 CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuario_perfil (
-  `id_usuario` varchar(2) NOT NULL,
-  `id_perfil` varchar(2) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  KEY `id_usuario` (`id_usuario`,`id_perfil`)
+  PRIMARY KEY `id_usuario` (`id_usuario`,`id_perfil`),
+  KEY `id_perfil` (`id_perfil`)
 ) ENGINE=InnoDB;
 
 -- command split --
@@ -209,8 +210,8 @@ INSERT INTO {DATABASE}.{PREFIX}modulos (`modulo`, `logo`, `modulo_padre`) VALUES
 -- command split --
 
 CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}modulo_perfil (
-  `id_modulo` varchar(2) NOT NULL,
-  `id_perfil` varchar(2) NOT NULL,
+  `id_modulo` int(11) NOT NULL,
+  `id_perfil` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `id_modulo` (`id_modulo`,`id_perfil`)
 ) ENGINE=InnoDB;
@@ -428,7 +429,8 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}docs (
 
 INSERT INTO {DATABASE}.{PREFIX}docs (`nombre`, `descripcion`, `archivo`, `muestra`) VALUES
 ('Programa de mano 2012', 'No te pierdas ni una peli', 'programa-de-mano-2012.pdf', '2012'),
-('Licencias libres para obras audiovisuales', 'Licencias libres para obras audiovisuales', 'licencias-libres-para-obras-audiovisuales.pdf', '2013');
+('Licencias libres para obras audiovisuales', 'Licencias libres para obras audiovisuales', 'licencias-libres-para-obras-audiovisuales.pdf', '2013'),
+('Modelo de datos','Esquema de las tablas que emplea filmfesCMS','modelo-de-datos.pdf','2013');
 
 -- command split --
 
@@ -496,7 +498,8 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}galeria_texto (
 -- command split --
 
 INSERT INTO {DATABASE}.{PREFIX}galeria_texto (`id_galeria`, `id_texto`) VALUES
-(2, 28);
+(2, 28),
+(3, 1);
 
 -- command split --
 
@@ -703,7 +706,8 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}proyeccion_pelicula (
   `id_pelicula` int(11) NOT NULL,
   `id_proyeccion` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_pelicula`, `id_proyeccion`)
+  PRIMARY KEY (`id_pelicula`,`id_proyeccion`),
+  KEY `id_proyeccion` (`id_proyeccion`)
 ) ENGINE=InnoDB;
 
 -- command split --
@@ -720,7 +724,8 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}donante_pelicula (
   `id_donante` int(11) NOT NULL,
   `id_pelicula` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_pelicula`, `id_donante`)
+  PRIMARY KEY (`id_pelicula`, `id_donante`),
+  KEY `id_donante` (`id_donante`)
 ) ENGINE=InnoDB;
 
 -- command split --
@@ -731,72 +736,98 @@ INSERT INTO {DATABASE}.{PREFIX}donante_pelicula (`id_donante`, `id_pelicula`) VA
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}autores
-  ADD CONSTRAINT `autores_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `convocatoria` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT autores_ibfk_1 FOREIGN KEY (`id_pelicula`) REFERENCES `convocatoria` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}convocatoria
-  ADD CONSTRAINT `convocatoria_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT convocatoria_ibfk_1 FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}convocatorias
-  ADD CONSTRAINT `convocatorias_ibfk_1` FOREIGN KEY (`id`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT convocatorias_ibfk_1 FOREIGN KEY (`id`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}docs
-  ADD CONSTRAINT `docs_ibfk_1` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT docs_ibfk_1 FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+
+-- command split --
+
+ALTER TABLE {DATABASE}.{PREFIX}donante_pelicula
+  ADD CONSTRAINT donante_pelicula_ibfk_2 FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT donante_pelicula_ibfk_1 FOREIGN KEY (`id_donante`) REFERENCES `donantes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- command split --
+
+ALTER TABLE {DATABASE}.{PREFIX}galeria_texto
+  ADD CONSTRAINT galeria_texto_ibfk_2 FOREIGN KEY (`id_texto`) REFERENCES `textos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT galeria_texto_ibfk_1 FOREIGN KEY (`id_galeria`) REFERENCES `galerias` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}imagenes
-  ADD CONSTRAINT `imagenes_ibfk_1` FOREIGN KEY (`id_galeria`) REFERENCES `galerias` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT imagenes_ibfk_1 FOREIGN KEY (`id_galeria`) REFERENCES `galerias` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}imagenes_pelicula
-  ADD CONSTRAINT `imagenes_pelicula_ibfk_1` FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT imagenes_pelicula_ibfk_1 FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE;
 
 -- command split --
-  
+
 ALTER TABLE {DATABASE}.{PREFIX}lang_edicion
-  ADD CONSTRAINT `lang_edicion_ibfk_1` FOREIGN KEY (`id_edicion`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `lang_edicion_ibfk_2` FOREIGN KEY (`lang`) REFERENCES `langs` (`lang`) ON DELETE CASCADE;
+  ADD CONSTRAINT lang_edicion_ibfk_1 FOREIGN KEY (`id_edicion`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT lang_edicion_ibfk_2 FOREIGN KEY (`lang`) REFERENCES `langs` (`lang`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}menu
-  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT menu_ibfk_1 FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE;
+
+-- command split --
+
+ALTER TABLE {DATABASE}.{PREFIX}modulo_perfil
+  ADD CONSTRAINT modulo_perfil_ibfk_2 FOREIGN KEY (`id_perfil`) REFERENCES `perfiles` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT modulo_perfil_ibfk_1 FOREIGN KEY (`id_modulo`) REFERENCES `modulos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}pagina
-  ADD CONSTRAINT `pagina_ibfk_7` FOREIGN KEY (`id_webmodulo`) REFERENCES `web_modulos` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `pagina_ibfk_8` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT pagina_ibfk_1 FOREIGN KEY (`id_webmodulo`) REFERENCES `web_modulos` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT pagina_ibfk_2 FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}pagina_texto
-  ADD CONSTRAINT `pagina_texto_ibfk_1` FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `pagina_texto_ibfk_2` FOREIGN KEY (`id_texto`) REFERENCES `textos` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT pagina_texto_ibfk_1 FOREIGN KEY (`id_pagina`) REFERENCES `pagina` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT pagina_texto_ibfk_2 FOREIGN KEY (`id_texto`) REFERENCES `textos` (`id`) ON DELETE CASCADE;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}peliculas
-  ADD CONSTRAINT `peliculas_ibfk_3` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `peliculas_ibfk_7` FOREIGN KEY (`id_donante`) REFERENCES `donantes` (`id`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `peliculas_ibfk_8` FOREIGN KEY (`licencia`) REFERENCES `licencias` (`id`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `peliculas_ibfk_9` FOREIGN KEY (`id_proyeccion`) REFERENCES `proyecciones` (`id`) ON DELETE NO ACTION;
+  ADD CONSTRAINT peliculas_ibfk_2 FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT peliculas_ibfk_1 FOREIGN KEY (`id_licencia`) REFERENCES `licencias` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- command split --
-  
+
 ALTER TABLE {DATABASE}.{PREFIX}proyecciones
-  ADD CONSTRAINT `proyecciones_ibfk_3` FOREIGN KEY (`id_espacio`) REFERENCES `espacios` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `proyecciones_ibfk_4` FOREIGN KEY (`anyo`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT proyecciones_ibfk_1 FOREIGN KEY (`id_espacio`) REFERENCES `espacios` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT proyecciones_ibfk_2 FOREIGN KEY (`anyo`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+
+-- command split --
+
+ALTER TABLE {DATABASE}.{PREFIX}proyeccion_pelicula
+  ADD CONSTRAINT proyeccion_pelicula_ibfk_2 FOREIGN KEY (`id_proyeccion`) REFERENCES `proyecciones` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT proyeccion_pelicula_ibfk_1 FOREIGN KEY (`id_pelicula`) REFERENCES `peliculas` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 -- command split --
 
 ALTER TABLE {DATABASE}.{PREFIX}textos
-  ADD CONSTRAINT `textos_ibfk_1` FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT textos_ibfk_1 FOREIGN KEY (`muestra`) REFERENCES `ediciones` (`id`) ON DELETE CASCADE;
 
+-- command split --
+
+ALTER TABLE {DATABASE}.{PREFIX}usuario_perfil
+  ADD CONSTRAINT usuario_perfil_ibfk_1 FOREIGN KEY (`id_perfil`) REFERENCES `perfiles` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

@@ -4,7 +4,7 @@ msgstr "Bienvenid@"
 
 #: install/index.php:35 install/controllers/introController.php:7
 msgid "intro.description"
-msgstr " "
+msgstr ""
 
 #: install/index.php:36 install/controllers/confController.php:6
 msgid "conf.tittle"
@@ -36,7 +36,7 @@ msgstr "Terminamos"
 
 #: install/index.php:39 install/controllers/endController.php:7
 msgid "end.description"
-msgstr " "
+msgstr ""
 
 #: install/index.php:41
 msgid "lang.es"

@@ -1,4 +1,17 @@
 
+a {
+	color:red;
+}
+a:hover {
+	color:white;
+	background-color: red;
+}
+
+section ul li{
+	list-style: none;
+	margin-left: 20px;
+}
+
 /* inicio + menu */
 nav{
 	font-size: 20px;
@@ -190,98 +203,7 @@ nav ul.menu > li > span.title{
 }
 
 
-nav ul.menu > li > a:hover{
-	color:black;
-}
 
-nav ul.submenu{
-	font-size: 10px;
-}
-nav ul.submenu li{
-    line-height:14px !important;
-    margin:0;
-    list-style: none;
-}
-nav ul.submenu li a{
-    color:black;
-    font-size: 10px !important;
-}
-nav ul.submenu li a:hover{
-    color:black;
-    text-decoration: underline;
-}
-
-/* botonera + cambio edicion */
-div.cambio-edicion{
-	float: right; margin: 5px; padding:0px 15px 0px 0px; height: 40px; background-color: #EFEFEF; border:1px solid #ccc;
-}
-div.botonera{
-	float: right; 
-}
-div.botonera ul{
-}
-div.botonera li{
-	float:left;display: block;
-}
-div.botonera li.separata{
-	border-right:1px solid #555;
-}
-div.botonera li.separata a{
-	border-right:1px solid #333;
-}
-div.botonera img{
-	margin:0px 5px;
-	padding:3px 0px;
-	height: 29px;
-	width: 29px;
-	border:none;
-}
-div.cambio-edicion img{
-	float:left; 
-	width:50px;
-	height:40px;
-}
-div.cambio-edicion p{
-	float:left; margin-left:15px;
-}
-p#exit{
-	display:inline; float:right;margin:0px;clear: both;
-}
-
-/* listado */
-aside h2{
-    padding-left: 5px;
-    border-bottom: 1px solid black;
-}
-
-aside ul{
-	border:1px solid #ccc;
-	background-color: #efefef;
-}
-aside ul li{
-	list-style-type: none;
-    height: 20px;
-    border-bottom:1px solid #ccc;
-    padding:4px 10px;
-    cursor:pointer;
-}
-aside ul li:hover{
-	background-color: white;
-}
-aside ul li.selected{
-	background-color: white;
-	font-weight: bold;
-}
-span.titulo{
-	font-size: 13px;
-}
-
-div.botonera-listado{
-	float:right;
-}
-div.botonera-listado img{
-	border: none;
-}
 
 /* formularios */
 input{
@@ -388,253 +310,14 @@ div.error{
 	padding-bottom: 10px;
 }
 
-/* upload */
-div#div-img {
-	float:left;
-	margin-right:20px;
-	font-size: 10px;
-	width: 100px;
-	height: 100px;
-	background-color: #EEEEEE;
-}
-
-div#div-img span#change-img {
- 	background: url("../img/delete-img.png") no-repeat scroll 0 0 transparent;
-    height: 50px;
-    position: absolute;
-    width: 50px;
-    z-index: 100;
-    margin-top: -75px;
-    margin-left: 25px;
-}
-
-div#div-img span#play {
- 	background: url("../img/play.png") no-repeat scroll 0 0 transparent;
-    height: 50px;
-    position: absolute;
-    width: 50px;
-    z-index: 100;
-    margin-top: -75px;
-    margin-left: 25px;
-}
-
-div#div-img span#view {
- 	background: url("../img/view.png") no-repeat scroll 0 0 transparent;
-    height: 50px;
-    position: absolute;
-    width: 50px;
-    z-index: 100;
-    margin-top: -75px;
-    margin-left: 25px;
-}
-
-div.upload-img  {
-	position: relative;
-	overflow:hidden;
-	clip:rect(0px, 80px, 24px, 0px );
-	border:1px dashed #aaa; 
-	color:#aaa;
-}
-
-div.upload-img input[type="file"]{
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	margin:0;
-	padding:0;
-	filter: Alpha(Opacity=0);
-	-moz-opacity: 0;
-	opacity: 0;
-	height:100px;
-	width:100px;
-}
-
-div#div-doc {
-	position: relative;
-	overflow:hidden;
-	clip:rect(0px, 80px, 24px, 0px );
-	height: 25px;
-	background-color:red;
-	width: 90px;
-    border-radius: 6px 6px 6px 6px;
-    color: white;
-    display: inline-block;
-    font-family: arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding:5px 0px 0px 10px;
-    margin-bottom: 15px;
-}
-div#div-doc:hover {
-	background-color:#ce0100;
-}
-div#div-doc input[type="file"] {
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-div#div-doc span{
-	position: absolute;
-	padding-left: 10px;
-}
-
-div.upload-img form {
-	padding:0px;
-	margin:0px;
-	height:100px;
-	width:100px;
-}
-
-div#div-img:hover{
-	background-color: white;
-}
-
-div#div-img a{
-	font-size: 10px;
-}
-
-div#div-img a img{
-	border:1px solid red;
-}
-div#div-img a img:hover{
-	border:1px solid #ccc;
-}
-
-div.upload-img p{
-	background-image: url('../img/upload.png');
-	background-position: 2px 50%;
-	background-repeat: no-repeat;
-	padding: 30px 0px 30px 25px;
-	font-weight: bold;
-}
-
-div#div-img-info {
-	width:380px; 
-	float:left;
-}
-.frame{
-	height: 100px;
-	width: 100px;
-	border:1px solid #ccc;
-	float: left;
-	margin: 0 20px 0 0;
-}
-.framedoc{
-	border: medium none;
-    font-size: 15px;
-    font-weight: bold;
-    height: 50px;
-    width: 100%;
-    font-family: arial;
-}
-iframe.frame html{
-	margin: 0;
-}
-iframe.frame body{
-	margin: 0;
-	font-size:11px;
-}
-/*
-#imagen_uploaded + span {
-    background: url("../../commons/img/play.png") no-repeat scroll 0 0 transparent;
-    height: 50px;
-    left: 30px;
-    position: absolute;
-    top: 30px;
-    width: 50px;
-    z-index: 100;
-}
-*/
-div#div-img-info{
-	padding-bottom: 10px;
-}
-div#div-img-info a{
-}
-
-div#feedback-doc{
-	margin-bottom: 20px;
-	height: 20px;
-	font-size:15px;
-}
-div#feedback-doc a:hover{
-	background-color: red;
-	color:white;
-}
-div#feedback-doc span{
-	font-size:12px;
-	padding-left: 20px;
-}
-
-.pdf{
-	background-image: url('../img/pdf.png');
-	background-position: 0px 50%;
-	background-repeat: no-repeat;
-	padding-left: 20px;
-	display: inline;
-}
-
-p.input50{
-	float:left;
-	width: 45%;
-	margin-right: 5%;
-}
-
-p.input30{
-	float:left;
-	width: 30%;
-	margin-right: 5%;
-}
-p.input10{
-	float:left;
-	width: 10%;
-	margin-right: 5%;
-}
-p.input25{
-	float:left;
-	width: 25%;
-	margin-right: 5%;
-}
-p.select{
-	float:left;
-	width: 40%;
-	margin-right: 10px;
-}
-p.select select{
-	height: 100px;
-}
-select#id_espacio{
-	height: 24px;	
-}
-p.arrow{
-	float:left;
-	width: 10%;
-	padding-left:10px;
-	margin-top:35px;
-}
-p.arrow img{
-	cursor:pointer;
-	 margin-bottom: 5px;
-}
-input.calendario{
-	 background: url("../img/calendario.png") no-repeat scroll 135px 1px transparent;
-}
-input.date{
-	 background: url("../img/calendario.png") no-repeat scroll 150px 1px transparent;
-}
 input.usuario{
 	 background: url("../img/user.png") no-repeat scroll 2px 50% transparent;
-	 padding-left: 25px;
-	 width: 90%;
 }
 input.password{
 	 background: url("../img/password.png") no-repeat scroll 2px 50% transparent;
-	 padding-left: 25px;
-	 width: 90%;
 }
-input[type="file"] {
-	height: 25px
-}
+
+/*map */
 div#map{
 	border: 1px solid #CCCCCC;
     clear: both;
@@ -661,33 +344,28 @@ div.info-adicional{
     font-size: 12px;
 }
 
-/* login */
-div.login{
-	width:300px; 
-	background-color:#efefef; 
-	border:1px solid #bbb; 
-	margin:30px 50px; 
-	padding:20px;
-}
-div.login input{
-	background-color: white !important;
-	height: 25px;
+
+
+/* galeria texto */
+#galeria-texto{
+	height: 250px;
 }
 
-/* inicio */
-div.img_muestra{
+#galeria-texto a img{
+	border: 1px solid red;
+	margin-right: 5px;
+	margin-bottom: 5px;
 	float: left;
-	height:130px;
-	font-size: 10px;
-	margin:20px;
-	
+	height: 100px;
+	margin-bottom: 15px;
+	margin-right: 15px;
+	position: relative;
+	width: 100px;
 }
-div.img_muestra a{
+#galeria-texto a img:hover {
+	border: 1px solid #666666;
+}
+#galeria-texto a{
+	text-decoration: none;
 	background-color: white;
-}
-div.img_muestra a img{
-	border:2px solid #fe3b29;
-}
-div.img_muestra a img:hover{
-	border:2px solid #ccc;
 }

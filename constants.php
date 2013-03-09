@@ -2,7 +2,7 @@
 	
 	//rutas
 	define('APP', 'filmfestCMS');
-	define('APP_VERSION', '1.0 beta');
+	define('APP_VERSION', '1.2 beta');
 	
 	define('CMS', 'cms');
 	define('ADMIN', 'admin');

@@ -170,55 +170,54 @@ div.inicio-columnaderecha{
 
 /* doc */
 div#doc-by{
-	background: url("http://lavapiesdecine.net/img/licencias/BY.png") no-repeat scroll 0 0 transparent;
+	background: url("../../../../../../img/logo/licencias/BY.png") no-repeat scroll 0 0 transparent;
     height: 40px;
     padding-left: 45px;
     width: 500px;
 }
 div#doc-nd{
-	background: url("http://lavapiesdecine.net/img/licencias/ND.png") no-repeat scroll 0 0 transparent;
+	background: url("../../../../../../img/logo/licencias/ND.png") no-repeat scroll 0 0 transparent;
     height: 40px;
     padding-left: 45px;
     width: 500px;
 }
 div#doc-nc{
-	background: url("http://lavapiesdecine.net/img/licencias/NC.png") no-repeat scroll 0 0 transparent;
+	background: url("../../../../../../img/logo/licencias/NC.png") no-repeat scroll 0 0 transparent;
     height: 40px;
     padding-left: 45px;
     width: 500px;
 }
 div#doc-sa{
-	background: url("http://lavapiesdecine.net/img/licencias/SA.png") no-repeat scroll 0 0 transparent;
+	background: url("../../../../../../img/logo/licencias/SA.png") no-repeat scroll 0 0 transparent;
     height: 40px;
     padding-left: 45px;
     width: 500px;
 }
 div#doc-02{
-	background: url("http://lavapiesdecine.net/img/licencias/88x31/02.png") no-repeat scroll 0 5px transparent;
+	background: url("../../../../../../img/logo/licencias/88x31/02.png") no-repeat scroll 0 5px transparent;
     height: 50px;
     padding-left: 100px;
 }
 div#doc-colorIURIS{
-	background: url("http://lavapiesdecine.net/img/licencias/88x31/colorIURIS.png") no-repeat scroll 0 15px transparent;
+	background: url("../../../../../../img/logo/licencias/88x31/colorIURIS.png") no-repeat scroll 0 15px transparent;
     height: 70px;
     padding-left: 100px;
 }
 div#doc-20{
-	background: url("http://lavapiesdecine.net/img/licencias/88x31/20.png") no-repeat scroll 0 5px transparent;
+	background: url("../../../../../../img/logo/licencias/88x31/20.png") no-repeat scroll 0 5px transparent;
     height: 40px;
     padding-left: 100px;
 }
 div#doc-21{
-	background: url("http://lavapiesdecine.net/img/licencias/88x31/21.png") no-repeat scroll 0 5px transparent;
+	background: url("../../../../../../img/logo/licencias/88x31/21.png") no-repeat scroll 0 5px transparent;
     height: 50px;
     padding-left: 100px;
 }
 div#doc-22{
-	background: url("http://lavapiesdecine.net/img/licencias/88x31/22.png") no-repeat scroll 0 5px transparent;
+	background: url("../../../../../../img/logo/licencias/88x31/22.png") no-repeat scroll 0 5px transparent;
     height: 50px;
     padding-left: 100px;
 }
-
 div.ej_cc{
 	float:left;
 	width:220px;
@@ -228,6 +227,31 @@ span.little{
 	font-size:9px;
 }
 
+/* galeria texto */
+#galeria-texto{
+	height: 250px;
+}
+
+#galeria-texto a img{
+	border: 1px solid #F86611;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	float: left;
+	height: 100px;
+	margin-bottom: 15px;
+	margin-right: 15px;
+	position: relative;
+	width: 100px;
+}
+#galeria-texto a img:hover {
+	border: 1px solid #666666;
+}
+#galeria-texto a{
+	text-decoration: none;
+	background-color: white;
+}
+
+/* idiomas */
 nav#idiomas{
 	text-align: right;
 	font-size: 11px;
@@ -259,6 +283,8 @@ nav#idiomas a:hover{
     font-size: 11px;
 }
 
+
+/* escaparate */
 #escaparate  div{
 	float: left;
 	height: 100px;
@@ -289,6 +315,7 @@ nav#idiomas a:hover{
     z-index: 100;
 }
 
+/* contacta */
 div#correcto{
 	margin-left: 40px;
 	font-weight: bold;
@@ -363,7 +390,7 @@ table tr {
 }
 
 
-
+/* footer */
 footer {
 	border-top:1px dashed #000; 
 	font-family: Arial, Verdana, Helvetica, sans-serif;

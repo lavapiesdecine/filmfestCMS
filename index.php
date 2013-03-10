@@ -22,6 +22,9 @@
 				include("install/error.php");
 				exit;
 			}
+		} else {
+			include_once("cms/core/config/conf.php");
+			$baseUrl = BASE_URL;
 		}
 		header("Location: $baseUrl/install");
 		exit;

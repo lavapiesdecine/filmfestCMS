@@ -4,13 +4,13 @@
 	header('Content-Type: text/html; charset=utf-8');
 	
 	session_start();
-	
+		
 	if(!file_exists("../cms/core/config/conf.php")){
 		header("Location: ../");
 		exit;
 	}
 	
-	if(strnatcmp(phpversion(),'5.3.0') >= 0){
+	//if(strnatcmp(phpversion(),'5.3.0') >= 0){
 		include_once("../cms/core/config/conf.php");
 		include_once("../constants.php");
 		
@@ -23,7 +23,10 @@
 		$pathFileLanguage = PATH_INSTALL."locale". DS . LANG_INSTALL . DS . "LC_MESSAGES" . DS;
 		if(!file_exists($pathFileLanguage . "install.mo")){
 			require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
-			phpmo_convert( $pathFileLanguage . 'install.po');
+			if(!@phpmo_convert($pathFileLanguage . 'install.po')){
+				include("error.php");
+				exit;
+			}
 		}
 		
 		/* load language */
@@ -42,8 +45,6 @@
 		
 		include_once("funciones.php");
 		
+		
 		Bootstrap::run();
-	} else {
-		include("error.php");
-		exit;
-	}
+	//}

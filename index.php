@@ -12,12 +12,16 @@
 		//initial load: cms/core/config/conf.php 
 		if(!file_exists("cms/core/config/conf.php")){
 			$baseUrl = "http://". $_SERVER['SERVER_NAME'] . "/". str_replace("/", "", $_SERVER['REQUEST_URI']);
-			copy("install/config/conf.php.bak", "cms/core/config/conf.php");
-			$template = file_get_contents("cms/core/config/conf.php");
-			$replace = array('__BASE_URL__' => $baseUrl);
-			$file = str_replace(array_keys($replace), $replace, $template);
-			$handle = fopen("cms/core/config/conf.php", "w+");
-			fwrite($handle, $file);
+			if (@copy("install/config/conf.php.bak", "cms/core/config/conf.php")){
+				$template = file_get_contents("cms/core/config/conf.php");
+				$replace = array('__BASE_URL__' => $baseUrl);
+				$file = str_replace(array_keys($replace), $replace, $template);
+				$handle = fopen("cms/core/config/conf.php", "w+");
+				fwrite($handle, $file);
+			} else {
+				include("install/error.php");
+				exit;
+			}
 		}
 		header("Location: $baseUrl/install");
 		exit;
@@ -34,7 +38,7 @@
 	include_once("constants.php");
 	include_once("funciones.php");
 	
-	set_error_handler('error_handler',E_STRICT);
+	set_error_handler('error_handler', E_STRICT);
 	set_exception_handler('exception_handler');
 	
 	/**

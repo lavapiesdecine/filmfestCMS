@@ -38,11 +38,11 @@ class confController extends Controller{
 				"emailcontact" => $_POST['emailcontact'],
 				"lang" => $_POST['lang']);
 		
+		$result = array("ok"=>false, "msg"=>"Fallo en <strong> " . CONF_PATH . "conf.php </strong>");
+		
 		if($this->loadLanguage($_POST['lang'])){
 			if($this->config($_SESSION['usuarioAdmin'])){
 				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "conf.php </strong>");
-			} else {
-				$result = array("ok"=>false, "msg"=>"Fallo");
 			}
 		}
 		echo json_encode($result);
@@ -56,14 +56,16 @@ class confController extends Controller{
 		/* generate .mo file */
 		require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
 		$pathFileLanguage = CMS_PATH."locale". DS . $lang[2] . DS . "LC_MESSAGES" . DS;
+		$admin = true;
 		if(!file_exists($pathFileLanguage . "admin.mo")){
-			phpmo_convert( $pathFileLanguage . 'admin.po');
+			$admin = @phpmo_convert( $pathFileLanguage . 'admin.po');
 		}
+		$www = true;
 		if(!file_exists($pathFileLanguage . "www.mo")){
-			phpmo_convert( $pathFileLanguage . 'www.po');
+			$www = @phpmo_convert( $pathFileLanguage . 'www.po');
 		}
 		
-		return true;
+		return $admin && $www;
 	}
 	
 	

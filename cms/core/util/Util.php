@@ -132,20 +132,21 @@
 		public static function recursiveCopy($source, $dest){
 			if (is_dir($source)) {
 				if (!is_dir($dest)) {
-			        mkdir($dest);
+			        if(!mkdir($dest)){
+			        	\core\util\Error::add("<strong>error en al copiar $source/$object > $dest/$object");
+			        	return false;
+			        }
 			    }
 			    $objects = scandir($source);
 			    foreach ($objects as $object) {
 			    	if ($object != "." && $object != "..") {
-			    		\core\util\Log::add($object);
-					    if (is_file($object)) {
-					        if (!copy($source. DS . $object, $dest . DS . $object)){
+			    		if (is_file($source . DS . $object)) {
+					    	if (!copy($source. DS . $object, $dest . DS . $object)){
 					        	\core\util\Error::add("<strong>error en al copiar $source/$object > $dest/$object");
 					        }
 					    }
-					    if (is_dir($object)) {
-					    	\core\util\Log::add("recursiveCopy $source/$object > $dest/$object");
-			    			self::recursiveCopy($source . DS . $object, $dest . DS . $object);
+					    if (is_dir($source . DS . $object)) {
+					    	self::recursiveCopy($source . DS . $object, $dest . DS . $object);
 					    }
 			    	}
 			    }

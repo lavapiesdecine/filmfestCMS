@@ -16,7 +16,7 @@ Para desarrollar este CMS hemos partido de varias tecnologías:
 
 * PHP 5.3 o superior
 * MySQL 5.0 o superior
-* Módulo mod_rewrite de Apache (requerido)
+* Módulo mod_rewrite de Apache
 * Añadir permisos de escritura en
 	- cms/core/config
 	- cms/locale

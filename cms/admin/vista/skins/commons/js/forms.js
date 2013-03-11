@@ -267,6 +267,10 @@ $(document).ready(function() {
 			$('#form_edicion').alta();
 		}
 	});
+	$('#id_dia_inicio').change(function(){
+		$("#id_edicion").val($('#id_dia_inicio').val().split("/")[2]);
+	});
+	
 	
 	$('#b_convocatorias').click(function(){
 		if($('#form_convocatorias').validate()){

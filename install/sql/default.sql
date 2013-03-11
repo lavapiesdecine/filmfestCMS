@@ -1,5 +1,3 @@
--- command split --
-
 CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuarios (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `usuario` varchar(50) NOT NULL,

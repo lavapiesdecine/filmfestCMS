@@ -44,6 +44,4 @@
 	
 	include_once("funciones.php");
 	
-	
 	Bootstrap::run();
-	

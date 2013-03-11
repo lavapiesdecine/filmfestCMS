@@ -10,8 +10,8 @@
 	<?} else { ?>
 		<p><?= _("form.upload.img")?><br><?= _("form.upload.type")?></p>
 		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/edicion/upload" target="frame_imagen">
-				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden'/>
-				<input name='id_edicion' id='id_edicion' value='<?=$this->_id?>' type='hidden'/>
+				<input name='id_nombre' id='id_nombre' value='<?=$nombre?>' type='hidden' />
+				<input name='id_edicion' id='id_edicion' value='<?=$this->_id?>' type='hidden' required />
 				<input type="file" name="imagen"  id="imagen"  /><br>
 		</form>
 	<? } ?>	

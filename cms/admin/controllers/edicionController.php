@@ -140,14 +140,19 @@ class edicionController extends \core\AdminController {
 	     		$path = SKINS_PATH . $id . DS . IMG;
 	     		if(!is_dir(SKINS_PATH . $id)){
 	     			mkdir(SKINS_PATH . $id);
-	     			mkdir(SKINS_PATH . $id . DS . IMG);
+	     			mkdir($path);
 	     		}	
 	     			
      			$actions = array(array("action" => "save", "path" => $path));
-     			
-	    		$nombreImagen = $this->uploadImagen($actions);
-	    		$urlImagen = URL_SKINS . $id . "/" . IMG . "/" . $nombreImagen;
+     			$nombreImagen = $this->uploadImagen($actions);
 	    		
+     			$path = GALERIAS_PATH . $this->_carpetaImg . DS;
+     			$actions = array(array("action" => "crop", "path" => $path . THUMBNAIL . DS, "height" =>"100", "width" => "100"),
+     					array("action" => "crop", "path" => $path . MEDIUM . DS, "height" =>"150", "width" => "100"),
+     					array("action" => "save", "path" => $path));
+     			$this->uploadImagen($actions);
+     			
+     			$urlImagen = URL_SKINS . $id . "/" . IMG . "/" . $nombreImagen;
 	    		$edicionDAO = $this->_dao->select($id, $this->_tabla);
 	    		if(!empty($edicionDAO)){
 	    			$this->_dao->update($id, array("cartel" => $nombreImagen), $this->_tabla);

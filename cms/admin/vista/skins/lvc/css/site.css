@@ -172,6 +172,7 @@ nav ul.submenu li a{
 }
 nav ul.submenu li a:hover{
     color:black;
+    background-color:white;
     text-decoration: underline;
 }
 

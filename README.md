@@ -12,6 +12,20 @@ Para desarrollar este CMS hemos partido de varias tecnologías:
 * OpenStreeMap OpenLayers / Google Maps
 
 
+## Requisitos
+
+* PHP 5.3 o superior
+* MySQL 5.0 o superior
+* Módulo mod_rewrite de Apache (requerido)
+* Añadir permisos de escritura en
+	- cms/core/config
+	- cms/locale
+	- cms/www/vista/skins
+	- img
+	- doc
+	- install/locale
+	
+
 ## Instalacion
 
 * Descomprimir el proyecto 

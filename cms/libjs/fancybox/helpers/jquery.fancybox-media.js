@@ -12,6 +12,8 @@
  *      Youtube
  *          http://www.youtube.com/watch?v=opj24KnzrWo
  *          http://youtu.be/opj24KnzrWo
+ *      blip.tv
+ *      	http://blip.tv/play/hfIDveJxAg
  *      Vimeo
  *          http://vimeo.com/25634903
  *      Metacafe
@@ -34,16 +36,20 @@
 (function ($) {
 	//Shortcut for fancyBox object
 	var F = $.fancybox;
-
+	
 	//Add helper object
 	F.helpers.media = {
 		beforeLoad : function(opts, obj) {
 			var href = obj.href || '',
 				type = false,
 				rez;
-
+			
 			if ((rez = href.match(/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i))) {
 				href = '//www.youtube.com/embed/' + rez[3] + '?autoplay=1&autohide=1&fs=1&rel=0&enablejsapi=1';
+				type = 'iframe';
+				
+			} else if ((rez = href.match(/(blip\.tv)\/play\/([a-zA-Z0-9\?\=\-]+)/i))) {
+				href = '//blip.tv/play/' + rez[2];
 				type = 'iframe';
 
 			} else if ((rez = href.match(/vimeo.com\/(\d+)\/?(.*)/))) {

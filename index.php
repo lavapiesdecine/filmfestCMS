@@ -9,6 +9,13 @@
 	 * INSTALL CMS
 	 */
 	if (!file_exists("cms/core/config/geo.php")){
+		
+		if(!in_array('mod_rewrite', apache_get_modules())){
+			$errorMsg = "Enable mod_rewrite";
+			include("install/error.php");
+			exit;
+		}
+		
 		//initial load: cms/core/config/conf.php 
 		if(!file_exists("cms/core/config/conf.php")){
 			$baseUrl = "http://". $_SERVER['SERVER_NAME'] . "/". str_replace("/", "", $_SERVER['REQUEST_URI']);

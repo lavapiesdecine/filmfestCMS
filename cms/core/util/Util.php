@@ -45,19 +45,6 @@
 	    	}
 	    	return $ficha;
 		}
-		/*
-		public static function getUrlVideo($video){
-			
-			$regexYoutube = "#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#";
-			
-			if (!empty($video)){
-				if (preg_match($regexYoutube, $video)){
-					preg_match($regexYoutube, $video, $match);
-					return "http://www.youtube.com/v/".$match[0];
-				}
-			}	
-			return $video;
-		}*/
 		
 		public static function getUrlVideo($video){
 			
@@ -67,11 +54,15 @@
 			
 			switch ($stream){
 				case "youtube":
-					$regex = "/http:\/\/(?:www.)?(\w*).com\/.*v=(\w*)/";
+					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
 					preg_match($regex, $video, $match);
 					$video = "http://www.youtube.com/v/".$match[2];
 					break;
-					
+				case "youtu":
+					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
+					preg_match($regex, $video, $match);
+					$video = "http://www.youtube.com/v/".$match[3];
+					break;
 				case "vimeo":
 					$regex = "/http:\/\/(?:www.)?(\w*).com\/(\d*)/";
 					preg_match($regex, $video, $match);
@@ -79,14 +70,21 @@
 					break;
 					
 				case "blip":
-					echo "blip";
-				break;	
-								
+					$regex = "/(blip\.tv)\/play\/([a-zA-Z0-9\?\=\-]+)/i";
+					preg_match($regex, $video, $match);
+					$video = "http://blip.tv/play/".$match[2];
+					break;
+				break;
+				
+				case "dailymotion":
+					$regex = "/dailymotion.com\/video\/(.*)\/?(.*)/";
+					preg_match($regex, $video, $match);
+					$video = "http://www.dailymotion.com/video/".$match[1];
+					break;
+						
 			}
 			return $video;
-			
 		}
-		
 		
 	
 		public static function getColorTemplate($anyo){

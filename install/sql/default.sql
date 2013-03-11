@@ -1,5 +1,3 @@
-SET GLOBAL sql_mode='NO_AUTO_VALUE_ON_ZERO';
-
 -- command split --
 
 CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuarios (

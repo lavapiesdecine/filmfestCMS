@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	$(".fancybox").fancybox();
+	
 	$('#b_conf').click(function(){
 		if($('#form_conf').validate()){
 			$('#form_conf').alta();

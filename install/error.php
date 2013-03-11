@@ -46,13 +46,17 @@
 		    <header></header>
 			<h1>Install Error</h1>    
 			<section>
-	        	<? $error = error_get_last(); ?>
-	        	
-	        	<p><label> message</label>
-	        	<?= $error["message"]?></p> 
-	        	 
-	        	<p><label>file</label>
-	        	<?= $error["file"]?> line: <?= $error["line"] ?></p>
+				<? if (!empty($errorMsg)) { ?>
+					<p><label> message</label>
+		        	<?= $errorMsg?></p>
+		        <? } else { 				
+	        	  	$error = error_get_last(); ?>
+		        	<p><label> message</label>
+		        	<?= $error["message"]?></p> 
+		        	 
+		        	<p><label>file</label>
+		        	<?= $error["file"]?> line: <?= $error["line"] ?></p>
+		        <? } ?>	
 			</section>
 		    
 		    <footer><p>filmfestCMS</p></footer>

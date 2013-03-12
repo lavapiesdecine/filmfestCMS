@@ -5,7 +5,7 @@ Gestor de contenidos para festivales de cine, desarrollado para la Muestra de Ci
 
 Para desarrollar este CMS hemos partido de varias tecnologías:
 
-* HTML 5 / php 5.3 / mySQL
+* HTML 5 / PHP 5.3 / MySQL
 * jQuery / TinyMCE / fancybox
 * Crystal Clear
 * FPDF / php.mo

@@ -59,7 +59,7 @@
 		        <? } ?>	
 			</section>
 		    
-		    <footer><p>filmfestCMS</p></footer>
+		    <footer><p>filmfestCMS 1.2</p></footer>
 	    </article>
 	</body>
 </html>

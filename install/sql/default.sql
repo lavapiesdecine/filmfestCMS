@@ -424,7 +424,6 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}docs (
 -- command split --
 
 INSERT INTO {DATABASE}.{PREFIX}docs (`nombre`, `descripcion`, `archivo`, `muestra`) VALUES
-('Programa de mano 2012', 'No te pierdas ni una peli', 'programa-de-mano-2012.pdf', '2012'),
 ('Licencias libres para obras audiovisuales', 'Licencias libres para obras audiovisuales', 'licencias-libres-para-obras-audiovisuales.pdf', '2013'),
 ('Modelo de datos','Esquema de las tablas que emplea filmfesCMS','modelo-de-datos.pdf','2013');
 

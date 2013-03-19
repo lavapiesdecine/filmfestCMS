@@ -91,7 +91,7 @@
 	    }
 	    
 	    public function licencia(){
-		    if($this->_dao->update($_SESSION["id_pelicula"], array("licencia"=>$_POST['id_licencia']), "peliculas")){
+		    if($this->_dao->update($_SESSION["id_pelicula"], array("id_licencia"=>$_POST['id_licencia']), "peliculas")){
 		    	echo "<p><strong>"._("incripcion.licencia")."</strong></p><img src='".URL_LOGO."licencias/".$_POST['id_licencia'].".png' />";
 		    	echo "<p><a href='#'>&laquo; "._("inscripcion.modificar")."</a></p>";
 			} else {

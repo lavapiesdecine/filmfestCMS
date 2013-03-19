@@ -69,6 +69,7 @@ div#resumen-contacto, div#resumen-pelicula, div#resumen-adicional, div#resumen-l
 	background-color: #ebebeb;
 	padding: 0px 5px;
 	border: 1px solid #999;
+	margin-bottom: 20px;
 }
 div#resumen a{
 	color:#999999;

@@ -95,7 +95,7 @@ $(document).ready(function() {
 	
 		<? foreach ($espacios as $espacio) { ?>
 			var marker<?=$espacio->id?> = new google.maps.Marker({
-		        position: latlng
+		        position: new google.maps.LatLng(<?=$espacio->latitud?>, <?=$espacio->longitud?>)
 		    });
 		    marker<?=$espacio->id?>.setMap(map);
 

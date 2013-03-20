@@ -10,18 +10,12 @@
 	 */
 	if (!file_exists("cms/core/config/geo.php")){
 		
-		//check mod_rewrite
-		print_r(getenv('HTTP_MOD_REWRITE'));
-		
 		if (function_exists('apache_get_modules')) {
-			$mod_rewrite = in_array('mod_rewrite', apache_get_modules());
-		} else {
-			$mod_rewrite =  getenv('HTTP_MOD_REWRITE')=='On';
-		}
-		if(!$mod_rewrite){
-			$errorMsg = "Enable mod_rewrite";
-			include("install/error.php");
-			exit;
+			if(!in_array('mod_rewrite', apache_get_modules())){
+				$errorMsg = "Enable mod_rewrite";
+				include("install/error.php");
+				exit;
+			}
 		}
 		
 		//initial load: cms/core/config/conf.php 
@@ -47,7 +41,7 @@
 	
 	/**
 	 * CONF FILES
-	 
+	 */
 	include_once("cms/core/util/Util.php");
 	$confFiles = core\util\Util::getFiles("cms/core/config/", "php");
 	foreach ($confFiles as $file) {
@@ -58,10 +52,9 @@
 	
 	set_error_handler('error_handler', E_STRICT);
 	set_exception_handler('exception_handler');
-	*/
 	
 	/**
 	 * RUN BOOTSTRAP
-	 
+	 */ 
 	core\Bootstrap::run();
-	*/
+	

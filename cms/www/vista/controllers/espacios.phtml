@@ -1,5 +1,4 @@
-
-<? if(OSM){ ?>
+<? if(OSM && !$this->_data->getRequest()->getMovil()){ ?>
 	<script type="text/javascript" src="<?=URL_LIBJS?>openlayer/OpenLayers.js"> </script>
 <? } else {?> 
 	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>

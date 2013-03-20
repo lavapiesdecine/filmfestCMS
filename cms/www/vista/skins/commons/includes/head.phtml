@@ -15,7 +15,7 @@
 <script type="text/javascript" language="javascript">
 	var urlApp = '<?= BASE_URL ?>/';
 	var modulo = '<?= $this->_controller ?>';
-	var osm = <?= json_encode(OSM) ?>;
+	var osm = <?= json_encode(OSM && !$this->_data->getRequest()->getMovil()) ?>;
 </script>
 <?	include_once($pathCommons. "google-analytics.html"); ?>
 <script language="javascript">

@@ -220,6 +220,6 @@ function phpmo_write_mo_file($hash, $out) {
 	$mo .= $ids;
 	// strings
 	$mo .= $strings;
-
+	
 	return file_put_contents($out, $mo);
 }

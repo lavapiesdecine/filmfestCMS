@@ -59,8 +59,4 @@
 	    	}
 	    }
 	    
-	    /*
-	    public function feedback($ok){
-	    	return $ok ? _("feedback.bbdd.ok") : _("feedback.bbdd.ko"); 
-	    }*/
 	}

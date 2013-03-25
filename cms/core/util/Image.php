@@ -117,10 +117,6 @@
 			if(!imagejpeg($image, $ruta . DS . $this->_name . ".jpg", 100)){
 				throw new \Exception("error al guardar ".$ruta . $this->_name . ".jpg");
 			}
-			/*
-			if(!move_uploaded_file($this->_file, $ruta . $this->_name . ".jpg")) {
-				throw new \Exception("error al mover " .  $ruta . $this->_name . ".jpg");
-			}*/
 		}
 		
 		public function deleteFile(){

@@ -56,7 +56,8 @@
 				case "youtube":
 					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
 					preg_match($regex, $video, $match);
-					$video = "http://www.youtube.com/v/".$match[2];
+					print_r($match);
+					$video = "http://www.youtube.com/v/".$match[3];
 					break;
 				case "youtu":
 					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";

@@ -27,8 +27,8 @@
 	    }
 	    
 	   /**
-	    * Carga en sesion de los datos de configuración de la base de datos
-	    * Carga del archivo de configuración cms/core/config/bbdd.php
+	    * Carga en sesion de los datos de configuracion de la base de datos
+	    * Carga del archivo de configuracion cms/core/config/bbdd.php
 	    * Carga del archivo de base de datos install/sql/default.sql
 	    */
 	   public function alta(){
@@ -48,14 +48,14 @@
     				$this->load($mySQLi, $_POST['database']);
     				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "bbdd.php </strong>");
     			} else {
-    				$result = array("ok"=>false, "msg"=>"Fallo en el archivo configuración");
+    				$result = array("ok"=>false, "msg"=>"Fallo en el archivo configuracion");
     			}
     		}
     		echo json_encode($result);
        }
 	   
 	   /**
-	    * Carga del archivo de configuración cms/core/config/bbdd.php
+	    * Carga del archivo de configuraciï¿½n cms/core/config/bbdd.php
 	    * @param $bbdd
 	    * @return boolean
 	    */

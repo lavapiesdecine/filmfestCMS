@@ -9,8 +9,8 @@ class confController extends Controller{
 	}
 	
 	/**
-	 * Carga en sesion de los datos de configuración del usuario admin
-	 * Carga del archivo de configuración cms/core/config/conf.php
+	 * Carga en sesion de los datos de configuracion del usuario admin
+	 * Carga del archivo de configuracion cms/core/config/conf.php
 	 */
 	public function index(){
 		
@@ -38,39 +38,38 @@ class confController extends Controller{
 				"emailcontact" => $_POST['emailcontact'],
 				"lang" => $_POST['lang']);
 		
-		$result = array("ok"=>false, "msg"=>"Fallo en <strong> " . CONF_PATH . "conf.php </strong>");
+		$result = $this->loadLanguage($_POST['lang']);
 		
-		if($this->loadLanguage($_POST['lang'])){
-			if($this->config($_SESSION['usuarioAdmin'])){
-				$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "conf.php </strong>");
-			}
+		if($result["ok"] && $this->config($_SESSION['usuarioAdmin'])){
+			$result = array("ok"=>true, "msg"=>"Completado correctamente en <strong> " . CONF_PATH . "conf.php </strong>");
 		}
+		
 		echo json_encode($result);
 	}
 	
-	private function loadLanguage($langSelected){
-		
+	private function loadLanguage($langSelected){ 
 		$langs = unserialize(LANGS);
 		$lang = $langs[$langSelected];
 		
 		/* generate .mo file */
 		require(CMS_PATH . "core" . DS . "lib" . DS . "php-mo.php");
 		$pathFileLanguage = CMS_PATH."locale". DS . $lang[2] . DS . "LC_MESSAGES" . DS;
-		$admin = true;
-		if(!file_exists($pathFileLanguage . "admin.mo")){
-			$admin = @phpmo_convert( $pathFileLanguage . 'admin.po');
-		}
-		$www = true;
-		if(!file_exists($pathFileLanguage . "www.mo")){
-			$www = @phpmo_convert( $pathFileLanguage . 'www.po');
-		}
 		
-		return $admin && $www;
+		$apps = array(WEB, ADMIN);
+		foreach ($apps as $app) {
+			if(!file_exists($pathFileLanguage.$app.".mo")){
+				if(!@phpmo_convert($pathFileLanguage.$app.".po")){
+					$error = error_get_last();
+					return array("ok"=>false, "msg" => $error["message"]."<br>".$error["file"]. " " . $error["line"]);
+				}
+			}
+		}
+		return array("ok"=>true, "msg"=>""); 
 	}
 	
 	
 	/**
-	 * Carga del archivo de configuración cms/core/config/conf.php
+	 * Carga del archivo de configuraciï¿½n cms/core/config/conf.php
 	 * @param $usuario
 	 * @return boolean
 	 */

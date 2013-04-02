@@ -15,7 +15,7 @@
 			<td style='width:450px;'><?=$pelicula->autor?> <br> <?=$pelicula->duracion?> / <?=$pelicula->anyo?> <?=!empty($pelicula->genero) ? " / ".$pelicula->genero:"" ?> <?=!empty($pelicula->pais) ? " / ".$pelicula->pais:"" ?>  <?=(!empty($pelicula->nombre_licencia) && $pelicula->nombre_licencia!='Copyright') ? " / ".$pelicula->nombre_licencia:"" ?>
 			<br><?=\core\util\Util::substring($pelicula->sinopsis, 67)?></td>
 			<td><?	if(!empty($pelicula->video)){ ?>
-						<a href='<?=$pelicula->video?>'width='550px' height='400px' class='fancybox' title='<?=$pelicula->titulo."  -  ".$pelicula->autor?>'><?=_("recepcion.vervideo")?></a>
+						<a href='<?=$pelicula->video?>' class='fancybox' title='<?=$pelicula->titulo."  -  ".$pelicula->autor?>'><?=_("recepcion.vervideo")?></a>
 				<?	}?>
 			</td>
 		</tr>

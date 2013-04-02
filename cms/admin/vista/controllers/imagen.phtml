@@ -1,5 +1,5 @@
 <? if(empty($img)){?>
-	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/imagen/upload" scrolling="no"  ></iframe>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/imagen/upload"  ></iframe>
 <? }?>
 <div id="div-img" class="<?= $classUpload ?>">
 	<?if(!empty($img)){?>
@@ -37,7 +37,7 @@
 		
 		<? if($video) { ?>
 			<label><?= _("form.video.url")?> <span class="small"><?= _("form.video.url.1")?></span></label>
-			<input value='<?=$url?>' name='id_video' id='id_video' placeholder="http://"  type="url" />
+			<input value='<?=$url?>' name='id_video' id='id_video' placeholder="http://" />
 		<? } else { ?>
 			<label><?= _("form.img.url")?></label>
 			<span class="input"><a href="<?=$url?>" target="_blank"><?=$url?></a></span>

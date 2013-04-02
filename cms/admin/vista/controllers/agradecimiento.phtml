@@ -1,5 +1,5 @@
 <? if(empty($img)){?>
-	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/agradecimiento/upload" scrolling="no"></iframe>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/agradecimiento/upload"></iframe>
 <? }?>
 <div id="div-img" class="<?= $classUpload ?>">
 	<?if(!empty($img)){?>
@@ -23,7 +23,7 @@
 		<input value='<?=$nombre?>' name='nombre' id='nombre' required />
 		
 		<label><?= _("form.web")?><span class="small"><?= _("form.noobligatorio")?></span></label> 
-		<input  value='<?=$url?>' name='web' id='web' placeholder="http://"  type="url" />
+		<input  value='<?=$url?>' name='web' id='web' placeholder="http://" />
 		
 		<a href="#" id='b_donante' class="boton"><?=_("form.aceptar")?></a>
 	</form>

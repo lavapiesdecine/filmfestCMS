@@ -8,13 +8,13 @@
 			</form>
 		</div>
 		<div id="feedback-doc" class="oculto">
-			<iframe height='200px' width='100px' id='frame_doc' name='frame_doc' class='framedoc' src="<?=URL_ADMIN?>/doc/upload" scrolling="yes"></iframe>
+			<iframe height='200px' width='100px' id='frame_doc' name='frame_doc' class='framedoc' src="<?=URL_ADMIN?>/doc/upload"></iframe>
 		</div>
 	<? } ?>
 	
 	
 	<? if(empty($nombreImg)){?>
-		<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/doc/uploadImg" scrolling="no"></iframe>
+		<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/doc/uploadImg"></iframe>
 	<? }?>
 	<div id="div-img" class="<?= $classUploadImg ?>">
 		<?if(!empty($fileNameImg)){?>

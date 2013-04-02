@@ -1,5 +1,5 @@
 <? if(empty($img)){?>
-	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/espacio/upload" scrolling="no"  ></iframe>
+	<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/espacio/upload" ></iframe>
 <? }?>
 <div id="div-img" class="<?= $classUpload ?>">
 	<?if(!empty($img)){?>
@@ -39,7 +39,7 @@
 		<label><?=_("form.descripcion")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 
 		<textarea name='descripcion' id='descripcion' ><?=$descripcion?></textarea>
 		<label><?=_("form.web")?> <span class="small"><?=_("form.noobligatorio")?></span></label>
-		<input value='<?=$url?>' name='web' id='web' placeholder="http://"  type="url" />
+		<input value='<?=$url?>' name='web' id='web' placeholder="http://" />
 		<label><?=_("form.telefono")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 
 		<input value='<?=$telefono?>' name='telefono' id='telefono' type="tel" />
 		<label><?=_("form.email")?> <span class="small"><?=_("form.noobligatorio")?></span></label> 

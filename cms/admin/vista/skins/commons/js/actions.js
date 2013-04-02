@@ -263,8 +263,6 @@ $(document).ready(function() {
 			$('.selecteds option[value=' + $('.selecteds').val() + ']').remove();
 			$('.availables').append(option);
 		}
-	});	
-	
-		
+	});		
 		
 });

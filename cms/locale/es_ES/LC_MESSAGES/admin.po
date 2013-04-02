@@ -12,9 +12,7 @@ msgstr "Caché"
 
 #: admin/controllers/cacheController.php:9
 msgid "cache.description"
-msgstr ""
-"Sistema de caché: Alternative PHP Cache. ver http://www.php.net/manual/en/"
-"book.apc.php"
+msgstr "Sistema de caché: Alternative PHP Cache. ver http://www.php.net/manual/en/book.apc.php"
 
 #: admin/controllers/configController.php:7
 msgid "config.title"
@@ -738,6 +736,10 @@ msgstr "No encuentra esa dirección, prueba otra vez"
 #: admin/vista/skins/commons/includes/literales.phtml:15
 msgid "form.error.docname"
 msgstr "Informa primero el nombre del documento"
+
+#: admin/vista/skins/commons/includes/literales.phtml:16
+msgid "form.error.date"
+msgstr "La fecha de fín debe ser posterior a la fecha de inicio"
 
 #: admin/vista/skins/lvc/layouts/1columna.phtml:22
 #: admin/vista/skins/lvc/layouts/2columnas.phtml:29

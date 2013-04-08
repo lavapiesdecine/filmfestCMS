@@ -16,15 +16,11 @@
 		private $_modulo;
 		private $_layout;
 		private $_skin;
-		//private $_title;
-		//private $_description;
 		private $_data;
 		private $_edicion;
 		private $_idTexto;
 		private $_perfiles;
 		private $_usuario;
-//		private $_i18n;
-		
 		
 		public function getDao(){
 	        return $this->_dao;
@@ -58,21 +54,7 @@
 		public function setLangs($langs){
 		       $this->_langs = $langs;
 		}
-	    /*
-		public function getTitle(){
-	        return $this->_title;
-	    }
-		public function setTitle($title){
-	        $this->_title = $title;
-	    }
-	    
-	    public function getDescription(){
-	        return $this->_description;
-	    }
-		public function setDescription($description){
-	        $this->_description = $description;
-	    }
-	    */
+		
 	    public function getLayout(){
 	        return $this->_layout;
 	    }
@@ -120,14 +102,7 @@
 		public function setUsuario($usuario){
 	        $this->_usuario = $usuario;
 	    }
-	 	/*   
-	    public function getI18n(){
-	    	return $this->_i18n;
-	    }
-	    public function setI18n($i18n){
-	    	$this->_i18n = $i18n;
-	    }
-	    */
+	 	
 		public function __toString(){
 	        return "Data:  request ".$this->getRequest(). " | modulo ".$this->getModulo(). " | lang ".$this->getLang(). "  | data ".$this->getData(). " | layout ".$this->getLayout();
 	    }

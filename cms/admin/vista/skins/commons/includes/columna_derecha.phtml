@@ -7,7 +7,7 @@
 			$itemSelected = (!empty($this->_id) && ($this->_id == $item->id)) ? 'selected' : '';
 			$itemId = $item->id;
 		?>
-			<li class='<?=$itemSelected?>'>
+			<li class='<?=$itemSelected?> <?=$visible?>'>
 				<span class="titulo" id='item-<?=$itemId?>' title='<?=$item->titulo?>'><?= \core\util\Util::substring($item->titulo,35) ?></span>
 				<div class="botonera-listado">
 					<? if(isset($this->urlWebModulo)){?>

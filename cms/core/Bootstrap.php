@@ -175,22 +175,9 @@ class Bootstrap{
 		$request->setId($id);
 		$request->setAnyo($anyo);
 		$request->setLang($lang);
-		$request->setMovil(self::isDispositivoMovil());
-		
 		return $request;
 	}
 	
-	  	
-    /**
-     * @return boolean
-     */
-    private function isDispositivoMovil(){
-    	$navigatorUserAgent = isset($_SERVER['HTTP_USER_AGENT']) ? strtolower($_SERVER['HTTP_USER_AGENT']) : '';
-    	return stristr($navigatorUserAgent, "android") or
-    			stristr($navigatorUserAgent, "mobile") or
-    			stristr($navigatorUserAgent, "tablet");
-    	    	
-    }
     
     /**
      * carga de datos para la aplicacion web. 
@@ -211,7 +198,6 @@ class Bootstrap{
 		$skin = $request->getAnyo();
 		$modulo = $request->getControlador();
 		$subMenu = array();
-		$isMovil = $request->getMovil();
 		$idTexto = 0;
 		$anyo = $request->getAnyo();
 		
@@ -254,7 +240,7 @@ class Bootstrap{
 			$values = array_merge($values, array("idControllerMenu" => $idControllerMenu));
 			$data->setData($values);
 			$data->setDao($dao);
-			$data->setLayout($isMovil?"movil.phtml":$layout);
+			$data->setLayout($layout);
 			$data->setSkin($skin);
 			$data->setModulo($modulo);
     	} catch (\Exception $e) {
@@ -275,7 +261,7 @@ class Bootstrap{
     		$pagina = $dao->paginaByIdDAO($controller, $id, $anyo);
     	} else {
     		$pagina = $dao->paginaDAO($controller, $anyo, $lang);
-    	}	
+    	}
     	return $pagina;
     }
 

@@ -10,7 +10,6 @@
 	    private $_anyo;
 	    private $_lang;
 	    private $_application;
-	    private $_movil;
 		
 	    
 		public function getControlador(){
@@ -53,13 +52,6 @@
 	    }
 	    public function setLang($lang){
 	    	$this->_lang = $lang;
-	    }
-	    
-	    public function getMovil(){
-	    	return $this->_movil;
-	    }
-	    public function setMovil($movil){
-	    	$this->_movil = $movil;
 	    }
 	    
 		public function __toString(){

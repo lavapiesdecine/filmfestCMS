@@ -2,9 +2,24 @@
 <div class="botonera">
 	<ul>
 	<li class="separata"><a href="<?= $this->_baseUrl ?>" id="id_inicio"><img src="<?=URL_IMG_ADMIN?>home.png" title="<?= _("home") ?>" /></a></li>
-	<li><a href="<?= $this->_baseUrl ?>anyo" id='id_cambio_edicion' title="<?= $edicion->nombre?> - <?= $this->_anyo?>"><img src="<?=URL_SKINS.$this->_anyo . "/" . IMG . "/". $edicion->cartel?>" /></a></li>
-	<li  class="separata" ><a href="<?= $this->_baseUrl ?>viewusuario/<?=$usuario->getId()?>" ><img src="<?=BASE_URL_ADMIN . '/vista/skins/commons/img/usuarios/'. $usuario->getLogo()?>" title="<?= $usuario->getNombre()." - ".$usuario->getDescripcion() ?>" /></a></li>
-	<li  class="separata" ><a href="<?= $this->_baseUrl ?>logout" ><img src="<?=URL_IMG_ADMIN?>exit_off.png" title="<?= _("logout") ?>" /></a></li>
+	<? $numPerfiles = count($usuario->getPerfiles());
+		if($numPerfiles>1){
+			$i = 1;
+			foreach($usuario->getPerfiles() as $perfil){
+	?>	
+			<li class="<?=$i==$numPerfiles ? "separata" : "" ?>">
+				<a href='#' id='<?= $perfil->nivel."-".$perfil->modulo?>' class="perfil" title="<?=$perfil->profile?> - <?= _($perfil->profile.".description") ?>">
+					<img width="90px" height="90px" src='<?= URL_IMG_ADMIN.$perfil->logo?>' />
+				</a>
+			</li>
+	<? 		
+			$i++;
+			}
+		} 
+	?>
+	<li class="separata"><a href="<?= $this->_baseUrl ?>anyo" id='id_cambio_edicion' title="<?= $edicion->nombre?> - <?= $this->_anyo?>"><img src="<?=URL_SKINS.$this->_anyo . "/" . IMG . "/". $edicion->cartel?>" /></a></li>
+	<li class="separata"><a href="<?= $this->_baseUrl ?>viewusuario/<?=$usuario->getId()?>" ><img src="<?=BASE_URL_ADMIN . '/vista/skins/commons/img/usuarios/'. $usuario->getLogo()?>" title="<?= $usuario->getNombre()?>" /></a></li>
+	<li class="separata"><a href="<?= $this->_baseUrl ?>logout" ><img src="<?=URL_IMG_ADMIN?>exit_off.png" title="<?= _("logout") ?>" /></a></li>
 	</ul>
 </div>
 <? }?>

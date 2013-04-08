@@ -40,8 +40,10 @@
 			</select>
 		</p>
 		
-		<label><?=_("form.descripcion.breve")?></label>
-		<?= _("profile.$nombre.description")?>
+		<? if (!empty($nombre)){ ?>
+			<label><?=_("form.descripcion.breve")?></label>
+			<?= _("profile.$nombre.description")?>
+		<? } ?>
 		
 		<p><a href="#" id='b_perfil' class="boton"><?=_("form.aceptar")?></a></p>
 	</form>

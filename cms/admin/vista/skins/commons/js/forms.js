@@ -6,7 +6,16 @@ $(document).ready(function() {
 		if($('#form_login').validate()){
 			$('#form_login').submit();
 		}
-	});	
+	});
+	
+	if ($('#b_login').length){
+		$(document).keypress(function(e) {
+			if(e.which == 13) {
+	            jQuery(this).blur();
+	            jQuery('#b_login').focus().click();
+	        }
+		});
+	}	
 	
 	
 	/**

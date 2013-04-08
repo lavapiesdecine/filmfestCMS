@@ -7,7 +7,7 @@
 	<label><?=_("form.espacio.direccion")?></label>
 	<input value='<?=$direccion?>' name='direccion' id='direccion' required />
 	
-	<label><?= _("form.ubicacion")?>:</strong> <span id='id_ciudad' ><?= $direccion ?></label>
+	<label><?= _("form.ubicacion")?>: <span id='id_ciudad' ><?= $direccion ?></span></label>
 	
 	<? if(OSM) {?>
 		<script type="text/javascript" src="<?=URL_LIBJS?>openlayer/OpenLayers.js"> </script>

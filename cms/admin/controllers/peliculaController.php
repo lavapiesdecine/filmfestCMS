@@ -118,7 +118,7 @@ class peliculaController extends \core\AdminController{
     		try{    			
     			$path = IMG_PATH . $this->_carpetaImg . DS . $this->_anyo . DS;
     			$actions = array(array("action" => "crop", "path" => $path . THUMBNAIL . DS, "height" =>"50", "width" => "50"),
-    							 array("action" => "crop", "path" => $path . MEDIUM . DS, "height" =>"150", "width" => "100"),
+    							 array("action" => "crop", "path" => $path . MEDIUM . DS, "height" =>"100", "width" => "150"),
     							 array("action" => "save", "path" => $path));
     			$nombreImg = $this->uploadImagen($actions);
     			$urlImagen = URL_IMG . $this->_carpetaImg . "/" . $this->_anyo . "/" . $nombreImg;

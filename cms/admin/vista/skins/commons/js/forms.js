@@ -246,7 +246,6 @@ $(document).ready(function() {
 	
 	/**
 	 * peliculas
-	 * 
 	 */
 	$('#b_pelicula').click(function(){
 		if($('#formPelicula').validate()){

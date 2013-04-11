@@ -135,7 +135,6 @@ $(document).ready(function() {
 	if ($('#map').length){
 		
 		if(osm){
-			//$("#map").osm(parseFloat($('#id_longitud').val()), parseFloat($('#id_latitud').val()), 20);	
 			/* open layer */  
 			map = new OpenLayers.Map("map");
 			map.addLayer(new OpenLayers.Layer.OSM());

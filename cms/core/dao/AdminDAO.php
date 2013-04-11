@@ -73,6 +73,9 @@ class AdminDAO extends Database{
 	public function adminModuloNombreDAO($modulo, $perfiles){
 		return parent::selectQuery("select m.*, mp.id_perfil from ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp where m.id=mp.id_modulo and m.modulo='$modulo' and mp.id_perfil in ($perfiles)");
 	}
+	public function adminModuloDefaultProfileDAO($profile){
+		return parent::selectQuery("select m.modulo from ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp where m.id=mp.id_modulo and mp.id_perfil = $profile limit 0,1");
+	}
 	public function modulosNivelAccesoDAO($nivelAcceso){ 
 		$sql = "select id, modulo from ".$this->_prefix."modulos where alta='S'";
 		if ($nivelAcceso>0){

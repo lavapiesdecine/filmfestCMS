@@ -86,12 +86,11 @@ $(document).ready(function() {
 	});
 	
 	/** 
-	 * panel control
+	 * botonera
 	 */
-	
-	$('div#inicio nav ul.menu > li').click(function() {
-		var item =  $(this).attr("id").split('-');
-		setTimeout("window.location='" + urlApp + item[1] + "'", 0);
+	$('a.profile').click(function() {
+		var id =  $(this).attr("id");
+		setTimeout("window.location='" + urlApp + id + "'", 0);
 	});
 	
 	/**

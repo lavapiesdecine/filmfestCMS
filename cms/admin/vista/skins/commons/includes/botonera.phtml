@@ -6,9 +6,10 @@
 		if($numPerfiles>1){
 			$i = 1;
 			foreach($usuario->getPerfiles() as $perfil){
+			$profile = $perfil->profile;
 	?>	
 			<li class="<?=$i==$numPerfiles ? "separata" : "" ?>">
-				<a href='#' id='<?= $perfil->nivel."-".$perfil->modulo?>' class="perfil" title="<?=$perfil->profile?> - <?= _($perfil->profile.".description") ?>">
+				<a href='#' id='<?= $perfil->id ?>' class="profile" title="<?=$profile ." - ".  _("profile.".$perfil->profile.".description") ?>">
 					<img width="90px" height="90px" src='<?= URL_IMG_ADMIN.$perfil->logo?>' />
 				</a>
 			</li>

@@ -68,7 +68,11 @@ class Bootstrap{
 		//TODO: router 
 		if (isset($params[0])){
 			if (is_numeric($params[0])){
-				$anyo = $params[0];
+				if (strlen($params[0])==4){
+					$anyo = $params[0];
+				} else {
+					$id = $params[0];
+				}
 			}
 			else{
 				$controller = $params[0];

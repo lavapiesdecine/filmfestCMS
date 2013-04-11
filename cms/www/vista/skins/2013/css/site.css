@@ -147,6 +147,17 @@ div.ficha-columnaizquierda{
 	float:left;
 	width:180px;
 }
+div.ficha-columnaizquierda > a img {
+    border: 1px solid #E3ECFB;
+    width: 180px;
+}
+div.ficha-columnaizquierda > a img:hover {
+    border: 1px solid #eb6d30;
+}
+div#licencia{
+	margin:20px 50px;	
+}
+
 div.ficha-columnaderecha{
 	float:right;
 	width:500px;

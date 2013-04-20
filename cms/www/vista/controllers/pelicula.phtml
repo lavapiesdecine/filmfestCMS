@@ -1,7 +1,9 @@
-	<div class="video">
-		<?= \core\util\UtilPagina::getEmbedVideo($pelicula->enlace) ?>
-		<p><?=$pelicula->material_propio?></p>
-	</div>
+	<? if (!empty($pelicula->enlace)){ ?>
+		<div class="video">
+			<?= \core\util\UtilPagina::getEmbedVideo($pelicula->enlace) ?>
+			<p><?=$pelicula->material_propio?></p>
+		</div>
+	<? } ?>
 	
 	<?  if (!empty($pelicula->cartel)){ ?>
 		<div class='ficha-columnaizquierda'>

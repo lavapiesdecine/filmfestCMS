@@ -61,7 +61,7 @@
 					."$duracion / " . $_POST["id_anyo"]
 					.($_POST["id_genero"]!="" ? " / ".$_POST["id_genero"]:"")
 					.($_POST["id_pais"]!="" ? " / ".$_POST["id_pais"]:"")
-					.($web!='' ? "<br><a href='$web'>$web</a></p>" : "");
+					.($web!='' ? "<br><a href=\"$web\">$web</a></p>" : "");
 					$tecnica ="<p>".nl2br($_POST['id_tecnica'])."</p>";
 					
 					$data = array("titulo"=>$_POST['id_titulo'],"ficha_tecnica"=>$ficha.$tecnica,"sinopsis"=>$_POST['id_sinopsis']);
@@ -149,7 +149,7 @@
 			$autor = $datos->autor;
 			$titulo = $datos->titulo;
 			$email = $datos->email;
-			$asunto = "Inscripción en la $edicion";
+			$asunto = "Inscripciï¿½n en la $edicion";
 			
 			$cuerpo = "<html><body><p>Hola $autor,</p>";
 			$cuerpo .= "<p><strong>$titulo</strong> se ha inscrito correctamente para la <strong>$edicion</strong>. </p>";

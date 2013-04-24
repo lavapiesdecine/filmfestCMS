@@ -48,10 +48,9 @@
 		
 		public static function getUrlVideo($video){
 			
-			$regex = "/http:\/\/(:?www.)?(\w*)/";
+			$regex = "/[http|https]:\/\/(:?www.)?(\w*)/";
 			preg_match($regex, $video, $match);
 			$stream = $match[2];
-			
 			switch ($stream){
 				case "youtube":
 					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
@@ -64,7 +63,7 @@
 					$video = "http://www.youtube.com/v/".$match[3];
 					break;
 				case "vimeo":
-					$regex = "/http:\/\/(?:www.)?(\w*).com\/(\d*)/";
+					$regex = "/[http|https]:\/\/(?:www.)?(\w*).com\/(\d*)/";
 					preg_match($regex, $video, $match);
 					$video = "http://vimeo.com/".$match[2];
 					break;

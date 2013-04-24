@@ -66,7 +66,7 @@
 				case "vimeo":
 					$regex = "/http:\/\/(?:www.)?(\w*).com\/(\d*)/";
 					preg_match($regex, $video, $match);
-					$video = "http://vimeo/".$match[2];
+					$video = "http://vimeo.com/".$match[2];
 					break;
 					
 				case "blip":

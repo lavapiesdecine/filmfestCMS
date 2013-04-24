@@ -29,6 +29,14 @@ class DAO extends Database{
     				 LEFT JOIN ".$this->_prefix."pagina_texto pt ON p.id = pt.id_pagina, ".$this->_prefix."textos t,
     				 ".$this->_prefix."web_modulos m, ".$this->_prefix."menu mn
     				 where m.id=p.id_webmodulo and p.id = mn.id_pagina and pt.id_texto=t.id and mn.portada='S' and p.muestra = '$anyo' and p.alta='S' AND t.lang IN ('".DEFAULT_LANG."', '$lang')
+    				 union
+    				 SELECT p.id, p.muestra anyo, m.modulo, p.layout, p.skin, p.url, '' titulo, 0, p.id_paginapadre, '".DEFAULT_LANG."' lang, 3 orden
+					 FROM ".$this->_prefix."pagina p, ".$this->_prefix."web_modulos m, ".$this->_prefix."menu mn
+					 WHERE m.id = p.id_webmodulo
+					 and p.id = mn.id_pagina 
+					 and mn.portada='S'
+					 and p.alta='S'
+					 and p.muestra='$anyo'
     				 ) q
     			ORDER BY orden
     			LIMIT 0 , 1";

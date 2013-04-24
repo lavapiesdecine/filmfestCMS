@@ -9,12 +9,17 @@
 			theme : "advanced",
 			theme_advanced_buttons1 : "bold,italic,underline,separator,link,unlink,separator,image,media,separator,code,fullscreen",
 			plugins : "fullscreen",
+			entity_encoding : "raw",
 			theme_advanced_toolbar_location : "top"
 		});
 	});
 	</script>
 	<!-- /TinyMCE -->
 	 
+	 <?php 
+	 if(null === false) {echo 'verdadero';} else {echo 'falso';}
+	 
+	 ?>
 	<!-- cartel -->
 	<? if(empty($pelicula->cartel)){?>
 		<iframe height='100px' width='100px' id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/pelicula/upload"></iframe>

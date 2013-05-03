@@ -1,0 +1,50 @@
+
+/* profiles */
+
+nav.menu-1{
+	background-image: url("../img/profiles/admin.png");
+	background-position: 30px 50%;
+    background-repeat: no-repeat;
+    height: 40px;
+    margin-left: 20px;
+}
+nav.menu-2{
+	background-image: url("../img/profiles/web.png");
+	background-position: 30px 50%;
+    background-repeat: no-repeat;
+    height: 40px;
+    margin-left: 20px;
+}
+nav.menu-3{
+	background-image: url("../img/profiles/cine.png");
+	background-position: 30px 10px;
+    background-repeat: no-repeat;
+    height: 50px;
+    margin-left: 20px;
+}
+
+h3.logo-1{
+	background-image: url("../img/profiles/admin.png");
+	background-repeat: no-repeat
+}
+h3.logo-2{
+	background-image: url("../img/profiles/web.png");
+	background-repeat: no-repeat
+}
+h3.logo-3{
+	background-image: url("../img/profiles/cine.png");
+	background-repeat: no-repeat
+}
+
+
+
+/* modulos */
+li#id-usuario{background-image: url("../img/modulos/usuario.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-config{background-image: url("../img/modulos/config.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-modulos{background-image: url("../img/modulos/modulos.png");background-position: 5px 5px; background-repeat: no-repeat;}
+li#id-imagen{background-image: url("../img/modulos/imagen.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-pelicula{background-image: url("../img/modulos/pelicula.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-pagina{background-image: url("../img/modulos/pagina.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-proyeccion{background-image: url("../img/modulos/proyeccion.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-edicion{background-image: url("../img/modulos/edicion.png");background-position: 5px 5px;background-repeat: no-repeat;}
+li#id-doc{background-image: url("../img/modulos/doc.png");background-position: 5px 5px;background-repeat: no-repeat;}

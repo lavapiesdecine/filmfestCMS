@@ -35,7 +35,7 @@ class langsController extends \core\AdminController{
 						"lang" => substr($_POST['id_codigo'],0,2),
  						"codificacion" => $_POST['id_codificacion']);
 		
-		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
+		echo $this->alta($_POST['id'], $campos);
 
     }
     

@@ -5,11 +5,17 @@ namespace admin\controllers;
 class docController extends \core\AdminController{
 	
     public function __construct($data) {
-    	$this->_tabla = "docs";
-    	$this->_carpetaImg = "docs";
-		$this->_title = _("doc.title");
+    	$this->_title = _("doc.title");
 	    $this->_description = _("doc.description");
-    	parent::__construct($data);
+	    
+	    $this->_tabla = "docs";
+	    
+	    $this->_imgUrl = URL_LOGO . "docs" . "/";
+	    $this->_imgPath = LOGO_PATH . "docs" . DS;
+	    $this->_imgAction = array("crop" => array("path" => $this->_imgPath,
+	    										  "height" =>"80", "width" => "80"));
+	    	
+	    parent::__construct($data);
     }
     
     public function index(){
@@ -33,11 +39,11 @@ class docController extends \core\AdminController{
 				$classUpload = "";
 				$file = DOC_PATH.$documentoDAO->archivo;
 				$infoFile = pathinfo($file);
-				$sizeFile = \core\util\Util::formatBytes(filesize($file));
+				$sizeFile = \core\util\UtilFile::formatBytes(filesize($file));
 				$nombre = $documentoDAO->nombre;
 				$nombreImg = $documentoDAO->imagen;
 				if(!empty($nombreImg)){
-					$fileNameImg = URL_LOGO . 'docs/' . $documentoDAO->imagen;
+					$fileNameImg = $this->_imgUrl . $documentoDAO->imagen;
 					$classUploadImg = "";
 				}
 				$descripcion = $documentoDAO->descripcion;
@@ -64,7 +70,7 @@ class docController extends \core\AdminController{
 						"archivo" => $_POST['file_doc'],
 						"muestra" => $_POST['id_edicion']);
 		
-		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
+		echo $this->insert($_POST['id'], $campos);
 		
     }
     
@@ -72,89 +78,60 @@ class docController extends \core\AdminController{
  		
     	$id = $_POST['id'];
     	
-		$documentoDAO = $this->_dao->select($id, $this->_tabla);
-		if(isset($documentoDAO->archivo)){
-			if($this->_dao->delete($id, $this->_tabla)){
-				unlink(LOGO_PATH . 'docs' . DS . $documentoDAO->imagen);
-				unlink(DOC_PATH.$documentoDAO->archivo);
+    	try {
+			$documentoDAO = $this->_dao->select($id, $this->_tabla);
+			if(isset($documentoDAO->archivo)){
+				if($this->_dao->delete($id, $this->_tabla)){
+					\core\util\UtilFile::deleteFile($this->_imgPath . $documentoDAO->imagen);
+					\core\util\UtilFile::deleteFile(DOC_PATH.$documentoDAO->archivo);
+				}
 			}
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 		}
-		
-	   echo $ok;
-	
+		echo json_encode($this->_result);
     }
 	
-	public function upload(){ 	
+	public function uploadDoc(){ 	
+		if(isset($_FILES['doc'])){
 
-		if(isset($_FILES['doc'])){	
-			
-			$urlCss =  $this->_base . "/vista/skins/" . $this->_data->getSkin() . "/css/upload.css";
-			echo "<head><link rel='stylesheet' href='".$urlCss."' type='text/css' />";
-			
-			$size = $_FILES['doc']['size'];
-			
-			if(isset($_POST['id_nombreDoc'])){
-				$nombreDoc = \core\util\Util::stripAccents($_POST['id_nombreDoc']);
-			}
-			
-			if ($_FILES['doc']['error'] > 0){
-				echo 'Problem: ';
-				switch ($_FILES['doc']['error']){
-					case 1: echo 'File exceeded upload_max_filesize'; break;
-					case 2: echo 'File exceeded max_file_size'; break;
-					case 3: echo 'File only partially uploaded'; break;
-					case 4: echo 'No file uploaded'; break;
+			try{
+				
+				if ($_FILES['doc']['error'] > 0){
+					$msg = \core\util\UtilFile::errorUpload($_FILES['doc']['error']);
+					throw new \Exception("error upload: $msg " . $_FILES['doc']['name']);
 				}
-				exit;
-			}
-			
-			switch ($_FILES['doc']['type']){
-				case 'application/pdf': 
-					$extension = 'pdf'; 
-					break;
-				case 'application/x-pdf': 
-					$extension = 'pdf'; 
-					break;
-				case 'application/rtf':
-					$extension = 'rtf'; 
-					break;
-				case 'image/jepg':
-				case 'image/jpg':
-					$extension = 'jpg';
-					break;
-				case 'application/msword':
-					$extension = 'doc'; 
-					break;
-				default:
-					$extension = 'pdf';		
-			}
+		 
+				if(isset($_POST['id_nombreDoc'])){
+					$nombreDoc = \core\util\Util::stripAccents($_POST['id_nombreDoc']);
+				}
+		 
+				$extension = \core\util\UtilFile::getExtension($_FILES['doc']['type']);
+		 
+				$file_dest = DOC_PATH.$nombreDoc.".".$extension;
+		 
+				\core\util\UtilFile::copyFile($_FILES['doc']['tmp_name'], $file_dest);
+		 
+				$file = new \core\classes\File($file_dest);
+				$file->setName($nombreDoc);
 
-			if (copy ($_FILES['doc']['tmp_name'], DOC_PATH.$nombreDoc.".".$extension )) {
-				$id = $this->_dao->insertId(array("muestra" => $this->_anyo, "nombre" => $_POST['id_nombreDoc'], "archivo" => $nombreDoc.".".$extension), $this->_tabla);
-				echo "<input type='hidden' id='id' value='$id' />";
-				echo "<input type='hidden' id='nombre_doc' value='".$nombreDoc.".".$extension."' />";
-				echo "<a  class=".$extension." href='".URL_DOC.$nombreDoc.".".$extension."'>".$nombreDoc.".".$extension."</a></strong> <span>".\core\util\Util::formatBytes($size)."</span>";
-			}
-			else{
-				\core\util\Error::add(" error en ".__FUNCTION__. " : problemas al subir el documento: ". DOC_PATH.$nombreDoc.".".$extension );
-				echo ("<p>problemas al subir la imagen</p>");
-			}
+				$id = $this->_dao->insertId(array("muestra" => $this->_anyo, "nombre" => $file->getName(), "archivo" => $file->getName().".".$file->getExtension()), $this->_tabla);
+
+				$html = "<head><link rel='stylesheet' href='".$this->_base . "/vista/skins/" . $this->_data->getSkin() . "/css/upload.css"."' type='text/css' />"
+						."<input type='hidden' id='id' value='$id' />"
+						."<input type='hidden' id='nombre_doc' value='".$file->getName().".".$file->getExtension()."' />"
+						."<a  class=".$file->getExtension()." href='".URL_DOC.$file->getName().".".$file->getExtension()."'>".$file->getName().".".$file->getExtension()."</a></strong> <span>".$file->getSize()."</span>";
+				
+				echo $html;
+
+			} catch (\Exception $e){
+		    	$this->showError($e->getMessage());
+		    }
 	    }
 	}
 	
-	public function uploadImg(){
-		if(isset($_FILES['imagen'])){
-			try{
-				$actions = array(array("action" => "crop", "path" => LOGO_PATH . $this->_carpetaImg . DS , "width" =>"160", "height" =>"80"));
-				$nombreImg = $this->uploadImagen($actions);
-				$urlImagen = URL_LOGO . $this->_carpetaImg . "/" . $nombreImg;
-		   		echo "<input type='hidden' id='nombre_imagen' name='nombre_imagen' value='$nombreImg' />";
-				echo "<img src='$urlImagen' height='100px' width='100px'/>";
-			} catch (\Exception $e) {
-				echo("<p>problemas al subir la imagen</p>");
-				\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
-			}
-		}
+	public function upload(){
+		$this->uploadImg(null, $_POST['id_nombre']);
 	}
 	
 	

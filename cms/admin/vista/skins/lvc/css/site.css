@@ -11,90 +11,12 @@ nav h3 span{
 	padding:5px 0;
 }
 
-h3.logo-1{
-	background-image: url("../img/admin.png");
-	background-repeat: no-repeat
-}
-h3.logo-2{
-	background-image: url("../img/web.png");
-	background-repeat: no-repeat
-}
-h3.logo-3{
-	background-image: url("../img/cine.png");
-	background-repeat: no-repeat
-}
-h3.logo-4{
-	background-image: url("../img/mail.png");
-	background-repeat: no-repeat
-}
+
 ul.menu{
 	background-position: 80px 10px;
     background-repeat: no-repeat;
     height: 50px;
 }
-nav.menu-1{
-	background-image: url("../img/admin.png");
-	background-position: 30px 50%;
-    background-repeat: no-repeat;
-    height: 40px;
-    margin-left: 20px;
-}
-nav.menu-2{
-	background-image: url("../img/web.png");
-	background-position: 30px 50%;
-    background-repeat: no-repeat;
-    height: 40px;
-    margin-left: 20px;
-}
-nav.menu-3{
-	background-image: url("../img/cine.png");
-	background-position: 30px 10px;
-    background-repeat: no-repeat;
-    height: 50px;
-    margin-left: 20px;
-}
-nav.menu-4{
-	background-image: url("../img/mail.png");
-	background-position: 30px 50%;
-    background-repeat: no-repeat;
-    height: 40px;
-    margin-left: 20px;
-}
-li#id-usuario-activa{background-image: url("../img/usuario.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-usuario{background-image: url("../img/usuario_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-usuario:hover{background-image: url("../img/usuario.png");}
-
-li#id-config-activa{background-image: url("../img/config.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-config{background-image: url("../img/config_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-config:hover{background-image: url("../img/config.png");}
-
-li#id-modulos-activa{background-image: url("../img/modulos.png");background-position: 5px 5px; background-repeat: no-repeat;}
-li#id-modulos{background-image: url("../img/modulos_off.png");background-position: 5px 5px; background-repeat: no-repeat;}
-li#id-modulos:hover{background-image: url("../img/modulos.png");}
-
-li#id-imagen-activa{background-image: url("../img/imagen.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-imagen{background-image: url("../img/imagen_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-imagen:hover{background-image: url("../img/imagen.png");}
-
-li#id-pelicula-activa{background-image: url("../img/pelicula.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-pelicula{background-image: url("../img/pelicula_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-pelicula{background-image: url("../img/pelicula.png");}
-
-li#id-pagina-activa{background-image: url("../img/pagina.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-pagina{background-image: url("../img/pagina_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-pagina:hover{background-image: url("../img/pagina.png");}
-
-li#id-proyeccion-activa{background-image: url("../img/proyeccion.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-proyeccion{background-image: url("../img/proyeccion_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-proyeccion:hover{background-image: url("../img/proyeccion.png");}
-
-li#id-edicion-activa{background-image: url("../img/edicion.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-edicion{background-image: url("../img/edicion_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-edicion:hover{background-image: url("../img/edicion.png");}
-
-li#id-doc-activa{background-image: url("../img/doc.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-doc{background-image: url("../img/doc_off.png");background-position: 5px 5px;background-repeat: no-repeat;}
-li#id-doc:hover{background-image: url("../img/doc.png");}
 
 div#inicio{
 	margin-top:20px; float:left;margin-left:70px;width: 875px;
@@ -188,6 +110,9 @@ div.botonera ul{
 div.botonera li{
 	float:left;display: block;
 }
+div.botonera li:hover{
+	background-color: #3f3f3f;
+}
 div.botonera li.separata{
 	border-right:2px solid #555;
 }
@@ -222,9 +147,9 @@ aside ul{
 }
 aside ul li{
 	list-style-type: none;
-    height: 20px;
+    height: 25px;
     border-bottom:1px solid #ccc;
-    padding:4px 10px;
+    padding:0px 0px 0px 10px;
     cursor:pointer;
 }
 aside ul li:hover{
@@ -246,6 +171,21 @@ div.botonera-listado{
 }
 div.botonera-listado img{
 	border: none;
+	height: 15px;
+}
+div.accion{
+	float:left;
+	width: 18px;
+	padding-top:5px;
+	height: 20px;
+	padding-left:2px;
+}
+div.accion:hover{
+	background-color: #ccc;
+}
+
+div.accion a{
+	padding: 1px 0px;
 }
 
 /* formularios */

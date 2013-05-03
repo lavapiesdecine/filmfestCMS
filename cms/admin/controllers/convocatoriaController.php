@@ -27,8 +27,8 @@ class convocatoriaController extends peliculaController{
 			
 			if(!empty($pelicula->cartel)){
 				$classUpload = "";
-				$imgThumbnail = URL_IMG . $this->_carpetaImg . "/" . $this->_anyo . "/" . MEDIUM . "/" . $pelicula->cartel;
-				$img = URL_IMG . $this->_carpetaImg . "/" . $this->_anyo . "/" . $pelicula->cartel;
+				$imgThumbnail = URL_IMG . "peliculas" . "/" . $this->_anyo . "/" . MEDIUM . "/" . $pelicula->cartel;
+				$img = URL_IMG . "peliculas" . "/" . $this->_anyo . "/" . $pelicula->cartel;
 				$idImgPelicula = $pelicula->id_imagen;
 			}
 			
@@ -46,11 +46,14 @@ class convocatoriaController extends peliculaController{
     public function view(){
  		$id = $_POST["id"];
 		$accion = $_POST["accion"];
-		$ok = false;	
- 		if(!empty($id)){
-			$ok = $this->_dao->view($id, "convocatoria", $accion);
+		try{			
+	 		if(!empty($id)){
+				$this->_dao->view($id, "convocatoria", $accion);
+			}
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 		}
-		echo $ok;
+		echo json_encode($this->_result);
     }
     
 }

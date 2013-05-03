@@ -19,10 +19,9 @@
 	    	$idPelicula = isset($_SESSION["id_pelicula"]) ? $_SESSION["id_pelicula"] : null;
 	    	try{
 		    	$this->_dao->startTransaction();
-				\core\util\Log::add($_POST['id_nombre'], false);
 				if(empty($idPelicula)){
 					if (isset($_POST['id_nombre'])){
-						$idPelicula = $this->_dao->insertId(array("titulo"=>"","ficha_tecnica"=>"","sinopsis"=>"", "muestra" => DEFAULT_ANYO, "alta"=>"N"), "peliculas");
+						$idPelicula = $this->_dao->insertId(array("titulo"=>"","ficha_tecnica"=>"","sinopsis"=>"", "muestra" => $this->_anyo, "alta"=>"N"), "peliculas");
 						\core\util\Log::add($idPelicula, false);
 						\core\util\Log::add($_POST['id_nombre'], false);
 						$_SESSION["id_pelicula"] = $idPelicula;
@@ -49,10 +48,8 @@
 	    }
 	    
 	    public function pelicula(){
-
 	    	$idPelicula = $_SESSION["id_pelicula"];
 	    	try{
-	    		
 	    		if(!empty($idPelicula)){
 	    			$duracion = (!empty($_POST["id_minutos"]) ? $_POST["id_minutos"]."' " : "") . (!empty($_POST["id_segundos"]) ? $_POST["id_segundos"]."''" : "");  
 		    		$this->_dao->startTransaction();
@@ -81,29 +78,33 @@
 	    
 	    public function adicional(){
 	    	$data = array("coste"=>$_POST['id_coste'],"recursos"=>$_POST['id_recursos'],"comentarios"=>$_POST['id_comentarios']);
-	    	if($this->_dao->update($_SESSION["id_pelicula"], $data, "convocatoria")){
+	    	try{
+	    		$this->_dao->update($_SESSION["id_pelicula"], $data, "convocatoria");
 	    		echo "<p><strong>"._("inscripcion.datos.adicional")."</strong></p>";
 	    		echo "<p><a href='#'>&laquo; "._("inscripcion.modificar")."</a></p>";
-	    	} else {
-	    		echo utf8_encode("<div class='msg'><strong>"._("inscripcion.error")."</strong></div>");
-	    		\core\util\Error::add(_("inscripcion.error"));
-	    	}
+    		} catch (\Exception $e){
+    			$this->_dao->rollback();
+    			echo utf8_encode("<div class='msg'><strong>"._("inscripcion.error")."</strong></div>");
+    			\core\util\Error::add("error en el formulario de inscripcion");
+    		}
 	    }
 	    
 	    public function licencia(){
-		    if($this->_dao->update($_SESSION["id_pelicula"], array("id_licencia"=>$_POST['id_licencia']), "peliculas")){
+		    try{	
+	    		$this->_dao->update($_SESSION["id_pelicula"], array("id_licencia"=>$_POST['id_licencia']), "peliculas");
 		    	echo "<p><strong>"._("incripcion.licencia")."</strong></p><img src='".URL_LOGO."licencias/".$_POST['id_licencia'].".png' />";
 		    	echo "<p><a href='#'>&laquo; "._("inscripcion.modificar")."</a></p>";
-			} else {
-				echo utf8_encode("<div class='msg'><strong>"._("inscripcion.error")."</strong></div>");
-				\core\util\Error::add(_("inscripcion.error"));
-			}
+		    } catch (\Exception $e){
+    			$this->_dao->rollback();
+    			echo utf8_encode("<div class='msg'><strong>"._("inscripcion.error")."</strong></div>");
+    			\core\util\Error::add("error en el formulario de inscripcion");
+    		}
 	    }
 	   
 	    public function upload(){ 
 	     	if(isset($_FILES['imagen'])){
 		    	$idPelicula = $_SESSION["id_pelicula"];
-		    	$anyo = DEFAULT_ANYO;
+		    	$anyo = $this->_anyo;
 		    	try{
 		    		$path = IMG_PATH . $this->_carpetaImg . DS . $this->_anyo . DS;
 		    		$actions = array(array("action" => "crop", "path" => $path . THUMBNAIL .DS, "height" =>"50", "width" => "50"),
@@ -125,22 +126,18 @@
 	    }
 	     
 	    public function multimedia(){
-	    	
 	    	$idPelicula = $_SESSION["id_pelicula"];
 	    	$video = \core\util\Util::getUrlVideo($_POST["id_video"]);
-	    	 
-			if($this->_dao->update($idPelicula, array("enlace"=>$video,"video_descarga"=>$_POST["id_videodescarga"]), "peliculas")){
+	    	try{ 
+				$this->_dao->update($idPelicula, array("enlace"=>$video,"video_descarga"=>$_POST["id_videodescarga"]), "peliculas");
 				$msgFeedback = "<h3>"._("inscripcion.confirm")."</h3><p>"._("inscripcion.confirm.1")."</p>";
 				self::sendEMailOK($idPelicula);
-			}
-			else{
+			} catch (\Exception $e) {
 				$msgFeedback = utf8_encode("<div class='msg'><strong>"._("inscripcion.error")."</strong></div>");
 				\core\util\Error::add("error en el formulario de inscripcion");
 			}
-			
 			echo $msgFeedback;
 			unset($_SESSION['id_pelicula']);
-	    	
 	    }
 	    
 		private function sendEmailOK($idPelicula){	
@@ -149,7 +146,7 @@
 			$autor = $datos->autor;
 			$titulo = $datos->titulo;
 			$email = $datos->email;
-			$asunto = "Inscripci�n en la $edicion";
+			$asunto = "Inscripción en la $edicion";
 			
 			$cuerpo = "<html><body><p>Hola $autor,</p>";
 			$cuerpo .= "<p><strong>$titulo</strong> se ha inscrito correctamente para la <strong>$edicion</strong>. </p>";

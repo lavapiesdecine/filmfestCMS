@@ -48,8 +48,8 @@
 			  						"idWebModulo" => $idWebModulo,
 	    							"portada" => $portada, 
 	    							"paginasPadre" => $this->_dao->paginasPadreDAO($this->_id, $this->_anyo), 
-	    							"layouts" => \core\util\Util::getFiles(WEB_PATH . "vista" . DS . "skins" . DS . $skinPagina . DS . "layouts", "phtml"),
-	    							"skins" => \core\util\Util::getFolder(WEB_PATH . "vista" . DS . "skins", array(".", "..","commons")),
+	    							"layouts" => \core\util\UtilFile::getFiles(WEB_PATH . "vista" . DS . "skins" . DS . $skinPagina . DS . "layouts", "phtml"),
+	    							"skins" => \core\util\UtilFile::getFolder(WEB_PATH . "vista" . DS . "skins", array(".", "..","commons")),
 	    							"skinPagina" => $skinPagina,
 	    							"webmodulos" => $this->_dao->webModulosSelectDAO()));
 			
@@ -59,49 +59,46 @@
 	   	
 	    public function alta(){
 	 		
-	    	$idMenu = $_POST['id'];
-	 		$this->_dao->startTransaction();
-	 		
-			$campos = array("url"=>$_POST['id_url'],"id_webmodulo"=>$_POST['id_modulo'],"skin"=>$_POST['id_skin'], "layout"=>$_POST['id_layout'],"id_paginapadre"=>$_POST['id_paginapadre']);
-	 		
-	 		if(empty($idMenu)){
-	 			$campos = array_merge($campos, array("muestra"=>$_POST['id_edicion']));
-	 			$idMenu = $this->_dao->insertId($campos, $this->_tabla);
-	 			$ok = $idMenu > 0;
-			}
-			else{
-				$ok = $this->_dao->update($idMenu, $campos, $this->_tabla);
-			}
-			
-			//textos
-			if (!empty($_POST['textosSelected'])){
-				$textos = explode(",", substr($_POST['textosSelected'],1));
-				if($ok){
-					if($this->_dao->deleteTextoPagina($idMenu)){
-						foreach ($textos as $id_texto) {
-							$this->_dao->insert(array("id_pagina" => $idMenu, "id_texto" => $id_texto), "pagina_texto");
-						}
+	    	$id = $_POST['id'];
+
+	    	try{
+	    	
+	    		$this->_dao->startTransaction();
+		 		
+				$campos = array("url"=>$_POST['id_url'],"id_webmodulo"=>$_POST['id_modulo'],"skin"=>$_POST['id_skin'], "layout"=>$_POST['id_layout'],"id_paginapadre"=>$_POST['id_paginapadre']);
+		 		
+		 		if(empty($id)){
+		 			$campos = array_merge($campos, array("muestra"=>$_POST['id_edicion']));
+		 			$id = $this->_dao->insertId($campos, $this->_tabla);
+				}
+				else{
+					$this->_dao->update($id, $campos, $this->_tabla);
+				}
+				
+				//textos
+				if (!empty($_POST['textosSelected'])){
+					$textos = explode(",", $_POST['textosSelected']);
+					$this->_dao->deleteTextoPagina($id);
+					foreach ($textos as $id_texto) {
+						$this->_dao->insert(array("id_pagina" => $id, "id_texto" => $id_texto), "pagina_texto");
 					}
 				}
-			}
-			
-			//menu
-			if($ok){
+				
+				//menu
 				if (!empty($_POST['id_orden'])){
-					if($this->_dao->deleteMenu($idMenu)){
-						$this->_dao->insert(array("id_pagina" => $idMenu, "orden"=>$_POST['id_orden'], "portada"=> $_POST['id_portada']=='S'?'S':'N'), "menu");
-					} 
+					$this->_dao->deleteMenu($id);
+					$this->_dao->insert(array("id_pagina" => $id, "orden"=>$_POST['id_orden'], "portada"=> $_POST['id_portada']=='S'?'S':'N'), "menu");
 				} else {
-					$this->_dao->deleteMenu($idMenu);
+					$this->_dao->deleteMenu($id);
 				}
-			}	
-			
-			if($ok){
+					
 				$this->_dao->commit();
-			} else {
-				$this->_dao->rollback();
-			}
-			echo $ok;
+	
+	 		} catch (\Exception $e) {
+	 			$this->_result = array("ok" => false, "msg" => $e->getMessage());
+		    	$this->_dao->rollback();
+		    }
+		    echo json_encode($this->_result);
 	    }
 	    
 	    public function load(){
@@ -122,7 +119,7 @@
 	    	
 	    	if(isset($_POST['id_skin'])){
 	    		
-	    		$layouts = \core\util\Util::getFiles(WEB_PATH . "vista" . DS . "skins" . DS . $_POST['id_skin'] . DS . "layouts", "phtml");
+	    		$layouts = \core\util\UtilFile::getFiles(WEB_PATH . "vista" . DS . "skins" . DS . $_POST['id_skin'] . DS . "layouts", "phtml");
 	    			
 	    		foreach ($layouts as $layout) {
 	    				$options .= "<option value='".$layout."'>".$layout."</option>";

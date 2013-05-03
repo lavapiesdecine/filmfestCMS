@@ -6,10 +6,15 @@ class modulosController extends \core\AdminController{
 	
     public function __construct($data) {
     	$this->_tabla = "modulos";
-    	$this->_pathLogo = LOGO_ADMIN_PATH;
-    	$this->_urlLogo = URL_IMG_ADMIN;
+    	
     	$this->_title = _("modulos.title");
     	$this->_description = _("modulos.description");
+    	
+    	$this->_imgPath = ADMIN_PATH . 'vista' . DS . 'skins' . DS . "commons" . DS .'img' . DS . "modulos" . DS;
+    	$this->_imgUrl = BASE_URL_ADMIN . "/vista/skins/commons/img/modulos/";
+		$this->_imgAction = array("resize" => array("path" => $this->_imgPath, 
+													"height" =>"40", "width => 40"));
+    	 
     	parent::__construct($data);
     }
     
@@ -35,7 +40,7 @@ class modulosController extends \core\AdminController{
 			if(!empty($adminModuloDAO->logo)){
 				$classUpload = "";
 				$fileImg = $adminModuloDAO->logo;
-				$img = $this->_urlLogo.$fileImg;
+				$img = $this->_imgUrl.$fileImg;
 			}
 		}
 	 	
@@ -52,12 +57,29 @@ class modulosController extends \core\AdminController{
     
     
  	public function alta(){
-  		$campos = array("modulo" => $_POST['modulo'],
-		"modulo_padre" => $_POST['id_modulopadre'],
-		"logo" => $_POST['file_imagen']);
-		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
  		
-    }
+ 		try{
+ 			
+ 			/* logo por defecto */
+	 		if (!empty($_POST['file_imagen'])){
+	 			$logo = $_POST['file_imagen'];
+	 		} else {
+	 			$logo = \core\util\Util::stripAccents($_POST['modulo']) . ".jpg";
+	 			\core\util\UtilFile::copyFile($this->_imgPath . "default.jpg",
+	 										  $this->_imgPath . $logo);
+	 		}
+	 		
+	 		$campos = array("modulo" => $_POST['modulo'],
+							"modulo_padre" => $_POST['id_modulopadre'],
+							"logo" => $logo);
+	  		
+	  		$this->_dao->insertUpdate($id, $campos, $this->_tabla);
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
+			
+		}
+		echo json_encode($this->_result);
+ 	}
    	
     public function load(){
     	
@@ -76,21 +98,7 @@ class modulosController extends \core\AdminController{
     }
     
     public function upload(){
-    	if(isset($_FILES['imagen'])){
-    		try{
-    			$actions = array(array("action" => "resize", "path" => $this->_pathLogo, "height" =>"50"));
-    			$nombreImg = $this->uploadImagen($actions);
-    			$urlImagen = $this->_urlLogo . $nombreImg;
-    			if(!empty($_POST['id_modulo'])){
-    				$ok = $this->_dao->update($_POST['id_modulo'], array("logo" => $nombreImg), $this->_tabla);
-    			}
-    			echo "<input type='hidden' id='nombre_imagen' value='$nombreImg' />";
-    			echo "<img src='$urlImagen' height='100px' width='100px' />";
-    		} catch (\Exception $e) {
-    			echo("<p>problemas al subir la imagen</p>");
-    			\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
-    		}
-    	}
+    	$this->uploadImg($_POST['id_modulo'], $_POST['id_nombre']);
     }
     
 }

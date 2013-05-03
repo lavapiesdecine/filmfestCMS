@@ -6,7 +6,6 @@ class galeriaController extends \core\AdminController{
 	
     public function __construct($data) {
     	$this->_tabla = "galerias";	
-    	$this->cambioEdicion = true;
     	$this->_title = _("galeria.title");
     	$this->_description = _("galeria.description");
         parent::__construct($data);
@@ -30,33 +29,34 @@ class galeriaController extends \core\AdminController{
     
 	public function alta(){
     	$id = $_POST['id'];
-    	$ok = false;
-		if(empty($id)){
-			$folder = \core\util\Util::stripAccents($_POST['id_nombre']);
-			$datos = array("titulo"=>$_POST['id_nombre'], "descripcion"=>$_POST['id_descripcion'], "galeria"=>$folder);
-			if($this->_dao->insert($datos, $this->_tabla)){
-				$folderThumbnail = GALERIAS_PATH . $folder . DS . THUMBNAIL;
-				if(!mkdir($folderThumbnail, 0777, true)){
-					\core\util\Error::add("error en ".__FUNCTION__. " generando $folderThumbnail");
-				}
+    	try {
+			if(empty($id)){
+				$folder = \core\util\Util::stripAccents($_POST['id_nombre']);
+				$datos = array("titulo"=>$_POST['id_nombre'], "descripcion"=>$_POST['id_descripcion'], "galeria"=>$folder);
+				$this->_dao->insert($datos, $this->_tabla);
+				\core\util\UtilFile::mkdir(GALERIAS_PATH . $folder . DS . THUMBNAIL);
 			}
-		}
-		else{
-			$ok = $this->_dao->update($id, array("titulo"=>$_POST['id_nombre'], "descripcion"=>$_POST['id_descripcion']), $this->_tabla);
-		}
-	    echo $ok;
+			else{
+				$this->_dao->update($id, array("titulo"=>$_POST['id_nombre'], "descripcion"=>$_POST['id_descripcion']), $this->_tabla);
+			}
+		} catch (\Exception $e){
+	    	$this->_result = array("ok" => false, "msg" => $e->getMessage());
+	    }
+	    echo json_encode($this->_result);
     }
     
 	public function delete(){
- 		
-    	$id = $_POST['id'];
-    	$ok = false;
-		$galeriaDAO = $this->_dao->select($id, $this->_tabla);
-		if(isset($galeriaDAO->galeria)){
-			\core\util\Util::recursirveRmdir(GALERIAS_PATH.$galeriaDAO->galeria);
-			$ok = $this->_dao->delete($id, $this->_tabla);
-		}
-		echo $ok;
+ 		$id = $_POST['id'];
+    	try {
+			$galeriaDAO = $this->_dao->select($id, $this->_tabla);
+			if(isset($galeriaDAO->galeria)){
+				\core\util\UtilFile::recursirveRmdir(GALERIAS_PATH.$galeriaDAO->galeria);
+				$this->_dao->delete($id, $this->_tabla);
+			}
+		} catch (\Exception $e){
+	    	$this->_result = array("ok" => false, "msg" => $e->getMessage());
+	    }
+	    echo json_encode($this->_result);
     }
 
 }

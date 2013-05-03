@@ -11,8 +11,6 @@
 	    protected $_controller;
 	    protected $_baseUrl;
 	    protected $_base;
-	    protected $_pathImg;
-	    protected $tagBody;
 	    protected $_lang;
 	    protected $_title;
 	    protected $_description;
@@ -24,7 +22,6 @@
 	    	$this->_anyo = $data->getRequest()->getAnyo();
 	    	$this->_controller = $this->_data->getModulo();    	
 	    	$this->_skin = $this->_anyo;
-	    	$this->tagBody = "";
 	    	$this->_lang = $data->getRequest()->getLang();
 	    	$this->_baseUrl = BASE_URL . '/' . ( $this->_lang == DEFAULT_LANG ? '' : $this->_lang . '/') . ( $this->_anyo == DEFAULT_ANYO ? '' : $this->_anyo . '/');
 	    	$this->_base = BASE_URL_WEB;
@@ -61,38 +58,5 @@
 	    	$this->_data->setData(array_merge((array)$this->_data->getData(), (array)$dataController));
 	    }
 	    
-	    public function uploadImagen($actions){
-	    	echo "<head><style type='text/css'> body{margin: 0;font-size: 10px;}</style></head>";
-	    		
-	    	$fileTmp = TMP_PATH . $_FILES['imagen']['name'];
-	    	
-	    	if(copy ($_FILES['imagen']['tmp_name'], $fileTmp)){ 
-	    			$img = new util\Image($fileTmp);
-	    			$img->setType($_FILES['imagen']['type']);
-	    			$nombreImg =  empty($_POST['id_nombre']) ? $nombreImg = date('YmdHms') : util\Util::stripAccents($_POST['id_nombre']);
-	    			$img->setName($nombreImg);
-	    			foreach ($actions as $action){
-	    				switch ($action['action']) {
-						   case 'crop':
-						      	$img->crop($action['path'], $action['width'], $action['height']);
-						      	break;
-						   case 'resize':
-						   		$img->resize($action['path'], $action['height']);
-						   		break;
-						   case 'save':
-						   		$img->save($action['path']);
-						   		break;
-						   case 'grayscale':
-						   		$img->grayscale($action['path']);
-						   		break;
-						}
-	    			}
-	    			unlink($fileTmp);
-	    			return $nombreImg . ".jpg";
-	    	}
-	    	else{
-	    		throw new \Exception("error al subir imagen $fileTmp");
-	    	}
 	    
-	    }
 	}

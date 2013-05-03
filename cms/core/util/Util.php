@@ -28,14 +28,6 @@
 			return preg_replace ($find, $repl, $string);
 		}
 		
-		public static function formatBytes($bytes){
-	    	$units = array('B', 'KB', 'MB', 'GB');
-	    	for($i=0; $bytes > 1024; $i++){ 
-	    		$bytes = $bytes/1024;
-	    	}
-	    	return number_format($bytes,1)." ".$units[$i];
-		}
-
 		public static function recortaFicha($ficha){
 	    	$pos = strpos($ficha, "</p>");
 	    	if ($pos>200){
@@ -95,92 +87,8 @@
 			return $color;
 		}
 		
-		public static function getFiles($folder, $extension){
-			$files = array();
-			if ($handle = opendir($folder)){
-	    		$j = 0;
-	    		while (false !== ($file = readdir($handle))) {		
-					if (strpos($file, ".$extension")>0){
-							$files[$j] = $file;
-			        }	
-			        $j++;
-			    }
-			    closedir($handle);
-			}
-			
-			return $files;
-		}
 
-		public static function getFolder($dir, $exception){
-			$folders = "";
-			
-			if ($handle = opendir($dir)){
-				// loop through the items
-				$j = 0;
-				while ($folder = readdir($handle)){
-					if (!in_array($folder, $exception)){
-						$folders[$j] = $folder;
-					}
-					$j++;
-				}
-				closedir($handle);
-			} 
-			return $folders;
-		}
-				
-		public static function recursiveCopy($source, $dest){
-			if (is_dir($source)) {
-				if (!is_dir($dest)) {
-			        if(!mkdir($dest)){
-			        	\core\util\Error::add("<strong>error en al copiar $source/$object > $dest/$object");
-			        	return false;
-			        }
-			    }
-			    $objects = scandir($source);
-			    foreach ($objects as $object) {
-			    	if ($object != "." && $object != "..") {
-			    		if (is_file($source . DS . $object)) {
-					    	if (!copy($source. DS . $object, $dest . DS . $object)){
-					        	\core\util\Error::add("<strong>error en al copiar $source/$object > $dest/$object");
-					        }
-					    }
-					    if (is_dir($source . DS . $object)) {
-					    	self::recursiveCopy($source . DS . $object, $dest . DS . $object);
-					    }
-			    	}
-			    }
-			 	reset($objects);
-				return true;
-			} else {
-				return false;
-			}
-		}
 		
-	 	/**
-	 	 * elimina un directorio.
-	 	 * @param path directorio
-	 	 */
-	 	public static function recursirveRmdir($dir) {
-	 		try {
-	 		    echo "eliminando $dir";
-	 		   if (is_dir($dir)) {
-			   	 $objects = scandir($dir);
-			   	 foreach ($objects as $object) {
-			       if ($object != "." && $object != "..") {
-			       	 if (filetype($dir."/".$object) == "dir"){ 
-			         	self::recursirveRmdir($dir."/".$object); 
-			         } else { 
-			         	unlink($dir."/".$object);
-			         }
-			       }
-			     }
-			     reset($objects);
-			     rmdir($dir);
-			   }
-			} catch (\Exception $e) {
-				\core\util\Log::add("recursirveRmdir $dir");
-			}
-		}
 		
 		public static function formatDate2Mysql($date){
 			$format = explode("/", $date);

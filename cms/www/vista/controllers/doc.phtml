@@ -3,7 +3,7 @@
 	foreach ($documentos as $documento) { 
 		$file= URL_DOC.$documento->archivo;
 		$infoFile = pathinfo($file);
-		$sizeFile = \core\util\Util::formatBytes(filesize(DOC_PATH.$documento->archivo));
+		$sizeFile = \core\util\UtilFile::formatBytes(filesize(DOC_PATH.$documento->archivo));
 		$typeFile = strtoupper($infoFile['extension']);
 		?>
 		<div class='doc_muestra'>

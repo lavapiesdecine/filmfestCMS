@@ -42,9 +42,9 @@ class imagenController extends \core\AdminController{
 			}
 			if(!empty($imagenDAO->imagen)){
 				$classUpload = "";
-				$img = URL_GALERIAS.$galeria."/".THUMBNAIL."/".$fileImg;
+				$img = URL_GALERIAS . $galeria . "/" . THUMBNAIL . "/" . $fileImg;
 			}
-			$image = new \core\util\Image(GALERIAS_PATH.$galeria.DS.$fileImg);
+			$image = new \core\classes\Imagen(GALERIAS_PATH.$galeria.DS.$fileImg);
 			$sizeFile = $image->getSize();
 			$dimensiones = $image->getDimension();
 		}		
@@ -73,25 +73,26 @@ class imagenController extends \core\AdminController{
 						"descripcion" => $_POST['descripcion'],
 						"id_galeria" => $_POST['id_galeria'],
     					"url_video" => \core\util\Util::getUrlVideo($_POST['id_video']));
-		
-		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
     	
+    	echo $this->insert($_POST['id'], $campos);
+		
     }
     
 	public function delete(){
- 		
-    	$id = $_POST['id'];
-    	
- 		if(!empty($id)){
- 			$imagenDAO = $this->_dao->imagenDAO($id);
-			if(isset($imagenDAO->imagen)){
-				if($this->_dao->delete($id, $this->_tabla)){
-					unlink(GALERIAS_PATH.$imagenDAO->galeria.DS.$imagenDAO->imagen);
-					unlink(GALERIAS_PATH.$imagenDAO->galeria.DS.THUMBNAIL.DS.$imagenDAO->imagen);
+ 		$id = $_POST['id'];
+    	try{
+	 		if(!empty($id)){
+	 			$imagenDAO = $this->_dao->imagenDAO($id);
+				if(isset($imagenDAO->imagen)){
+					$this->_dao->delete($id, $this->_tabla);
+					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.$imagenDAO->imagen);
+					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.THUMBNAIL.DS.$imagenDAO->imagen);
 				}
 			}
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 		}
-		echo $ok;
+		echo json_encode($this->_result);
     }
 
     public function load(){
@@ -102,22 +103,31 @@ class imagenController extends \core\AdminController{
     }
     
     public function upload(){
-    	if(isset($_FILES['imagen'])){
-    		try{
-    			$path = GALERIAS_PATH . $_POST['galeria'] . DS;
-    			$actions = array(array("action" => "crop", "path" => $path . THUMBNAIL . DS, "height" =>"100", "width" => "100"),
-    							 array("action" => "save", "path" => $path));
-    			$nombreImg = $this->uploadImagen($actions);
-    			$urlImagen = URL_GALERIAS . $_POST['galeria'] . "/" . $nombreImg;
-    			$id = $this->_dao->insertId(array("imagen" => $nombreImg, "id_galeria" => $_POST['id_galeria_img']), $this->_tabla);
-    			echo "<input type='hidden' id='id' value='$id' />";
-    			echo "<input type='hidden' id='nombre_imagen' value='$nombreImg' />";
-    			echo "<img src='$urlImagen' height='100px' width='100px' />";
-    		} catch (\Exception $e) {
-    			echo("<p>problemas al subir la imagen</p>");
-    			\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
+    	try{
+    		if(isset($_FILES['imagen'])){
+	    		
+	    		$this->_imgPath = GALERIAS_PATH . $_POST['galeria'] . DS;
+	    		$this->_imgUrl = URL_GALERIAS . $_POST['galeria'] . "/";
+	    		$this->_imgAction = array("crop" => array("path" => $this->_imgPath . THUMBNAIL . DS, "height" =>"100", "width" => "100"),
+	    						 		  "save" => array("path" => $this->_imgPath));
+	    		
+	    		$nombreImg = date('YmdHms').".jpg";
+     
+    			\core\util\UtilImage::processImg($_FILES['imagen'], $this->_imgAction, $nombreImg);
+    
+	    		$id = $this->_dao->insertId(array("imagen" => $nombreImg, "id_galeria" => $_POST['id_galeria_img']), $this->_tabla);
+				
+	    		$html = "<head><style type='text/css'> body{margin: 0;}</style></head>"
+	    			   ."<input type='hidden' id='id' value='$id' />"
+	    			   ."<input type='hidden' id='nombre_imagen' value='$nombreImg' />"
+	    			   ."<img src='".$this->_imgUrl . THUMBNAIL . "/" . $nombreImg."' height='100px' width='100px' />";
+	    		
+	    		echo $html;
     		}
-    	}
+    	} catch (\Exception $e){
+    		$this->showError($e->getMessage());
+    	}	
     }
-
+	 
+    
 }	  

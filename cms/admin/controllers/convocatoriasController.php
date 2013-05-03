@@ -46,39 +46,40 @@ class convocatoriasController extends \core\AdminController {
 		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
 		
     }
-    
+    /*
 	public function upload(){ 
      	if(isset($_FILES['imagen'])){
 	     	$thumbnail = "100x100";
 	     	$medium = "200x150";
-	     	try{
-	    		$this->_pathImg = GALERIAS_PATH . $this->_carpetaImg . DS;
-	    		$nombreImagen = $this->uploadImagen($thumbnail, $medium, "");
-	    		$urlImagen = URL_GALERIAS . $this->_carpetaImg . "/" . $nombreImagen;
-	    		
-	    		if(!empty($_POST['id_edicion'])){
-					$ok = $this->_dao->update($_POST['id_edicion'], array("cartel" => $nombreImagen), $this->_tabla);
-				} 
-				echo "<input type='hidden' id='nombre_imagen' value='$nombreImagen' />";
-				echo "<img src='$urlImagen' height='100px' width='100px'/>";
+	     	
+    		$this->_pathImg = GALERIAS_PATH . $this->_carpetaImg . DS;
+    		$nombreImagen = $this->uploadImagen($thumbnail, $medium, "");
+    		
+    		//$actions = array(array("action" => "crop", "path" => LOGO_PATH . $this->_carpetaImg . DS , "width" =>"160", "height" =>"80"));
+    		//$nombreImg = $this->uploadImagen($actions);
+    		
+    		
+    		$urlImagen = URL_GALERIAS . $this->_carpetaImg . "/" . $nombreImagen;
+    		
+    		if(!empty($_POST['id_edicion'])){
+				$this->_dao->update($_POST['id_edicion'], array("cartel" => $nombreImagen), $this->_tabla);
+			} 
+			echo "<input type='hidden' id='nombre_imagen' value='$nombreImagen' />";
+			echo "<img src='$urlImagen' height='100px' width='100px'/>";
 				
-	    	} catch (\Exception $e) {
-	    		echo("<p>problemas al subir la imagen</p>");
-	    		\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
-	    	}
+	    	
 	    }
     }
-    
+    */
 	public function deleteImagen(){
  		$id = $_POST['id'];
  		echo $id;
     	if(!empty($id)){
     		$edicionDAO = $this->_dao->select($id, $this->_tabla);
-			if($this->_dao->update($id, array("cartel" => ""), $this->_tabla) && !empty($edicionDAO->cartel)){
-				unlink(GALERIAS_PATH . $this->_carpetaImg . DS . $edicionDAO->cartel);
-				unlink(GALERIAS_PATH . $this->_carpetaImg . DS . THUMBNAIL . DS . $edicionDAO->cartel);
-				unlink(GALERIAS_PATH . $this->_carpetaImg . DS . MEDIUM . DS . $edicionDAO->cartel);
-			}	
+			$this->_dao->update($id, array("cartel" => ""), $this->_tabla) && !empty($edicionDAO->cartel);
+			\core\util\UtilFile::deleteFile(GALERIAS_PATH . $this->_carpetaImg . DS . $edicionDAO->cartel);
+			\core\util\UtilFile::deleteFile(GALERIAS_PATH . $this->_carpetaImg . DS . THUMBNAIL . DS . $edicionDAO->cartel);
+			\core\util\UtilFile::deleteFile(GALERIAS_PATH . $this->_carpetaImg . DS . MEDIUM . DS . $edicionDAO->cartel);
 		}
 	}
     

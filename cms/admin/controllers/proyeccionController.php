@@ -51,7 +51,7 @@
 							"descripcion" => $_POST['id_descripcion'],
 							"anyo" => $_POST['id_edicion']);
 			
-			echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
+			echo $this->insert($_POST['id'], $campos);
 			
 	    }
 	    

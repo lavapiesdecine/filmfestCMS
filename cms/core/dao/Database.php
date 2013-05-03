@@ -9,7 +9,7 @@
 		public function __construct(){
 			$this->_mySQLi = new \mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 			if ($this->_mySQLi->connect_errno){
-	            throw new \Exception("Error database connection: " . $this->_mySQLi->connect_error);
+				throw new \Exception("<strong>Error database connection</strong> " . $this->_mySQLi->connect_error);
 	        }
 	        self::execute("SET NAMES 'utf8'");
 	        $this->_cache = new CacheAPC();
@@ -17,52 +17,26 @@
 	        $this->_prefix .= !empty($this->_prefix)?"_":"";
 	    }
         
-        private function execute($sql, $returnObject=null){
+        private function execute($sql, $return=null){
         	\core\util\Log::add($sql, false);
-        	try{
-        		$result =  $this->_mySQLi->query($sql);
-        		\core\util\Log::add($result, false);
-        		if(empty($result)){
-        			\core\util\Error::add("<strong>error database:</strong> query: $sql");
-        			$result =  false;
-        		} else{
-        			$result = $returnObject ? $result : true;
-        		}
-        	} catch (\Exception $e){
-        		\core\util\Error::add("<strong>error database:</strong> query: $sql <br>error". $e->getMessage());
+        	
+        	$result =  $this->_mySQLi->query($sql);
+        	\core\util\Log::add($result, false);
+        	if(empty($result)){
+        		throw new \Exception("<strong>error database </strong>". $this->_mySQLi->error ." query: $sql");
+        	} else{
+        		$result = $return ? $result : "";
         	}
         	return $result; 
         }
         
-        public function __destruct(){
-        	$this->_mySQLi->close();
-        }
-        
-        public function startTransaction(){
-        	return self::execute("START TRANSACTION");
-        }
-        public function rollback(){
-        	return self::execute("ROLLBACK");
-        }
-        public function commit(){
-        	return self::execute("COMMIT");
-        }
-        
         /* select */
         public function select($id, $tabla){
-        	try{
-        		$tabla = $this->_prefix.$tabla;
-        		return self::loadObject("select * from $tabla where id=$id");
-        	} catch (\Exception $e) {
-        		\core\util\Error::add("<strong>error en ".__FUNCTION__. "</strong><br>". $e->getMessage());
-        	}
+        	$tabla = $this->_prefix.$tabla;
+        	return self::loadObject("select * from $tabla where id=$id");
         }
         public function selectQuery($sql, $list=false, $key=null){
-        	try{
-        		return $list ? self::loadObjectList($sql, $key) : self::loadObject($sql, $key);
-        	} catch (\Exception $e) {
-        		\core\util\Error::add("<strong>error en ".__FUNCTION__. "</strong><br>". $e->getMessage());
-        	}
+        	return $list ? self::loadObjectList($sql, $key) : self::loadObject($sql, $key);
         }
         private function loadObject($sql, $key=null){
         	$object = $this->_cache->getData($key);
@@ -103,19 +77,20 @@
         /* delete */
         public function delete($id, $tabla){
         	$tabla = $this->_prefix.$tabla;
-        	return self::execute("delete from $tabla where id=$id");
+        	self::execute("delete from $tabla where id=$id");
         }
         public function deleteQuery($query){
-        	return self::execute($query);
+        	self::execute($query);
         }
         public function view($id, $tabla, $accion){
         	$tabla = $this->_prefix.$tabla;
-        	return self::execute("update $tabla set alta='$accion' where id=$id");
+        	self::execute("update $tabla set alta='$accion' where id=$id");
         }
         public function insertUpdate($id, $campos, $tabla){
-        	return empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
+        	empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
         }
         public function insertUpdateId($id, $campos, $tabla){
+        	$id=0;
         	if(empty($id)){
         		$id = self::insertId($campos, $tabla);
         	} else {
@@ -131,7 +106,7 @@
         	}
         	$keys = implode(',', $keys);
         	$valores= implode(',', $valores);
-        	return self::execute("insert into $tabla ($keys) values ($valores)");
+        	self::execute("insert into $tabla ($keys) values ($valores)");
         }
         public function update($id, $campos, $tabla){
         	$tabla = $this->_prefix.$tabla;
@@ -139,30 +114,37 @@
         		$sets[]= $campo . '=\'' . $this->sanitize($valor) . '\'';
         	}
         	$sets = implode(',', $sets);
-        	return self::execute("UPDATE $tabla SET $sets WHERE id = $id");
+        	self::execute("UPDATE $tabla SET $sets WHERE id = $id");
         }
         
         public function insertId($campos, $tabla){
         	$id = 0;
         	$tabla = $this->_prefix.$tabla;
-        	try{
-        		foreach ($campos as $campo => $valor){
+        	
+        	foreach ($campos as $campo => $valor){
         			$keys[] = $campo;
         			$valores[]='\'' . self::sanitize($valor) . '\'';
-        		}
-        		$keys = implode(',', $keys);
-        		$valores=(implode(',', $valores));
-        		if($this->_mySQLi->query("insert into $tabla ($keys) values ($valores)")){
-        			$id = $this->_mySQLi->insert_id;
-        		} else {
-        			\core\util\Error::add(" error en ".__FUNCTION__. " : ". $this->_mySQLi->error);
-        		}
-        	} catch(\Exception $e){
-        		\core\util\Error::add("error en ".__FUNCTION__. " : ". $e->getMessage());
         	}
-        	return $id;
+        	$keys = implode(',', $keys);
+        	$valores=(implode(',', $valores));
+        	self::execute("insert into $tabla ($keys) values ($valores)");
+        	return $this->_mySQLi->insert_id;
         }
-	    
+
+        public function __destruct(){
+        	$this->_mySQLi->close();
+        }
+        public function startTransaction(){
+        	self::execute("START TRANSACTION");
+        }
+        public function rollback(){
+        	self::execute("ROLLBACK");
+        }
+        public function commit(){
+        	self::execute("COMMIT");
+        }
+        
+        
 	    public function sanitize($string){
 	      //$string = htmlspecialchars($string);
 	      $string = $this->_mySQLi->real_escape_string($string);

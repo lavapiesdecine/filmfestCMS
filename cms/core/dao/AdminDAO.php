@@ -28,8 +28,9 @@ class AdminDAO extends Database{
     	return parent::selectQuery("SELECT m.id, m.modulo, mp.id_perfil, m.modulo_padre, m.modulo as url, 'N' as portada FROM ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp WHERE m.id=mp.id_modulo and mp.id_perfil=$nivelAcceso and modulo_padre=0 and alta='S'", true);
 	}
 	
-	public function submenuDAO($moduloMenu){
-		return parent::selectQuery("SELECT m.id, m.modulo, mp.id_perfil, m.modulo_padre, m.modulo as url, 'N' as portada FROM ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp WHERE m.id=mp.id_modulo and m.modulo_padre=$moduloMenu and alta='S'", true);
+	public function submenuDAO($moduloMenu, $nivelAcceso){
+		$sql = "SELECT m.id, m.modulo, mp.id_perfil, m.modulo_padre, m.modulo as url, 'N' as portada FROM ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp WHERE m.id=mp.id_modulo and m.modulo_padre=$moduloMenu and mp.id_perfil=$nivelAcceso and alta='S'";
+		return parent::selectQuery($sql, true);
 	}
 	 
     /*usuario*/
@@ -59,8 +60,12 @@ class AdminDAO extends Database{
 		return parent::selectQuery("select pa.* from ".$this->_prefix."perfiles pa, ".$this->_prefix."usuario_perfil up where pa.id = up.id_perfil and up.id_usuario = $usuario order by pa.id", true);
 	}
 	
-	public function modulosPosiblesDAO(){
-		return parent::selectQuery("select id, modulo titulo from ".$this->_prefix."modulos where id not in (select id from ".$this->_prefix."modulo_perfil)", true);
+	public function modulosPosiblesDAO($id){
+		$sql = "select id, modulo titulo from ".$this->_prefix."modulos ";  
+		if(!empty($id)){
+			$sql .= " where id not in (select id_modulo from ".$this->_prefix."modulo_perfil where id_perfil = $id )";
+		}
+		return parent::selectQuery($sql, true);
 	}
 	public function modulosPerfilDAO($perfil){
 		return parent::selectQuery("select m.id, m.modulo titulo from ".$this->_prefix."modulos m, ".$this->_prefix."modulo_perfil mp where m.id = mp.id_modulo and mp.id_perfil = $perfil", true);
@@ -160,6 +165,7 @@ class AdminDAO extends Database{
 		return parent::selectQuery("select * from ".$this->_prefix."textos where alta='S' and muestra='$anyo' and id not in (select id_texto from ".$this->_prefix."pagina_texto) order by titulo", true);
 	}
 	public function textosPaginaDAO($idPagina){ 
+		//echo "select * from ".$this->_prefix."textos t, ".$this->_prefix."pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo";
 		return parent::selectQuery("select * from ".$this->_prefix."textos t, ".$this->_prefix."pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo", true);
 	}
 	
@@ -320,6 +326,8 @@ class AdminDAO extends Database{
 	public function deleteProyeccionPelicula($idPelicula){
 		return parent::deleteQuery("delete from ".$this->_prefix."proyeccion_pelicula where id_pelicula=$idPelicula");
 	}
-	
+	public function deleteModuloPerfil($idPerfil){
+		return parent::deleteQuery("delete from ".$this->_prefix."modulo_perfil where id_perfil=$idPerfil");
+	}
 	
 }

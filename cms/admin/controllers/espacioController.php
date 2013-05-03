@@ -6,9 +6,11 @@ class espacioController extends \core\AdminController{
 	
      public function __construct($data) {
     	$this->_tabla = "espacios";
-    	$this->_carpetaImg = "espacios";
-    	$this->_pathLogo = LOGO_PATH . $this->_carpetaImg . DS;
-    	$this->_urlLogo = URL_LOGO . $this->_carpetaImg . "/";
+    	
+    	$this->_imgUrl = URL_LOGO . "espacios" . "/";
+    	$this->_imgPath = LOGO_PATH . "espacios" . DS;
+    	$this->_imgAction = array("resize" => array("path" => $this->_imgPath, 
+    												"height" =>"80", "width" => "80"));
     	$this->_title = _("espacio.title");
     	$this->_description = _("espacio.description");
     	parent::__construct($data);
@@ -33,7 +35,7 @@ class espacioController extends \core\AdminController{
 		    $fileImg = $espacioDAO->espacio;
 		    if(!empty($espacioDAO->logo)){
 				$classUpload = "";
-				$img = $this->_urlLogo . $espacioDAO->logo;
+				$img = $this->_imgUrl . $espacioDAO->logo;
 			}
 		    $direccion = $espacioDAO->direccion;
 		    $url = $espacioDAO->url;
@@ -45,8 +47,8 @@ class espacioController extends \core\AdminController{
 		    $latitud = $espacioDAO->latitud;
 		    $fileImg = $espacioDAO->logo; 
 	    }
-	 	
-    	$this->addData(array("listado" => $this->_dao->espaciosDAO(),
+	    
+	    $this->addData(array("listado" => $this->_dao->espaciosDAO(),
     							"direccion" => $direccion,
 								"url" => $url,
 								"nombre" => $nombre,
@@ -64,34 +66,20 @@ class espacioController extends \core\AdminController{
     
     public function alta(){
   		$campos = array("espacio" => $_POST['nombre'],
-		"direccion" => $_POST['direccion'],
-		"latitud" => $_POST['id_latitud'],
-  		"longitud" => $_POST['id_longitud'],
-		"logo" => $_POST['file_imagen'],
-  		"descripcion" => $_POST['descripcion'],
-  		"url" => $_POST['web'],
-		"telefono" => $_POST['telefono'],
-  		"email" => $_POST['email']);
-  		echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
-    	
+						"direccion" => $_POST['direccion'],
+						"latitud" => $_POST['id_latitud'],
+				  		"longitud" => $_POST['id_longitud'],
+						"logo" => $_POST['file_imagen'],
+				  		"descripcion" => $_POST['descripcion'],
+				  		"url" => $_POST['web'],
+						"telefono" => $_POST['telefono'],
+				  		"email" => $_POST['email']);
+  		
+  		echo $this->insert($_POST['id'], $campos);
     }
-    
+        
     public function upload(){
-		if(isset($_FILES['imagen'])){
-			try{
-				$actions = array(array("action" => "resize", "path" => $this->_pathLogo, "height" =>"80"));
-				$nombreImg = $this->uploadImagen($actions);
-				$urlImagen = $this->_urlLogo . $nombreImg;
-				if(!empty($_POST['id_espacio'])){
-					$ok = $this->_dao->update($_POST['id_espacio'], array("logo" => $nombreImg), $this->_tabla);
-				} 
-				echo "<input type='hidden' id='nombre_imagen' name='nombre_imagen' value='$nombreImg' />";
-				echo "<img src='$urlImagen' height='100px' width='100px' />";
-			} catch (\Exception $e) {
-			echo("<p>problemas al subir la imagen</p>");
-    			\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
-			}
-		}
-	}
+    	$this->uploadImg($_POST['id_espacio'], $_POST['id_nombre']);
+    }
 
 }

@@ -11,14 +11,14 @@
 				<span class="titulo" id='item-<?=$itemId?>' title='<?=$item->titulo?>'><?= \core\util\Util::substring($item->titulo,35) ?></span>
 				<div class="botonera-listado">
 					<? if(isset($this->urlWebModulo)){?>
-						<a href="<?=$this->urlWebModulo.$itemId?>"  target="_blank"><img src="<?=URL_IMG_ADMIN?>ver_off.png" title="<?= _("form.accion.ver")?>"></a>   
+						<div class="accion"><a href="<?=$this->urlWebModulo.$itemId?>"  target="_blank"><img src="<?=URL_IMG_ADMIN?>ver.png" title="<?= _("form.accion.ver")?>"></a></div>
 					<? } ?>
-					<a href="#" class="edit" id='edit-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>edit_off.png" title="<?= _("form.accion.editar")?>"></a>
-					<a href="#" class='<?=$visible?>' id='view-<?=$itemId?>' ><img src="<?=URL_IMG_ADMIN.$visible?>_off.png" title='<?= _("form.accion.visible")?>'></a>
-					<a href="#" class="delete" id='delete-<?=$itemId?>' ><img src='<?=URL_IMG_ADMIN?>delete_off.png' title='<?= _("form.accion.eliminar")?>'></a>
+					<div class="accion"><a href="#" class="edit" id='edit-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>edit.png" title="<?= _("form.accion.editar")?>"></a></div>
+					<div class="accion"><a href="#" class='<?=$visible?>' id='view-<?=$itemId?>' ><img src="<?=URL_IMG_ADMIN.$visible?>.png" title='<?= _("form.accion.visible")?>'></a></div>
+					<div class="accion" ><a href="#" class="delete" id='delete-<?=$itemId?>' ><img src='<?=URL_IMG_ADMIN?>delete.png' title='<?= _("form.accion.eliminar")?>'></a></div>
 					<? if($this->imprimir){?>
-						<a href="#" class="print" id='print-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>print_off.png" title='<?= _("form.accion.imprimir")?>'></a>
-					<? }?>
+						<div class="accion"><a href="#" class="print" id='print-<?=$itemId?>'><img src="<?=URL_IMG_ADMIN?>print.png" title='<?= _("form.accion.imprimir")?>'></a></div>
+					<? }?>	
 				</div>
 			</li>
 		<?}?>

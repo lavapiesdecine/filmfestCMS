@@ -44,7 +44,7 @@ class Mailer {
 	public function setFirma($edicion){
 		$firma = "<div style='font: small Arial, Helvetica, sans-serif;margin-top:30px;'><table>";
 		$firma .= "<tr><td><img src='".URL_IMG."logo_lavapies_firma.JPG'></td>";
-		$firma .= "<td>Lavapiés de Cine. $edicion<br>";
+		$firma .= "<td>LavapiÃ©s de Cine. $edicion<br>";
 		$firma .= EMAIL_WEB. "<br>";
 		$firma .= $_SERVER['SERVER_NAME']."<br>";
 		$firma .= "</td></tr></table></div>";

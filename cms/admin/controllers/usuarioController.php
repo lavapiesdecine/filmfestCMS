@@ -6,11 +6,16 @@ class usuarioController extends \core\AdminController{
 	
      public function __construct($data) {
      	$this->_tabla = "usuarios";
-     	$this->_carpetaImg = "usuarios";
-     	$this->_pathLogo = ADMIN_PATH . 'vista' . DS . 'skins' . DS . "commons" . DS .'img' . DS . $this->_carpetaImg . DS;
-     	$this->_urlLogo = BASE_URL_ADMIN . '/vista/skins/commons/img/'. $this->_carpetaImg . "/";
+     	
      	$this->_title = _("usuario.title");
      	$this->_description = _("usuario.description");
+     	
+     	$this->_imgPath = ADMIN_PATH . 'vista' . DS . 'skins' . DS . "commons" . DS .'img' . DS . "usuarios" . DS;
+     	$this->_imgUrl = BASE_URL_ADMIN . "/vista/skins/commons/img/usuarios/";
+     	$this->_imgAction = array(array("action" => "resize", 
+     								    "path" => $this->_imgPath, 
+     								    "height" =>"40", "width" => 40));
+     	
     	parent::__construct($data);
     }
     
@@ -35,7 +40,7 @@ class usuarioController extends \core\AdminController{
 	   		if(!empty($usuarioDAO->logo)){
 	   			$classUpload = "";
 	   			$fileImg = $usuarioDAO->logo;
-	   			$img = $this->_urlLogo . $fileImg;
+	   			$img = $this->_imgUrl . $fileImg;
 	   		}
 	 	}		
 	 	
@@ -59,31 +64,43 @@ class usuarioController extends \core\AdminController{
     	$id = $_POST['id'];
     	$campos = array("usuario" => $_POST['nombre'], "email" => $_POST['id_email']);
     			
-    	if (!empty($_POST['file_imagen'])){
-    		$campos = array_merge($campos, array("logo" => $_POST['file_imagen']));
-    	}
+    	try{
+    		/* logo por defecto */
+    		if (!empty($_POST['file_imagen'])){
+    			$logo = $_POST['file_imagen'];
+    		} else {
+    			$logo = \core\util\Util::stripAccents($_POST['nombre']) . ".jpg";
+    			\core\util\UtilFile::copyFile($this->_imgPath . "default.jpg", 
+    										  $this->_imgPath . $logo);
+    		}
+    		
+    		$campos = array_merge($campos, array("logo" => $logo));
+    		
+			$this->_dao->startTransaction();
+	 		if(!empty($id)){
+				$this->_dao->update($id, $campos, $this->_tabla);			
+			}
+			else{
+				$campos = array_merge($campos, array("pass" => md5($_POST['id_password'])));
+				$id = $this->_dao->insertId($campos, $this->_tabla);
+				self::sendMail($campos);
+			}
 			
-		
- 		if(!empty($id)){
-			$ok = $this->_dao->update($id, $campos, $this->_tabla);			
-		}
-		else{
-			$campos = array_merge($campos, array("pass" => md5($_POST['id_password'])));
-			$id = $this->_dao->insertId($campos, $this->_tabla);
-			self::sendMail($campos);
-		}
-		
-		if (!empty($_POST['perfilesSelected'])){
-			$perfiles = explode(",", $_POST['perfilesSelected']);
-			if(!empty($id)){
-				$ok = $this->_dao->deletePerfilesUsuario($id);
-				foreach ($perfiles as $perfil) {
-					$ok = $this->_dao->insert(array("id_usuario" => $id, "id_perfil" => $perfil), "usuario_perfil");
+			if (!empty($_POST['perfilesSelected'])){
+				$perfiles = explode(",", $_POST['perfilesSelected']);
+				if(!empty($id)){
+					$this->_dao->deletePerfilesUsuario($id);
+					foreach ($perfiles as $perfil) {
+						$this->_dao->insert(array("id_usuario" => $id, "id_perfil" => $perfil), "usuario_perfil");
+					}
 				}
 			}
+			$this->_dao->commit();
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
+			$this->_dao->rollback();
 		}
-		
-		echo $ok;
+		echo json_encode($this->_result);
 	}
 	
 	private function sendMail(Array $usuario){
@@ -94,22 +111,9 @@ class usuarioController extends \core\AdminController{
 		$mail->sendMail();
 	}
 	
+	
 	public function upload(){
-		if(isset($_FILES['imagen'])){
-			try{
-				$actions = array(array("action" => "resize", "path" => $this->_pathLogo, "height" =>"40"));
-				$nombreImg = $this->uploadImagen($actions);
-				$urlImagen = $this->_urlLogo . $nombreImg;
-				if(!empty($_POST['id_usuario'])){
-					$ok = $this->_dao->update($_POST['id_usuario'], array("logo" => $nombreImg), $this->_tabla);
-				}
-				echo "<input type='hidden' id='nombre_imagen' value='$nombreImg' />";
-				echo "<img src='$urlImagen' height='100px' width='100px' />";
-			} catch (\Exception $e) {
-				echo("<p>problemas al subir la imagen</p>");
-				\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
-			}
-		}
+		$this->uploadImg($_POST['id_usuario'], $_POST['id_nombre']);
 	}
 	
 }

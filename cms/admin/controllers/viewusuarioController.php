@@ -27,7 +27,7 @@
 		    		if(!empty($usuarioDAO->logo)){
 		    			$classUpload = "";
 		    			$fileImg = $usuarioDAO->logo;
-		    			$img = $this->_urlLogo . $fileImg;
+		    			$img = $this->_imgUrl . $fileImg;
 		    		}
 		    	}
 		    	

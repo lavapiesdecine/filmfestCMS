@@ -59,9 +59,10 @@ class edicionController extends \core\AdminController {
     }   
     
     public function alta(){
+ 		$id = $_POST['id'];
+
  		try{
-	    	$id = $_POST['id'];
-	    	$this->_dao->startTransaction();
+ 			$this->_dao->startTransaction();
 	    	$ini = explode("/", $_POST['id_dia_inicio']);
 			$fecInicio = $ini[2]."-".$ini[1]."-".$ini[0];
 			$fin = explode("/", $_POST['id_dia_fin']);
@@ -81,91 +82,102 @@ class edicionController extends \core\AdminController {
 								IMG_PATH . "peliculas" . DS . $id . DS . MEDIUM);
 								
 				foreach ($paths as $path){
-					if(!is_dir($path) && !mkdir($path)){
-						break;
-					}
+					\core\util\UtilFile::mkdir($path);
 				}
 				
 				$campos = array_merge($campos, array("id" => $id));
-				if($this->_dao->insert($campos, $this->_tabla)){
-					$this->_dao->insert(array("id" => $id, "url"=>"", "cartel"=>$cartel, "alta"=>"N"), "convocatorias");
-				}
+				$this->_dao->insert($campos, $this->_tabla);
+				$this->_dao->insert(array("id" => $id, "url"=>"", "cartel"=>$cartel, "alta"=>"N"), "convocatorias");
 				
-				//TODO hacer una funcion recursiveCopy que funcione
-				\core\util\Util::recursiveCopy(WEB_PATH . "vista" . DS . "skins" . DS . "2013", WEB_PATH . "vista"  .DS . "skins" .DS . $id);
+				\core\util\UtilFile::recursiveCopy(WEB_PATH . "vista" . DS . "skins" . DS . "2013", WEB_PATH . "vista"  .DS . "skins" .DS . $id);
 				
 			}
 				
 			//langs
 			$langs = explode(",", $_POST['langsSelected']);
-			if($this->_dao->deleteLangEdicion($id)){
-				foreach ($langs as $lang) {
-					$ok = $this->_dao->insert(array("id_edicion" => $id, "lang" => $lang), "lang_edicion");
-				}
+			$this->_dao->deleteLangEdicion($id);
+			foreach ($langs as $lang) {
+				$this->_dao->insert(array("id_edicion" => $id, "lang" => $lang), "lang_edicion");
 			}
 			
 			$this->_dao->commit();
-			echo true;
-			
+
  		} catch (\Exception $e) {
-	    	\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
+ 			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 	    	$this->_dao->rollback();
-	    	echo false;
 	    }
+	    echo json_encode($this->_result);
     }
     
 	public function delete(){
  		$id = $_POST['id'];
-    	if(!empty($id)){
-			if($this->_dao->delete($id, $this->_tabla)){
+ 		try{
+	    	if(!empty($id)){
+				$this->_dao->delete($id, $this->_tabla);
 				$this->_dao->delete($id, "convocatorias");
-				\core\util\Util::recursirveRmdir(IMG_PATH . "peliculas". DS . $id);
-				\core\util\Util::recursirveRmdir(SKINS_PATH . $id);
-			}  
+				\core\util\UtilFile::recursirveRmdir(IMG_PATH . "peliculas". DS . $id);
+				\core\util\UtilFile::recursirveRmdir(SKINS_PATH . $id);
+			}
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 		}
+		echo json_encode($this->_result);
     }
 	
 	public function deleteImagen(){
  		$id = $_POST['id'];
-    	if(!empty($id)){
-    		$edicionDAO = $this->_dao->select($id, $this->_tabla);
-			$this->_dao->update($id, array("cartel" => ""), $this->_tabla);
+ 		try{
+	    	if(!empty($id)){
+	    		$edicionDAO = $this->_dao->select($id, $this->_tabla);
+				$this->_dao->update($id, array("cartel" => ""), $this->_tabla);
+			}
+		} catch (\Exception $e){
+			$this->_result = array("ok" => false, "msg" => $e->getMessage());
 		}
+		echo json_encode($this->_result);
 	}
 	
 	public function upload(){ 
 		if(isset($_FILES['imagen']) && !empty($_POST['id_edicion']) ){
-	     	try{
-	     		$id = $_POST['id_edicion'];
-	     		$path = SKINS_PATH . $id . DS . IMG;
-	     		if(!is_dir(SKINS_PATH . $id)){
-	     			mkdir(SKINS_PATH . $id);
-	     			mkdir($path);
-	     		}	
-	     			
-     			$actions = array(array("action" => "save", "path" => $path));
-     			$nombreImagen = $this->uploadImagen($actions);
-	    		
-     			$path = GALERIAS_PATH . $this->_carpetaImg . DS;
-     			$actions = array(array("action" => "crop", "path" => $path . THUMBNAIL . DS, "height" =>"100", "width" => "100"),
-     					array("action" => "crop", "path" => $path . MEDIUM . DS, "height" =>"150", "width" => "100"),
-     					array("action" => "save", "path" => $path));
-     			$this->uploadImagen($actions);
+			
+			$id = $_POST['id_edicion'];
+			
+			try{
+	     		$this->_dao->startTransaction();
+	     		\core\util\UtilFile::mkdir(SKINS_PATH . $id);
+	     		
+	     		$path = SKINS_PATH . $id . DS . IMG . DS;
+	     		\core\util\UtilFile::mkdir($path);
+	     		
+	     		$this->_imgPath = GALERIAS_PATH . $this->_carpetaImg . DS;
+     			$this->_imgAction = array("crop" => array( "path" => $path . THUMBNAIL . DS, "height" =>"100", "width" => "100"),
+     							 		  "md" => array("path" => $path . MEDIUM . DS, "height" =>"150", "width" => "100"),
+     							 		  "save" => array("path" => $path));
+     			$this->_imgUrl = URL_SKINS . $id . "/" . IMG . "/";
      			
-     			$urlImagen = URL_SKINS . $id . "/" . IMG . "/" . $nombreImagen;
+     			$nombreImg =  empty($_POST["id_nombre"]) ? date('YmdHms') : \core\util\Util::stripAccents($_POST["id_nombre"]);
+     			 
+     			\core\util\UtilImage::processImg($_FILES['imagen'], $this->_imgAction, $nombreImg);
+     			 
+     			$thumbnail = $nombreImg . ".jpg";
+     			
 	    		$edicionDAO = $this->_dao->select($id, $this->_tabla);
 	    		if(!empty($edicionDAO)){
-	    			$this->_dao->update($id, array("cartel" => $nombreImagen), $this->_tabla);
+	    			$this->_dao->update($id, array("cartel" => $thumbnail), $this->_tabla);
 	    		}
 	    		
-				echo "<input type='hidden' id='nombre_imagen' value='$nombreImagen' />";
-				echo "<img src='$urlImagen' height='100px' width='100px'/>";
+	    		$html = "<head><style type='text/css'> body{margin: 0;}</style></head>"
+						."<input type='hidden' id='nombre_imagen' value='$thumbnail' />"
+						."<img src='".$this->_imgUrl . $thumbnail."' height='100px' width='100px'/>";
+	    		echo $html;
 	     		
+				$this->_dao->commit();
 				
-	    	} catch (\Exception $e) {
-	    		echo("<p>problemas al subir la imagen</p>");
-	    		\core\util\Error::add(" error en ".__FUNCTION__. " : ". $e->getMessage());
+			} catch (\Exception $e) {
+				$this->_dao->rollback();
+				$this->showError($e->getMessage());
 	    	}
+	    	
 	    }
     }
     

@@ -321,7 +321,7 @@ class Bootstrap{
 	    			$values = array_merge($values, array("idControllerMenu" => $adminModulo->modulo_padre));
 	    			$menu = array();
 	    			foreach ($dao->menuDAO($perfilNavegacion) as $controller) {
-	    				$subMenu = $dao->subMenuDAO($controller->id);
+	    				$subMenu = $dao->subMenuDAO($controller->id, $controller->id_perfil);
 	    				$controller = array_merge((array)$controller, array("submenu" =>$subMenu));
 	    				array_push($menu, (array)$controller);
 	    			}

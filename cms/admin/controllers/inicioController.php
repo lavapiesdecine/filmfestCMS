@@ -21,7 +21,7 @@ class inicioController extends \core\AdminController{
 				$html .="<ul class='menu'>";
 				foreach ($menu as $controller) {
 					$html .="<li id='id-$controller->modulo'><a href='".$this->_baseUrl."$controller->modulo' title='" . _($controller->modulo.".description") . "'><strong> ". _($controller->modulo.".title") . "</strong></a>";
-					$subMenu = $this->_dao->subMenuDAO($controller->id);
+					$subMenu = $this->_dao->subMenuDAO($controller->id, $controller->id_perfil);
 					$html .="<ul class='submenu'>";
 					foreach ($subMenu as $subController) {
 						$html .="<li><a href='".$this->_baseUrl."$subController->modulo' title='" . _($subController->modulo.".description") . "'>" . _($subController->modulo.".title") . "</a></li>";

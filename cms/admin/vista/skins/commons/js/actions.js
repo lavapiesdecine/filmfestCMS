@@ -16,34 +16,20 @@ $(document).ready(function() {
 		var item = this.id.split('-');
 		if (confirm(gcMsg_confirmdelete + ' "' + $('#item-'+item[1]).attr('title') + '" ?' )){
 			$.post(urlApp + modulo + "/delete", {id:item[1]}, function(data){
-                $('#msg').html(feedback(data));
-                $('#msg').removeClass("oculto");
+				$('#msg').html(feedback(data));
+				$('#msg').removeClass("oculto");
 			});
 			setTimeout("window.location='" + urlApp + modulo + "'", 2000);
 		}
 	});
 	
-	$('aside#rightmenu a img, div.botonera a img, p.arrow img').hover(
+	$('p.arrow img').hover(
 		 function () {
 			this.src = this.src.replace('_off', '');
 	     }, 
 	     function () {
 	    	this.src = this.src.replace('.png', '_off.png');
 	     }
-	);
-	$('header, aside#rightmenu li').hover(
-		function(){
-			$(this).find('img').each(function(){
-				this.src = this.src.replace('_off', '');
-			})
-		},
-		function(){
-			$(this).find('img').each(function(){
-				if(this.src.indexOf("_off") == -1){
-					this.src = this.src.replace('.png', '_off.png');
-				}
-			})
-		}
 	);
 	
 	//imprimir
@@ -56,8 +42,8 @@ $(document).ready(function() {
 			var item = this.id.split('-');
 			var id = item[1];
 			$.post(urlApp + modulo + "/view", {id:item[1], accion:"N"}, function(data){
-	                $('#msg').html(feedback(data));
-	                $('#msg').removeClass("oculto");
+				$('#msg').html(feedback(data));
+				$('#msg').removeClass("oculto");
 	        });
 	        setTimeout("window.location='" + urlApp + modulo + "'", 2000);
 	});
@@ -65,8 +51,8 @@ $(document).ready(function() {
 		var item = this.id.split('-');
 		var id = item[1];
 		$.post(urlApp + modulo + "/view", {id:item[1], accion:"S"}, function(data){
-                $('#msg').html(feedback(data));
-                $('#msg').removeClass("oculto");
+			$('#msg').html(feedback(data));
+			$('#msg').removeClass("oculto");
         });
         setTimeout("window.location='" + urlApp + modulo + "'", 2000);
 	});
@@ -80,10 +66,19 @@ $(document).ready(function() {
 			$.post(urlApp + item[0] + '/deleteImagen', {id:item[1]}, function(data){
 				$("#imagen_uploaded").attr("src", urlImgAdmin + 'loading.gif');
 				$('#change-img').addClass("oculto");
-				setTimeout("location.reload(true)", 5000);
+				var result = jQuery.parseJSON(data);
+				if(result.ok){
+					setTimeout("location.reload(true)", 5000);
+				} else {
+					$("#imagen_uploaded").addClass("oculto");
+					$('#change-img').removeClass("oculto");
+					$('#msg').html("<h3 class='ko'>" + gcMsg_ko + "</h3>" + "<span class='small'>" + result.msg + "</span>");
+					$('#msg').removeClass('oculto');
+					
+				}
 			});
 		}
-	});
+	});	
 	
 	/** 
 	 * botonera

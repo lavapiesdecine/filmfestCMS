@@ -2,19 +2,19 @@
 	<? if(empty($file)) {?>
 		<div id="div-doc">
 			<img src="<?= URL_IMG_ADMIN?>upload.png" /><span><?=_("form.upload.doc")?></span> 
-			<form enctype="multipart/form-data" method='post' id="form_uploaddoc" name="form_uploaddoc" action="<?=URL_ADMIN?>/doc/upload" target="frame_doc">
+			<form enctype="multipart/form-data" method='post' id="form_uploaddoc" name="form_uploaddoc" action="<?=URL_ADMIN?>/doc/uploadDoc" target="frame_doc">
 				<input name='id_nombreDoc' id='id_nombreDoc' value='<?=$nombre?>' type='hidden' />
 				<input type="file" name="doc" id="doc" required />
 			</form>
 		</div>
 		<div id="feedback-doc" class="oculto">
-			<iframe height='200px' width='100px' id='frame_doc' name='frame_doc' class='framedoc' src="<?=URL_ADMIN?>/doc/upload"></iframe>
+			<iframe height='200px' width='100px' id='frame_doc' name='frame_doc' class='framedoc' src="<?=URL_ADMIN?>/doc/uploadDoc"></iframe>
 		</div>
 	<? } ?>
 	
 	
 	<? if(empty($nombreImg)){?>
-		<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/doc/uploadImg"></iframe>
+		<iframe height='100px' width='100px'  id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/doc/upload"></iframe>
 	<? }?>
 	<div id="div-img" class="<?= $classUploadImg ?>">
 		<?if(!empty($fileNameImg)){?>
@@ -23,7 +23,7 @@
 			</a>	
 		<?} else { ?>
 			<p><?=_("form.upload.img")?><br><?= _("form.upload.type")?></p>	
-			<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/doc/uploadImg" target="frame_imagen">
+			<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/doc/upload" target="frame_imagen">
 					<input name='id_nombre' id='id_nombre' value='<?=$nombreImg?>' type='hidden' />
 					<input type="file" name="imagen" id="imagen"  />
 			</form>

@@ -67,7 +67,10 @@ $(document).ready(function() {
 			if($('#perfiles').text()!=''){
 				var values = "";
 				$("#perfiles>option").map(function() {
-					values = values + "," + $(this).val();
+					if(values!=""){
+						values = values + ",";
+					}
+					values = values + $(this).val();
 				});
 				$('#perfilesSelected').val(values);
 			}
@@ -78,6 +81,16 @@ $(document).ready(function() {
 		if($('#form_perfil').validate()){
 			if($('#frame_imagen').contents().find('input').size()>0){
 				$('#file_imagen').val($('#frame_imagen').contents().find('input').val());
+			}
+			if($('#modulos').text()!=''){
+				var values = "";
+				$("#modulos>option").map(function() {
+					if(values!=""){
+						values = values + ",";
+					}
+					values = values + $(this).val();
+				});
+				$('#modulosSelected').val(values);
 			}
 			$('#form_perfil').alta();
 		}
@@ -117,7 +130,10 @@ $(document).ready(function() {
 			if($('#textos').text()!=''){
 				var values = "";
 				$("#textos>option").map(function() {
-					values = values + "," + $(this).val();
+					if(values!=""){
+						values = values + ",";
+					}
+					values = values + $(this).val();
 				});
 				$('#textosSelected').val(values);
 			}
@@ -268,7 +284,10 @@ $(document).ready(function() {
 			if($('#langs').text()!=''){
 				var values = "";
 				$("#langs>option").map(function() {
-					values = values + "," + $(this).val();
+					if(values!=""){
+						values = values + ",";
+					}
+					values = values + $(this).val();
 				});
 				$('#langsSelected').val(values);
 			}
@@ -310,15 +329,19 @@ jQuery.fn.alta = function() {
         data: $(this).serialize(),
         success: function(data) {
         	$('#msg').html(feedback(data));
-            setTimeout("window.location='" + urlAdmin + modulo + "'", 2000);
+        	var result = jQuery.parseJSON(data);
+        	if(result.ok){
+        		setTimeout("window.location='" + urlApp + modulo + "'", 2000);
+        	}
         }
     })
 }
 
-function feedback(ok) {
-	var msg = '<h3 class="ko">' + gcMsg_ko + '</h3>';
-	if (ok){
-		msg = '<h3 class="ok">' + gcMsg_ok + '</h3>';
+function feedback(data) {
+	var result = jQuery.parseJSON(data);
+	var msg = "<h3 class='ok'>" + gcMsg_ok + "</h3>";
+	if(!result.ok){
+		msg =  "<h3 class='ko'>" + gcMsg_ko + "</h3>" + "<span class='small'>" + result.msg + "</span>";
 	}
 	return msg;
 };

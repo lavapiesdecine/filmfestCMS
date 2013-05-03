@@ -21,6 +21,7 @@
 	<form id='form_perfil' name='form_perfil' method='post'>
 		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
 		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
+		<input type="hidden" id="modulosSelected" value="" name="modulosSelected" />
 		
 		<label><?=_("form.perfil")?></label>
 		<input value='<?= $nombre ?>' name='nombre' id='nombre' />

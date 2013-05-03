@@ -31,7 +31,7 @@
 	    
 	 	public function alta(){
 	 		$campos = array("modulo" => $_POST['modulo']);
-			echo $this->_dao->insertUpdate($_POST['id'], $campos, $this->_tabla);
+	 		echo $this->alta($_POST['id'], $campos);
 	    }
 	    
 	}

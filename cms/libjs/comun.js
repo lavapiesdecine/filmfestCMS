@@ -46,7 +46,8 @@ jQuery.fn.validate = function() {
 	
     if($('.selecteds').size()>0 && $('.selecteds').children().size()==0){
     	$(this).addClass('error');
-    	$(this).prev('label').addClass('error');
+    	$('.selecteds').prev('label').addClass('error');
+    	$('.selecteds').addClass('error');
     	error = error + gcMsg_selected + "<br>";
     }
     
@@ -60,18 +61,3 @@ jQuery.fn.validate = function() {
 		return true;
 	}
 }
-
-/*
-jQuery.fn.alta = function() {
-	$.ajax({
-        type: 'POST',
-        url: urlApp + modulo + '/alta',
-        data: $(this).serialize(),
-        success: function(data) {
-        	$('#msg').html(data);
-            $('#msg').removeClass('oculto');
-            //setTimeout("window.location='" + urlAdmin + modulo + "'", 2000);
-        }
-    })
-}
-*/

@@ -39,14 +39,21 @@
 			$campos = array("titulo" => $_POST['id_titulo'], "texto" => $_POST['texto'],
 							"muestra" => $_POST['id_muestra'], "lang" => $_POST['lang']);
 			
-			$ok = false;
-			$idTexto = $this->_dao->insertUpdateId($_POST['id'], $campos, $this->_tabla);
-			if(!empty($idTexto)){
-				$ok = true;
-				$this->_dao->deleteGaleriaTexto($idTexto);
-				$this->_dao->insert(array("id_texto" => $idTexto, "id_galeria" => $_POST['id_galeria']), "galeria_texto");
+			try{
+				$this->_dao->startTransaction();
+				$idTexto = $this->_dao->insertUpdateId($_POST['id'], $campos, $this->_tabla);
+				if(!empty($_POST['id_galeria'])){
+					$this->_dao->deleteGaleriaTexto($idTexto);
+					$this->_dao->insert(array("id_texto" => $idTexto, "id_galeria" => $_POST['id_galeria']), "galeria_texto");
+				}
+				$this->_dao->commit();
+			
+			} catch (\Exception $e) {
+				$this->_result = array("ok" => false, "msg" => $e->getMessage());
+				$this->_dao->rollback();
 			}
-			echo $ok;
+			echo json_encode($this->_result);
+			
 		}
 
 	}

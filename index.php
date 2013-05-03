@@ -42,8 +42,8 @@
 	/**
 	 * CONF FILES
 	 */
-	include_once("cms/core/util/Util.php");
-	$confFiles = core\util\Util::getFiles("cms/core/config/", "php");
+	include_once("cms/core/util/UtilFile.php");
+	$confFiles = core\util\UtilFile::getFiles("cms/core/config/", "php");
 	foreach ($confFiles as $file) {
 		include_once("cms/core/config/$file");
 	}

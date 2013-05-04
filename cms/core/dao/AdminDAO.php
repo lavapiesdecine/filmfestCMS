@@ -213,20 +213,6 @@ class AdminDAO extends Database{
 	public function agradecimientosPeliculaDAO(){ 
 		return parent::selectQuery("select id, donante as titulo from ".$this->_prefix."donantes where alta='S' and id>0 order by donante", true);
 	}
-	/*
-	public function fichaPeliculaDAO($id){
-		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia, a.autor as nombre_contacto, a.email, a.telefono,
-							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, pp.id_proyeccion, dp.id_donante
-							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
-							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."autores a ON pe.id = a.id_pelicula, 
-							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula,
-							".$this->_prefix."peliculas p3 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p3.id = dp.id_pelicula,
-							".$this->_prefix."licencias l
-							WHERE p.id = p1.id AND p.id=p2.id AND p.id=p3.id
-							AND p.licencia = l.id 
-							AND p.id=$id");
-	}*/
-	
 	public function fichaPeliculaDAO($id){
 		return parent::selectQuery("SELECT p.*, l.nombre AS nombre_licencia,
 							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload, 
@@ -235,9 +221,9 @@ class AdminDAO extends Database{
 							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p1.id = pp.id_pelicula,
 							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p2.id = dp.id_pelicula,
 							".$this->_prefix."licencias l
-				WHERE p.id = p1.id AND p.id=p2.id
-				AND p.id_licencia = l.id
-				AND p.id=$id");
+							WHERE p.id = p1.id AND p.id=p2.id
+							AND p.id_licencia = l.id
+							AND p.id=$id");
 	}
 	
 	public function fichaPeliculaConvocatoriaDAO($id){

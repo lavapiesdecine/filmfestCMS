@@ -25,6 +25,5 @@
 	}
 	
 	function exception_handler(Exception $e) {
-		//\core\util\Error::add("excepcion no controlada: ".$e->getMessage());
 		include("./cms/error.phtml");
 	}

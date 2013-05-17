@@ -51,7 +51,8 @@
 	    	extract($this->_data->getData());
 	    	
 	    	include_once $pathSkin . 'layouts' . DS . $this->_data->getLayout();
-	           
+
+	    	$this->_dao->__destruct();
 	    }
 	    
 	    protected function addData($dataController){

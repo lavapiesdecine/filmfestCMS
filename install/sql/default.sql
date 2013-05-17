@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuarios (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}ediciones (
   `alta` varchar(1) NOT NULL DEFAULT 'N',
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}convocatorias (
   `descripcion` varchar(500) DEFAULT NULL,
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}langs (
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   PRIMARY KEY (`id`),
   KEY `lang` (`lang`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}lang_edicion (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `id_edicion` (`id_edicion`,`lang`),
   KEY `lang` (`lang`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}web_modulos (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `modulo` (`modulo`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}perfiles (
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}usuario_perfil (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY `id_usuario` (`id_usuario`,`id_perfil`),
   KEY `id_perfil` (`id_perfil`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}modulos (
   `modulo_padre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `modulo` (`modulo`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -210,7 +210,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}modulo_perfil (
   `id_perfil` int(11) NOT NULL,
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `id_modulo` (`id_modulo`,`id_perfil`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}pagina (
   UNIQUE KEY `url` (`url`,`muestra`),
   KEY `muestra` (`muestra`),
   KEY `index5` (`id_webmodulo`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}textos (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `muestra` (`muestra`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -339,7 +339,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}pagina_texto (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_pagina`,`id_texto`),
   KEY `id_texto` (`id_texto`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -381,7 +381,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}menu (
   `orden` int(11) NOT NULL,
   `portada` varchar(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id_pagina`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}docs (
   PRIMARY KEY (`id`),
   UNIQUE KEY `archivo` (`archivo`),
   KEY `muestra` (`muestra`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -438,7 +438,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}galerias (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `galeria` (`galeria`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -460,7 +460,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}imagenes (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_galeria` (`id_galeria`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -488,7 +488,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}galeria_texto (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_galeria`,`id_texto`),
   KEY `id_texto` (`id_texto`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -506,7 +506,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}donantes (
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB COMMENT='tabla que almacena las distris, productoras... que ceden las películas';
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -529,7 +529,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}espacios (
   `alta` varchar(1)   NOT NULL DEFAULT 'S',
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB COMMENT='tabla que almacena los espacios de proyeccion';
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -545,7 +545,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}licencias (
   `url` varchar(200) DEFAULT NULL,
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -592,7 +592,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}peliculas (
   PRIMARY KEY (`id`),
   KEY `muestra` (`muestra`),
   KEY `id_licencia` (`id_licencia`)
-) ENGINE=InnoDB COMMENT='Tabla con las películas y autoproducciones';
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -620,7 +620,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}convocatoria (
   `alta` varchar(1) NOT NULL DEFAULT 'S',
   PRIMARY KEY (`id`),
   KEY `id_pelicula` (`id_pelicula`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -641,7 +641,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}autores (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`,`id_pelicula`),
   KEY `id_pelicula` (`id_pelicula`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -660,7 +660,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}imagenes_pelicula (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_pelicula` (`id_pelicula`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -685,7 +685,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}proyecciones (
   PRIMARY KEY (`id`),
   KEY `id_espacio` (`id_espacio`),
   KEY `anyo` (`anyo`)
-) ENGINE=InnoDB COMMENT='tabla de proyecciones. relaciona pelicula con proyeccion';
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -703,7 +703,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}proyeccion_pelicula (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_pelicula`,`id_proyeccion`),
   KEY `id_proyeccion` (`id_proyeccion`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 
@@ -721,7 +721,7 @@ CREATE TABLE IF NOT EXISTS {DATABASE}.{PREFIX}donante_pelicula (
   `fecha_alta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_pelicula`, `id_donante`),
   KEY `id_donante` (`id_donante`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARSET=UTF8;
 
 -- command split --
 

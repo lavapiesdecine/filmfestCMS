@@ -13,7 +13,7 @@
 		<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/imagen/upload" target="frame_imagen">
 				<input name='galeria' id='galeria' value='<?=$galeria?>' type='hidden' required />
 				<input name='id_galeria_img' id='id_galeria_img' value='<?=$idGaleria?>' type='hidden'/>
-				<input type="file" name="imagen" id="imagen" required  />
+				<input type="file" name="imagen" id="imagen"  />
 		</form>
 	<? } ?>	
 </div>
@@ -21,7 +21,7 @@
 
 <div id="div-img-info">
 	<form id='form_img' name='form_img' method='post' >
-		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' required />
+		<input value='<?=$fileImg?>' name='file_imagen' id='file_imagen' type='hidden' />
 		<input name='id' id='id' value='<?= $this->_id ?>' type='hidden'/>
 		<label><?= _("form.galerias")?></label>
 		<?if(empty($img)){?>
@@ -43,7 +43,8 @@
 			<span class="input"><a href="<?=$url?>" target="_blank"><?=$url?></a></span>
 		<? } ?>
 		
-		<p><a href="#" id='b_imagen' class="boton"><?=_("form.aceptar")?></a></p>
+		<p><a href="#" id='b_imagen' class="boton"><?=_("form.aceptar")?></a>  
+		<a href="#" id='b_loadvideo' class="boton"><?=_("form.thumbailvideo")?></a></p>
 		
 	</form>
 </div>

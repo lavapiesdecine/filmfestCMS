@@ -20,21 +20,30 @@
 	<? if(empty($pelicula->cartel)){?>
 		<iframe height='100px' width='100px' id='frame_imagen' name='frame_imagen' class='frame oculto' src="<?=URL_ADMIN?>/pelicula/upload"></iframe>
 	<? }?>
-	<div id="div-img" class="<?= $classUpload ?>">
-		<?if(!empty($pelicula->cartel)){?>
-			<a href="#" id="delete-img">
-				<img width="100px" height="100px" src="<?= $img ?>" id="imagen_uploaded" />
-				<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+	<div id="columna-img">
+		<div id="div-img" class="<?= $classUpload ?>">
+			<?if(!empty($pelicula->cartel)){?>
+				<a href="#" id="delete-img">
+					<img width="100px" height="100px" src="<?= $img ?>" id="imagen_uploaded" />
+					<span id="change-img" class="<?= $urlPagina."-".$this->_id ?>"></span>
+				</a>
+			<?} else { ?>
+				<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/pelicula/upload" target="frame_imagen">
+					<p><?=_("form.upload.img")?><br><?= _("form.upload.type")?></p>
+					<input name='id_nombre' id='id_nombre' value='<?=$titulo?>' type='hidden'/>
+					<input name='galeria' id='galeria' value='<?=$this->_anyo?>' type='hidden'/>
+					<input name='id_pelicula' id='id_pelicula' value='<?=$this->_id?>' type='hidden'/>
+					<input type="file" name="imagen" id="imagen"  /><br>
+				</form>
+			<? } ?>	
+		</div>
+	
+		<? if(!empty($this->_id)){?>
+			<a class="fancybox" href="<?=$url?>">
+				<img width="100px" height="100px" src="<?= \core\util\Util::getImageVideo($url) ?>" />
+				<span id="play"></span>
 			</a>
-		<?} else { ?>
-			<form enctype="multipart/form-data" method='post' id="form_imagen" name="form_imagen" action="<?=URL_ADMIN?>/pelicula/upload" target="frame_imagen">
-				<p><?=_("form.upload.img")?><br><?= _("form.upload.type")?></p>
-				<input name='id_nombre' id='id_nombre' value='<?=$titulo?>' type='hidden'/>
-				<input name='galeria' id='galeria' value='<?=$this->_anyo?>' type='hidden'/>
-				<input name='id_pelicula' id='id_pelicula' value='<?=$this->_id?>' type='hidden'/>
-				<input type="file" name="imagen" id="imagen"  /><br>
-			</form>
-		<? } ?>	
+		<?}?>
 	</div>
 	<!-- cartel -->
 	

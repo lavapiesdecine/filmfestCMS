@@ -14,6 +14,7 @@
 	    protected $_lang;
 	    protected $_title;
 	    protected $_description;
+	    protected $_twitterCard;
 	    
 	    public function __construct($data=null) {
 	    	$this->_data = $data;

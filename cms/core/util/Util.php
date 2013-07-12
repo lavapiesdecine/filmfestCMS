@@ -77,17 +77,37 @@
 			return $video;
 		}
 		
-	
-		public static function getColorTemplate($anyo){
-			$color = null;
-			if ($anyo=='2010'){
-				$colores =  array ('b', 'y', 'm', 'c');
-				$color = $colores[array_rand($colores)];
-			}
-			return $color;
-		}
+		/**
+		 * obtiene el thumbnail de youtuve o vimeo
+		 * @param url video streaming
+		 * @return thumbail
+		 */
+		public static function getImageVideo($video, $thumbnail=true){
+			$regex = "/[http|https]:\/\/(:?www.)?(\w*)/";
+			preg_match($regex, $video, $match);
+			$stream = $match[2];
+			
+			switch ($stream){
+				case "youtube":
+					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
+					preg_match($regex, $video, $match);
+					return "http://img.youtube.com/vi/".$match[3]."/".($thumbnail?"1":"0").".jpg";
+					break;
+				case "youtu":
+					$regex = "/(youtube\.com|youtu\.be)\/(v\/|u\/|embed\/|watch\?v=)?([^#\&\?]*).*/i";
+					preg_match($regex, $video, $match);
+					return "http://img.youtube.com/vi/".$match[3]."/".($thumbnail?"1":"0").".jpg";
+					break;
+				case "vimeo":
+					$regex = "/[http|https]:\/\/(?:www.)?(\w*).com\/(\d*)/";
+					preg_match($regex, $video, $match);
+					$hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/".$match[2].".php"));
+					return $thumbnail?$hash[0]["thumbnail_small"]:$hash[0]["thumbnail_large"];
+					break;
 		
-
+			}
+			return $video;
+		}
 		
 		
 		public static function formatDate2Mysql($date){

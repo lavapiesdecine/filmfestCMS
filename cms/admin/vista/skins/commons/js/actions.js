@@ -159,7 +159,6 @@ $(document).ready(function() {
 	                      q: address
 	                 },
 	                 success: function(data) {
-	                	data = $.browser.webkit ? data : jQuery.parseJSON(data);
 	                	if(data.length>0){
 		                	$('#id_latitud').val(data[0].lat);
 			    	        $('#id_longitud').val(data[0].lon);

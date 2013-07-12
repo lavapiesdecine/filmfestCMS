@@ -17,3 +17,5 @@
 	define('DEFAULT_METODO', 'index');
 	define('DEFAULT_LANG', 'es');
 	define('DEFAULT_ADMINMODULE', 'inicio');
+	
+	define('TWITTER_ACCOUNT', '__TWITTER_ACCOUNT__');

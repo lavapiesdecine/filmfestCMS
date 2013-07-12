@@ -9,10 +9,13 @@
 				$url = $imagen->url_video;
 				$tag = "width='550px' height='400px' tag='SWF'";
 				$video = true;
+				$img = \core\util\Util::getImageVideo($url);
+			} else {
+				$img = URL_IMG . "galerias/" . $imagen->galeria . "/" . THUMBNAIL . "/". $imagen->imagen;
 			}
-	?>
+?>
 			<a href='<?=$url?>' class='fancybox' rel='<?=$imagen->galeria?>' <?=$tag?> title='<?=$imagen->descripcion?>' >
-				<img width='100px' height='100px' src='<?=URL_IMG."galerias/".$imagen->galeria."/".THUMBNAIL . "/".$imagen->imagen;?>' alt='<?=$imagen->descripcion?>'>
+				<img width='100px' height='100px' src='<?=$img?>' alt='<?=$imagen->descripcion?>'>
 				<?php  if($video) {?><span></span><?php } ?>
 			</a>
 	<? } ?>

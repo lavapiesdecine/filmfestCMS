@@ -454,7 +454,7 @@ msgstr "Galería de imágenes"
 
 #: admin/vista/controllers/imagen.phtml:26
 msgid "form.galerias"
-msgstr "Galerías de imágenes"
+msgstr "Galerías de imágenes y vídeos"
 
 #: admin/vista/controllers/imagen.phtml:39
 msgid "form.video.url"
@@ -467,6 +467,10 @@ msgstr "sólo en caso de vídeos"
 #: admin/vista/controllers/imagen.phtml:42
 msgid "form.img.url"
 msgstr "Url Imagen"
+
+#: admin/vista/controllers/imagen.phtml:47
+msgid "form.thumbnailvideo"
+msgstr "Cargar imágen del vídeo"
 
 #: admin/vista/controllers/inicio.phtml:1
 msgid "profile.system.name"
@@ -740,6 +744,10 @@ msgstr "Informa primero el nombre del documento"
 #: admin/vista/skins/commons/includes/literales.phtml:16
 msgid "form.error.date"
 msgstr "La fecha de fín debe ser posterior a la fecha de inicio"
+
+#: admin/vista/skins/commons/includes/literales.phtml:17
+msgid "form.error.thumbnailvideo"
+msgstr "Es necesario informar la url del vídeo en streaming"
 
 #: admin/vista/skins/lvc/layouts/1columna.phtml:22
 #: admin/vista/skins/lvc/layouts/2columnas.phtml:29

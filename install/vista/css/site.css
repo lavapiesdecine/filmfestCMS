@@ -318,10 +318,12 @@ div.error{
 input.usuario{
 	 background: url("../img/user.png") no-repeat scroll 2px 50% transparent;
 	 padding-left:25px;
+	 width: 95%;
 }
 input.password{
 	 background: url("../img/password.png") no-repeat scroll 2px 50% transparent;
 	 padding-left:25px;
+	 width: 95%;
 }
 
 /*map */
@@ -355,9 +357,9 @@ div.info-adicional{
 
 /* galeria texto */
 #galeria-texto{
-	height: 250px;
+	height:100px;
+	margin-bottom: 20px;
 }
-
 #galeria-texto a img{
 	border: 1px solid red;
 	margin-right: 5px;

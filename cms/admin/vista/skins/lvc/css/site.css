@@ -209,7 +209,9 @@ input, textarea, select{
 span.input{
 	line-height: 20px;
 }
-
+.break{
+	clear:both;
+}
 .empty{
 	background-color: #EEEEEE;
 }
@@ -287,6 +289,11 @@ div.error{
 }
 
 /* upload */
+div#columna-img {
+	float: left;
+	width: 100px;
+	margin-right: 20px;
+}	
 div#div-img {
 	float:left;
 	margin-right:20px;
@@ -294,6 +301,7 @@ div#div-img {
 	width: 100px;
 	height: 100px;
 	background-color: #EEEEEE;
+	margin-bottom:20px;
 }
 
 div#div-img span#change-img {
@@ -305,8 +313,8 @@ div#div-img span#change-img {
     margin-top: -75px;
     margin-left: 25px;
 }
-
-div#div-img span#play {
+/*
+span#play {
  	background: url("../img/play.png") no-repeat scroll 0 0 transparent;
     height: 50px;
     position: absolute;
@@ -314,6 +322,14 @@ div#div-img span#play {
     z-index: 100;
     margin-top: -75px;
     margin-left: 25px;
+ }
+ */   
+ span#play {   
+    background-image: url("../img/play.png");
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: 0 -50px;
+    
 }
 
 div#div-img span#view {

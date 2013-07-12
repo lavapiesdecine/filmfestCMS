@@ -196,21 +196,22 @@ $(document).ready(function() {
 			$('#form_galeria').alta();
 		}
 	});
+	$('#b_loadvideo').click(function(){
+		if($('#id_video').val()==''){
+			$('#msg').html("<strong>" + gcMsg_revisa + ":</strong> <br> " + gcMsg_thumbnailvideo);
+			$('#msg').removeClass('oculto');
+			$('#id_video').prev('label').addClass('error');
+			$('#id_video').addClass('error');
+		} else {
+			$.post(urlApp + modulo + "/loadThumbnailVideo", {url:$('#id_video').val()}, function(data){
+				$("#frame_imagen").contents().find("body").html("<img height='90px' src='" + urlImgAdmin + "loading.gif' />");
+				$('#div-img').addClass('oculto');
+				$('#frame_imagen').removeClass('oculto');
+				$("#frame_imagen").contents().find("body").html(data);
+	        });
+		}
+	});
 	
-	$('#b_imagen').click(function(){
-		if($('#frame_imagen').length>0){
-			$('#file_imagen').val($('#frame_imagen').contents().find('input#nombre_imagen').val());
-			$('#id').val($('#frame_imagen').contents().find('input#id').val());
-		}
-		if($('#form_img').validate()){
-			$('#form_img').alta();
-		}
-	});
-	$('#b_galeria').click(function(){
-		if($('#form_galeria').validate()){
-			$('#form_galeria').alta();
-		}
-	});
 	
 	/**
 	 * documentos

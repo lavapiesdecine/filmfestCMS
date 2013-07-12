@@ -90,7 +90,6 @@
         	empty($id) ? self::insert($campos, $tabla) : self::update($id, $campos, $tabla);
         }
         public function insertUpdateId($id, $campos, $tabla){
-        	$id=0;
         	if(empty($id)){
         		$id = self::insertId($campos, $tabla);
         	} else {

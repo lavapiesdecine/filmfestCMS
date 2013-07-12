@@ -14,7 +14,7 @@ class confController extends Controller{
 	 */
 	public function index(){
 		
-		$email = ""; $password = ""; $nickname = ""; $emailcontact = ""; $lang = "";
+		$email = ""; $password = ""; $nickname = ""; $emailcontact = ""; $lang = ""; $twitteraccount="";
 		$langs = unserialize(LANGS);
 		
 		if(isset($_SESSION["usuarioAdmin"])){
@@ -23,10 +23,11 @@ class confController extends Controller{
 			$password = $usuario["password"];
 			$nickname = $usuario["nickname"];
 			$emailcontact = $usuario["emailcontact"];
+			$twitteraccount = $usuario["twitteraccount"];
 			$lang = $usuario["lang"];
 		}
 		
-		$this->_data = array("email" => $email, "password" => $password, "nickname" => $nickname, "emailcontact" => $emailcontact, "langs" => $langs, "lang" => $lang);
+		$this->_data = array("email" => $email, "password" => $password, "nickname" => $nickname, "emailcontact" => $emailcontact, "twitteraccount" => $twitteraccount, "langs" => $langs, "lang" => $lang);
 		$this->loadView();
 	}
 
@@ -36,6 +37,7 @@ class confController extends Controller{
 				"password" => $_POST['password'],
 				"nickname" => $_POST['nickname'],
 				"emailcontact" => $_POST['emailcontact'],
+				"twitteraccount" => $_POST['twitteraccount'],
 				"lang" => $_POST['lang']);
 		
 		$result = $this->loadLanguage($_POST['lang']);
@@ -69,20 +71,20 @@ class confController extends Controller{
 	
 	
 	/**
-	 * Carga del archivo de configuraci�n cms/core/config/conf.php
+	 * Carga del archivo de configuracion cms/core/config/conf.php
 	 * @param $usuario
 	 * @return boolean
 	 */
 	private function config($usuario){
 		
 		$template = file_get_contents(CONF_PATH . $this->_controller . '.php');
-		
 		$replace = array(
 				'__ADMIN_LANG__' 	=> $usuario["lang"],
 				'__ADMIN_EMAIL__' 	=> $usuario["email"],
-				'__CONTACT_MAIL__' 	=> $usuario["emailcontact"]
+				'__CONTACT_MAIL__' 	=> $usuario["emailcontact"],
+				'__TWITTER_ACCOUNT__' => $usuario["twitteraccount"]
 		);
-
+		
 		$file = str_replace(array_keys($replace), $replace, $template);
 
 		$handle = fopen(CONF_PATH . $this->_controller . '.php','w+');

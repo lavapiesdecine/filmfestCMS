@@ -11,7 +11,7 @@
 			<section>
 	        	<h1><span style="padding-left:20px;"><?=$this->_title?></span><span class="small"><?=$this->_description?></span></h1>
 				<div id="msg" class="oculto" ></div>
-				<div style="margin:20px; width: 500px;">
+				<div class="<?=$this->_controller?>" >
 	        		<?	include_once("vista/controllers/". $this->_controller .".phtml"); ?>
 		  		</div>
 		  	</section>

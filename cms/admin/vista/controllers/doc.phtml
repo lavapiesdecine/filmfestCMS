@@ -1,4 +1,4 @@
-<div style="float: left;width: 100px;margin-right: 20px; ">
+<div id="columna-img">
 	<? if(empty($file)) {?>
 		<div id="div-doc">
 			<img src="<?= URL_IMG_ADMIN?>upload.png" /><span><?=_("form.upload.doc")?></span> 
@@ -35,8 +35,8 @@
 			<span><?=$sizeFile?></span>
 		</div>
 	<? }?>
-	
 </div>
+
 <div id="div-img-info">
 	
 	<form id='form_doc' name='form_doc' method='post'>
@@ -51,7 +51,6 @@
 		<label><?=_("form.descripcion")?></label> 
 		<textarea name='descripcion' id='descripcion' ><?=$descripcion?></textarea>
 		
-		<a href="#" id='b_doc' class="boton"><?=_("form.aceptar")?></a>
-		
+		<a href="#" id='b_doc' class="boton"><?=_("form.aceptar")?></a>		
 	</form>
 </div>	

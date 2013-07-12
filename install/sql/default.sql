@@ -478,7 +478,7 @@ INSERT INTO {DATABASE}.{PREFIX}imagenes (`imagen`, `descripcion`, `id_galeria`, 
 ('20130309120320.jpg', 'Proyección en la Plaza Xosé Tarrio', 3, ''),
 ('20130309120335.jpg', 'Proyección en CSA La Tabacalera', 3, ''),
 ('20130309120315.jpg', 'Inauguración en la Filmoteca Nacional', 3, ''),
-('20130309120339.jpg', 'Cortinilla 5ª Muestra', 4, 'http://blip.tv/play/Ab3icYu8BQ');
+('', 'Cortinilla 5ª Muestra', 4, 'http://vimeo.com/69224116');
 
 -- command split --
 

@@ -191,5 +191,33 @@
 				}
 			}
 			return $html;
-		}	
+		}
+		
+		
+		/**
+		 * devuelve los metas para generar un twitter card
+		 * @param $info
+		 */
+		public static function getTwitterCard($info){
+			
+			$account = TWITTER_ACCOUNT;
+			if(!empty($account)){
+				$card = new \core\lib\Twitter_Card($info->type);
+				$card->setTitle($info->title);
+				$card->setDescription($info->description);
+				$card->setURL($info->url);
+				if(!empty($info->image)){
+					$card->setImage($info->image, 480, 360);
+				}
+				if(!empty($info->video)){
+					$card->setVideo(str_replace("http://", "https://", $info->video), 435, 251);
+				}
+				$card->setSiteAccount(TWITTER_ACCOUNT);
+				$card->setCreatorAccount(TWITTER_ACCOUNT);
+				return $card->asHTML();
+			} else {
+				return '';
+			}
+		}
+		
 	}

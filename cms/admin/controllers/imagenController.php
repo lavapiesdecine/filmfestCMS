@@ -38,6 +38,7 @@ class imagenController extends \core\AdminController{
 				$video = false;
 			} else {
 				$url = $imagenDAO->url_video;
+				$img = \core\util\Util::getImageVideo($url);
 				$iconImg = "play";
 			}
 			if(!empty($imagenDAO->imagen)){
@@ -84,6 +85,7 @@ class imagenController extends \core\AdminController{
 	 		if(!empty($id)){
 	 			$imagenDAO = $this->_dao->imagenDAO($id);
 				if(isset($imagenDAO->imagen)){
+					echo "loooo";
 					$this->_dao->delete($id, $this->_tabla);
 					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.$imagenDAO->imagen);
 					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.THUMBNAIL.DS.$imagenDAO->imagen);
@@ -128,6 +130,17 @@ class imagenController extends \core\AdminController{
     		$this->showError($e->getMessage());
     	}	
     }
-	 
+	
+    
+    public function loadThumbnailVideo(){
+    	
+    	$thumbnail = \core\util\Util::getImageVideo($_POST['url']);
+    	
+    	$html = "<head><style type='text/css'> body{margin: 0;}</style></head>"
+    			."<img src='".$thumbnail."' height='100px' width='100px' />";
+	    
+    	echo $html;
+    		
+    }
     
 }	  

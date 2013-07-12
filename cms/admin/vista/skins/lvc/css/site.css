@@ -313,7 +313,7 @@ div#div-img span#change-img {
     margin-top: -75px;
     margin-left: 25px;
 }
-/*
+
 span#play {
  	background: url("../img/play.png") no-repeat scroll 0 0 transparent;
     height: 50px;
@@ -322,14 +322,6 @@ span#play {
     z-index: 100;
     margin-top: -75px;
     margin-left: 25px;
- }
- */   
- span#play {   
-    background-image: url("../img/play.png");
-	background-repeat: no-repeat;
-	background-size: auto;
-	background-position: 0 -50px;
-    
 }
 
 div#div-img span#view {

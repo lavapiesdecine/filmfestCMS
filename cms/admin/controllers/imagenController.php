@@ -85,7 +85,6 @@ class imagenController extends \core\AdminController{
 	 		if(!empty($id)){
 	 			$imagenDAO = $this->_dao->imagenDAO($id);
 				if(isset($imagenDAO->imagen)){
-					echo "loooo";
 					$this->_dao->delete($id, $this->_tabla);
 					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.$imagenDAO->imagen);
 					\core\util\UtilFile::deleteFile(GALERIAS_PATH.$imagenDAO->galeria.DS.THUMBNAIL.DS.$imagenDAO->imagen);

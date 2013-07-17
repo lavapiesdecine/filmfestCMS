@@ -24,7 +24,7 @@
 		public function Header(){
 			$urlImagen = URL_SKINS. $this->_edicion->id . "/" . IMG . "/" . $this->_imgCabecera;
 			$pathImagen = SKINS_PATH . $this->_edicion->id . DS . IMG . DS . $this->_imgCabecera;
-			$img = new Image($pathImagen);
+			$img = new \core\classes\Imagen($pathImagen);
 			$w = $img->getWidth();
 			$h = $img->getHeight();
 			$ratio = $w / $this->_anchuraPagina;
@@ -50,7 +50,7 @@
 				$this->SetCol(0);
 				$urlImagen = URL_IMG."peliculas/".$pelicula->muestra."/".$pelicula->cartel;
 				$pathImagen = IMG_PATH . "peliculas". DS . $pelicula->muestra. DS . $pelicula->cartel;
-				$img = new Image($pathImagen);
+				$img = new \core\classes\Imagen($pathImagen);
 				$w = $img->getWidth();
 				$h = $img->getHeight();
 				$ratio = $w / $this->_anchuraImagen;
@@ -88,7 +88,7 @@
 				$this->SetCol(0);
 				$urlImagen = URL_IMG."peliculas/".$pelicula->muestra."/".$pelicula->cartel;
 				$pathImagen = IMG_PATH . "peliculas". DS . $pelicula->muestra. DS . $pelicula->cartel;
-				$img = new Image($pathImagen);
+				$img = new \core\classes\Imagen($pathImagen);
 				$w = $img->getWidth();
 				$h = $img->getHeight();
 				$ratio = $w / $this->_anchuraImagen;

@@ -108,7 +108,7 @@ class AdminDAO extends Database{
 	
 	/* edicion muestras */
 	public function edicionDAO($id){
-		return parent::selectQuery("select e.id, e.nombre, e.descripcion, e.cartel, e.fecha_inicio, e.fecha_fin from ".$this->_prefix."ediciones e where e.id='$id'", false, __FUNCTION__.$id);
+		return parent::selectQuery("select e.id, e.nombre, e.descripcion, e.cartel, e.fecha_inicio, e.fecha_fin from ".$this->_prefix."ediciones e where e.id='$id'", false);
 	}
 	public function edicionesDAO(){
 		return parent::selectQuery("select id, nombre as titulo, alta, cartel from ".$this->_prefix."ediciones order by id", true);
@@ -157,7 +157,7 @@ class AdminDAO extends Database{
 		return parent::selectQuery($sql, true);
 	}
 	public function textoDAO($id){
-		return parent::selectQuery("select t.*, gt.id_galeria from ".$this->_prefix."textos t LEFT JOIN ".$this->_prefix."galeria_texto gt ON t.id=gt.id_texto where t.id=$id", false, __FUNCTION__.$id);
+		return parent::selectQuery("select t.*, gt.id_galeria from ".$this->_prefix."textos t LEFT JOIN ".$this->_prefix."galeria_texto gt ON t.id=gt.id_texto where t.id=$id", false);
 	}
 	
 
@@ -165,7 +165,6 @@ class AdminDAO extends Database{
 		return parent::selectQuery("select * from ".$this->_prefix."textos where alta='S' and muestra='$anyo' and id not in (select id_texto from ".$this->_prefix."pagina_texto) order by titulo", true);
 	}
 	public function textosPaginaDAO($idPagina){ 
-		//echo "select * from ".$this->_prefix."textos t, ".$this->_prefix."pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo";
 		return parent::selectQuery("select * from ".$this->_prefix."textos t, ".$this->_prefix."pagina_texto pt where t.id=pt.id_texto and pt.id_pagina=$idPagina and t.alta='S' order by titulo", true);
 	}
 	

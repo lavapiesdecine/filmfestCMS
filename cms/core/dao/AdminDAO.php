@@ -245,8 +245,8 @@ class AdminDAO extends Database{
 							i.id as id_imagen, i.imagen AS cartel, IF(i.imagen is null, 'upload-img', '') as class_upload,
 							pp.id_proyeccion, dp.id_donante
 							FROM ".$this->_prefix."peliculas p LEFT JOIN ".$this->_prefix."imagenes_pelicula i ON p.id = i.id_pelicula,
-							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p2.id = pp.id_pelicula,
-							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p3.id = dp.id_pelicula,
+							".$this->_prefix."peliculas p1 LEFT JOIN ".$this->_prefix."proyeccion_pelicula pp  ON p1.id = pp.id_pelicula,
+							".$this->_prefix."peliculas p2 LEFT JOIN ".$this->_prefix."donante_pelicula dp  ON p2.id = dp.id_pelicula,
 							".$this->_prefix."licencias l
 				WHERE p.id = p1.id AND p.id=p2.id
 				AND p.id_licencia = l.id

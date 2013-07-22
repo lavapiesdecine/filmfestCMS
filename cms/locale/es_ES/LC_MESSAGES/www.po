@@ -3,7 +3,6 @@ msgid "contacta.title"
 msgstr "Contacta con nostr@s"
 
 #: cms/www/controllers/contactaController.php:13
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "contacta.description"
 msgstr "Escribenos si quieres decirnos lo que sea"
 
@@ -48,7 +47,6 @@ msgid "escaparate.title"
 msgstr "Asómate a La Muestra"
 
 #: cms/www/controllers/escaparateController.php:13
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "escaparate.description"
 msgstr "Asómate a La Muestra"
 
@@ -57,7 +55,6 @@ msgid "espacios.title"
 msgstr "Espacios de proyección"
 
 #: cms/www/controllers/espaciosController.php:14
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "espacios.description"
 msgstr "Espacios de proyección"
 
@@ -66,7 +63,6 @@ msgid "inscripcion.title"
 msgstr "Formulario de inscripción"
 
 #: cms/www/controllers/inscripcionController.php:14
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "inscripcion.description"
 msgstr "Formulario de inscripción"
 
@@ -168,7 +164,6 @@ msgid "seleccion.title"
 msgstr "Obras seleccionadas de la convocatoria de cine libre"
 
 #: cms/www/controllers/seleccionController.php:14
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
 msgid "seleccion.description"
 msgstr "Obras seleccionadas de la convocatoria de cine libre"
 
@@ -190,10 +185,7 @@ msgstr "Descarga"
 
 #: cms/www/vista/controllers/inscripcion.phtml:8
 msgid "inscripcion.datos.contacto.1"
-msgstr ""
-"Estos datos es sólo para ponernos en contacto. Se almacenan en nuestra base "
-"de datos y en ningún caso se cederá esta información a terceros ni se harán "
-"públicos en la web."
+msgstr "Estos datos es sólo para ponernos en contacto. Se almacenan en nuestra base de datos y en ningún caso se cederá esta información a terceros ni se harán públicos en la web."
 
 #: cms/www/vista/controllers/inscripcion.phtml:9
 #: cms/www/vista/controllers/inscripcion.phtml:10
@@ -225,9 +217,7 @@ msgstr "Empresa distribuidora"
 
 #: cms/www/vista/controllers/inscripcion.phtml:24
 msgid "inscripcion.datos.obra.1"
-msgstr ""
-"Los datos de la obra se colgarán en nuestra página web, para hacer en una "
-"ficha."
+msgstr "Los datos de la obra se colgarán en nuestra página web, para hacer en una ficha."
 
 #: cms/www/vista/controllers/inscripcion.phtml:25
 msgid "inscripcion.datos.titulo"
@@ -358,104 +348,126 @@ msgstr "Revisa los siguientes errores"
 msgid "form.campo.obligatorio"
 msgstr "obligatorio"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "contacta.menu"
 msgstr "Contacto"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "home.menu"
 msgstr "Inicio"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "programa.menu"
 msgstr "Programa"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "espacios.menu"
 msgstr "Espacios"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "muestras.menu"
 msgstr "Muestras"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "escaparate.menu"
 msgstr "Fotos y vídeos"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "faq.menu"
 msgstr "FAQ"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "licencias-libres.menu"
 msgstr "Licencias libres"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "convocatoria-abierta.menu"
 msgstr "Convocatoria"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "inscripcion.menu"
 msgstr "Inscripción"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "bases-convocatoria.menu"
 msgstr "Bases"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "seleccion.menu"
 msgstr "Selección"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "obras-recibidas.menu"
 msgstr "Obras recibidas"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
-msgid "modelos-de-negocio.menu"
+#: cms/www/vista/skins/commons/includes/head.phtml:29
+msgid "material-recibido.menu"
+msgstr "Obras recibidas"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:29
+msgid "vivir-de-la-cultura-libre.menu"
 msgstr "Modelos de negocio en la cúltura libre"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:29
 msgid "convocatoria.menu"
 msgstr "Convocatoria"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:29
+msgid "convocatorias.menu"
+msgstr "Convocatorias anteriores"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "home.description"
 msgstr "Inicio"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "programa.description"
 msgstr "Programa de proyecciones"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
-#: cms/www/vista/skins/2013/includes/pie.phtml:1
-#: cms/www/vista/skins/atp2013/includes/pie.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "muestras.description"
 msgstr "Anteriores ediciones"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "faq.description"
 msgstr "Preguntas y respuestas"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "licencias-libres.description"
 msgstr "Licencias libres para obras audiovisuales"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "convocatoria-abierta.description"
 msgstr "Convocatoria de cine libre"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "bases-convocatoria.description"
 msgstr "Bases de la Convocatoria de cine libre"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "obras-recibidas.description"
 msgstr "Obras recibidas en la Convocatoria de cine libre"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:2
-msgid "modelos-de-negocio.description"
+#: cms/www/vista/skins/commons/includes/head.phtml:30
+msgid "vivir-de-la-cultura-libre.description"
 msgstr "Modelos de negocio en la cúltura libre"
 
-#: cms/www/vista/skins/commons/includes/menu.phtml:1
+#: cms/www/vista/skins/commons/includes/head.phtml:30
 msgid "convocatoria.description"
 msgstr "Convocatoria de cine libre"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:30
+msgid "convocatoria.description"
+msgstr "Convocatoria de cine libre"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:29
+msgid "doc.menu"
+msgstr "Descargas"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:29
+msgid "cronicas.menu"
+msgstr "Crónicas"
+
+#: cms/www/vista/skins/commons/includes/head.phtml:30
+msgid "cronicas.description"
+msgstr "Las crónicas de la Muestra de Cine"

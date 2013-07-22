@@ -21,10 +21,10 @@
 			
 			$cuerpo = "<html><body>$email ha escrito: <br><pre> $comentario </pre></body></html>";
 			$headers  = "MIME-Version: 1.0\r\n";
-			$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
-			$headers .= "From: www.lavapiesdecine.net <muestra@lavapiesdecine.net>\r\n";
+			$headers .= "Content-type: text/html; charset=utf-8\r\n";
+			$headers .= "From: ". $_SERVER['SERVER_NAME'] . " <".EMAIL_WEB.">\r\n";
 			
-			mail(EMAIL_WEB, "[lavapiesdecine.net] $asunto", $cuerpo, $headers);
+			mail(EMAIL_WEB, "[" . $_SERVER['SERVER_NAME'] ." ] $asunto", $cuerpo, $headers);
 	  
 	        echo "<div id='correcto'>"._("contacta.confirm")." </div> ";        
 			
